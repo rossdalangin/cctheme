@@ -182,3 +182,126 @@ function closeclient_customize_css() {
     <?php
 }
 add_action( 'wp_head', 'closeclient_customize_css' );
+
+/**
+ * Expand Customizer with Global Text and Section Controls.
+ */
+function closeclient_customize_register_extra( $wp_customize ) {
+
+    // --- Header Section ---
+    $wp_customize->add_section( 'closeclient_header_settings', array(
+        'title'    => __( 'Header Settings', 'closeclient' ),
+        'priority' => 31,
+    ) );
+
+    $wp_customize->add_setting( 'closeclient_header_cta_text', array(
+        'default'           => 'Book a Call',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'closeclient_header_cta_text', array( 'label' => 'Header CTA Button Text', 'section' => 'closeclient_header_settings' ) );
+
+    $wp_customize->add_setting( 'closeclient_header_cta_link', array(
+        'default'           => '#',
+        'sanitize_callback' => 'esc_url_raw',
+    ) );
+    $wp_customize->add_control( 'closeclient_header_cta_link', array( 'label' => 'Header CTA Button Link', 'section' => 'closeclient_header_settings' ) );
+
+    // --- Footer Section ---
+    $wp_customize->add_section( 'closeclient_footer_settings', array(
+        'title'    => __( 'Footer Settings', 'closeclient' ),
+        'priority' => 100,
+    ) );
+
+    $wp_customize->add_setting( 'closeclient_footer_copyright', array(
+        'default'           => '© ' . date('Y') . ' CloseClient. All rights reserved.',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'closeclient_footer_copyright', array( 'label' => 'Copyright Text', 'section' => 'closeclient_footer_settings' ) );
+
+    // --- Lead Magnet Section ---
+    $wp_customize->add_section( 'closeclient_lead_magnet', array(
+        'title'    => __( 'Lead Magnet Section', 'closeclient' ),
+        'priority' => 65,
+    ) );
+
+    $wp_customize->add_setting( 'closeclient_lm_headline', array(
+        'default'           => 'Free Authority Blueprint',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'closeclient_lm_headline', array( 'label' => 'LM Headline', 'section' => 'closeclient_lead_magnet' ) );
+
+    $wp_customize->add_setting( 'closeclient_lm_subheadline', array(
+        'default'           => 'Download the exact roadmap I use to help consultants land high-ticket clients without cold outreach.',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ) );
+    $wp_customize->add_control( 'closeclient_lm_subheadline', array( 'label' => 'LM Subheadline', 'section' => 'closeclient_lead_magnet', 'type' => 'textarea' ) );
+
+    $wp_customize->add_setting( 'closeclient_lm_button', array(
+        'default'           => 'Get the Blueprint',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'closeclient_lm_button', array( 'label' => 'LM Button Text', 'section' => 'closeclient_lead_magnet' ) );
+
+}
+add_action( 'customize_register', 'closeclient_customize_register_extra' );
+
+/**
+ * Register Booking Section controls.
+ */
+function closeclient_customize_register_booking( $wp_customize ) {
+    $wp_customize->add_section( 'closeclient_booking_settings', array(
+        'title'    => __( 'Booking Section', 'closeclient' ),
+        'priority' => 80,
+    ) );
+
+    $wp_customize->add_setting( 'closeclient_booking_headline', array( 'default' => 'Ready to Scale Your Authority?', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_booking_headline', array( 'label' => 'Booking Headline', 'section' => 'closeclient_booking_settings' ) );
+
+    $wp_customize->add_setting( 'closeclient_booking_subheadline', array( 'default' => 'Book a 15-minute strategy audit to see if we are a fit to work together.', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_booking_subheadline', array( 'label' => 'Booking Subheadline', 'section' => 'closeclient_booking_settings' ) );
+
+    $wp_customize->add_setting( 'closeclient_booking_text', array( 'default' => 'Book My Strategy Audit', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_booking_text', array( 'label' => 'Booking Button Text', 'section' => 'closeclient_booking_settings' ) );
+
+    $wp_customize->add_setting( 'closeclient_booking_link', array( 'default' => '#', 'sanitize_callback' => 'esc_url_raw' ) );
+    $wp_customize->add_control( 'closeclient_booking_link', array( 'label' => 'Booking Button Link', 'section' => 'closeclient_booking_settings' ) );
+
+    $wp_customize->add_setting( 'closeclient_booking_note', array( 'default' => 'Only 3 spots available for new clients this month.', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_booking_note', array( 'label' => 'Booking Note', 'section' => 'closeclient_booking_settings' ) );
+}
+add_action( 'customize_register', 'closeclient_customize_register_booking' );
+
+/**
+ * Register Section Tag controls.
+ */
+function closeclient_customize_register_tags( $wp_customize ) {
+    $wp_customize->add_section( 'closeclient_section_tags', array(
+        'title'    => __( 'Section Tags', 'closeclient' ),
+        'priority' => 33,
+    ) );
+
+    $wp_customize->add_setting( 'closeclient_services_tag', array( 'default' => 'SERVICES', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_services_tag', array( 'label' => 'Services Section Tag', 'section' => 'closeclient_section_tags' ) );
+
+    $wp_customize->add_setting( 'closeclient_testimonials_tag', array( 'default' => 'SUCCESS STORIES', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_testimonials_tag', array( 'label' => 'Testimonials Section Tag', 'section' => 'closeclient_section_tags' ) );
+
+    $wp_customize->add_setting( 'closeclient_faq_tag', array( 'default' => 'FAQ', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_faq_tag', array( 'label' => 'FAQ Section Tag', 'section' => 'closeclient_section_tags' ) );
+}
+add_action( 'customize_register', 'closeclient_customize_register_tags' );
+
+/**
+ * Additional Service/Testimonial Headlines.
+ */
+function closeclient_customize_register_headlines( $wp_customize ) {
+    $wp_customize->add_setting( 'closeclient_services_subheadline', array( 'default' => 'Premium solutions tailored for your stage of growth.', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_services_subheadline', array( 'label' => 'Services Subheadline', 'section' => 'closeclient_services' ) );
+
+    $wp_customize->add_setting( 'closeclient_testimonials_headline', array( 'default' => 'Results From Our Clients', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_testimonials_headline', array( 'label' => 'Testimonials Headline', 'section' => 'closeclient_testimonials' ) );
+
+    $wp_customize->add_setting( 'closeclient_faq_headline', array( 'default' => 'Frequently Asked Questions', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_faq_headline', array( 'label' => 'FAQ Headline', 'section' => 'closeclient_faq' ) );
+}
+add_action( 'customize_register', 'closeclient_customize_register_headlines' );

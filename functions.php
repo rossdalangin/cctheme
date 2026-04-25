@@ -276,3 +276,8 @@ endif;
 function closeclient_get_layout() {
     return get_theme_mod( 'closeclient_default_layout', 'right-sidebar' );
 }
+
+/**
+ * Register Custom Post Types.
+ */
+require get_template_directory() . '/inc/cpt.php';
