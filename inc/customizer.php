@@ -14,7 +14,7 @@ function closeclient_customize_register( $wp_customize ) {
     ) );
 
     $colors = array(
-        'primary_color'    => array( 'label' => __( 'Primary Color', 'closeclient' ), 'default' => '#1a1a1a' ),
+        'primary_color'    => array( 'label' => __( 'Primary Color', 'closeclient' ), 'default' => '#000000' ),
         'secondary_color'  => array( 'label' => __( 'Secondary Color', 'closeclient' ), 'default' => '#f5f5f7' ),
         'accent_color'     => array( 'label' => __( 'Accent Color', 'closeclient' ), 'default' => '#0071e3' ),
         'text_color'       => array( 'label' => __( 'Text Color', 'closeclient' ), 'default' => '#1d1d1f' ),
@@ -47,8 +47,8 @@ function closeclient_customize_register( $wp_customize ) {
         'body_font'    => array( 'label' => 'Body Font', 'default' => 'SF Pro Display', 'type' => 'select', 'choices' => array('SF Pro Display' => 'SF Pro Display', 'Inter' => 'Inter') ),
         'h1_size'      => array( 'label' => 'H1 Font Size (px)', 'default' => '64', 'type' => 'number' ),
         'body_size'    => array( 'label' => 'Body Font Size (px)', 'default' => '18', 'type' => 'number' ),
-        'line_height'  => array( 'label' => 'Line Height', 'default' => '1.5', 'type' => 'text' ),
-        'letter_spacing'=> array( 'label' => 'Letter Spacing (em)', 'default' => '-0.02', 'type' => 'text' ),
+        'line_height'  => array( 'label' => 'Line Height', 'default' => '1.6', 'type' => 'text' ),
+        'letter_spacing'=> array( 'label' => 'Letter Spacing (em)', 'default' => '-0.022', 'type' => 'text' ),
         'font_weight'  => array( 'label' => 'Font Weight', 'default' => '400', 'type' => 'select', 'choices' => array('300'=>'300','400'=>'400','500'=>'500','600'=>'600','700'=>'700') ),
     );
 
@@ -74,14 +74,14 @@ function closeclient_customize_register( $wp_customize ) {
     ) );
 
     $wp_customize->add_setting( 'closeclient_hero_headline', array(
-        'default'           => __( 'I Help Coaches Scale to $10k+ Without the Burnout', 'closeclient' ),
+        'default'           => __( 'Scale Your Authority. Sell Your Expertise.', 'closeclient' ),
         'sanitize_callback' => 'sanitize_text_field',
         'transport'         => 'postMessage',
     ) );
     $wp_customize->add_control( 'closeclient_hero_headline', array( 'label' => 'Headline', 'section' => 'closeclient_hero' ) );
 
     $wp_customize->add_setting( 'closeclient_hero_subheadline', array(
-        'default'           => __( 'Position yourself as the obvious expert and turn your expertise into a premium client-attraction system.', 'closeclient' ),
+        'default'           => __( 'I help high-level coaches and consultants build elite digital platforms that turn visitors into high-ticket clients on autopilot.', 'closeclient' ),
         'sanitize_callback' => 'sanitize_textarea_field',
         'transport'         => 'postMessage',
     ) );
@@ -95,7 +95,7 @@ function closeclient_customize_register( $wp_customize ) {
         'title'    => __( 'About Section', 'closeclient' ),
         'priority' => 50,
     ) );
-    $wp_customize->add_setting( 'closeclient_about_headline', array( 'default' => 'Stop Chasing Clients. Start Leading Them.', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_setting( 'closeclient_about_headline', array( 'default' => 'Stop Chasing. Start Leading.', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_about_headline', array( 'label' => 'About Headline', 'section' => 'closeclient_about' ) );
 
     // --- Services Section ---
@@ -103,7 +103,7 @@ function closeclient_customize_register( $wp_customize ) {
         'title'    => __( 'Services Section', 'closeclient' ),
         'priority' => 55,
     ) );
-    $wp_customize->add_setting( 'closeclient_services_headline', array( 'default' => 'How We Can Work Together', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_setting( 'closeclient_services_headline', array( 'default' => 'Elite Solutions for Elite Experts', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_services_headline', array( 'label' => 'Services Headline', 'section' => 'closeclient_services' ) );
 
     // --- Testimonials Section ---
@@ -111,7 +111,7 @@ function closeclient_customize_register( $wp_customize ) {
         'title'    => __( 'Testimonials', 'closeclient' ),
         'priority' => 60,
     ) );
-    $wp_customize->add_setting( 'closeclient_testimonial_1', array( 'default' => '"Working with this team changed my business. I went from $2k months to $20k months in just 90 days."', 'sanitize_callback' => 'sanitize_textarea_field' ) );
+    $wp_customize->add_setting( 'closeclient_testimonial_1', array( 'default' => '"Within 90 days of implementing this authority system, our high-ticket sales increased by 300% without adding a single hour to my work week."', 'sanitize_callback' => 'sanitize_textarea_field' ) );
     $wp_customize->add_control( 'closeclient_testimonial_1', array( 'label' => 'Testimonial 1', 'section' => 'closeclient_testimonials', 'type' => 'textarea' ) );
 
     // --- FAQ Section ---
@@ -119,9 +119,9 @@ function closeclient_customize_register( $wp_customize ) {
         'title'    => __( 'FAQ Section', 'closeclient' ),
         'priority' => 70,
     ) );
-    $wp_customize->add_setting( 'closeclient_faq_q1', array( 'default' => 'How long does it take to see results?', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_setting( 'closeclient_faq_q1', array( 'default' => 'Who is this elite system for?', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_faq_q1', array( 'label' => 'Question 1', 'section' => 'closeclient_faq' ) );
-    $wp_customize->add_setting( 'closeclient_faq_a1', array( 'default' => 'Most clients see significant authority shifts within the first 30 days of implementation.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
+    $wp_customize->add_setting( 'closeclient_faq_a1', array( 'default' => 'This is specifically architected for established coaches, consultants, and experts who are ready to scale from $10k to $100k+ months.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
     $wp_customize->add_control( 'closeclient_faq_a1', array( 'label' => 'Answer 1', 'section' => 'closeclient_faq', 'type' => 'textarea' ) );
 
     // --- Image Uploads Section ---
@@ -152,7 +152,7 @@ function closeclient_customize_css() {
     ?>
     <style type="text/css">
         :root {
-            --primary: <?php echo get_theme_mod( 'closeclient_primary_color', '#1a1a1a' ); ?>;
+            --primary: <?php echo get_theme_mod( 'closeclient_primary_color', '#000000' ); ?>;
             --secondary: <?php echo get_theme_mod( 'closeclient_secondary_color', '#f5f5f7' ); ?>;
             --accent: <?php echo get_theme_mod( 'closeclient_accent_color', '#0071e3' ); ?>;
             --text: <?php echo get_theme_mod( 'closeclient_text_color', '#1d1d1f' ); ?>;
@@ -162,8 +162,8 @@ function closeclient_customize_css() {
 
             --base-font-size: <?php echo get_theme_mod( 'closeclient_body_size', '18' ); ?>px;
             --h1-size: <?php echo get_theme_mod( 'closeclient_h1_size', '64' ); ?>px;
-            --line-height: <?php echo get_theme_mod( 'closeclient_line_height', '1.5' ); ?>;
-            --letter-spacing: <?php echo get_theme_mod( 'closeclient_letter_spacing', '-0.02' ); ?>em;
+            --line-height: <?php echo get_theme_mod( 'closeclient_line_height', '1.6' ); ?>;
+            --letter-spacing: <?php echo get_theme_mod( 'closeclient_letter_spacing', '-0.022' ); ?>em;
             --font-weight: <?php echo get_theme_mod( 'closeclient_font_weight', '400' ); ?>;
         }
 
