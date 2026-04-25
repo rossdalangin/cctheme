@@ -8,24 +8,31 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main">
+<main id="primary" class="site-main services-template">
     <div class="container">
-        <header class="page-header">
+        <header class="page-header text-center section">
             <h1 class="page-title"><?php the_title(); ?></h1>
+            <p class="section-subheadline"><?php echo esc_html( get_theme_mod( 'closeclient_services_subheadline', 'Premium solutions tailored for your stage of growth.' ) ); ?></p>
         </header>
-
-        <?php
-        get_template_part( 'template-parts/sections/section', 'services' );
-
-        while ( have_posts() ) :
-            the_post();
-            the_content();
-        endwhile;
-
-        get_template_part( 'template-parts/sections/section', 'testimonials' );
-        get_template_part( 'template-parts/sections/section', 'booking-cta' );
-        ?>
     </div>
+
+    <?php get_template_part( 'template-parts/sections/section', 'services' ); ?>
+
+    <div class="container">
+        <div class="services-extra-content section">
+            <?php
+            while ( have_posts() ) :
+                the_post();
+                the_content();
+            endwhile;
+            ?>
+        </div>
+    </div>
+
+    <?php
+    get_template_part( 'template-parts/sections/section', 'faq' );
+    get_template_part( 'template-parts/sections/section', 'booking-cta' );
+    ?>
 </main>
 
 <?php
