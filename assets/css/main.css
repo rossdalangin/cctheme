@@ -389,3 +389,136 @@ img {
 .no-sidebar .content-area {
     width: 100%;
 }
+
+/* Container Width Override */
+.container {
+    max-width: var(--container-width);
+}
+
+/* Boxed Layout Styles */
+body.boxed {
+    background-color: #f0f0f2;
+}
+
+body.boxed #page {
+    max-width: calc(var(--container-width) + 80px);
+    margin: 40px auto;
+    background-color: var(--bg);
+    box-shadow: 0 0 50px rgba(0,0,0,0.1);
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+@media (max-width: 1280px) {
+    body.boxed #page {
+        margin: 0;
+        border-radius: 0;
+        max-width: 100%;
+    }
+}
+
+/* Blog Specific Styles */
+.blog-grid.section {
+    display: flex;
+    gap: 60px;
+}
+
+.blog-main-content {
+    flex: 1;
+}
+
+.featured-post-hero {
+    margin-bottom: 60px;
+}
+
+.featured-post-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    background: #fbfbfd;
+    padding: 60px;
+    border-radius: 32px;
+}
+
+.social-sharing {
+    margin: 40px 0;
+    padding: 20px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.share-link {
+    margin-right: 20px;
+    font-weight: 600;
+}
+
+.author-box {
+    display: flex;
+    gap: 30px;
+    background: #f5f5f7;
+    padding: 40px;
+    border-radius: 24px;
+    margin: 60px 0;
+}
+
+.author-avatar img {
+    border-radius: 50%;
+}
+
+.author-name {
+    margin-bottom: 10px;
+}
+
+.related-posts {
+    margin: 80px 0;
+}
+
+.related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.sticky-blog-cta {
+    position: sticky;
+    bottom: 40px;
+    background: var(--primary);
+    color: var(--white);
+    padding: 30px;
+    border-radius: 24px;
+    box-shadow: var(--shadow-premium);
+    margin-top: 60px;
+    z-index: 100;
+}
+
+.newsletter-form-inline {
+    display: flex;
+    gap: 20px;
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+.newsletter-form-inline input {
+    flex: 1;
+    padding: 16px 24px;
+    border-radius: 980px;
+    border: 1px solid var(--border);
+}
+
+/* Breadcrumbs Styling */
+.breadcrumbs {
+    padding: 20px 0;
+    background: #fbfbfd;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.breadcrumbs a {
+    color: var(--text-muted);
+}
+
+.breadcrumbs .sep {
+    margin: 0 10px;
+    opacity: 0.5;
+}

@@ -165,6 +165,7 @@ function closeclient_customize_css() {
             --line-height: <?php echo get_theme_mod( 'closeclient_line_height', '1.6' ); ?>;
             --letter-spacing: <?php echo get_theme_mod( 'closeclient_letter_spacing', '-0.022' ); ?>em;
             --font-weight: <?php echo get_theme_mod( 'closeclient_font_weight', '400' ); ?>;
+            --container-width: <?php echo get_theme_mod( 'closeclient_container_width', '1200' ); ?>px;
         }
 
         h1, h2, h3, h4, h5, h6 {
@@ -305,3 +306,40 @@ function closeclient_customize_register_headlines( $wp_customize ) {
     $wp_customize->add_control( 'closeclient_faq_headline', array( 'label' => 'FAQ Headline', 'section' => 'closeclient_faq' ) );
 }
 add_action( 'customize_register', 'closeclient_customize_register_headlines' );
+
+/**
+ * Register Site Layout settings.
+ */
+function closeclient_customize_register_site_layout( $wp_customize ) {
+    $wp_customize->add_section( 'closeclient_site_layout', array(
+        'title'    => __( 'Site Layout', 'closeclient' ),
+        'priority' => 30,
+    ) );
+
+    $wp_customize->add_setting( 'closeclient_site_layout_type', array(
+        'default'           => 'full-width',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+
+    $wp_customize->add_control( 'closeclient_site_layout_type', array(
+        'label'    => __( 'Site Layout Type', 'closeclient' ),
+        'section'  => 'closeclient_site_layout',
+        'type'     => 'radio',
+        'choices'  => array(
+            'full-width' => __( 'Full Width (Seamless)', 'closeclient' ),
+            'boxed'      => __( 'Boxed (Luxury Border)', 'closeclient' ),
+        ),
+    ) );
+
+    $wp_customize->add_setting( 'closeclient_container_width', array(
+        'default'           => '1200',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+
+    $wp_customize->add_control( 'closeclient_container_width', array(
+        'label'    => __( 'Container Max Width (px)', 'closeclient' ),
+        'section'  => 'closeclient_site_layout',
+        'type'     => 'number',
+    ) );
+}
+add_action( 'customize_register', 'closeclient_customize_register_site_layout' );

@@ -281,3 +281,32 @@ function closeclient_get_layout() {
  * Register Custom Post Types.
  */
 require get_template_directory() . '/inc/cpt.php';
+
+/**
+ * Breadcrumbs helper function.
+ */
+function closeclient_breadcrumbs() {
+    if ( is_front_page() ) return;
+
+    echo '<nav class="breadcrumbs" aria-label="breadcrumb">';
+    echo '<div class="container">';
+    echo '<a href="' . esc_url( home_url( '/' ) ) . '">' . esc_html__( 'Home', 'closeclient' ) . '</a>';
+
+    if ( is_category() || is_single() ) {
+        echo ' <span class="sep">/</span> ';
+        the_category( ' <span class="sep">/</span> ' );
+        if ( is_single() ) {
+            echo ' <span class="sep">/</span> ';
+            the_title();
+        }
+    } elseif ( is_page() ) {
+        echo ' <span class="sep">/</span> ';
+        the_title();
+    } elseif ( is_search() ) {
+        echo ' <span class="sep">/</span> ';
+        printf( esc_html__( 'Search results for "%s"', 'closeclient' ), get_search_query() );
+    }
+
+    echo '</div>';
+    echo '</nav>';
+}
