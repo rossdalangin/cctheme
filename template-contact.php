@@ -10,14 +10,14 @@ get_header();
 
 <main id="primary" class="site-main">
     <div class="container">
-        <header class="page-header">
+        <header class="page-header text-center">
             <h1 class="page-title"><?php the_title(); ?></h1>
         </header>
 
         <div class="contact-grid">
             <div class="contact-info">
-                <h2><?php esc_html_e( 'Let\'s talk about your growth.', 'closeclient' ); ?></h2>
-                <p><?php esc_html_e( 'Ready to scale your coaching business? Fill out the form or book a call directly.', 'closeclient' ); ?></p>
+                <h2><?php echo esc_html( get_theme_mod( 'closeclient_contact_headline', 'Let\'s talk about your growth.' ) ); ?></h2>
+                <p><?php echo esc_html( get_theme_mod( 'closeclient_contact_subheadline', 'Ready to scale your coaching business? Fill out the form or book a call directly.' ) ); ?></p>
             </div>
             <div class="contact-form-area">
                 <?php
