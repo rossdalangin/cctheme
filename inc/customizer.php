@@ -7,7 +7,7 @@
 
 function closeclient_customize_register( $wp_customize ) {
 
-    // Theme Colors Section
+    // --- Colors Section ---
     $wp_customize->add_section( 'closeclient_colors', array(
         'title'    => __( 'Theme Colors', 'closeclient' ),
         'priority' => 30,
@@ -19,6 +19,8 @@ function closeclient_customize_register( $wp_customize ) {
         'accent_color'     => array( 'label' => __( 'Accent Color', 'closeclient' ), 'default' => '#0071e3' ),
         'text_color'       => array( 'label' => __( 'Text Color', 'closeclient' ), 'default' => '#1d1d1f' ),
         'bg_color'         => array( 'label' => __( 'Background Color', 'closeclient' ), 'default' => '#ffffff' ),
+        'button_color'     => array( 'label' => __( 'Button Background', 'closeclient' ), 'default' => '#0071e3' ),
+        'button_hover'     => array( 'label' => __( 'Button Hover', 'closeclient' ), 'default' => '#0077ed' ),
     );
 
     foreach ( $colors as $id => $data ) {
@@ -34,7 +36,38 @@ function closeclient_customize_register( $wp_customize ) {
         ) ) );
     }
 
-    // Hero Section
+    // --- Typography Section ---
+    $wp_customize->add_section( 'closeclient_typography', array(
+        'title'    => __( 'Typography', 'closeclient' ),
+        'priority' => 35,
+    ) );
+
+    $typography = array(
+        'heading_font' => array( 'label' => 'Heading Font', 'default' => 'SF Pro Display', 'type' => 'select', 'choices' => array('SF Pro Display' => 'SF Pro Display', 'Inter' => 'Inter', 'Playfair Display' => 'Playfair Display') ),
+        'body_font'    => array( 'label' => 'Body Font', 'default' => 'SF Pro Display', 'type' => 'select', 'choices' => array('SF Pro Display' => 'SF Pro Display', 'Inter' => 'Inter') ),
+        'h1_size'      => array( 'label' => 'H1 Font Size (px)', 'default' => '64', 'type' => 'number' ),
+        'body_size'    => array( 'label' => 'Body Font Size (px)', 'default' => '18', 'type' => 'number' ),
+        'line_height'  => array( 'label' => 'Line Height', 'default' => '1.5', 'type' => 'text' ),
+        'letter_spacing'=> array( 'label' => 'Letter Spacing (em)', 'default' => '-0.02', 'type' => 'text' ),
+        'font_weight'  => array( 'label' => 'Font Weight', 'default' => '400', 'type' => 'select', 'choices' => array('300'=>'300','400'=>'400','500'=>'500','600'=>'600','700'=>'700') ),
+    );
+
+    foreach ( $typography as $id => $data ) {
+        $wp_customize->add_setting( "closeclient_{$id}", array(
+            'default'           => $data['default'],
+            'sanitize_callback' => 'sanitize_text_field',
+            'transport'         => 'postMessage',
+        ) );
+
+        $wp_customize->add_control( "closeclient_{$id}", array(
+            'label'    => $data['label'],
+            'section'  => 'closeclient_typography',
+            'type'     => $data['type'],
+            'choices'  => isset($data['choices']) ? $data['choices'] : null,
+        ) );
+    }
+
+    // --- Hero Section ---
     $wp_customize->add_section( 'closeclient_hero', array(
         'title'    => __( 'Hero Section', 'closeclient' ),
         'priority' => 40,
@@ -45,97 +78,70 @@ function closeclient_customize_register( $wp_customize ) {
         'sanitize_callback' => 'sanitize_text_field',
         'transport'         => 'postMessage',
     ) );
-
-    $wp_customize->add_control( 'closeclient_hero_headline', array(
-        'label'    => __( 'Headline', 'closeclient' ),
-        'section'  => 'closeclient_hero',
-        'type'     => 'text',
-    ) );
+    $wp_customize->add_control( 'closeclient_hero_headline', array( 'label' => 'Headline', 'section' => 'closeclient_hero' ) );
 
     $wp_customize->add_setting( 'closeclient_hero_subheadline', array(
         'default'           => __( 'Position yourself as the obvious expert and turn your expertise into a premium client-attraction system.', 'closeclient' ),
-        'sanitize_callback' => 'textarea_escape',
+        'sanitize_callback' => 'sanitize_textarea_field',
         'transport'         => 'postMessage',
     ) );
+    $wp_customize->add_control( 'closeclient_hero_subheadline', array( 'label' => 'Subheadline', 'section' => 'closeclient_hero', 'type' => 'textarea' ) );
 
-    $wp_customize->add_control( 'closeclient_hero_subheadline', array(
-        'label'    => __( 'Subheadline', 'closeclient' ),
-        'section'  => 'closeclient_hero',
-        'type'     => 'textarea',
-    ) );
+    $wp_customize->add_setting( 'closeclient_hero_cta', array( 'default' => 'Book Your Strategy Call', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_hero_cta', array( 'label' => 'CTA Text', 'section' => 'closeclient_hero' ) );
 
-    $wp_customize->add_setting( 'closeclient_hero_cta', array(
-        'default'           => __( 'Book Your Strategy Call', 'closeclient' ),
-        'sanitize_callback' => 'sanitize_text_field',
-    ) );
-
-    $wp_customize->add_control( 'closeclient_hero_cta', array(
-        'label'    => __( 'CTA Button Text', 'closeclient' ),
-        'section'  => 'closeclient_hero',
-        'type'     => 'text',
-    ) );
-
-    // About Section
+    // --- About Section ---
     $wp_customize->add_section( 'closeclient_about', array(
         'title'    => __( 'About Section', 'closeclient' ),
         'priority' => 50,
     ) );
+    $wp_customize->add_setting( 'closeclient_about_headline', array( 'default' => 'Stop Chasing Clients. Start Leading Them.', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_about_headline', array( 'label' => 'About Headline', 'section' => 'closeclient_about' ) );
 
-    $wp_customize->add_setting( 'closeclient_about_headline', array(
-        'default'           => __( 'Stop Chasing Clients. Start Leading Them.', 'closeclient' ),
-        'sanitize_callback' => 'sanitize_text_field',
+    // --- Services Section ---
+    $wp_customize->add_section( 'closeclient_services', array(
+        'title'    => __( 'Services Section', 'closeclient' ),
+        'priority' => 55,
     ) );
+    $wp_customize->add_setting( 'closeclient_services_headline', array( 'default' => 'How We Can Work Together', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_services_headline', array( 'label' => 'Services Headline', 'section' => 'closeclient_services' ) );
 
-    $wp_customize->add_control( 'closeclient_about_headline', array(
-        'label'    => __( 'About Headline', 'closeclient' ),
-        'section'  => 'closeclient_about',
-        'type'     => 'text',
-    ) );
-
-    // Testimonials
+    // --- Testimonials Section ---
     $wp_customize->add_section( 'closeclient_testimonials', array(
         'title'    => __( 'Testimonials', 'closeclient' ),
         'priority' => 60,
     ) );
+    $wp_customize->add_setting( 'closeclient_testimonial_1', array( 'default' => '"Working with this team changed my business. I went from $2k months to $20k months in just 90 days."', 'sanitize_callback' => 'sanitize_textarea_field' ) );
+    $wp_customize->add_control( 'closeclient_testimonial_1', array( 'label' => 'Testimonial 1', 'section' => 'closeclient_testimonials', 'type' => 'textarea' ) );
 
-    $wp_customize->add_setting( 'closeclient_testimonial_1', array(
-        'default'           => __( '"Working with this team changed my business. I went from $2k months to $20k months in just 90 days."', 'closeclient' ),
-        'sanitize_callback' => 'textarea_escape',
-    ) );
-
-    $wp_customize->add_control( 'closeclient_testimonial_1', array(
-        'label'    => __( 'Testimonial 1', 'closeclient' ),
-        'section'  => 'closeclient_testimonials',
-        'type'     => 'textarea',
-    ) );
-
-    // FAQ Section
+    // --- FAQ Section ---
     $wp_customize->add_section( 'closeclient_faq', array(
         'title'    => __( 'FAQ Section', 'closeclient' ),
         'priority' => 70,
     ) );
+    $wp_customize->add_setting( 'closeclient_faq_q1', array( 'default' => 'How long does it take to see results?', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_faq_q1', array( 'label' => 'Question 1', 'section' => 'closeclient_faq' ) );
+    $wp_customize->add_setting( 'closeclient_faq_a1', array( 'default' => 'Most clients see significant authority shifts within the first 30 days of implementation.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
+    $wp_customize->add_control( 'closeclient_faq_a1', array( 'label' => 'Answer 1', 'section' => 'closeclient_faq', 'type' => 'textarea' ) );
 
-    $wp_customize->add_setting( 'closeclient_faq_q1', array(
-        'default'           => __( 'How long does it take to see results?', 'closeclient' ),
-        'sanitize_callback' => 'sanitize_text_field',
+    // --- Image Uploads Section ---
+    $wp_customize->add_section( 'closeclient_images', array(
+        'title'    => __( 'Theme Images', 'closeclient' ),
+        'priority' => 32,
     ) );
 
-    $wp_customize->add_control( 'closeclient_faq_q1', array(
-        'label'    => __( 'Question 1', 'closeclient' ),
-        'section'  => 'closeclient_faq',
-        'type'     => 'text',
-    ) );
+    $images = array(
+        'hero_image' => 'Hero Image',
+        'about_image' => 'About Image',
+        'team_image' => 'Team Image',
+        'testimonial_photo' => 'Testimonial Photo',
+    );
 
-    $wp_customize->add_setting( 'closeclient_faq_a1', array(
-        'default'           => __( 'Most clients see significant authority shifts within the first 30 days of implementation.', 'closeclient' ),
-        'sanitize_callback' => 'textarea_escape',
-    ) );
+    foreach ( $images as $id => $label ) {
+        $wp_customize->add_setting( "closeclient_{$id}", array( 'sanitize_callback' => 'esc_url_raw' ) );
+        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, "closeclient_{$id}", array( 'label' => $label, 'section' => 'closeclient_images' ) ) );
+    }
 
-    $wp_customize->add_control( 'closeclient_faq_a1', array(
-        'label'    => __( 'Answer 1', 'closeclient' ),
-        'section'  => 'closeclient_faq',
-        'type'     => 'textarea',
-    ) );
 }
 add_action( 'customize_register', 'closeclient_customize_register' );
 
@@ -146,11 +152,31 @@ function closeclient_customize_css() {
     ?>
     <style type="text/css">
         :root {
-            --primary-color: <?php echo get_theme_mod( 'closeclient_primary_color', '#1a1a1a' ); ?>;
-            --secondary-color: <?php echo get_theme_mod( 'closeclient_secondary_color', '#f5f5f7' ); ?>;
-            --accent-color: <?php echo get_theme_mod( 'closeclient_accent_color', '#0071e3' ); ?>;
-            --text-color: <?php echo get_theme_mod( 'closeclient_text_color', '#1d1d1f' ); ?>;
-            --bg-color: <?php echo get_theme_mod( 'closeclient_bg_color', '#ffffff' ); ?>;
+            --primary: <?php echo get_theme_mod( 'closeclient_primary_color', '#1a1a1a' ); ?>;
+            --secondary: <?php echo get_theme_mod( 'closeclient_secondary_color', '#f5f5f7' ); ?>;
+            --accent: <?php echo get_theme_mod( 'closeclient_accent_color', '#0071e3' ); ?>;
+            --text: <?php echo get_theme_mod( 'closeclient_text_color', '#1d1d1f' ); ?>;
+            --bg: <?php echo get_theme_mod( 'closeclient_bg_color', '#ffffff' ); ?>;
+            --button-bg: <?php echo get_theme_mod( 'closeclient_button_color', '#0071e3' ); ?>;
+            --button-hover: <?php echo get_theme_mod( 'closeclient_button_hover', '#0077ed' ); ?>;
+
+            --base-font-size: <?php echo get_theme_mod( 'closeclient_body_size', '18' ); ?>px;
+            --h1-size: <?php echo get_theme_mod( 'closeclient_h1_size', '64' ); ?>px;
+            --line-height: <?php echo get_theme_mod( 'closeclient_line_height', '1.5' ); ?>;
+            --letter-spacing: <?php echo get_theme_mod( 'closeclient_letter_spacing', '-0.02' ); ?>em;
+            --font-weight: <?php echo get_theme_mod( 'closeclient_font_weight', '400' ); ?>;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: "<?php echo get_theme_mod( 'closeclient_heading_font', 'SF Pro Display' ); ?>", sans-serif;
+        }
+
+        body {
+            font-family: "<?php echo get_theme_mod( 'closeclient_body_font', 'SF Pro Display' ); ?>", sans-serif;
+            font-size: var(--base-font-size);
+            line-height: var(--line-height);
+            letter-spacing: var(--letter-spacing);
+            font-weight: var(--font-weight);
         }
     </style>
     <?php
