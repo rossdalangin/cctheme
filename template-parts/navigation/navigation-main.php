@@ -20,10 +20,9 @@
 
 			<nav id="site-navigation" class="main-navigation">
 				<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-					<span class="hamburger-box">
-						<span class="hamburger-inner"></span>
-					</span>
-					<span class="menu-text"><?php esc_html_e( 'Menu', 'closeclient' ); ?></span>
+					<span></span>
+					<span></span>
+					<span></span>
 				</button>
 
 				<div class="nav-menu-wrapper">

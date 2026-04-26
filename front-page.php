@@ -23,6 +23,9 @@ get_header();
     // Services Section
     get_template_part( 'template-parts/sections/section', 'services' );
 
+    // Pricing Section
+    get_template_part( 'template-parts/sections/section', 'pricing' );
+
     // Testimonials
     get_template_part( 'template-parts/sections/section', 'testimonials' );
 

@@ -438,3 +438,40 @@ function closeclient_customize_register_pages( $wp_customize ) {
     $wp_customize->add_control( 'closeclient_thankyou_headline', array( 'label' => 'Headline', 'section' => 'closeclient_thankyou_page' ) );
 }
 add_action( 'customize_register', 'closeclient_customize_register_pages' );
+
+/**
+ * Register Pricing Section settings.
+ */
+function closeclient_customize_register_pricing( $wp_customize ) {
+    $wp_customize->add_section( 'closeclient_pricing', array(
+        'title'    => __( 'Pricing Section', 'closeclient' ),
+        'panel'    => 'closeclient_homepage_panel',
+        'priority' => 45,
+    ) );
+
+    $wp_customize->add_setting( 'closeclient_pricing_headline', array( 'default' => 'Invest in Your Growth', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_pricing_headline', array( 'label' => 'Headline', 'section' => 'closeclient_pricing' ) );
+
+    // Plan 1
+    $wp_customize->add_setting( 'closeclient_plan1_name', array( 'default' => 'Strategy Audit', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_plan1_name', array( 'label' => 'Plan 1 Name', 'section' => 'closeclient_pricing' ) );
+    $wp_customize->add_setting( 'closeclient_plan1_price', array( 'default' => '$497', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_plan1_price', array( 'label' => 'Plan 1 Price', 'section' => 'closeclient_pricing' ) );
+    $wp_customize->add_setting( 'closeclient_plan1_features', array( 'default' => '60-Min Deep Dive, Growth Roadmap, Recording included', 'sanitize_callback' => 'sanitize_textarea_field' ) );
+    $wp_customize->add_control( 'closeclient_plan1_features', array( 'label' => 'Plan 1 Features (comma separated)', 'section' => 'closeclient_pricing', 'type' => 'textarea' ) );
+
+    // Plan 2 (Featured)
+    $wp_customize->add_setting( 'closeclient_plan2_name', array( 'default' => 'Elite Coaching', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_plan2_name', array( 'label' => 'Plan 2 Name', 'section' => 'closeclient_pricing' ) );
+    $wp_customize->add_setting( 'closeclient_plan2_price', array( 'default' => '$2,500/mo', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_plan2_price', array( 'label' => 'Plan 2 Price', 'section' => 'closeclient_pricing' ) );
+    $wp_customize->add_setting( 'closeclient_plan2_features', array( 'default' => 'Weekly 1:1 Calls, Priority Support, Full Systems Audit, Scale Blueprint', 'sanitize_callback' => 'sanitize_textarea_field' ) );
+    $wp_customize->add_control( 'closeclient_plan2_features', array( 'label' => 'Plan 2 Features', 'section' => 'closeclient_pricing', 'type' => 'textarea' ) );
+
+    // Plan 3
+    $wp_customize->add_setting( 'closeclient_plan3_name', array( 'default' => 'Mastermind', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_plan3_name', array( 'label' => 'Plan 3 Name', 'section' => 'closeclient_pricing' ) );
+    $wp_customize->add_setting( 'closeclient_plan3_price', array( 'default' => 'Custom', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_plan3_price', array( 'label' => 'Plan 3 Price', 'section' => 'closeclient_pricing' ) );
+}
+add_action( 'customize_register', 'closeclient_customize_register_pricing' );
