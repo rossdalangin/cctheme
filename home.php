@@ -14,8 +14,8 @@ $layout = closeclient_get_layout();
     <div class="container">
         <header class="page-header section text-center reveal">
             <span class="section-tag"><?php esc_html_e( 'THE FEED', 'closeclient' ); ?></span>
-            <h1 class="page-title"><?php echo esc_html( get_theme_mod( 'closeclient_blog_title', 'Insights & Authority' ) ); ?></h1>
-            <p class="section-subheadline"><?php echo esc_html( get_theme_mod( 'closeclient_blog_description', 'Expert strategies to scale your coaching business.' ) ); ?></p>
+            <h1 class="page-title"><span class="gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_blog_title', 'Insights & Authority' ) ); ?></span></h1>
+            <p class="section-subheadline" style="max-width: 700px; margin: 0 auto; color: var(--c-text-muted);"><?php echo esc_html( get_theme_mod( 'closeclient_blog_description', 'Expert strategies to scale your coaching business.' ) ); ?></p>
         </header>
 
         <div class="blog-layout">
