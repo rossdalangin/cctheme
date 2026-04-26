@@ -7,7 +7,7 @@
 ?>
 
 <section class="section section-authority">
-    <div class="container text-center">
+    <div class="container text-center reveal">
         <p class="section-tag"><?php esc_html_e( 'AS SEEN IN', 'closeclient' ); ?></p>
         <div class="logo-bar">
             <?php

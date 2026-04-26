@@ -62,7 +62,7 @@ h3 { font-size: clamp(1.5rem, 4vw, 2rem); }
 .container-narrow { max-width: 800px; margin: 0 auto; }
 .text-center { text-align: center; }
 
-/* --- Layout Structure --- */
+/* --- Header --- */
 .site-header {
     background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(20px) saturate(180%);
@@ -89,7 +89,6 @@ h3 { font-size: clamp(1.5rem, 4vw, 2rem); }
     width: 100%;
 }
 
-/* Navigation */
 .primary-menu-list {
     list-style: none;
     margin: 0;
@@ -113,7 +112,6 @@ h3 { font-size: clamp(1.5rem, 4vw, 2rem); }
     border: none;
     cursor: pointer;
     padding: 10px;
-    z-index: 1001;
 }
 
 .menu-toggle span {
@@ -122,7 +120,6 @@ h3 { font-size: clamp(1.5rem, 4vw, 2rem); }
     height: 2px;
     background: var(--primary);
     margin: 6px 0;
-    transition: 0.4s;
 }
 
 /* --- Buttons --- */
@@ -132,7 +129,7 @@ h3 { font-size: clamp(1.5rem, 4vw, 2rem); }
     border-radius: 12px;
     font-weight: 600;
     text-decoration: none;
-    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: 0.3s ease;
     border: none;
     cursor: pointer;
 }
@@ -142,7 +139,7 @@ h3 { font-size: clamp(1.5rem, 4vw, 2rem); }
 .button-secondary { background: var(--secondary); color: var(--primary); }
 .button-large { padding: 20px 48px; font-size: 1.1rem; }
 
-/* --- Sections & Bento --- */
+/* --- Sections --- */
 .section { padding: var(--space-xl) 0; }
 
 .section-tag {
@@ -155,13 +152,22 @@ h3 { font-size: clamp(1.5rem, 4vw, 2rem); }
     display: inline-block;
 }
 
-.bento-grid {
+/* Grids */
+.hero-grid, .about-grid, .lead-magnet-grid {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 24px;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
 }
 
-.bento-item {
+.services-grid, .stats-grid, .pricing-grid, .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+/* Bento & Cards */
+.bento-item, .service-card, .pricing-card, .testimonial-card, .archive-post {
     background: var(--white);
     border: 1px solid var(--border);
     border-radius: 24px;
@@ -169,35 +175,29 @@ h3 { font-size: clamp(1.5rem, 4vw, 2rem); }
     transition: 0.4s ease;
 }
 
-.bento-item:hover { transform: translateY(-8px); box-shadow: var(--shadow-card); }
-.bento-item.large { grid-column: span 8; }
-.bento-item { grid-column: span 4; }
-
-/* --- Specific Components --- */
-.hero-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 80px;
-    align-items: center;
+.bento-item:hover, .service-card:hover, .pricing-card:hover, .testimonial-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-card);
 }
 
-.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.bento-item.large { grid-column: span 2; }
 
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+/* Specifics */
+.logo-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 60px; opacity: 0.5; padding: 40px 0; }
+.logo-bar img { height: 30px; filter: grayscale(1); }
 
-.pricing-card {
-    background: var(--white);
-    padding: 60px;
-    border-radius: 32px;
-    border: 1px solid var(--border);
-    text-align: center;
-}
+.vsl-video-container { max-width: 1000px; margin: 40px auto 0; border-radius: 24px; overflow: hidden; box-shadow: var(--shadow-premium); }
 
-.pricing-card.featured { border-color: var(--accent); box-shadow: var(--shadow-premium); }
+.process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.process-step { position: relative; padding-top: 40px; }
+.step-number { font-size: 4rem; font-weight: 800; color: var(--secondary); position: absolute; top: -10px; left: 0; z-index: -1; }
 
-.testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; }
+.faq-list { max-width: 800px; margin: 40px auto 0; }
+.faq-item { border-bottom: 1px solid var(--border); padding: 24px 0; }
+.faq-question { font-size: 1.25rem; font-weight: 700; display: flex; justify-content: space-between; cursor: pointer; }
 
-.faq-item { border-bottom: 1px solid var(--border); padding: 32px 0; }
+.newsletter-form-inline { display: flex; gap: 16px; max-width: 600px; margin: 40px auto 0; }
+.newsletter-form-inline input { flex: 1; padding: 16px 24px; border-radius: 12px; border: 1px solid var(--border); }
 
 /* --- Footer --- */
 .site-footer {
@@ -218,11 +218,16 @@ h3 { font-size: clamp(1.5rem, 4vw, 2rem); }
 .footer-column ul li { margin-bottom: 12px; }
 .footer-column ul li a { color: var(--text-muted); text-decoration: none; }
 
-/* --- Mobile Menu Styles --- */
+/* Blog */
+.blog-layout-wrapper { display: flex; gap: 60px; margin-top: 40px; }
+.blog-posts-grid { flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 32px; }
+.widget-area { width: 300px; flex-shrink: 0; }
+
+/* Mobile */
 @media (max-width: 1024px) {
+    .hero-grid, .about-grid, .lead-magnet-grid, .services-grid, .stats-grid, .pricing-grid, .process-grid, .footer-grid, .team-grid { grid-template-columns: 1fr; }
     .site-header { height: 72px; }
     .menu-toggle { display: block; }
-
     .nav-menu-wrapper {
         position: fixed;
         top: 0;
@@ -230,32 +235,16 @@ h3 { font-size: clamp(1.5rem, 4vw, 2rem); }
         width: 80%;
         height: 100vh;
         background: var(--white);
-        padding: 120px 40px;
-        transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        padding: 100px 40px;
+        transition: 0.5s ease;
         box-shadow: -10px 0 30px rgba(0,0,0,0.05);
     }
-
     .main-navigation.is-open .nav-menu-wrapper { right: 0; }
     .primary-menu-list { flex-direction: column; gap: 32px; }
-    .primary-menu-list a { font-size: 1.5rem; font-weight: 700; }
-
-    /* Layout adjustments */
-    .hero-grid, .footer-grid, .stats-grid, .pricing-grid { grid-template-columns: 1fr; }
-    .bento-item.large, .bento-item { grid-column: span 12; }
+    .blog-layout-wrapper { flex-direction: column; }
+    .widget-area { width: 100%; }
 }
 
-/* Reading Progress Bar */
-.reading-progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 3px;
-    background: var(--accent);
-    z-index: 2000;
-    width: 0;
-    transition: width 0.1s ease;
-}
-
-/* Animations */
-.reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); }
+.reveal { opacity: 0; transform: translateY(30px); transition: 1s ease; }
 .reveal.active { opacity: 1; transform: translateY(0); }
+.reading-progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); z-index: 2000; width: 0; }

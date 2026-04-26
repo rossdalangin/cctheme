@@ -33,12 +33,14 @@ get_header();
             $sections = array(
                 'hero', 'authority', 'vsl', 'stats', 'about', 'services',
                 'process', 'pricing', 'testimonials', 'team',
-                'lead_magnet', 'newsletter', 'faq', 'booking_cta'
+                'lead_magnet', 'newsletter', 'faq', 'booking'
             );
 
             foreach ( $sections as $section ) {
-                if ( get_theme_mod( "closeclient_show_$section", true ) ) {
-                    get_template_part( 'template-parts/sections/section-' . str_replace('_', '-', $section) );
+                $show_key = 'closeclient_show_' . $section;
+                if ( get_theme_mod( $show_key, true ) ) {
+                    $template = ( 'booking' === $section ) ? 'booking-cta' : str_replace('_', '-', $section);
+                    get_template_part( 'template-parts/sections/section-' . $template );
                 }
             }
         }
