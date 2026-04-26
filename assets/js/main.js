@@ -1,9 +1,19 @@
 /**
  * CloseClient Main Interactions
- * Advanced scroll reveals and UI feedback.
+ * Infinite Agency Edition - Advanced Interactivity.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    // Mouse Glow Follower
+    const glow = document.createElement('div');
+    glow.className = 'mouse-glow';
+    document.body.appendChild(glow);
+
+    window.addEventListener('mousemove', (e) => {
+        glow.style.left = e.clientX + 'px';
+        glow.style.top = e.clientY + 'px';
+    });
 
     // Header Scroll State
     const header = document.getElementById('masthead');
@@ -15,49 +25,40 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Mobile Menu Logic
-    const menuToggle = document.querySelector('.menu-toggle');
-    const siteNav = document.getElementById('site-navigation');
-
-    if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
-            const isOpen = siteNav.classList.contains('is-open');
-            siteNav.classList.toggle('is-open');
-            menuToggle.setAttribute('aria-expanded', !isOpen);
-            document.body.style.overflow = isOpen ? '' : 'hidden';
-        });
-    }
-
-    // Scroll Reveal System
-    const revealElements = document.querySelectorAll('.section-hero, .bento-item, .pricing-card, .testimonial-card, .service-card');
+    // Scroll Reveal System (Orchestrated)
+    const revealElements = document.querySelectorAll('.reveal');
 
     const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('active');
+                // Add a small delay based on index for a staggered effect within sections
+                setTimeout(() => {
+                    entry.target.classList.add('active');
+                }, index * 50);
                 revealObserver.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -50px 0px'
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
     });
 
     revealElements.forEach(el => {
-        el.classList.add('reveal');
         revealObserver.observe(el);
     });
 
-    // Reading Progress
-    const progressBar = document.createElement('div');
-    progressBar.className = 'reading-progress-bar';
-    document.body.appendChild(progressBar);
-
-    window.addEventListener('scroll', () => {
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        progressBar.style.width = scrolled + "%";
+    // Magnetic Button Effect Lite
+    const buttons = document.querySelectorAll('.button');
+    buttons.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) scale(1.02)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = '';
+        });
     });
 
 });

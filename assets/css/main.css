@@ -1,243 +1,196 @@
 /**
- * CloseClient Main Stylesheet - Modern Tech Agency Edition
- * Advanced, High-Impact, Performance-Driven Design.
+ * CloseClient Main Stylesheet - Infinite Agency Edition
+ * The Pinnacle of Modern Digital Architecture.
  */
 
 :root {
-    /* Tech Agency Palette */
-    --onyx: #0A0A0A;
-    --onyx-light: #161616;
-    --electric-violet: #8B5CF6;
-    --cyber-blue: #0EA5E9;
-    --glass-white: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.1);
+    /* Cosmic Palette */
+    --cosmic-black: #020203;
+    --cosmic-dark: #08080B;
+    --vivid-violet: #7C3AED;
+    --cyan-flare: #06B6D4;
+    --glass: rgba(255, 255, 255, 0.02);
+    --border-glow: rgba(124, 58, 237, 0.2);
 
-    --primary: var(--onyx);
-    --secondary: var(--onyx-light);
-    --accent: var(--electric-violet);
-    --accent-gradient: linear-gradient(135deg, var(--electric-violet) 0%, var(--cyber-blue) 100%);
+    --primary: var(--cosmic-black);
+    --secondary: var(--cosmic-dark);
+    --accent: var(--vivid-violet);
+    --accent-gradient: linear-gradient(135deg, #7C3AED 0%, #06B6D4 100%);
     --text: #F9FAFB;
-    --text-muted: #9CA3AF;
-    --bg: var(--onyx);
+    --text-muted: #888888;
+    --bg: var(--cosmic-black);
     --white: #FFFFFF;
-    --border: var(--glass-border);
 
-    /* Advanced Shadows & Glows */
-    --shadow-premium: 0 0 50px rgba(0, 0, 0, 0.5);
-    --glow-accent: 0 0 20px rgba(139, 92, 246, 0.3);
-    --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.4);
-
-    /* Fluid Spacing */
-    --space-xl: clamp(120px, 18vw, 240px);
-    --space-lg: clamp(80px, 12vw, 120px);
+    /* Shadows & Effects */
+    --shadow-glow: 0 0 30px rgba(124, 58, 237, 0.15);
+    --shadow-card: 0 10px 40px rgba(0, 0, 0, 0.6);
 
     /* Typography */
     --font-sans: "Inter", -apple-system, sans-serif;
 }
 
-/* Reset & Base */
+/* Reset & Grid Texture */
 *, *::before, *::after { box-sizing: border-box; }
 body {
     margin: 0;
     font-family: var(--font-sans);
-    font-size: 18px;
-    line-height: 1.6;
     color: var(--text);
     background-color: var(--bg);
+    background-image:
+        radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.05) 0%, transparent 50%),
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 40px 40px, 40px 40px;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    margin-bottom: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -0.05em;
+    font-weight: 900;
+    letter-spacing: -0.06em;
     color: var(--white);
-    line-height: 1;
+    line-height: 0.95;
+    margin-bottom: 1.5rem;
 }
 
-h1 { font-size: clamp(3.5rem, 12vw, 7.5rem); }
-h2 { font-size: clamp(2.5rem, 8vw, 4.5rem); }
+h1 { font-size: clamp(4rem, 15vw, 9rem); }
+h2 { font-size: clamp(3rem, 10vw, 5rem); }
 
 .gradient-text {
     background: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    display: inline-block;
 }
 
+/* --- Global Elements --- */
 .container {
-    max-width: 1400px;
+    max-width: 1500px;
     margin: 0 auto;
     padding: 0 6vw;
 }
 
-/* --- Header --- */
 .site-header {
-    background-color: rgba(10, 10, 10, 0.7);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
+    background: rgba(2, 2, 3, 0.6);
+    backdrop-filter: blur(40px) saturate(200%);
     position: sticky;
     top: 0;
-    z-index: 1001;
-    border-bottom: 1px solid var(--border);
-    height: 100px;
+    z-index: 2000;
+    height: 110px;
     display: flex;
     align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
 }
 
-.primary-menu-list a {
-    color: var(--text);
-    font-size: 1rem;
-    font-weight: 500;
-    opacity: 0.6;
-    transition: 0.3s;
-}
-
-.primary-menu-list a:hover {
-    opacity: 1;
-    color: var(--electric-violet);
-}
-
-/* --- Buttons --- */
+/* --- Advanced Button --- */
 .button {
-    display: inline-block;
-    padding: 20px 48px;
-    border-radius: 100px;
-    font-weight: 700;
-    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    border: none;
-    cursor: pointer;
+    position: relative;
+    padding: 22px 52px;
+    background: var(--white);
+    color: var(--cosmic-black);
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 0.9rem;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    transition: 0.4s cubic-bezier(0.2, 1, 0.2, 1);
+    overflow: hidden;
+    display: inline-block;
 }
 
 .button-accent {
     background: var(--accent-gradient);
     color: var(--white);
-    box-shadow: var(--glow-accent);
+    border: none;
 }
 
-.button-accent:hover {
-    transform: scale(1.05) translateY(-5px);
-    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.4);
+.button:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 
-/* --- Bento Grid Sections --- */
-.bento-grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 24px;
+.button::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(transparent, rgba(255,255,255,0.2), transparent);
+    transform: rotate(45deg);
+    transition: 0.8s;
 }
 
+.button:hover::after {
+    left: 100%;
+}
+
+/* --- Cards & Bento --- */
 .bento-item {
-    background: var(--glass-white);
-    border: 1px solid var(--border);
-    border-radius: 32px;
-    padding: 48px;
+    background: var(--glass);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 40px;
+    padding: 60px;
+    backdrop-filter: blur(10px);
     position: relative;
-    overflow: hidden;
-    transition: 0.5s;
+    transition: 0.6s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+.bento-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 40px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent 40%, rgba(124, 58, 237, 0.2));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
 }
 
 .bento-item:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: var(--electric-violet);
+    transform: translateY(-10px) scale(1.01);
+    background: rgba(255,255,255,0.04);
+    border-color: rgba(124, 58, 237, 0.4);
+    box-shadow: var(--shadow-glow);
 }
 
-/* Specific Sections */
-.section-hero {
-    padding-top: var(--space-lg);
-    text-align: center;
-    position: relative;
+/* --- Sections --- */
+.section {
+    padding: clamp(100px, 20vw, 240px) 0;
 }
 
-.section-hero::before {
-    content: '';
-    position: absolute;
-    top: -20%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60vw;
-    height: 60vw;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+/* Mouse Follower Light (Controlled by JS) */
+.mouse-glow {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, transparent 70%);
+    pointer-events: none;
     z-index: -1;
+    transform: translate(-50%, -50%);
+    transition: 0.1s linear;
 }
 
-.hero-subheadline {
-    font-size: clamp(1.25rem, 3vw, 1.75rem);
-    color: var(--text-muted);
-    max-width: 800px;
-    margin: 3rem auto 5rem;
-}
-
-/* Stats Bento */
-.stats-bento .bento-item:nth-child(1) { grid-column: span 8; }
-.stats-bento .bento-item:nth-child(2) { grid-column: span 4; }
-.stats-bento .bento-item:nth-child(3) { grid-column: span 4; }
-.stats-bento .bento-item:nth-child(4) { grid-column: span 8; }
-
-.stat-value {
-    font-size: 6rem;
-    font-weight: 900;
-    margin-bottom: 0;
-    line-height: 0.8;
-}
-
-/* Services Bento */
-.services-bento .bento-item { grid-column: span 4; }
-.services-bento .bento-item.large { grid-column: span 8; }
-
-/* Pricing Cards - High Tech */
+/* Pricing Grid - Cyber Tier */
 .pricing-card {
-    background: var(--onyx-light);
-    border: 1px solid var(--border);
-    padding: 60px;
-    border-radius: 40px;
-    position: relative;
+    background: var(--cosmic-dark);
+    padding: 80px 60px;
+    border-radius: 48px;
+    border: 1px solid rgba(255,255,255,0.05);
 }
 
 .pricing-card.featured {
-    border-color: var(--electric-violet);
-    box-shadow: var(--glow-accent);
+    background: linear-gradient(180deg, var(--cosmic-dark) 0%, rgba(124, 58, 237, 0.1) 100%);
+    border-color: var(--vivid-violet);
+    box-shadow: 0 0 60px rgba(124, 58, 237, 0.15);
 }
 
-.pricing-card.featured::before {
-    content: 'RECOMMENDED';
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--accent-gradient);
-    padding: 8px 24px;
-    border-radius: 50px;
-    font-size: 0.7rem;
-    font-weight: 900;
-}
-
-/* Footer */
-.site-footer {
-    padding: var(--space-xl) 0 60px;
-    border-top: 1px solid var(--border);
-}
-
-.footer-social-links a {
-    width: 50px;
-    height: 50px;
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-}
-
-/* Reveal Animation */
+/* Reveal Framework */
 .reveal {
     opacity: 0;
-    transform: translateY(60px);
-    transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(80px);
+    transition: all 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .reveal.active {
@@ -245,20 +198,18 @@ h2 { font-size: clamp(2.5rem, 8vw, 4.5rem); }
     transform: translateY(0);
 }
 
-/* Progress Bar */
-.reading-progress-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 3px;
-    background: var(--accent-gradient);
-    z-index: 2000;
-    width: 0;
-    transition: width 0.2s ease;
+/* Footer - Infinite Dark */
+.site-footer {
+    padding: 180px 0 80px;
+    border-top: 1px solid rgba(255,255,255,0.05);
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-    .bento-grid { grid-template-columns: 1fr; }
-    .bento-item { grid-column: span 1 !important; }
+.footer-social-links a {
+    color: var(--text-muted);
+    transition: 0.3s;
+}
+
+.footer-social-links a:hover {
+    color: var(--white);
+    text-shadow: 0 0 10px var(--vivid-violet);
 }
