@@ -47,13 +47,13 @@ function closeclient_customize_register( $wp_customize ) {
     ) );
 
     $colors = array(
-        'primary_color'    => array( 'label' => __( 'Primary Color', 'closeclient' ), 'default' => '#050505' ),
-        'secondary_color'  => array( 'label' => __( 'Secondary Color', 'closeclient' ), 'default' => '#FBFBFD' ),
-        'accent_color'     => array( 'label' => __( 'Accent Color', 'closeclient' ), 'default' => '#4338CA' ),
-        'text_color'       => array( 'label' => __( 'Text Color', 'closeclient' ), 'default' => '#1D1D1F' ),
-        'bg_color'         => array( 'label' => __( 'Background Color', 'closeclient' ), 'default' => '#FFFFFF' ),
-        'button_color'     => array( 'label' => __( 'Button Background', 'closeclient' ), 'default' => '#4338CA' ),
-        'button_hover'     => array( 'label' => __( 'Button Hover', 'closeclient' ), 'default' => '#3730A3' ),
+        'primary_color'    => array( 'label' => __( 'Primary Color', 'closeclient' ), 'default' => '#020203' ),
+        'secondary_color'  => array( 'label' => __( 'Secondary Color', 'closeclient' ), 'default' => '#0A0A0B' ),
+        'accent_color'     => array( 'label' => __( 'Accent Color', 'closeclient' ), 'default' => '#6366F1' ),
+        'text_color'       => array( 'label' => __( 'Text Color', 'closeclient' ), 'default' => '#F9FAFB' ),
+        'bg_color'         => array( 'label' => __( 'Background Color', 'closeclient' ), 'default' => '#020203' ),
+        'button_color'     => array( 'label' => __( 'Button Background', 'closeclient' ), 'default' => '#6366F1' ),
+        'button_hover'     => array( 'label' => __( 'Button Hover', 'closeclient' ), 'default' => '#4F46E5' ),
     );
 
     foreach ( $colors as $id => $data ) {
@@ -165,9 +165,9 @@ function closeclient_customize_register( $wp_customize ) {
     // Contents for Modular Sections
     // Hero
     $wp_customize->add_section( 'closeclient_hero_content', array( 'title' => '2. Hero Content', 'panel' => 'closeclient_homepage_panel' ) );
-    $wp_customize->add_setting( 'closeclient_hero_headline', array( 'default' => 'The Authority System for High-Ticket Coaches', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_setting( 'closeclient_hero_headline', array( 'default' => 'Design the Future of Digital Authority', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_hero_headline', array( 'label' => 'Headline', 'section' => 'closeclient_hero_content' ) );
-    $wp_customize->add_setting( 'closeclient_hero_subheadline', array( 'default' => 'Stop chasing leads and start attracting elite clients. We build premium digital ecosystems that position you as the only logical choice in your market.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
+    $wp_customize->add_setting( 'closeclient_hero_subheadline', array( 'default' => 'We build the elite infrastructure that powers the world\'s most ambitious brands and consultants. Performance-first, conversion-locked, and future-ready.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
     $wp_customize->add_control( 'closeclient_hero_subheadline', array( 'label' => 'Subheadline', 'section' => 'closeclient_hero_content', 'type' => 'textarea' ) );
     $wp_customize->add_setting( 'closeclient_hero_cta', array( 'default' => 'Apply for Strategy Audit', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_hero_cta', array( 'label' => 'Button Text', 'section' => 'closeclient_hero_content' ) );
@@ -390,13 +390,13 @@ function closeclient_customize_css() {
     ?>
     <style type="text/css">
         :root {
-            --primary: <?php echo get_theme_mod( 'closeclient_primary_color', '#0A0A0B' ); ?>;
-            --secondary: <?php echo get_theme_mod( 'closeclient_secondary_color', '#F5F5F7' ); ?>;
-            --accent: <?php echo get_theme_mod( 'closeclient_accent_color', '#0071E3' ); ?>;
-            --text: <?php echo get_theme_mod( 'closeclient_text_color', '#1D1D1F' ); ?>;
-            --bg: <?php echo get_theme_mod( 'closeclient_bg_color', '#FFFFFF' ); ?>;
-            --button-bg: <?php echo get_theme_mod( 'closeclient_button_color', '#0071E3' ); ?>;
-            --button-hover: <?php echo get_theme_mod( 'closeclient_button_hover', '#0077ED' ); ?>;
+            --c-primary: <?php echo get_theme_mod( 'closeclient_primary_color', '#020203' ); ?>;
+            --c-secondary: <?php echo get_theme_mod( 'closeclient_secondary_color', '#0A0A0B' ); ?>;
+            --c-accent: <?php echo get_theme_mod( 'closeclient_accent_color', '#6366F1' ); ?>;
+            --c-text: <?php echo get_theme_mod( 'closeclient_text_color', '#F9FAFB' ); ?>;
+            --c-bg: <?php echo get_theme_mod( 'closeclient_bg_color', '#020203' ); ?>;
+            --button-bg: <?php echo get_theme_mod( 'closeclient_button_color', '#6366F1' ); ?>;
+            --button-hover: <?php echo get_theme_mod( 'closeclient_button_hover', '#4F46E5' ); ?>;
 
             --base-font-size: <?php echo get_theme_mod( 'closeclient_body_size', '18' ); ?>px;
             --h1-size: <?php echo get_theme_mod( 'closeclient_h1_size', '4.5' ); ?>rem;
