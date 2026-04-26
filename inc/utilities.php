@@ -23,8 +23,24 @@ function closeclient_reset_defaults() {
         'closeclient_body_size'        => '18',
         'closeclient_line_height'      => '1.6',
         'closeclient_letter_spacing'   => '-0.05',
-        'closeclient_hero_headline'    => 'Design the Future of Digital Authority',
-        'closeclient_hero_subheadline' => 'We build the elite infrastructure that powers the world\'s most ambitious brands and consultants. Performance-first, conversion-locked, and future-ready.',
+        'closeclient_hero_headline'    => 'Stop Losing High-Value Clients Before You Even Open Your Mouth.',
+        'closeclient_hero_subheadline' => 'Most websites are just expensive brochures. We build "Digital Ecosystems" for coaches and consultants that pre-qualify leads and build instant authority.',
+        'closeclient_hero_cta'         => 'Yes! Build My Authority Engine →',
+        'closeclient_services_headline' => 'Strategic Architecture for the High-Ticket Economy',
+        'closeclient_services_subheadline' => 'WE ENGINEER PATHS TO CONVERSION',
+        'closeclient_service_1_title'   => 'Authority Infrastructure',
+        'closeclient_service_1_text'    => 'The core digital engine that positions you as the undisputed expert in your market.',
+        'closeclient_service_2_title'   => 'Vortex Funnels',
+        'closeclient_service_2_text'    => 'High-velocity acquisition systems that turn attention into applications on autopilot.',
+        'closeclient_service_3_title'   => 'ScaleOps',
+        'closeclient_service_3_text'    => 'Operational dashboards to manage your client flow without the burnout or overhead.',
+        'closeclient_process_headline'  => 'The 3-Step Authority Roadmap',
+        'closeclient_process_step_1_title' => 'The Authority Audit',
+        'closeclient_process_step_1_text'  => 'We find the "leaks" in your current positioning that are draining your revenue.',
+        'closeclient_process_step_2_title' => 'The Ecosystem Build',
+        'closeclient_process_step_2_text'  => 'We engineer your high-converting platform with psychological authority triggers.',
+        'closeclient_process_step_3_title' => 'The Infinite Scale',
+        'closeclient_process_step_3_text'  => 'Launch and watch your website become your top-performing sales associate 24/7.',
     );
 
     foreach ( $defaults as $key => $value ) {
@@ -91,7 +107,6 @@ function closeclient_generate_pages() {
         }
     }
 
-    // Clean up default Hello World post
     $hello_world = get_posts( array( 'title' => 'Hello world!', 'numberposts' => 1 ) );
     if ( ! empty( $hello_world ) ) {
         wp_delete_post( $hello_world[0]->ID, true );

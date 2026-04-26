@@ -35,19 +35,19 @@ $plans = array(
             <h2 class="section-headline"><?php echo esc_html( $headline ); ?></h2>
         </div>
 
-        <div class="grid-3">
+        <div class="cc-grid-3">
             <?php foreach ( $plans as $plan ) : ?>
-                <div class="pricing-card card reveal <?php echo $plan['featured'] ? 'featured' : ''; ?>">
+                <div class="pricing-card cc-card reveal <?php echo $plan['featured'] ? 'featured' : ''; ?>" style="text-align: center;">
                     <div class="pricing-header" style="margin-bottom: 40px;">
                         <h3 style="font-size: 1.4rem; margin-bottom: 15px;"><?php echo esc_html( $plan['name'] ); ?></h3>
-                        <div class="price" style="font-size: 3.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--c-primary);"><?php echo esc_html( $plan['price'] ); ?></div>
+                        <div class="price" style="font-size: 3.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--c-white);"><?php echo esc_html( $plan['price'] ); ?></div>
                     </div>
 
                     <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 50px; text-align: left;">
                         <?php
                         $features = explode( ',', $plan['features'] );
                         foreach ( $features as $feature ) : ?>
-                            <li style="margin-bottom: 14px; display: flex; gap: 12px; font-size: 0.95rem;">
+                            <li style="margin-bottom: 14px; display: flex; gap: 12px; font-size: 0.95rem; color: var(--c-text-muted);">
                                 <span style="color: var(--c-accent); font-weight: 900;">✓</span>
                                 <?php echo esc_html( trim( $feature ) ); ?>
                             </li>
@@ -55,7 +55,7 @@ $plans = array(
                     </ul>
 
                     <div class="pricing-cta">
-                        <a href="<?php echo esc_url( get_theme_mod( 'closeclient_booking_link', '#' ) ); ?>" class="button <?php echo $plan['featured'] ? 'button-accent' : 'button-secondary'; ?>" style="width: 100%;"><?php esc_html_e( 'Secure Your Spot', 'closeclient' ); ?></a>
+                        <a href="<?php echo esc_url( get_theme_mod( 'closeclient_booking_link', '#' ) ); ?>" class="cc-button <?php echo ! $plan['featured'] ? 'cc-button-secondary' : ''; ?>" style="width: 100%;"><?php esc_html_e( 'Secure Your Spot', 'closeclient' ); ?></a>
                     </div>
                 </div>
             <?php endforeach; ?>
