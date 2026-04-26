@@ -6,18 +6,24 @@
  */
 ?>
 
-<section class="section section-stats bg-light">
+<section class="section section-stats">
     <div class="container">
-        <div class="section-header text-center">
-            <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_stats_tag', 'OUR IMPACT' ) ); ?></span>
-        </div>
-        <div class="stats-grid">
-            <?php for ( $i = 1; $i <= 3; $i++ ) : ?>
-                <div class="stat-item text-center">
-                    <div class="stat-value"><?php echo esc_html( get_theme_mod( "closeclient_stat_{$i}_value", "100+" ) ); ?></div>
-                    <div class="stat-label"><?php echo esc_html( get_theme_mod( "closeclient_stat_{$i}_label", "Clients Helped" ) ); ?></div>
-                </div>
-            <?php endfor; ?>
+        <div class="bento-grid stats-bento">
+            <div class="bento-item">
+                <span class="stat-label"><?php echo esc_html( get_theme_mod( 'closeclient_stat_1_label', 'CLIENT CAPITAL SCALED' ) ); ?></span>
+                <h3 class="stat-value gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_stat_1_value', '$500M+' ) ); ?></h3>
+            </div>
+            <div class="bento-item">
+                <span class="stat-label"><?php echo esc_html( get_theme_mod( 'closeclient_stat_2_label', 'GLOBAL IMPACT' ) ); ?></span>
+                <h3 class="stat-value"><?php echo esc_html( get_theme_mod( 'closeclient_stat_2_value', '50+' ) ); ?></h3>
+            </div>
+            <div class="bento-item">
+                <span class="stat-label"><?php echo esc_html( get_theme_mod( 'closeclient_stat_3_label', 'SYSTEM EFFICIENCY' ) ); ?></span>
+                <h3 class="stat-value"><?php echo esc_html( get_theme_mod( 'closeclient_stat_3_value', '98%' ) ); ?></h3>
+            </div>
+            <div class="bento-item" style="background: var(--accent-gradient);">
+                <h3 style="color: var(--white); margin: 0;">Our architecture is built for infinite scale.</h3>
+            </div>
         </div>
     </div>
 </section>
