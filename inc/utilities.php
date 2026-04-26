@@ -64,7 +64,6 @@ function closeclient_generate_pages() {
     );
 
     foreach ( $pages as $title => $data ) {
-        // Replace get_page_by_title with get_posts to avoid deprecation
         $page_check = get_posts( array(
             'post_type'  => 'page',
             'title'      => $title,
@@ -85,12 +84,17 @@ function closeclient_generate_pages() {
                 update_post_meta( $page_id, '_wp_page_template', $data['template'] );
             }
 
-            // Set as static front page if it's the 'Home' page
             if ( 'Home' === $title ) {
                 update_option( 'show_on_front', 'page' );
                 update_option( 'page_on_front', $page_id );
             }
         }
+    }
+
+    // Clean up default Hello World post
+    $hello_world = get_posts( array( 'title' => 'Hello world!', 'numberposts' => 1 ) );
+    if ( ! empty( $hello_world ) ) {
+        wp_delete_post( $hello_world[0]->ID, true );
     }
 }
 

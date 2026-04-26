@@ -14,16 +14,21 @@ get_header();
 
         <?php
         $has_content = false;
-        while ( have_posts() ) :
-            the_post();
-            $content = get_the_content();
-            if ( ! empty( $content ) ) {
-                the_content();
-                $has_content = true;
-            }
-        endwhile;
 
-        // If no editor content is found, show the default modular layout
+        // Check if we are viewing a static page set as front page
+        if ( is_front_page() && ! is_home() ) {
+            while ( have_posts() ) :
+                the_post();
+                $content = get_the_content();
+                // Check for empty content or standard WP block boilerplate
+                if ( ! empty( $content ) && ! str_contains( $content, 'Welcome to WordPress' ) ) {
+                    the_content();
+                    $has_content = true;
+                }
+            endwhile;
+        }
+
+        // Fallback to modular layout if no static page content is found
         if ( ! $has_content ) {
             $sections = array(
                 'hero', 'authority', 'vsl', 'stats', 'about', 'services',
