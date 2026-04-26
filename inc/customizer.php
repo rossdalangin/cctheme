@@ -29,6 +29,11 @@ function closeclient_customize_register( $wp_customize ) {
         'priority'    => 30,
     ) );
 
+    $wp_customize->add_panel( 'closeclient_pages_panel', array(
+        'title'    => __( 'Page Templates', 'closeclient' ),
+        'priority' => 35,
+    ) );
+
     // ==========================================
     // SECTIONS & SETTINGS
     // ==========================================
@@ -73,13 +78,13 @@ function closeclient_customize_register( $wp_customize ) {
     ) );
 
     $typography = array(
-        'heading_font' => array( 'label' => 'Heading Font', 'default' => 'SF Pro Display', 'type' => 'select', 'choices' => array('SF Pro Display' => 'SF Pro Display', 'Inter' => 'Inter', 'Playfair Display' => 'Playfair Display') ),
-        'body_font'    => array( 'label' => 'Body Font', 'default' => 'SF Pro Display', 'type' => 'select', 'choices' => array('SF Pro Display' => 'SF Pro Display', 'Inter' => 'Inter') ),
-        'h1_size'      => array( 'label' => 'H1 Font Size (px)', 'default' => '64', 'type' => 'number' ),
+        'heading_font' => array( 'label' => 'Heading Font', 'default' => 'SF Pro Display', 'type' => 'select', 'choices' => array('SF Pro Display' => 'SF Pro Display', 'Inter' => 'Inter', 'Playfair Display' => 'Playfair Display', 'Montserrat' => 'Montserrat') ),
+        'body_font'    => array( 'label' => 'Body Font', 'default' => 'SF Pro Display', 'type' => 'select', 'choices' => array('SF Pro Display' => 'SF Pro Display', 'Inter' => 'Inter', 'Open Sans' => 'Open Sans') ),
+        'h1_size'      => array( 'label' => 'H1 Max Font Size (rem)', 'default' => '4.5', 'type' => 'text' ),
         'body_size'    => array( 'label' => 'Body Font Size (px)', 'default' => '18', 'type' => 'number' ),
         'line_height'  => array( 'label' => 'Line Height', 'default' => '1.6', 'type' => 'text' ),
         'letter_spacing'=> array( 'label' => 'Letter Spacing (em)', 'default' => '-0.022', 'type' => 'text' ),
-        'font_weight'  => array( 'label' => 'Font Weight', 'default' => '400', 'type' => 'select', 'choices' => array('300'=>'300','400'=>'400','500'=>'500','600'=>'600','700'=>'700') ),
+        'font_weight'  => array( 'label' => 'Body Font Weight', 'default' => '400', 'type' => 'select', 'choices' => array('300'=>'300','400'=>'400','500'=>'500','600'=>'600','700'=>'700') ),
     );
 
     foreach ( $typography as $id => $data ) {
@@ -180,9 +185,29 @@ function closeclient_customize_register( $wp_customize ) {
     ) );
     $wp_customize->add_control( 'closeclient_footer_copyright', array( 'label' => 'Copyright Text', 'section' => 'closeclient_footer_settings' ) );
 
+    // Social Media Links
+    $wp_customize->add_section( 'closeclient_social_settings', array(
+        'title'    => __( 'Social Media Links', 'closeclient' ),
+        'panel'    => 'closeclient_layout_panel',
+        'priority' => 40,
+    ) );
+
+    $socials = array(
+        'twitter' => 'Twitter',
+        'facebook' => 'Facebook',
+        'linkedin' => 'LinkedIn',
+        'instagram' => 'Instagram',
+        'youtube' => 'YouTube',
+    );
+
+    foreach ( $socials as $id => $label ) {
+        $wp_customize->add_setting( "closeclient_social_{$id}", array( 'default' => '#', 'sanitize_callback' => 'esc_url_raw' ) );
+        $wp_customize->add_control( "closeclient_social_{$id}", array( 'label' => $label, 'section' => 'closeclient_social_settings' ) );
+    }
+
     // --- 3. Homepage Sections ---
 
-    // Images (Shared)
+    // Section Images (Shared)
     $wp_customize->add_section( 'closeclient_images', array(
         'title'    => __( 'Section Images', 'closeclient' ),
         'panel'    => 'closeclient_homepage_panel',
@@ -202,7 +227,22 @@ function closeclient_customize_register( $wp_customize ) {
         $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, "closeclient_{$id}", array( 'label' => $label, 'section' => 'closeclient_images' ) ) );
     }
 
-    // Section Tags (Global)
+    // Authority Logos
+    $wp_customize->add_section( 'closeclient_authority_settings', array(
+        'title'    => __( 'Authority Logo Bar', 'closeclient' ),
+        'panel'    => 'closeclient_homepage_panel',
+        'priority' => 25,
+    ) );
+
+    for ( $i = 1; $i <= 5; $i++ ) {
+        $wp_customize->add_setting( "closeclient_authority_logo_$i", array( 'sanitize_callback' => 'esc_url_raw' ) );
+        $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, "closeclient_authority_logo_$i", array(
+            'label'    => "Logo $i",
+            'section'  => 'closeclient_authority_settings',
+        ) ) );
+    }
+
+    // Section Tags & Headlines
     $wp_customize->add_section( 'closeclient_section_tags', array(
         'title'    => __( 'Section Tags & Headlines', 'closeclient' ),
         'panel'    => 'closeclient_homepage_panel',
@@ -213,6 +253,8 @@ function closeclient_customize_register( $wp_customize ) {
         'services_tag' => 'SERVICES',
         'testimonials_tag' => 'SUCCESS STORIES',
         'faq_tag' => 'FAQ',
+        'process_tag' => 'OUR PROCESS',
+        'team_tag' => 'MEET THE TEAM',
     );
 
     foreach ( $tags as $id => $default ) {
@@ -247,50 +289,67 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'closeclient_hero_cta_link', array( 'default' => '#', 'sanitize_callback' => 'esc_url_raw' ) );
     $wp_customize->add_control( 'closeclient_hero_cta_link', array( 'label' => 'CTA Link', 'section' => 'closeclient_hero' ) );
 
-    // About Section
-    $wp_customize->add_section( 'closeclient_about', array(
-        'title'    => __( 'About Section', 'closeclient' ),
+    // Stats Section
+    $wp_customize->add_section( 'closeclient_stats', array(
+        'title'    => __( 'Stats & Results', 'closeclient' ),
         'panel'    => 'closeclient_homepage_panel',
-        'priority' => 30,
-    ) );
-    $wp_customize->add_setting( 'closeclient_about_headline', array( 'default' => 'Stop Chasing. Start Leading.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_about_headline', array( 'label' => 'About Headline', 'section' => 'closeclient_about' ) );
-
-    // Services Section
-    $wp_customize->add_section( 'closeclient_services', array(
-        'title'    => __( 'Services Section', 'closeclient' ),
-        'panel'    => 'closeclient_homepage_panel',
-        'priority' => 40,
-    ) );
-    $wp_customize->add_setting( 'closeclient_services_headline', array( 'default' => 'Elite Solutions for Elite Experts', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_services_headline', array( 'label' => 'Services Headline', 'section' => 'closeclient_services' ) );
-    $wp_customize->add_setting( 'closeclient_services_subheadline', array( 'default' => 'Premium solutions tailored for your stage of growth.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_services_subheadline', array( 'label' => 'Services Subheadline', 'section' => 'closeclient_services' ) );
-
-    // Testimonials
-    $wp_customize->add_section( 'closeclient_testimonials', array(
-        'title'    => __( 'Testimonials Section', 'closeclient' ),
-        'panel'    => 'closeclient_homepage_panel',
-        'priority' => 50,
-    ) );
-    $wp_customize->add_setting( 'closeclient_testimonials_headline', array( 'default' => 'Results From Our Clients', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_testimonials_headline', array( 'label' => 'Testimonials Headline', 'section' => 'closeclient_testimonials' ) );
-    $wp_customize->add_setting( 'closeclient_testimonial_1', array( 'default' => '"Within 90 days of implementing this authority system, our high-ticket sales increased by 300% without adding a single hour to my work week."', 'sanitize_callback' => 'sanitize_textarea_field' ) );
-    $wp_customize->add_control( 'closeclient_testimonial_1', array( 'label' => 'Testimonial 1 (Fallback)', 'section' => 'closeclient_testimonials', 'type' => 'textarea' ) );
-
-    // Lead Magnet
-    $wp_customize->add_section( 'closeclient_lead_magnet', array(
-        'title'    => __( 'Lead Magnet Section', 'closeclient' ),
-        'panel'    => 'closeclient_homepage_panel',
-        'priority' => 60,
+        'priority' => 35,
     ) );
 
-    $wp_customize->add_setting( 'closeclient_lm_headline', array( 'default' => 'Free Authority Blueprint', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_lm_headline', array( 'label' => 'Headline', 'section' => 'closeclient_lead_magnet' ) );
-    $wp_customize->add_setting( 'closeclient_lm_subheadline', array( 'default' => 'Download the exact roadmap I use to help consultants land high-ticket clients without cold outreach.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
-    $wp_customize->add_control( 'closeclient_lm_subheadline', array( 'label' => 'Subheadline', 'section' => 'closeclient_lead_magnet', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_lm_button', array( 'default' => 'Get the Blueprint', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_lm_button', array( 'label' => 'Button Text', 'section' => 'closeclient_lead_magnet' ) );
+    for ( $i = 1; $i <= 3; $i++ ) {
+        $wp_customize->add_setting( "closeclient_stat_{$i}_value", array( 'default' => '100+', 'sanitize_callback' => 'sanitize_text_field' ) );
+        $wp_customize->add_control( "closeclient_stat_{$i}_value", array( 'label' => "Stat $i Value", 'section' => 'closeclient_stats' ) );
+
+        $wp_customize->add_setting( "closeclient_stat_{$i}_label", array( 'default' => 'Clients Helped', 'sanitize_callback' => 'sanitize_text_field' ) );
+        $wp_customize->add_control( "closeclient_stat_{$i}_label", array( 'label' => "Stat $i Label", 'section' => 'closeclient_stats' ) );
+    }
+
+    // Process Section
+    $wp_customize->add_section( 'closeclient_process', array(
+        'title'    => __( 'Process Section', 'closeclient' ),
+        'panel'    => 'closeclient_homepage_panel',
+        'priority' => 42,
+    ) );
+
+    $wp_customize->add_setting( 'closeclient_process_headline', array( 'default' => 'How It Works', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_process_headline', array( 'label' => 'Headline', 'section' => 'closeclient_process' ) );
+
+    for ( $i = 1; $i <= 3; $i++ ) {
+        $wp_customize->add_setting( "closeclient_process_step_{$i}_title", array( 'default' => "Step $i", 'sanitize_callback' => 'sanitize_text_field' ) );
+        $wp_customize->add_control( "closeclient_process_step_{$i}_title", array( 'label' => "Step $i Title", 'section' => 'closeclient_process' ) );
+
+        $wp_customize->add_setting( "closeclient_process_step_{$i}_text", array( 'default' => "Description for step $i of your proven process.", 'sanitize_callback' => 'sanitize_textarea_field' ) );
+        $wp_customize->add_control( "closeclient_process_step_{$i}_text", array( 'label' => "Step $i Description", 'section' => 'closeclient_process', 'type' => 'textarea' ) );
+    }
+
+    // Pricing Section
+    $wp_customize->add_section( 'closeclient_pricing', array(
+        'title'    => __( 'Pricing Section', 'closeclient' ),
+        'panel'    => 'closeclient_homepage_panel',
+        'priority' => 45,
+    ) );
+
+    $wp_customize->add_setting( 'closeclient_pricing_headline', array( 'default' => 'Invest in Your Growth', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_pricing_headline', array( 'label' => 'Headline', 'section' => 'closeclient_pricing' ) );
+
+    for ( $i = 1; $i <= 3; $i++ ) {
+        $wp_customize->add_setting( "closeclient_plan{$i}_name", array( 'default' => "Plan $i", 'sanitize_callback' => 'sanitize_text_field' ) );
+        $wp_customize->add_control( "closeclient_plan{$i}_name", array( 'label' => "Plan $i Name", 'section' => 'closeclient_pricing' ) );
+        $wp_customize->add_setting( "closeclient_plan{$i}_price", array( 'default' => "$0", 'sanitize_callback' => 'sanitize_text_field' ) );
+        $wp_customize->add_control( "closeclient_plan{$i}_price", array( 'label' => "Plan $i Price", 'section' => 'closeclient_pricing' ) );
+        $wp_customize->add_setting( "closeclient_plan{$i}_features", array( 'default' => "Feature 1, Feature 2", 'sanitize_callback' => 'sanitize_textarea_field' ) );
+        $wp_customize->add_control( "closeclient_plan{$i}_features", array( 'label' => "Plan $i Features", 'section' => 'closeclient_pricing', 'type' => 'textarea' ) );
+    }
+
+    // Team Section
+    $wp_customize->add_section( 'closeclient_team', array(
+        'title'    => __( 'Team Section', 'closeclient' ),
+        'panel'    => 'closeclient_homepage_panel',
+        'priority' => 55,
+    ) );
+
+    $wp_customize->add_setting( 'closeclient_team_headline', array( 'default' => 'Meet the Experts', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_team_headline', array( 'label' => 'Headline', 'section' => 'closeclient_team' ) );
 
     // FAQ Section
     $wp_customize->add_section( 'closeclient_faq', array(
@@ -300,10 +359,6 @@ function closeclient_customize_register( $wp_customize ) {
     ) );
     $wp_customize->add_setting( 'closeclient_faq_headline', array( 'default' => 'Frequently Asked Questions', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_faq_headline', array( 'label' => 'Headline', 'section' => 'closeclient_faq' ) );
-    $wp_customize->add_setting( 'closeclient_faq_q1', array( 'default' => 'Who is this elite system for?', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_faq_q1', array( 'label' => 'Question 1 (Fallback)', 'section' => 'closeclient_faq' ) );
-    $wp_customize->add_setting( 'closeclient_faq_a1', array( 'default' => 'This is specifically architected for established coaches, consultants, and experts who are ready to scale from $10k to $100k+ months.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
-    $wp_customize->add_control( 'closeclient_faq_a1', array( 'label' => 'Answer 1 (Fallback)', 'section' => 'closeclient_faq', 'type' => 'textarea' ) );
 
     // Booking Section
     $wp_customize->add_section( 'closeclient_booking_settings', array(
@@ -320,12 +375,48 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_control( 'closeclient_booking_text', array( 'label' => 'Button Text', 'section' => 'closeclient_booking_settings' ) );
     $wp_customize->add_setting( 'closeclient_booking_link', array( 'default' => '#', 'sanitize_callback' => 'esc_url_raw' ) );
     $wp_customize->add_control( 'closeclient_booking_link', array( 'label' => 'Button Link', 'section' => 'closeclient_booking_settings' ) );
-    $wp_customize->add_setting( 'closeclient_booking_note', array( 'default' => 'Only 3 spots available for new clients this month.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_booking_note', array( 'label' => 'Bottom Note', 'section' => 'closeclient_booking_settings' ) );
 
-    // --- 4. Blog & Newsletter ---
+    // --- 4. Page Templates ---
+
+    // About Page
+    $wp_customize->add_section( 'closeclient_about_page', array(
+        'title'    => __( 'About Page', 'closeclient' ),
+        'panel'    => 'closeclient_pages_panel',
+    ) );
+    $wp_customize->add_setting( 'closeclient_about_headline', array( 'default' => 'Stop Chasing. Start Leading.', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_about_headline', array( 'label' => 'Headline', 'section' => 'closeclient_about_page' ) );
+
+    // Contact Page
+    $wp_customize->add_section( 'closeclient_contact_page', array(
+        'title'    => __( 'Contact Page', 'closeclient' ),
+        'panel'    => 'closeclient_pages_panel',
+    ) );
+    $wp_customize->add_setting( 'closeclient_contact_headline', array( 'default' => 'Let\'s talk about your growth.', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_contact_headline', array( 'label' => 'Headline', 'section' => 'closeclient_contact_page' ) );
+    $wp_customize->add_setting( 'closeclient_contact_subheadline', array( 'default' => 'Ready to scale your coaching business? Fill out the form or book a call directly.', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_contact_subheadline', array( 'label' => 'Subheadline', 'section' => 'closeclient_contact_page' ) );
+
+    // Thank You Page
+    $wp_customize->add_section( 'closeclient_thankyou_page', array(
+        'title'    => __( 'Thank You Page', 'closeclient' ),
+        'panel'    => 'closeclient_pages_panel',
+    ) );
+    $wp_customize->add_setting( 'closeclient_thankyou_headline', array( 'default' => 'You\'re All Set!', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_thankyou_headline', array( 'label' => 'Headline', 'section' => 'closeclient_thankyou_page' ) );
+
+    // Sales Page
+    $wp_customize->add_section( 'closeclient_sales_page_settings', array(
+        'title'    => __( 'Sales Page', 'closeclient' ),
+        'panel'    => 'closeclient_pages_panel',
+    ) );
+    $wp_customize->add_setting( 'closeclient_sales_hero_headline', array( 'default' => 'The Exact Blueprint to Scale Your Coaching Business', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_sales_hero_headline', array( 'label' => 'Hero Headline', 'section' => 'closeclient_sales_page_settings' ) );
+    $wp_customize->add_setting( 'closeclient_sales_hero_subheadline', array( 'default' => 'Stop trading time for money. Build a scalable authority system that works for you.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
+    $wp_customize->add_control( 'closeclient_sales_hero_subheadline', array( 'label' => 'Hero Subheadline', 'section' => 'closeclient_sales_page_settings', 'type' => 'textarea' ) );
+
+    // Blog & Newsletter
     $wp_customize->add_section( 'closeclient_blog_settings', array(
-        'title'    => __( 'Blog & Newsletter Settings', 'closeclient' ),
+        'title'    => __( 'Blog & Newsletter', 'closeclient' ),
         'priority' => 90,
     ) );
 
@@ -362,7 +453,7 @@ function closeclient_customize_css() {
             --button-hover: <?php echo get_theme_mod( 'closeclient_button_hover', '#0077ed' ); ?>;
 
             --base-font-size: <?php echo get_theme_mod( 'closeclient_body_size', '18' ); ?>px;
-            --h1-size: <?php echo get_theme_mod( 'closeclient_h1_size', '64' ); ?>px;
+            --h1-size: <?php echo get_theme_mod( 'closeclient_h1_size', '4.5' ); ?>rem;
             --line-height: <?php echo get_theme_mod( 'closeclient_line_height', '1.6' ); ?>;
             --letter-spacing: <?php echo get_theme_mod( 'closeclient_letter_spacing', '-0.022' ); ?>em;
             --font-weight: <?php echo get_theme_mod( 'closeclient_font_weight', '400' ); ?>;
@@ -386,92 +477,63 @@ function closeclient_customize_css() {
 add_action( 'wp_head', 'closeclient_customize_css' );
 
 /**
- * Register Social Media settings.
+ * Register Team Member settings.
  */
-function closeclient_customize_register_social( $wp_customize ) {
-    $wp_customize->add_section( 'closeclient_social_settings', array(
-        'title'    => __( 'Social Media Links', 'closeclient' ),
-        'panel'    => 'closeclient_layout_panel',
-        'priority' => 40,
+function closeclient_customize_register_team_details( $wp_customize ) {
+    $wp_customize->add_setting( 'closeclient_team_member_name', array( 'default' => 'Coach Name', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_team_member_name', array( 'label' => 'Team Member Name', 'section' => 'closeclient_team' ) );
+    $wp_customize->add_setting( 'closeclient_team_member_role', array( 'default' => 'Founder & CEO', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_team_member_role', array( 'label' => 'Team Member Role', 'section' => 'closeclient_team' ) );
+}
+add_action( 'customize_register', 'closeclient_customize_register_team_details' );
+
+/**
+ * Register About Section text settings.
+ */
+function closeclient_customize_register_about_extra( $wp_customize ) {
+    $wp_customize->add_setting( 'closeclient_about_text_p1', array( 'default' => 'You didn\'t start your coaching business to spend 8 hours a day in the DMs. You started it to make an impact and build freedom.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
+    $wp_customize->add_control( 'closeclient_about_text_p1', array( 'label' => 'About Text Paragraph 1', 'section' => 'closeclient_about', 'type' => 'textarea' ) );
+
+    $wp_customize->add_setting( 'closeclient_about_text_p2', array( 'default' => 'I help established experts build the infrastructure they need to scale without sacrificing their personal life.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
+    $wp_customize->add_control( 'closeclient_about_text_p2', array( 'label' => 'About Text Paragraph 2', 'section' => 'closeclient_about', 'type' => 'textarea' ) );
+
+    $wp_customize->add_setting( 'closeclient_about_button_text', array( 'default' => 'Learn More About My Story', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_about_button_text', array( 'label' => 'About Button Text', 'section' => 'closeclient_about' ) );
+}
+add_action( 'customize_register', 'closeclient_customize_register_about_extra' );
+
+/**
+ * Register Section Visibility settings.
+ */
+function closeclient_customize_register_visibility( $wp_customize ) {
+    $wp_customize->add_section( 'closeclient_visibility', array(
+        'title'    => __( 'Section Visibility (Homepage)', 'closeclient' ),
+        'panel'    => 'closeclient_homepage_panel',
+        'priority' => 5,
     ) );
 
-    $socials = array(
-        'twitter' => 'Twitter',
-        'facebook' => 'Facebook',
-        'linkedin' => 'LinkedIn',
-        'instagram' => 'Instagram',
-        'youtube' => 'YouTube',
+    $sections = array(
+        'hero' => 'Hero',
+        'authority' => 'Authority',
+        'stats' => 'Stats',
+        'about' => 'About',
+        'services' => 'Services',
+        'process' => 'Process',
+        'pricing' => 'Pricing',
+        'testimonials' => 'Testimonials',
+        'team' => 'Team',
+        'lead_magnet' => 'Lead Magnet',
+        'faq' => 'FAQ',
+        'booking' => 'Booking CTA',
     );
 
-    foreach ( $socials as $id => $label ) {
-        $wp_customize->add_setting( "closeclient_social_{$id}", array( 'default' => '#', 'sanitize_callback' => 'esc_url_raw' ) );
-        $wp_customize->add_control( "closeclient_social_{$id}", array( 'label' => $label, 'section' => 'closeclient_social_settings' ) );
+    foreach ( $sections as $id => $label ) {
+        $wp_customize->add_setting( "closeclient_show_$id", array( 'default' => true, 'sanitize_callback' => 'absint' ) );
+        $wp_customize->add_control( "closeclient_show_$id", array(
+            'label'    => "Show $label Section",
+            'section'  => 'closeclient_visibility',
+            'type'     => 'checkbox',
+        ) );
     }
 }
-add_action( 'customize_register', 'closeclient_customize_register_social' );
-
-/**
- * Register Specialized Page settings.
- */
-function closeclient_customize_register_pages( $wp_customize ) {
-    $wp_customize->add_panel( 'closeclient_pages_panel', array(
-        'title'    => __( 'Page Templates', 'closeclient' ),
-        'priority' => 35,
-    ) );
-
-    // Contact Page
-    $wp_customize->add_section( 'closeclient_contact_page', array(
-        'title'    => __( 'Contact Page', 'closeclient' ),
-        'panel'    => 'closeclient_pages_panel',
-    ) );
-    $wp_customize->add_setting( 'closeclient_contact_headline', array( 'default' => 'Let\'s talk about your growth.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_contact_headline', array( 'label' => 'Headline', 'section' => 'closeclient_contact_page' ) );
-    $wp_customize->add_setting( 'closeclient_contact_subheadline', array( 'default' => 'Ready to scale your coaching business? Fill out the form or book a call directly.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_contact_subheadline', array( 'label' => 'Subheadline', 'section' => 'closeclient_contact_page' ) );
-
-    // Thank You Page
-    $wp_customize->add_section( 'closeclient_thankyou_page', array(
-        'title'    => __( 'Thank You Page', 'closeclient' ),
-        'panel'    => 'closeclient_pages_panel',
-    ) );
-    $wp_customize->add_setting( 'closeclient_thankyou_headline', array( 'default' => 'You\'re All Set!', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_thankyou_headline', array( 'label' => 'Headline', 'section' => 'closeclient_thankyou_page' ) );
-}
-add_action( 'customize_register', 'closeclient_customize_register_pages' );
-
-/**
- * Register Pricing Section settings.
- */
-function closeclient_customize_register_pricing( $wp_customize ) {
-    $wp_customize->add_section( 'closeclient_pricing', array(
-        'title'    => __( 'Pricing Section', 'closeclient' ),
-        'panel'    => 'closeclient_homepage_panel',
-        'priority' => 45,
-    ) );
-
-    $wp_customize->add_setting( 'closeclient_pricing_headline', array( 'default' => 'Invest in Your Growth', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_pricing_headline', array( 'label' => 'Headline', 'section' => 'closeclient_pricing' ) );
-
-    // Plan 1
-    $wp_customize->add_setting( 'closeclient_plan1_name', array( 'default' => 'Strategy Audit', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_plan1_name', array( 'label' => 'Plan 1 Name', 'section' => 'closeclient_pricing' ) );
-    $wp_customize->add_setting( 'closeclient_plan1_price', array( 'default' => '$497', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_plan1_price', array( 'label' => 'Plan 1 Price', 'section' => 'closeclient_pricing' ) );
-    $wp_customize->add_setting( 'closeclient_plan1_features', array( 'default' => '60-Min Deep Dive, Growth Roadmap, Recording included', 'sanitize_callback' => 'sanitize_textarea_field' ) );
-    $wp_customize->add_control( 'closeclient_plan1_features', array( 'label' => 'Plan 1 Features (comma separated)', 'section' => 'closeclient_pricing', 'type' => 'textarea' ) );
-
-    // Plan 2 (Featured)
-    $wp_customize->add_setting( 'closeclient_plan2_name', array( 'default' => 'Elite Coaching', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_plan2_name', array( 'label' => 'Plan 2 Name', 'section' => 'closeclient_pricing' ) );
-    $wp_customize->add_setting( 'closeclient_plan2_price', array( 'default' => '$2,500/mo', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_plan2_price', array( 'label' => 'Plan 2 Price', 'section' => 'closeclient_pricing' ) );
-    $wp_customize->add_setting( 'closeclient_plan2_features', array( 'default' => 'Weekly 1:1 Calls, Priority Support, Full Systems Audit, Scale Blueprint', 'sanitize_callback' => 'sanitize_textarea_field' ) );
-    $wp_customize->add_control( 'closeclient_plan2_features', array( 'label' => 'Plan 2 Features', 'section' => 'closeclient_pricing', 'type' => 'textarea' ) );
-
-    // Plan 3
-    $wp_customize->add_setting( 'closeclient_plan3_name', array( 'default' => 'Mastermind', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_plan3_name', array( 'label' => 'Plan 3 Name', 'section' => 'closeclient_pricing' ) );
-    $wp_customize->add_setting( 'closeclient_plan3_price', array( 'default' => 'Custom', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_plan3_price', array( 'label' => 'Plan 3 Price', 'section' => 'closeclient_pricing' ) );
-}
-add_action( 'customize_register', 'closeclient_customize_register_pricing' );
+add_action( 'customize_register', 'closeclient_customize_register_visibility' );

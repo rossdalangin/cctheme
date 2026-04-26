@@ -11,14 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
 
     if (menuToggle && mainNavigation) {
-        menuToggle.addEventListener('click', () => {
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
             const isOpened = mainNavigation.classList.toggle('is-open');
             menuToggle.setAttribute('aria-expanded', isOpened);
-
-            // Toggle hamburger animation state if using complex CSS hamburger
             menuToggle.classList.toggle('is-active');
 
-            // Prevent body scroll when menu is open
             if (isOpened) {
                 body.style.overflow = 'hidden';
             } else {
@@ -36,6 +34,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 body.style.overflow = '';
             });
         });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (mainNavigation.classList.contains('is-open') && !mainNavigation.contains(e.target) && !menuToggle.contains(e.target)) {
+                mainNavigation.classList.remove('is-open');
+                menuToggle.classList.remove('is-active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                body.style.overflow = '';
+            }
+        });
     }
 
     // Header Scroll Effect
@@ -49,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
         window.addEventListener('scroll', handleScroll);
-        handleScroll(); // Initial check
+        handleScroll();
     }
 
     // Smooth Scrolling for Anchor Links
@@ -82,8 +90,10 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('scroll', () => {
             const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            progressBar.style.width = scrolled + "%";
+            if (height > 0) {
+                const scrolled = (winScroll / height) * 100;
+                progressBar.style.width = scrolled + "%";
+            }
         });
     }
 
