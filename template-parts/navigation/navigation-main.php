@@ -36,13 +36,10 @@
 						)
 					);
 					?>
-					<div class="header-cta mobile-cta">
-						<a href="<?php echo esc_url( get_theme_mod( 'closeclient_header_cta_link', '#' ) ); ?>" class="button button-accent"><?php echo esc_html( get_theme_mod( 'closeclient_header_cta_text', 'Book a Call' ) ); ?></a>
-					</div>
 				</div>
 			</nav><!-- #site-navigation -->
 
-			<div class="header-cta desktop-cta">
+			<div class="header-cta">
 				<a href="<?php echo esc_url( get_theme_mod( 'closeclient_header_cta_link', '#' ) ); ?>" class="button button-accent"><?php echo esc_html( get_theme_mod( 'closeclient_header_cta_text', 'Book a Call' ) ); ?></a>
 			</div>
 		</div>

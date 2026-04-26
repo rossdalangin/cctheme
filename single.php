@@ -2,69 +2,49 @@
 /**
  * The template for displaying all single posts
  *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
+ *
  * @package CloseClient
  */
 
 get_header();
+
 $layout = closeclient_get_layout();
+$container_class = ( 'full-width' === $layout ) ? 'container' : 'container site-main-grid layout-' . $layout;
 ?>
 
-	<main id="primary" class="site-main">
-        <div class="container <?php echo esc_attr( $layout ); ?>-container">
-            <div class="content-area">
-                <?php
-                while ( have_posts() ) :
-                    the_post();
+	<main id="primary" class="site-main <?php echo esc_attr( $container_class ); ?>">
 
-                    get_template_part( 'template-parts/content/content', 'single' );
+		<div class="content-area">
+            <?php
+            while ( have_posts() ) :
+                the_post();
 
-                    get_template_part( 'template-parts/content/blog-sticky-cta' );
+                get_template_part( 'template-parts/content/content-single', get_post_type() );
 
-                    // Related Posts
-                    $categories = get_the_category();
-                    if ( $categories ) :
-                        $category_ids = array();
-                        foreach( $categories as $category ) {
-                            $category_ids[] = $category->term_id;
-                        }
-                        $related_query = new WP_Query( array(
-                            'category__in'   => $category_ids,
-                            'post__not_in'   => array( get_the_ID() ),
-                            'posts_per_page' => 3,
-                        ) );
+                the_post_navigation(
+                    array(
+                        'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous:', 'closeclient' ) . '</span> <span class="nav-title">%title</span>',
+                        'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next:', 'closeclient' ) . '</span> <span class="nav-title">%title</span>',
+                    )
+                );
 
-                        if ( $related_query->have_posts() ) : ?>
-                            <div class="related-posts">
-                                <h2 class="related-title"><?php esc_html_e( 'Related Articles', 'closeclient' ); ?></h2>
-                                <div class="related-grid">
-                                    <?php while ( $related_query->have_posts() ) : $related_query->the_post(); ?>
-                                        <div class="related-post">
-                                            <?php if ( has_post_thumbnail() ) : ?>
-                                                <div class="related-thumb"><a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'medium' ); ?></a></div>
-                                            <?php endif; ?>
-                                            <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-                                        </div>
-                                    <?php endwhile; wp_reset_postdata(); ?>
-                                </div>
-                            </div>
-                        <?php endif;
-                    endif;
+                // If comments are open or we have at least one comment, load up the comment template.
+                if ( comments_open() || get_comments_number() ) :
+                    comments_template();
+                endif;
 
-                    the_post_navigation();
-
-                    if ( comments_open() || get_comments_number() ) :
-                        comments_template();
-                    endif;
-
-                endwhile;
-                ?>
-            </div>
-
-            <?php if ( 'full-width' !== $layout ) : ?>
-                <?php get_sidebar(); ?>
-            <?php endif; ?>
+            endwhile; // End of the loop.
+            ?>
         </div>
-	</main><!-- #primary -->
+
+        <?php
+        if ( 'full-width' !== $layout ) {
+            get_sidebar();
+        }
+        ?>
+
+	</main><!-- #main -->
 
 <?php
 get_footer();

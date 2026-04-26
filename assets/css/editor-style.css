@@ -1,0 +1,19 @@
+/**
+ * Editor Styles for CloseClient
+ * Ensures the Gutenberg editor looks like the frontend.
+ */
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+    color: #1d1d1f;
+    line-height: 1.6;
+}
+
+.wp-block-post-title {
+    font-weight: 800;
+    letter-spacing: -0.022em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+}

@@ -31,6 +31,11 @@ function closeclient_customize_register( $wp_customize ) {
         'priority' => 40,
     ) );
 
+    $wp_customize->add_section( 'closeclient_utilities_section', array(
+        'title'    => __( '5. Theme Setup & Tools', 'closeclient' ),
+        'priority' => 50,
+    ) );
+
     // ==========================================
     // 1. BRAND IDENTITY
     // ==========================================
@@ -123,6 +128,8 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_section( 'closeclient_footer_settings', array( 'title' => 'Footer Content', 'panel' => 'closeclient_layout_panel' ) );
     $wp_customize->add_setting( 'closeclient_footer_copyright', array( 'default' => '© ' . date('Y') . ' CloseClient. All rights reserved.', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_footer_copyright', array( 'label' => 'Copyright Text', 'section' => 'closeclient_footer_settings' ) );
+    $wp_customize->add_setting( 'closeclient_footer_disclaimer', array( 'default' => 'Consulting services are subject to terms and conditions. Results may vary.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
+    $wp_customize->add_control( 'closeclient_footer_disclaimer', array( 'label' => 'Footer Disclaimer', 'section' => 'closeclient_footer_settings', 'type' => 'textarea' ) );
 
     // Social Media
     $wp_customize->add_section( 'closeclient_social_settings', array( 'title' => 'Social Media Links', 'panel' => 'closeclient_layout_panel' ) );
@@ -319,6 +326,25 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_section( 'closeclient_services_tpl', array( 'title' => 'Services Page Content', 'panel' => 'closeclient_pages_panel' ) );
     $wp_customize->add_setting( 'closeclient_services_subheadline_tpl', array( 'default' => 'Premium solutions tailored for your stage of growth.', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_services_subheadline_tpl', array( 'label' => 'Hero Subheadline', 'section' => 'closeclient_services_tpl' ) );
+
+    // Theme Utilities
+    $utility_nonce = wp_create_nonce( 'closeclient_utility_action' );
+
+    $wp_customize->add_setting( 'closeclient_gen_pages_trigger', array( 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'closeclient_gen_pages_trigger', array(
+        'label'       => __( 'Recreate Starter Pages', 'closeclient' ),
+        'description' => sprintf( '<a href="%s" class="button button-secondary">%s</a>', admin_url('?closeclient_action=generate&_wpnonce=' . $utility_nonce), __( 'Generate Now', 'closeclient' ) ),
+        'section'     => 'closeclient_utilities_section',
+        'type'        => 'hidden',
+    ) ) );
+
+    $wp_customize->add_setting( 'closeclient_reset_trigger', array( 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'closeclient_reset_trigger', array(
+        'label'       => __( 'Reset Theme Settings', 'closeclient' ),
+        'description' => sprintf( '<a href="%s" class="button button-link-delete" onclick="return confirm(\'Are you sure?\')">%s</a>', admin_url('?closeclient_action=reset&_wpnonce=' . $utility_nonce), __( 'Reset to Defaults', 'closeclient' ) ),
+        'section'     => 'closeclient_utilities_section',
+        'type'        => 'hidden',
+    ) ) );
 
     // Blog settings
     $wp_customize->add_section( 'closeclient_blog_global', array( 'title' => 'Blog & Newsletter', 'priority' => 90 ) );

@@ -131,12 +131,6 @@ add_action( 'wp_enqueue_scripts', 'closeclient_scripts' );
  */
 require get_template_directory() . '/inc/customizer.php';
 
-/**
- * Load Jetpack compatibility file.
- */
-if ( defined( 'JETPACK__VERSION' ) ) {
-	require get_template_directory() . '/inc/jetpack.php';
-}
 
 /**
  * Custom template tags for this theme.
@@ -338,3 +332,13 @@ add_action( 'wp_enqueue_scripts', 'closeclient_google_fonts' );
  * Custom hooks.
  */
 require get_template_directory() . '/inc/hooks.php';
+
+/**
+ * Section shortcodes.
+ */
+require get_template_directory() . '/inc/shortcodes.php';
+
+/**
+ * Theme utilities.
+ */
+require get_template_directory() . '/inc/utilities.php';

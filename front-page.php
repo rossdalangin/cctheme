@@ -1,6 +1,8 @@
 <?php
 /**
- * The front page template
+ * The template for displaying the front page
+ *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package CloseClient
  */
@@ -8,34 +10,31 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main">
+	<main id="primary" class="site-main">
 
-    <?php
-    $sections = array(
-        'hero' => 'hero',
-        'authority' => 'authority',
-        'vsl' => 'vsl',
-        'stats' => 'stats',
-        'about' => 'about',
-        'services' => 'services',
-        'process' => 'process',
-        'pricing' => 'pricing',
-        'testimonials' => 'testimonials',
-        'team' => 'team',
-        'lead_magnet' => 'lead-magnet',
-        'newsletter' => 'newsletter',
-        'faq' => 'faq',
-        'booking' => 'booking-cta',
-    );
+        <?php
+        // Output WordPress editor content first
+        while ( have_posts() ) :
+            the_post();
+            the_content();
+        endwhile;
 
-    foreach ( $sections as $mod_id => $file_id ) {
-        if ( get_theme_mod( "closeclient_show_$mod_id", true ) ) {
-            get_template_part( 'template-parts/sections/section', $file_id );
+        // Output modular homepage sections
+        $sections = array(
+            'hero', 'authority', 'vsl', 'stats', 'about', 'services',
+            'process', 'pricing', 'testimonials', 'team',
+            'lead_magnet', 'newsletter', 'faq', 'booking'
+        );
+
+        foreach ( $sections as $section ) {
+            $section_template = ( 'booking' === $section ) ? 'booking-cta' : str_replace('_', '-', $section);
+            if ( get_theme_mod( "closeclient_show_$section", true ) ) {
+                get_template_part( 'template-parts/sections/section-' . $section_template );
+            }
         }
-    }
-    ?>
+        ?>
 
-</main><!-- #primary -->
+	</main><!-- #main -->
 
 <?php
 get_footer();
