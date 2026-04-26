@@ -6,18 +6,20 @@
  */
 
 get_header();
+
+$layout = closeclient_get_layout();
 ?>
 
 <main id="primary" class="site-main">
     <div class="container">
-        <header class="page-header text-center section reveal">
+        <header class="page-header section text-center reveal">
             <span class="section-tag"><?php esc_html_e( 'THE FEED', 'closeclient' ); ?></span>
             <h1 class="page-title"><?php echo esc_html( get_theme_mod( 'closeclient_blog_title', 'Insights & Authority' ) ); ?></h1>
             <p class="section-subheadline"><?php echo esc_html( get_theme_mod( 'closeclient_blog_description', 'Expert strategies to scale your coaching business.' ) ); ?></p>
         </header>
 
-        <div class="blog-layout-wrapper section">
-            <div class="blog-posts-grid">
+        <div class="blog-layout">
+            <div class="blog-posts">
                 <?php
                 if ( have_posts() ) :
                     while ( have_posts() ) :
@@ -32,8 +34,8 @@ get_header();
                 ?>
             </div>
 
-            <?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
-                <aside id="secondary" class="widget-area">
+            <?php if ( 'full-width' !== $layout ) : ?>
+                <aside id="secondary" class="sidebar">
                     <?php get_sidebar(); ?>
                 </aside>
             <?php endif; ?>

@@ -8,36 +8,32 @@
 get_header();
 
 $layout = closeclient_get_layout();
-$container_class = ( 'full-width' === $layout ) ? 'container' : 'container site-main-grid layout-' . $layout;
 ?>
 
-	<main id="primary" class="site-main <?php echo esc_attr( $container_class ); ?>">
+<main id="primary" class="site-main">
+    <div class="container">
+        <div class="blog-layout">
+            <div class="content-area">
+                <?php
+                while ( have_posts() ) :
+                    the_post();
+                    the_content();
 
-		<div class="content-area">
-            <?php
-            while ( have_posts() ) :
-                the_post();
+                    if ( comments_open() || get_comments_number() ) :
+                        comments_template();
+                    endif;
+                endwhile;
+                ?>
+            </div>
 
-                // If the content is empty, or the user wants the template specific layout,
-                // we can handle it here. But usually, in a modern theme, we let the editor
-                // drive the content.
-                the_content();
-
-                if ( comments_open() || get_comments_number() ) :
-                    comments_template();
-                endif;
-
-            endwhile;
-            ?>
+            <?php if ( 'full-width' !== $layout ) : ?>
+                <aside id="secondary" class="sidebar">
+                    <?php get_sidebar(); ?>
+                </aside>
+            <?php endif; ?>
         </div>
-
-        <?php
-        if ( 'full-width' !== $layout ) {
-            get_sidebar();
-        }
-        ?>
-
-	</main>
+    </div>
+</main>
 
 <?php
 get_footer();

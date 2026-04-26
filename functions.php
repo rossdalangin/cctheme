@@ -342,3 +342,8 @@ require get_template_directory() . '/inc/shortcodes.php';
  * Theme utilities.
  */
 require get_template_directory() . '/inc/utilities.php';
+
+/**
+ * Admin guide.
+ */
+require get_template_directory() . '/inc/admin-guide.php';
