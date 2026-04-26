@@ -16,8 +16,8 @@ get_header();
 
         <div class="contact-grid">
             <div class="contact-info">
-                <h2><?php echo esc_html( get_theme_mod( 'closeclient_contact_headline', 'Let\'s talk about your growth.' ) ); ?></h2>
-                <p><?php echo esc_html( get_theme_mod( 'closeclient_contact_subheadline', 'Ready to scale your coaching business? Fill out the form or book a call directly.' ) ); ?></p>
+                <h2><?php echo esc_html( get_theme_mod( 'closeclient_contact_headline_tpl', 'Let\'s talk about your growth.' ) ); ?></h2>
+                <p><?php echo esc_html( get_theme_mod( 'closeclient_contact_subheadline_tpl', 'Ready to scale your coaching business? Fill out the form or book a call directly.' ) ); ?></p>
             </div>
             <div class="contact-form-area">
                 <?php

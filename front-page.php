@@ -14,6 +14,7 @@ get_header();
     $sections = array(
         'hero' => 'hero',
         'authority' => 'authority',
+        'vsl' => 'vsl',
         'stats' => 'stats',
         'about' => 'about',
         'services' => 'services',
@@ -22,6 +23,7 @@ get_header();
         'testimonials' => 'testimonials',
         'team' => 'team',
         'lead_magnet' => 'lead-magnet',
+        'newsletter' => 'newsletter',
         'faq' => 'faq',
         'booking' => 'booking-cta',
     );

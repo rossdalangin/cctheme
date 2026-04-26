@@ -11,8 +11,8 @@ get_header();
 <main id="primary" class="site-main sales-page">
     <section class="section sales-hero bg-dark text-white text-center">
         <div class="container container-narrow">
-            <h1 class="hero-headline text-white"><?php echo esc_html( get_theme_mod( 'closeclient_sales_hero_headline', 'The Exact Blueprint to Scale Your Coaching Business' ) ); ?></h1>
-            <p class="hero-subheadline"><?php echo esc_html( get_theme_mod( 'closeclient_sales_hero_subheadline', 'Stop trading time for money. Build a scalable authority system that works for you.' ) ); ?></p>
+            <h1 class="hero-headline text-white"><?php echo esc_html( get_theme_mod( 'closeclient_sales_hero_headline_tpl', 'The Exact Blueprint to Scale Your Coaching Business' ) ); ?></h1>
+            <p class="hero-subheadline"><?php echo esc_html( get_theme_mod( 'closeclient_sales_hero_subheadline_tpl', 'Stop trading time for money. Build a scalable authority system that works for you.' ) ); ?></p>
             <a href="#pricing" class="button button-accent button-large"><?php esc_html_e( 'View the Programs', 'closeclient' ); ?></a>
         </div>
     </section>

@@ -9,6 +9,7 @@
 <section class="section section-process">
     <div class="container">
         <div class="section-header text-center">
+            <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_process_tag', 'OUR PROCESS' ) ); ?></span>
             <h2 class="section-headline"><?php echo esc_html( get_theme_mod( 'closeclient_process_headline', 'How It Works' ) ); ?></h2>
         </div>
 

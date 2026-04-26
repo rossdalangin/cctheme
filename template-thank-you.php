@@ -11,7 +11,7 @@ get_header();
 <main id="primary" class="site-main thank-you-page text-center">
     <div class="container narrow-container">
         <header class="page-header">
-            <h1 class="page-title"><?php echo esc_html( get_theme_mod( 'closeclient_thankyou_headline', 'You\'re All Set!' ) ); ?></h1>
+            <h1 class="page-title"><?php echo esc_html( get_theme_mod( 'closeclient_thankyou_headline_tpl', "You're All Set!" ) ); ?></h1>
             <p class="lead"><?php esc_html_e( 'Check your inbox. Your resources are on the way.', 'closeclient' ); ?></p>
         </header>
 

@@ -16,7 +16,7 @@
             <?php endif; ?>
         </div>
         <div class="about-content">
-            <h2 class="section-headline"><?php echo esc_html( get_theme_mod( 'closeclient_about_headline', 'Stop Chasing Clients. Start Leading Them.' ) ); ?></h2>
+            <h2 class="section-headline"><?php echo esc_html( get_theme_mod( 'closeclient_about_headline_home', 'Stop Chasing. Start Leading.' ) ); ?></h2>
             <div class="about-text">
                 <p><?php echo esc_html( get_theme_mod( 'closeclient_about_text_p1', 'You didn\'t start your coaching business to spend 8 hours a day in the DMs. You started it to make an impact and build freedom.' ) ); ?></p>
                 <p><?php echo esc_html( get_theme_mod( 'closeclient_about_text_p2', 'I help established experts build the infrastructure they need to scale without sacrificing their personal life.' ) ); ?></p>

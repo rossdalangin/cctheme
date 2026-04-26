@@ -10,9 +10,9 @@ get_header();
 
 <main id="primary" class="site-main">
     <div class="container">
-        <header class="page-header text-center">
+        <header class="page-header text-center section">
             <h1 class="page-title"><?php echo esc_html( get_theme_mod( 'closeclient_blog_title', 'Insights & Authority' ) ); ?></h1>
-            <p class="page-description"><?php echo esc_html( get_theme_mod( 'closeclient_blog_description', 'Expert strategies to scale your coaching business.' ) ); ?></p>
+            <p class="section-subheadline"><?php echo esc_html( get_theme_mod( 'closeclient_blog_description', 'Expert strategies to scale your coaching business.' ) ); ?></p>
         </header>
 
         <?php
@@ -29,7 +29,7 @@ get_header();
 
         if ( $featured_query->have_posts() ) :
             while ( $featured_query->the_post() ) : ?>
-                <div class="featured-post-hero section">
+                <div class="featured-post-hero">
                     <div class="featured-post-grid">
                         <div class="featured-post-image">
                             <?php if ( has_post_thumbnail() ) the_post_thumbnail( 'large' ); ?>
@@ -45,25 +45,23 @@ get_header();
             <?php endwhile; wp_reset_postdata();
         endif; ?>
 
-        <div class="blog-grid section">
-            <?php
-            if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
-                <div class="blog-main-content">
-            <?php endif;
+        <div class="blog-layout-wrapper section">
+            <div class="blog-posts-grid">
+                <?php
+                if ( have_posts() ) :
+                    while ( have_posts() ) :
+                        the_post();
+                        get_template_part( 'template-parts/content/content', 'archive' );
+                    endwhile;
 
-            if ( have_posts() ) :
-                while ( have_posts() ) :
-                    the_post();
-                    get_template_part( 'template-parts/content/content', 'archive' );
-                endwhile;
+                    the_posts_navigation();
+                else :
+                    get_template_part( 'template-parts/content/content', 'none' );
+                endif;
+                ?>
+            </div>
 
-                the_posts_navigation();
-            else :
-                get_template_part( 'template-parts/content/content', 'none' );
-            endif;
-
-            if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
-                </div>
+            <?php if ( is_active_sidebar( 'sidebar-1' ) ) : ?>
                 <?php get_sidebar(); ?>
             <?php endif; ?>
         </div>

@@ -20,7 +20,7 @@ get_header();
             </div>
             <div class="about-content">
                 <span class="section-tag"><?php esc_html_e( 'MY STORY', 'closeclient' ); ?></span>
-                <h1 class="page-title"><?php echo esc_html( get_theme_mod( 'closeclient_about_headline', 'Stop Chasing. Start Leading.' ) ); ?></h1>
+                <h1 class="page-title"><?php echo esc_html( get_theme_mod( 'closeclient_about_headline_tpl', 'Stop Chasing. Start Leading.' ) ); ?></h1>
                 <div class="about-bio">
                     <?php
                     while ( have_posts() ) :

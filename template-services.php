@@ -12,7 +12,7 @@ get_header();
     <div class="container">
         <header class="page-header text-center section">
             <h1 class="page-title"><?php the_title(); ?></h1>
-            <p class="section-subheadline"><?php echo esc_html( get_theme_mod( 'closeclient_services_subheadline', 'Premium solutions tailored for your stage of growth.' ) ); ?></p>
+            <p class="section-subheadline"><?php echo esc_html( get_theme_mod( 'closeclient_services_subheadline_tpl', 'Premium solutions tailored for your stage of growth.' ) ); ?></p>
         </header>
     </div>
 

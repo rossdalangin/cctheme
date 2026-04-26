@@ -8,6 +8,9 @@
 
 <section class="section section-stats bg-light">
     <div class="container">
+        <div class="section-header text-center">
+            <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_stats_tag', 'OUR IMPACT' ) ); ?></span>
+        </div>
         <div class="stats-grid">
             <?php for ( $i = 1; $i <= 3; $i++ ) : ?>
                 <div class="stat-item text-center">

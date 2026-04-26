@@ -310,3 +310,31 @@ function closeclient_breadcrumbs() {
     echo '</div>';
     echo '</nav>';
 }
+
+/**
+ * Enqueue Google Fonts based on Customizer settings.
+ */
+function closeclient_google_fonts() {
+    $heading_font = get_theme_mod( 'closeclient_heading_font', 'SF Pro Display' );
+    $body_font = get_theme_mod( 'closeclient_body_font', 'SF Pro Display' );
+
+    $fonts = array();
+
+    if ( $heading_font !== 'SF Pro Display' ) {
+        $fonts[] = $heading_font . ':400,600,700,800';
+    }
+    if ( $body_font !== 'SF Pro Display' && $body_font !== $heading_font ) {
+        $fonts[] = $body_font . ':400,600,700';
+    }
+
+    if ( ! empty( $fonts ) ) {
+        $fonts_url = 'https://fonts.googleapis.com/css2?family=' . str_replace( ' ', '+', implode( '&family=', $fonts ) ) . '&display=swap';
+        wp_enqueue_style( 'closeclient-google-fonts', $fonts_url, array(), null );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'closeclient_google_fonts' );
+
+/**
+ * Custom hooks.
+ */
+require get_template_directory() . '/inc/hooks.php';
