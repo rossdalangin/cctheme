@@ -1,6 +1,6 @@
 <?php
 /**
- * Testimonials Section Template Part (CPT Version)
+ * Testimonials Section Template Part
  *
  * @package CloseClient
  */
@@ -8,41 +8,27 @@
 
 <section class="section section-testimonials">
     <div class="container">
-        <div class="section-header text-center">
+        <div class="section-header text-center" style="margin-bottom: 80px;">
             <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_testimonials_tag', 'SUCCESS STORIES' ) ); ?></span>
             <h2 class="section-headline"><?php echo esc_html( get_theme_mod( 'closeclient_testimonials_headline', 'Results From Our Clients' ) ); ?></h2>
         </div>
 
-        <div class="testimonials-grid">
-            <?php
-            $testimonials_query = new WP_Query( array(
-                'post_type'      => 'testimonial',
-                'posts_per_page' => 1,
-            ) );
+        <div class="testimonials-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px;">
+            <?php for ( $i = 1; $i <= 3; $i++ ) :
+                $text = get_theme_mod( "closeclient_testimonial_{$i}_text" );
+                $name = get_theme_mod( "closeclient_testimonial_{$i}_name" );
+                $role = get_theme_mod( "closeclient_testimonial_{$i}_role" );
 
-            if ( $testimonials_query->have_posts() ) :
-                while ( $testimonials_query->have_posts() ) : $testimonials_query->the_post(); ?>
-                    <div class="testimonial-card">
-                        <blockquote class="testimonial-text">
-                            <?php the_content(); ?>
-                        </blockquote>
-                        <div class="testimonial-author">
-                            <?php if ( has_post_thumbnail() ) : ?>
-                                <div class="author-photo"><?php the_post_thumbnail( 'thumbnail' ); ?></div>
-                            <?php endif; ?>
-                            <cite>- <?php the_title(); ?></cite>
-                        </div>
+                if ( $text ) : ?>
+                <div class="testimonial-card bento-item" style="padding: 40px; text-align: left;">
+                    <p class="testimonial-text-small" style="font-size: 1.1rem; font-style: italic; margin-bottom: 24px;">"<?php echo esc_html( $text ); ?>"</p>
+                    <div class="testimonial-meta">
+                        <strong style="display: block; color: var(--white);"><?php echo esc_html( $name ); ?></strong>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);"><?php echo esc_html( $role ); ?></span>
                     </div>
-                <?php endwhile;
-                wp_reset_postdata();
-            else : ?>
-                <div class="testimonial-card">
-                    <blockquote class="testimonial-text">
-                        <?php echo esc_textarea( get_theme_mod( 'closeclient_testimonial_1', '"Within 90 days of implementing this authority system, our high-ticket sales increased by 300% without adding a single hour to my work week."' ) ); ?>
-                    </blockquote>
-                    <cite>- Sample Client, Position</cite>
                 </div>
-            <?php endif; ?>
+                <?php endif;
+            endfor; ?>
         </div>
     </div>
 </section>

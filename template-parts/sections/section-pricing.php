@@ -29,34 +29,33 @@ $plans = array(
 );
 ?>
 
-<section class="section section-pricing bg-light">
+<section class="section section-pricing">
     <div class="container">
-        <div class="section-header text-center">
+        <div class="section-header text-center" style="margin-bottom: 80px;">
             <h2 class="section-headline"><?php echo esc_html( $headline ); ?></h2>
         </div>
 
         <div class="pricing-grid">
             <?php foreach ( $plans as $plan ) : ?>
-                <div class="pricing-card <?php echo $plan['featured'] ? 'featured' : ''; ?>">
-                    <?php if ( $plan['featured'] ) : ?>
-                        <div class="featured-badge"><?php esc_html_e( 'Most Popular', 'closeclient' ); ?></div>
-                    <?php endif; ?>
-
+                <div class="pricing-card reveal <?php echo $plan['featured'] ? 'featured' : ''; ?>">
                     <div class="pricing-header">
-                        <h3><?php echo esc_html( $plan['name'] ); ?></h3>
-                        <div class="price"><?php echo esc_html( $plan['price'] ); ?></div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 10px;"><?php echo esc_html( $plan['name'] ); ?></h3>
+                        <div class="price" style="font-size: 3.5rem; font-weight: 900; margin-bottom: 30px; letter-spacing: -0.04em;"><?php echo esc_html( $plan['price'] ); ?></div>
                     </div>
 
-                    <ul class="pricing-features">
+                    <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 40px; text-align: left;">
                         <?php
                         $features = explode( ',', $plan['features'] );
                         foreach ( $features as $feature ) : ?>
-                            <li><?php echo esc_html( trim( $feature ) ); ?></li>
+                            <li style="margin-bottom: 12px; padding-left: 28px; position: relative;">
+                                <span style="position: absolute; left: 0; color: var(--electric-violet);">✓</span>
+                                <?php echo esc_html( trim( $feature ) ); ?>
+                            </li>
                         <?php endforeach; ?>
                     </ul>
 
                     <div class="pricing-cta">
-                        <a href="<?php echo esc_url( get_theme_mod( 'closeclient_booking_link', '#' ) ); ?>" class="button <?php echo $plan['featured'] ? 'button-accent' : 'button-secondary'; ?> full-width"><?php esc_html_e( 'Get Started', 'closeclient' ); ?></a>
+                        <a href="<?php echo esc_url( get_theme_mod( 'closeclient_booking_link', '#' ) ); ?>" class="button <?php echo $plan['featured'] ? 'button-accent' : 'button-secondary'; ?>" style="width: 100%;"><?php esc_html_e( 'Secure Your Spot', 'closeclient' ); ?></a>
                     </div>
                 </div>
             <?php endforeach; ?>
