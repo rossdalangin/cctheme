@@ -8,9 +8,9 @@
 
 <section class="section section-stats">
     <div class="container">
-        <div class="bento-grid stats-bento">
-            <div class="bento-item reveal large" style="display: flex; flex-direction: column; justify-content: center;">
-                <span class="stat-label" style="font-weight: 700; color: var(--accent); letter-spacing: 0.1em;"><?php echo esc_html( get_theme_mod( 'closeclient_stat_1_label', 'CLIENT CAPITAL SCALED' ) ); ?></span>
+        <div class="stats-grid">
+            <div class="bento-item reveal large">
+                <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_stat_1_label', 'CLIENT CAPITAL SCALED' ) ); ?></span>
                 <h3 class="stat-value" style="font-size: 5rem; font-weight: 800; margin: 1rem 0;"><?php echo esc_html( get_theme_mod( 'closeclient_stat_1_value', '$500M+' ) ); ?></h3>
             </div>
             <div class="bento-item reveal">

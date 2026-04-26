@@ -39,7 +39,7 @@ function closeclient_generate_pages() {
     $pages = array(
         'Home' => array(
             'content'  => '[closeclient_hero][closeclient_authority][closeclient_vsl][closeclient_stats][closeclient_about][closeclient_services][closeclient_process][closeclient_pricing][closeclient_testimonials][closeclient_team][closeclient_lead_magnet][closeclient_faq][closeclient_booking_cta]',
-            'template' => '', // front-page.php is automatic
+            'template' => '',
         ),
         'Sales Page' => array(
             'content'  => '[closeclient_hero][closeclient_vsl][closeclient_about][closeclient_services][closeclient_pricing][closeclient_testimonials][closeclient_faq][closeclient_booking_cta]',
@@ -64,7 +64,13 @@ function closeclient_generate_pages() {
     );
 
     foreach ( $pages as $title => $data ) {
-        $page_check = get_page_by_title( $title );
+        // Replace get_page_by_title with get_posts to avoid deprecation
+        $page_check = get_posts( array(
+            'post_type'  => 'page',
+            'title'      => $title,
+            'numberposts' => 1,
+        ) );
+
         $new_page = array(
             'post_type'    => 'page',
             'post_title'   => $title,
@@ -73,10 +79,16 @@ function closeclient_generate_pages() {
             'post_author'  => 1,
         );
 
-        if ( ! isset( $page_check->ID ) ) {
+        if ( empty( $page_check ) ) {
             $page_id = wp_insert_post( $new_page );
             if ( ! empty( $data['template'] ) ) {
                 update_post_meta( $page_id, '_wp_page_template', $data['template'] );
+            }
+
+            // Set as static front page if it's the 'Home' page
+            if ( 'Home' === $title ) {
+                update_option( 'show_on_front', 'page' );
+                update_option( 'page_on_front', $page_id );
             }
         }
     }
