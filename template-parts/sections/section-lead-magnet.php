@@ -1,28 +1,31 @@
 <?php
 /**
- * Lead Magnet Section Template Part
+ * Lead Magnet Section
  *
  * @package CloseClient
  */
 ?>
 
-<section class="section section-lead-magnet bg-accent text-white">
+<section class="section section-lead-magnet">
     <div class="container lead-magnet-grid">
-        <div class="lead-magnet-content">
-            <h2 class="section-headline text-white"><?php echo esc_html( get_theme_mod( 'closeclient_lm_headline', 'Free Authority Blueprint' ) ); ?></h2>
-            <p><?php echo esc_html( get_theme_mod( 'closeclient_lm_subheadline', 'Download the exact roadmap I use to help consultants land high-ticket clients without cold outreach.' ) ); ?></p>
-            <div class="lead-magnet-form-minimal">
-                <!-- Replace with actual form integration -->
-                <input type="email" placeholder="Enter your email...">
-                <button class="button button-primary"><?php echo esc_html( get_theme_mod( 'closeclient_lm_button', 'Get the Blueprint' ) ); ?></button>
-            </div>
+        <div class="lm-image">
+            <?php if ( get_theme_mod( 'closeclient_lm_image' ) ) : ?>
+                <img src="<?php echo esc_url( get_theme_mod( 'closeclient_lm_image' ) ); ?>" alt="Elite Asset">
+            <?php else : ?>
+                <div class="lm-mockup" style="aspect-ratio:1/1; background:var(--midnight); border-radius:24px;"></div>
+            <?php endif; ?>
         </div>
-        <div class="lead-magnet-image">
-             <?php if ( get_theme_mod( 'closeclient_lm_image' ) ) : ?>
-                <img src="<?php echo esc_url( get_theme_mod( 'closeclient_lm_image' ) ); ?>" alt="Lead Magnet">
-             <?php else : ?>
-                <div class="mockup-placeholder"></div>
-             <?php endif; ?>
+        <div class="lm-content">
+            <span class="section-tag">FREE RESOURCE</span>
+            <h2 class="section-headline"><?php echo esc_html( get_theme_mod( 'closeclient_lm_headline', 'The $100M Coaching Blueprint' ) ); ?></h2>
+            <p class="section-subheadline"><?php echo esc_html( get_theme_mod( 'closeclient_lm_subheadline', 'Discover the exact infrastructure used by the world\'s top 1% of consultants to scale to 7-figures while working fewer hours.' ) ); ?></p>
+
+            <form class="lm-form" style="margin-top: 3rem;">
+                <div class="newsletter-form-inline" style="margin: 0;">
+                    <input type="email" placeholder="Your Primary Email" required style="border: 1px solid var(--border); background: var(--white); color: var(--midnight);">
+                    <button type="submit" class="button button-accent"><?php echo esc_html( get_theme_mod( 'closeclient_lm_button', 'Send Me The Blueprint' ) ); ?></button>
+                </div>
+            </form>
         </div>
     </div>
 </section>

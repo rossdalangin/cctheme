@@ -10,21 +10,21 @@
  */
 function closeclient_reset_defaults() {
     $defaults = array(
-        'closeclient_primary_color'    => '#0A0A0B',
-        'closeclient_secondary_color'  => '#F5F5F7',
-        'closeclient_accent_color'     => '#0071E3',
+        'closeclient_primary_color'    => '#050505',
+        'closeclient_secondary_color'  => '#FBFBFD',
+        'closeclient_accent_color'     => '#4338CA',
         'closeclient_text_color'       => '#1D1D1F',
         'closeclient_bg_color'         => '#FFFFFF',
-        'closeclient_button_color'     => '#0071E3',
-        'closeclient_button_hover'     => '#0077ED',
+        'closeclient_button_color'     => '#4338CA',
+        'closeclient_button_hover'     => '#3730A3',
         'closeclient_heading_font'     => 'SF Pro Display',
         'closeclient_body_font'        => 'SF Pro Display',
         'closeclient_h1_size'          => '4.5',
         'closeclient_body_size'        => '18',
         'closeclient_line_height'      => '1.6',
         'closeclient_letter_spacing'   => '-0.022',
-        'closeclient_hero_headline'    => 'Scale Your Authority. Sell Your Expertise.',
-        'closeclient_hero_subheadline' => 'I help high-level coaches and consultants build elite digital platforms that turn visitors into high-ticket clients on autopilot.',
+        'closeclient_hero_headline'    => 'The Authority System for High-Ticket Coaches',
+        'closeclient_hero_subheadline' => 'Stop chasing leads and start attracting elite clients. We build premium digital ecosystems that position you as the only logical choice in your market.',
     );
 
     foreach ( $defaults as $key => $value ) {

@@ -47,13 +47,13 @@ function closeclient_customize_register( $wp_customize ) {
     ) );
 
     $colors = array(
-        'primary_color'    => array( 'label' => __( 'Primary Color', 'closeclient' ), 'default' => '#0A0A0B' ),
-        'secondary_color'  => array( 'label' => __( 'Secondary Color', 'closeclient' ), 'default' => '#F5F5F7' ),
-        'accent_color'     => array( 'label' => __( 'Accent Color', 'closeclient' ), 'default' => '#0071E3' ),
+        'primary_color'    => array( 'label' => __( 'Primary Color', 'closeclient' ), 'default' => '#050505' ),
+        'secondary_color'  => array( 'label' => __( 'Secondary Color', 'closeclient' ), 'default' => '#FBFBFD' ),
+        'accent_color'     => array( 'label' => __( 'Accent Color', 'closeclient' ), 'default' => '#4338CA' ),
         'text_color'       => array( 'label' => __( 'Text Color', 'closeclient' ), 'default' => '#1D1D1F' ),
         'bg_color'         => array( 'label' => __( 'Background Color', 'closeclient' ), 'default' => '#FFFFFF' ),
-        'button_color'     => array( 'label' => __( 'Button Background', 'closeclient' ), 'default' => '#0071E3' ),
-        'button_hover'     => array( 'label' => __( 'Button Hover', 'closeclient' ), 'default' => '#0077ED' ),
+        'button_color'     => array( 'label' => __( 'Button Background', 'closeclient' ), 'default' => '#4338CA' ),
+        'button_hover'     => array( 'label' => __( 'Button Hover', 'closeclient' ), 'default' => '#3730A3' ),
     );
 
     foreach ( $colors as $id => $data ) {
@@ -165,11 +165,11 @@ function closeclient_customize_register( $wp_customize ) {
     // Contents for Modular Sections
     // Hero
     $wp_customize->add_section( 'closeclient_hero_content', array( 'title' => '2. Hero Content', 'panel' => 'closeclient_homepage_panel' ) );
-    $wp_customize->add_setting( 'closeclient_hero_headline', array( 'default' => 'Scale Your Authority. Sell Your Expertise.', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_setting( 'closeclient_hero_headline', array( 'default' => 'The Authority System for High-Ticket Coaches', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_hero_headline', array( 'label' => 'Headline', 'section' => 'closeclient_hero_content' ) );
-    $wp_customize->add_setting( 'closeclient_hero_subheadline', array( 'default' => 'I help high-level coaches and consultants build elite digital platforms that turn visitors into high-ticket clients on autopilot.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
+    $wp_customize->add_setting( 'closeclient_hero_subheadline', array( 'default' => 'Stop chasing leads and start attracting elite clients. We build premium digital ecosystems that position you as the only logical choice in your market.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
     $wp_customize->add_control( 'closeclient_hero_subheadline', array( 'label' => 'Subheadline', 'section' => 'closeclient_hero_content', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_hero_cta', array( 'default' => 'Book Your Strategy Call', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_setting( 'closeclient_hero_cta', array( 'default' => 'Apply for Strategy Audit', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_hero_cta', array( 'label' => 'Button Text', 'section' => 'closeclient_hero_content' ) );
     $wp_customize->add_setting( 'closeclient_hero_cta_link', array( 'default' => '#', 'sanitize_callback' => 'esc_url_raw' ) );
     $wp_customize->add_control( 'closeclient_hero_cta_link', array( 'label' => 'Button Link', 'section' => 'closeclient_hero_content' ) );
@@ -283,15 +283,15 @@ function closeclient_customize_register( $wp_customize ) {
 
     // Booking CTA
     $wp_customize->add_section( 'closeclient_booking_content', array( 'title' => '14. Booking CTA Content', 'panel' => 'closeclient_homepage_panel' ) );
-    $wp_customize->add_setting( 'closeclient_booking_headline', array( 'default' => 'Ready to Scale Your Authority?', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_setting( 'closeclient_booking_headline', array( 'default' => 'Are You Ready to Scale Beyond Your Current Ceiling?', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_booking_headline', array( 'label' => 'Headline', 'section' => 'closeclient_booking_content' ) );
-    $wp_customize->add_setting( 'closeclient_booking_subheadline', array( 'default' => 'Book a 15-minute strategy audit to see if we are a fit to work together.', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_setting( 'closeclient_booking_subheadline', array( 'default' => 'We only partner with 3 new experts per month to ensure elite-level execution. If you are ready to automate your authority, let\'s talk.', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_booking_subheadline', array( 'label' => 'Subheadline', 'section' => 'closeclient_booking_content' ) );
-    $wp_customize->add_setting( 'closeclient_booking_text', array( 'default' => 'Book My Strategy Audit', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_setting( 'closeclient_booking_text', array( 'default' => 'Book Your Scaling Audit', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_booking_text', array( 'label' => 'Button Text', 'section' => 'closeclient_booking_content' ) );
     $wp_customize->add_setting( 'closeclient_booking_link', array( 'default' => '#', 'sanitize_callback' => 'esc_url_raw' ) );
     $wp_customize->add_control( 'closeclient_booking_link', array( 'label' => 'Button Link', 'section' => 'closeclient_booking_content' ) );
-    $wp_customize->add_setting( 'closeclient_booking_note', array( 'default' => 'Only 3 spots available for new clients this month.', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_setting( 'closeclient_booking_note', array( 'default' => 'Current Waiting List: 14 Days', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_booking_note', array( 'label' => 'Bottom Note', 'section' => 'closeclient_booking_content' ) );
 
     // ==========================================
