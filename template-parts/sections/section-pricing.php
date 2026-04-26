@@ -31,24 +31,24 @@ $plans = array(
 
 <section class="section section-pricing">
     <div class="container">
-        <div class="section-header text-center" style="margin-bottom: 80px;">
+        <div class="section-header text-center reveal" style="margin-bottom: 80px;">
             <h2 class="section-headline"><?php echo esc_html( $headline ); ?></h2>
         </div>
 
-        <div class="pricing-grid">
+        <div class="grid-3">
             <?php foreach ( $plans as $plan ) : ?>
-                <div class="pricing-card reveal <?php echo $plan['featured'] ? 'featured' : ''; ?>">
-                    <div class="pricing-header">
-                        <h3 style="font-size: 1.5rem; margin-bottom: 10px;"><?php echo esc_html( $plan['name'] ); ?></h3>
-                        <div class="price" style="font-size: 3.5rem; font-weight: 900; margin-bottom: 30px; letter-spacing: -0.04em;"><?php echo esc_html( $plan['price'] ); ?></div>
+                <div class="pricing-card card reveal <?php echo $plan['featured'] ? 'featured' : ''; ?>">
+                    <div class="pricing-header" style="margin-bottom: 40px;">
+                        <h3 style="font-size: 1.4rem; margin-bottom: 15px;"><?php echo esc_html( $plan['name'] ); ?></h3>
+                        <div class="price" style="font-size: 3.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--c-primary);"><?php echo esc_html( $plan['price'] ); ?></div>
                     </div>
 
-                    <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 40px; text-align: left;">
+                    <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 50px; text-align: left;">
                         <?php
                         $features = explode( ',', $plan['features'] );
                         foreach ( $features as $feature ) : ?>
-                            <li style="margin-bottom: 12px; padding-left: 28px; position: relative;">
-                                <span style="position: absolute; left: 0; color: var(--electric-violet);">✓</span>
+                            <li style="margin-bottom: 14px; display: flex; gap: 12px; font-size: 0.95rem;">
+                                <span style="color: var(--c-accent); font-weight: 900;">✓</span>
                                 <?php echo esc_html( trim( $feature ) ); ?>
                             </li>
                         <?php endforeach; ?>
