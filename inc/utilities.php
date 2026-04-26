@@ -10,21 +10,21 @@
  */
 function closeclient_reset_defaults() {
     $defaults = array(
-        'closeclient_primary_color'    => '#050505',
-        'closeclient_secondary_color'  => '#FBFBFD',
-        'closeclient_accent_color'     => '#4338CA',
+        'closeclient_primary_color'    => '#1D1D1F',
+        'closeclient_secondary_color'  => '#F5F5F7',
+        'closeclient_accent_color'     => '#0071E3',
         'closeclient_text_color'       => '#1D1D1F',
         'closeclient_bg_color'         => '#FFFFFF',
-        'closeclient_button_color'     => '#4338CA',
-        'closeclient_button_hover'     => '#3730A3',
+        'closeclient_button_color'     => '#0071E3',
+        'closeclient_button_hover'     => '#0077ED',
         'closeclient_heading_font'     => 'SF Pro Display',
         'closeclient_body_font'        => 'SF Pro Display',
         'closeclient_h1_size'          => '4.5',
         'closeclient_body_size'        => '18',
         'closeclient_line_height'      => '1.6',
         'closeclient_letter_spacing'   => '-0.022',
-        'closeclient_hero_headline'    => 'The Authority System for High-Ticket Coaches',
-        'closeclient_hero_subheadline' => 'Stop chasing leads and start attracting elite clients. We build premium digital ecosystems that position you as the only logical choice in your market.',
+        'closeclient_hero_headline'    => 'Scale Your Authority. Sell Your Expertise.',
+        'closeclient_hero_subheadline' => 'I help high-level coaches and consultants build elite digital platforms that turn visitors into high-ticket clients on autopilot.',
     );
 
     foreach ( $defaults as $key => $value ) {
@@ -39,7 +39,7 @@ function closeclient_generate_pages() {
     $pages = array(
         'Home' => array(
             'content'  => '[closeclient_hero][closeclient_authority][closeclient_vsl][closeclient_stats][closeclient_about][closeclient_services][closeclient_process][closeclient_pricing][closeclient_testimonials][closeclient_team][closeclient_lead_magnet][closeclient_faq][closeclient_booking_cta]',
-            'template' => 'front-page.php',
+            'template' => '', // front-page.php is automatic
         ),
         'Sales Page' => array(
             'content'  => '[closeclient_hero][closeclient_vsl][closeclient_about][closeclient_services][closeclient_pricing][closeclient_testimonials][closeclient_faq][closeclient_booking_cta]',
@@ -90,12 +90,10 @@ function closeclient_handle_utilities() {
         return;
     }
 
-    // Check user permissions
     if ( ! current_user_can( 'manage_options' ) ) {
         wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'closeclient' ) );
     }
 
-    // Verify Nonce
     if ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( $_GET['_wpnonce'], 'closeclient_utility_action' ) ) {
         wp_die( esc_html__( 'Security check failed.', 'closeclient' ) );
     }

@@ -9,20 +9,17 @@
 <section class="section section-stats">
     <div class="container">
         <div class="bento-grid stats-bento">
-            <div class="bento-item">
-                <span class="stat-label"><?php echo esc_html( get_theme_mod( 'closeclient_stat_1_label', 'CLIENT CAPITAL SCALED' ) ); ?></span>
-                <h3 class="stat-value gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_stat_1_value', '$500M+' ) ); ?></h3>
+            <div class="bento-item reveal large" style="display: flex; flex-direction: column; justify-content: center;">
+                <span class="stat-label" style="font-weight: 700; color: var(--accent); letter-spacing: 0.1em;"><?php echo esc_html( get_theme_mod( 'closeclient_stat_1_label', 'CLIENT CAPITAL SCALED' ) ); ?></span>
+                <h3 class="stat-value" style="font-size: 5rem; font-weight: 800; margin: 1rem 0;"><?php echo esc_html( get_theme_mod( 'closeclient_stat_1_value', '$500M+' ) ); ?></h3>
             </div>
-            <div class="bento-item">
+            <div class="bento-item reveal">
                 <span class="stat-label"><?php echo esc_html( get_theme_mod( 'closeclient_stat_2_label', 'GLOBAL IMPACT' ) ); ?></span>
-                <h3 class="stat-value"><?php echo esc_html( get_theme_mod( 'closeclient_stat_2_value', '50+' ) ); ?></h3>
+                <h3 class="stat-value" style="font-size: 3rem; margin-top: 10px;"><?php echo esc_html( get_theme_mod( 'closeclient_stat_2_value', '50+' ) ); ?></h3>
             </div>
-            <div class="bento-item">
-                <span class="stat-label"><?php echo esc_html( get_theme_mod( 'closeclient_stat_3_label', 'SYSTEM EFFICIENCY' ) ); ?></span>
-                <h3 class="stat-value"><?php echo esc_html( get_theme_mod( 'closeclient_stat_3_value', '98%' ) ); ?></h3>
-            </div>
-            <div class="bento-item" style="background: var(--accent-gradient);">
-                <h3 style="color: var(--white); margin: 0;">Our architecture is built for infinite scale.</h3>
+            <div class="bento-item reveal">
+                <span class="stat-label"><?php echo esc_html( get_theme_mod( 'closeclient_stat_3_label', 'EFFICIENCY' ) ); ?></span>
+                <h3 class="stat-value" style="font-size: 3rem; margin-top: 10px;"><?php echo esc_html( get_theme_mod( 'closeclient_stat_3_value', '98%' ) ); ?></h3>
             </div>
         </div>
     </div>
