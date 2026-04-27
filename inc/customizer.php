@@ -42,6 +42,14 @@ function closeclient_customize_register( $wp_customize ) {
         'priority' => 50,
     ) );
 
+    $wp_customize->add_setting( 'closeclient_guide_link', array( 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'closeclient_guide_link', array(
+        'label'       => __( 'Theme Guide & Shortcodes', 'closeclient' ),
+        'description' => sprintf( '<a href="%s" class="button button-secondary" target="_blank">%s</a>', admin_url('admin.php?page=closeclient-shortcodes'), __( 'Open Master Guide', 'closeclient' ) ),
+        'section'     => 'closeclient_utilities_section',
+        'type'        => 'hidden',
+    ) ) );
+
     // ==========================================
     // 1. BRAND IDENTITY
     // ==========================================

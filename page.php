@@ -17,7 +17,17 @@ $layout = closeclient_get_layout();
                 <?php
                 while ( have_posts() ) :
                     the_post();
-                    the_content();
+                    ?>
+                    <article id="post-<?php the_ID(); ?>" <?php post_class( 'reveal' ); ?>>
+                        <header class="entry-header section text-center">
+                            <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+                        </header>
+
+                        <div class="entry-content">
+                            <?php the_content(); ?>
+                        </div>
+                    </article>
+                    <?php
 
                     if ( comments_open() || get_comments_number() ) :
                         comments_template();
@@ -33,6 +43,11 @@ $layout = closeclient_get_layout();
             <?php endif; ?>
         </div>
     </div>
+
+    <?php
+    // Always add a global CTA at the bottom of standard pages
+    get_template_part( 'template-parts/sections/section-booking-cta' );
+    ?>
 </main>
 
 <?php

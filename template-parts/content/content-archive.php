@@ -6,23 +6,30 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'archive-post cc-card reveal' ); ?> style="padding: 50px;">
-	<header class="entry-header" style="margin-bottom: 40px;">
-        <div class="entry-meta" style="font-size: 0.85rem; color: var(--c-indigo); font-weight: 900; text-transform: uppercase; letter-spacing: 0.2em; margin-bottom: 20px;">
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'archive-post cc-card reveal' ); ?> style="padding: 40px;">
+	<header class="entry-header" style="margin-bottom: 32px;">
+		<?php the_title( '<h2 class="entry-title" style="font-size: 1.8rem; line-height: 1.2; margin-bottom: 15px;"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark" style="color: var(--c-white); text-decoration: none;">', '</a></h2>' ); ?>
+
+		<?php if ( 'post' === get_post_type() ) : ?>
+		<div class="entry-meta" style="font-size: 0.85rem; color: var(--c-accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;">
 			<?php closeclient_posted_on(); ?>
 		</div>
-		<?php the_title( '<h2 class="entry-title" style="font-size: 2.2rem; line-height: 1; letter-spacing: -0.05em;"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark" style="color: var(--c-white); text-decoration: none; transition: 0.3s;">', '</a></h2>' ); ?>
+		<?php endif; ?>
 	</header>
 
-	<div class="post-thumbnail-wrapper" style="margin-bottom: 40px; border-radius: 24px; overflow: hidden; background: var(--c-onyx-light);">
-        <?php closeclient_post_thumbnail(); ?>
+	<div class="post-thumbnail-wrapper" style="margin-bottom: 32px; border-radius: 20px; overflow: hidden; background: var(--c-secondary);">
+        <?php if ( has_post_thumbnail() ) : ?>
+            <div class="aspect-hero">
+                <?php the_post_thumbnail( 'large', array( 'style' => 'width:100%; height:100%; object-fit:cover;' ) ); ?>
+            </div>
+        <?php endif; ?>
     </div>
 
-	<div class="entry-summary" style="margin-bottom: 40px; color: var(--c-text-muted); font-size: 1.1rem; line-height: 1.7;">
+	<div class="entry-summary" style="margin-bottom: 32px; color: var(--c-text-muted); font-size: 1.05rem; line-height: 1.7;">
 		<?php the_excerpt(); ?>
 	</div>
 
 	<footer class="entry-footer">
-		<a href="<?php echo esc_url( get_permalink() ); ?>" class="cc-button cc-button-secondary" style="padding: 16px 36px; font-size: 0.8rem;"><?php esc_html_e( 'Explore Article', 'closeclient' ); ?></a>
+		<a href="<?php echo esc_url( get_permalink() ); ?>" class="cc-button cc-button-secondary" style="padding: 12px 32px; font-size: 0.8rem;"><?php esc_html_e( 'Read Article', 'closeclient' ); ?></a>
 	</footer>
 </article>
