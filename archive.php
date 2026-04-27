@@ -2,51 +2,35 @@
 /**
  * The template for displaying archive pages
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
  * @package CloseClient
  */
 
 get_header();
-
-$layout = closeclient_get_layout();
 ?>
 
 <main id="primary" class="site-main">
-    <div class="container">
+    <div class="container section">
+        <header class="page-header text-center reveal" style="margin-bottom: 80px;">
+            <span class="section-tag"><?php esc_html_e( 'INSIGHTS & STRATEGY', 'closeclient' ); ?></span>
+            <?php
+            the_archive_title( '<h1 class="page-title h2">', '</h1>' );
+            the_archive_description( '<div class="archive-description text-muted mt-3">', '</div>' );
+            ?>
+        </header>
+
         <?php if ( have_posts() ) : ?>
-
-            <header class="page-header section text-center reveal">
-                <span class="section-tag"><?php esc_html_e( 'ARCHIVE', 'closeclient' ); ?></span>
+            <div class="blog-posts-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 40px;">
                 <?php
-                the_archive_title( '<h1 class="page-title">', '</h1>' );
-                the_archive_description( '<div class="archive-description">', '</div>' );
+                while ( have_posts() ) :
+                    the_post();
+                    get_template_part( 'template-parts/content/content-archive' );
+                endwhile;
                 ?>
-            </header>
-
-            <div class="blog-layout">
-                <div class="blog-posts">
-                    <?php
-                    while ( have_posts() ) :
-                        the_post();
-                        get_template_part( 'template-parts/content/content', 'archive' );
-                    endwhile;
-
-                    the_posts_navigation();
-                    ?>
-                </div>
-
-                <?php if ( 'full-width' !== $layout ) : ?>
-                    <aside id="secondary" class="sidebar">
-                        <?php get_sidebar(); ?>
-                    </aside>
-                <?php endif; ?>
             </div>
 
-        <?php else : ?>
-
-            <?php get_template_part( 'template-parts/content/content', 'none' ); ?>
-
+            <div class="pagination mt-5 text-center reveal">
+                <?php the_posts_navigation(); ?>
+            </div>
         <?php endif; ?>
     </div>
 </main>

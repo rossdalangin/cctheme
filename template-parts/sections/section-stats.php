@@ -4,23 +4,22 @@
  *
  * @package CloseClient
  */
+
+$tag = get_theme_mod( 'closeclient_stats_tag', 'OUR IMPACT' );
 ?>
 
 <section class="section section-stats">
     <div class="container">
-        <div class="grid-3">
-            <div class="stat-card card reveal text-center">
-                <span class="section-tag" style="margin-bottom: 20px;"><?php echo esc_html( get_theme_mod( 'closeclient_stat_1_label', 'CLIENT CAPITAL SCALED' ) ); ?></span>
-                <h3 class="stat-value gradient-text" style="font-size: 5rem; font-weight: 900; margin: 0; line-height: 1;"><?php echo esc_html( get_theme_mod( 'closeclient_stat_1_value', '$500M+' ) ); ?></h3>
-            </div>
-            <div class="stat-card card reveal text-center">
-                <span class="section-tag" style="margin-bottom: 20px;"><?php echo esc_html( get_theme_mod( 'closeclient_stat_2_label', 'SYSTEM EFFICIENCY' ) ); ?></span>
-                <h3 class="stat-value" style="font-size: 5rem; font-weight: 900; margin: 0; color: var(--c-white); line-height: 1;"><?php echo esc_html( get_theme_mod( 'closeclient_stat_2_value', '98%' ) ); ?></h3>
-            </div>
-            <div class="stat-card card reveal text-center">
-                <span class="section-tag" style="margin-bottom: 20px;"><?php echo esc_html( get_theme_mod( 'closeclient_stat_3_label', 'GLOBAL IMPACT' ) ); ?></span>
-                <h3 class="stat-value" style="font-size: 5rem; font-weight: 900; margin: 0; color: var(--c-white); line-height: 1;"><?php echo esc_html( get_theme_mod( 'closeclient_stat_3_value', '24/7' ) ); ?></h3>
-            </div>
+        <div class="bento-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+            <?php for ( $i = 1; $i <= 3; $i++ ) :
+                $value = get_theme_mod( "closeclient_stat_{$i}_value", "10$i+" );
+                $label = get_theme_mod( "closeclient_stat_{$i}_label", "Success Stories" );
+                ?>
+                <div class="stat-item cc-card text-center reveal">
+                    <div class="stat-value h1 gradient-text mb-2" style="font-size: 4rem;"><?php echo esc_html( $value ); ?></div>
+                    <div class="stat-label section-tag mb-0"><?php echo esc_html( $label ); ?></div>
+                </div>
+            <?php endfor; ?>
         </div>
     </div>
 </section>

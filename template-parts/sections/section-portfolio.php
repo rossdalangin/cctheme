@@ -31,7 +31,7 @@ $portfolio_query = new WP_Query( array(
                     <div class="portfolio-content" style="padding: 40px;">
                         <h3 style="font-size: 1.8rem; margin-bottom: 15px;"><?php the_title(); ?></h3>
                         <p style="color: var(--c-text-muted); margin-bottom: 25px;"><?php echo get_the_excerpt(); ?></p>
-                        <a href="<?php the_permalink(); ?>" class="cc-button cc-button-secondary" style="padding: 14px 32px; font-size: 0.8rem;"><?php esc_html_e( 'View Case Study', 'closeclient' ); ?></a>
+                        <a href="<?php the_permalink(); ?>" class="cc-button cc-btn btn-secondary" style="padding: 14px 32px; font-size: 0.8rem;"><?php esc_html_e( 'View Case Study', 'closeclient' ); ?></a>
                     </div>
                 </div>
                 <?php endwhile; wp_reset_postdata();

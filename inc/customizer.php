@@ -31,7 +31,7 @@ function closeclient_customize_register( $wp_customize ) {
         'priority' => 40,
     ) );
 
-    $wp_customize->add_section( 'closeclient_portfolio_content', array( 'title' => '6. Portfolio Content', 'panel' => 'closeclient_homepage_panel' ) );
+    $wp_customize->add_section( 'closeclient_portfolio_content', array( 'title' => '15. Portfolio Content', 'panel' => 'closeclient_homepage_panel' ) );
     $wp_customize->add_setting( 'closeclient_portfolio_headline', array( 'default' => 'Our Engineered Success Stories', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_portfolio_headline', array( 'label' => 'Headline', 'section' => 'closeclient_portfolio_content' ) );
     $wp_customize->add_setting( 'closeclient_portfolio_tag', array( 'default' => 'FEATURED WORK', 'sanitize_callback' => 'sanitize_text_field' ) );
@@ -45,7 +45,7 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'closeclient_guide_link', array( 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'closeclient_guide_link', array(
         'label'       => __( 'Theme Guide & Shortcodes', 'closeclient' ),
-        'description' => sprintf( '<a href="%s" class="button button-secondary" target="_blank">%s</a>', admin_url('admin.php?page=closeclient-shortcodes'), __( 'Open Master Guide', 'closeclient' ) ),
+        'description' => sprintf( '<a href="%s" class="cc-button cc-button-secondary" target="_blank">%s</a>', admin_url('admin.php?page=closeclient-shortcodes'), __( 'Open Master Guide', 'closeclient' ) ),
         'section'     => 'closeclient_utilities_section',
         'type'        => 'hidden',
     ) ) );
@@ -90,8 +90,8 @@ function closeclient_customize_register( $wp_customize ) {
     ) );
 
     $typography = array(
-        'heading_font' => array( 'label' => 'Heading Font', 'default' => 'SF Pro Display', 'type' => 'select', 'choices' => array('SF Pro Display' => 'SF Pro Display', 'Inter' => 'Inter', 'Playfair Display' => 'Playfair Display', 'Montserrat' => 'Montserrat') ),
-        'body_font'    => array( 'label' => 'Body Font', 'default' => 'SF Pro Display', 'type' => 'select', 'choices' => array('SF Pro Display' => 'SF Pro Display', 'Inter' => 'Inter', 'Open Sans' => 'Open Sans') ),
+        'heading_font' => array( 'label' => 'Heading Font', 'default' => 'Inter', 'type' => 'select', 'choices' => array('Inter' => 'Inter', 'SF Pro Display' => 'SF Pro Display', 'Playfair Display' => 'Playfair Display', 'Montserrat' => 'Montserrat') ),
+        'body_font'    => array( 'label' => 'Body Font', 'default' => 'Inter', 'type' => 'select', 'choices' => array('Inter' => 'Inter', 'SF Pro Display' => 'SF Pro Display', 'Open Sans' => 'Open Sans') ),
         'h1_size'      => array( 'label' => 'H1 Max Size (rem)', 'default' => '4.5', 'type' => 'text' ),
         'h1_weight'    => array( 'label' => 'H1 Weight', 'default' => '700', 'type' => 'select', 'choices' => array('400'=>'400','600'=>'600','700'=>'700','800'=>'800') ),
         'body_size'    => array( 'label' => 'Body Size (px)', 'default' => '18', 'type' => 'number' ),
@@ -333,14 +333,14 @@ function closeclient_customize_register( $wp_customize ) {
     // ==========================================
 
     // About Page Template
-    $wp_customize->add_section( 'closeclient_about_tpl', array( 'title' => 'About Page Content', 'panel' => 'closeclient_pages_panel' ) );
+    $wp_customize->add_section( 'closeclient_about_tpl', array( 'title' => '7. About Page Content', 'panel' => 'closeclient_pages_panel' ) );
     $wp_customize->add_setting( 'closeclient_about_headline_tpl', array( 'default' => 'Stop Chasing. Start Leading.', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_about_headline_tpl', array( 'label' => 'Hero Headline', 'section' => 'closeclient_about_tpl' ) );
     $wp_customize->add_setting( 'closeclient_about_text_tpl', array( 'default' => "Most agencies focus on 'pretty.' We focus on Positioning & Profit. Founded on direct-response principles, CloseClient rescues experts from being the 'best-kept secret.'", 'sanitize_callback' => 'sanitize_textarea_field' ) );
     $wp_customize->add_control( 'closeclient_about_text_tpl', array( 'label' => 'Main Content', 'section' => 'closeclient_about_tpl', 'type' => 'textarea' ) );
 
     // Contact Page Template
-    $wp_customize->add_section( 'closeclient_contact_tpl', array( 'title' => 'Contact Page Content', 'panel' => 'closeclient_pages_panel' ) );
+    $wp_customize->add_section( 'closeclient_contact_tpl', array( 'title' => '8. Contact Page Content', 'panel' => 'closeclient_pages_panel' ) );
     $wp_customize->add_setting( 'closeclient_contact_headline_tpl', array( 'default' => "Let's talk about your growth.", 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_contact_headline_tpl', array( 'label' => 'Hero Headline', 'section' => 'closeclient_contact_tpl' ) );
     $wp_customize->add_setting( 'closeclient_contact_subheadline_tpl', array( 'default' => 'Ready to scale your coaching business? Fill out the form or book a call directly.', 'sanitize_callback' => 'sanitize_text_field' ) );
@@ -349,7 +349,7 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_control( 'closeclient_contact_form_shortcode', array( 'label' => 'Form Shortcode', 'section' => 'closeclient_contact_tpl' ) );
 
     // Sales Page Template
-    $wp_customize->add_section( 'closeclient_sales_tpl', array( 'title' => 'Sales Page Content', 'panel' => 'closeclient_pages_panel' ) );
+    $wp_customize->add_section( 'closeclient_sales_tpl', array( 'title' => '9. Sales Page Content', 'panel' => 'closeclient_pages_panel' ) );
     $wp_customize->add_setting( 'closeclient_sales_hero_headline_tpl', array( 'default' => 'Scale to $100k/mo Without Spending 8 Hours a Day in the DMs.', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_sales_hero_headline_tpl', array( 'label' => 'Hero Headline', 'section' => 'closeclient_sales_tpl' ) );
     $wp_customize->add_setting( 'closeclient_sales_hero_subheadline_tpl', array( 'default' => 'For the elite consultant who is ready to graduate from "hustling" to "owning a machine."', 'sanitize_callback' => 'sanitize_textarea_field' ) );
@@ -358,28 +358,28 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_control( 'closeclient_sales_value_stack', array( 'label' => 'Value Stack (Comma separated)', 'section' => 'closeclient_sales_tpl', 'type' => 'textarea' ) );
 
     // Thank You Page Template
-    $wp_customize->add_section( 'closeclient_thankyou_tpl', array( 'title' => 'Thank You Page Content', 'panel' => 'closeclient_pages_panel' ) );
+    $wp_customize->add_section( 'closeclient_thankyou_tpl', array( 'title' => '10. Thank You Page Content', 'panel' => 'closeclient_pages_panel' ) );
     $wp_customize->add_setting( 'closeclient_thankyou_headline_tpl', array( 'default' => "You're All Set!", 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_thankyou_headline_tpl', array( 'label' => 'Hero Headline', 'section' => 'closeclient_thankyou_tpl' ) );
     $wp_customize->add_setting( 'closeclient_thankyou_text_tpl', array( 'default' => "We've received your request. Check your inbox for the next steps.", 'sanitize_callback' => 'sanitize_textarea_field' ) );
     $wp_customize->add_control( 'closeclient_thankyou_text_tpl', array( 'label' => 'Main Text', 'section' => 'closeclient_thankyou_tpl', 'type' => 'textarea' ) );
 
     // Services Page Template
-    $wp_customize->add_section( 'closeclient_services_tpl', array( 'title' => 'Services Page Content', 'panel' => 'closeclient_pages_panel' ) );
+    $wp_customize->add_section( 'closeclient_services_tpl', array( 'title' => '11. Services Page Content', 'panel' => 'closeclient_pages_panel' ) );
     $wp_customize->add_setting( 'closeclient_services_hero_headline_tpl', array( 'default' => 'Strategic Systems for the 1% Expert.', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_services_hero_headline_tpl', array( 'label' => 'Hero Headline', 'section' => 'closeclient_services_tpl' ) );
     $wp_customize->add_setting( 'closeclient_services_subheadline_tpl', array( 'default' => 'Premium solutions tailored for your stage of growth.', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_services_subheadline_tpl', array( 'label' => 'Hero Subheadline', 'section' => 'closeclient_services_tpl' ) );
 
     // Landing Page Template
-    $wp_customize->add_section( 'closeclient_landing_tpl', array( 'title' => 'Landing Page Content', 'panel' => 'closeclient_pages_panel' ) );
+    $wp_customize->add_section( 'closeclient_landing_tpl', array( 'title' => '12. Landing Page Content', 'panel' => 'closeclient_pages_panel' ) );
     $wp_customize->add_setting( 'closeclient_landing_headline_tpl', array( 'default' => 'Transform Your Expertise Into a High-Performance Machine.', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_landing_headline_tpl', array( 'label' => 'Hero Headline', 'section' => 'closeclient_landing_tpl' ) );
     $wp_customize->add_setting( 'closeclient_landing_text_tpl', array( 'default' => 'Join the elite ranks of coaches who have automated their authority and scaled their impact.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
     $wp_customize->add_control( 'closeclient_landing_text_tpl', array( 'label' => 'Hero Text', 'section' => 'closeclient_landing_tpl', 'type' => 'textarea' ) );
 
     // Lead Magnet Template
-    $wp_customize->add_section( 'closeclient_leadmagnet_tpl', array( 'title' => 'Lead Magnet Page Content', 'panel' => 'closeclient_pages_panel' ) );
+    $wp_customize->add_section( 'closeclient_leadmagnet_tpl', array( 'title' => '13. Lead Magnet Page Content', 'panel' => 'closeclient_pages_panel' ) );
     $wp_customize->add_setting( 'closeclient_leadmagnet_headline_tpl', array( 'default' => 'Get the Authority Blueprint', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_leadmagnet_headline_tpl', array( 'label' => 'Hero Headline', 'section' => 'closeclient_leadmagnet_tpl' ) );
     $wp_customize->add_setting( 'closeclient_leadmagnet_text_tpl', array( 'default' => 'Download our proven framework for attracting high-ticket clients on autopilot.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
@@ -391,7 +391,7 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'closeclient_gen_pages_trigger', array( 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'closeclient_gen_pages_trigger', array(
         'label'       => __( 'Recreate Starter Pages', 'closeclient' ),
-        'description' => sprintf( '<a href="%s" class="button button-secondary">%s</a>', admin_url('?closeclient_action=generate&_wpnonce=' . $utility_nonce), __( 'Generate Now', 'closeclient' ) ),
+        'description' => sprintf( '<a href="%s" class="cc-button cc-button-secondary">%s</a>', admin_url('?closeclient_action=generate&_wpnonce=' . $utility_nonce), __( 'Generate Now', 'closeclient' ) ),
         'section'     => 'closeclient_utilities_section',
         'type'        => 'hidden',
     ) ) );
@@ -446,12 +446,12 @@ function closeclient_customize_css() {
         }
 
         h1, h2, h3, h4, h5, h6 {
-            font-family: "<?php echo get_theme_mod( 'closeclient_heading_font', 'SF Pro Display' ); ?>", sans-serif;
+            font-family: "<?php echo get_theme_mod( 'closeclient_heading_font', 'Inter' ); ?>", sans-serif;
         }
         h1 { font-weight: var(--h1-weight); }
 
         body {
-            font-family: "<?php echo get_theme_mod( 'closeclient_body_font', 'SF Pro Display' ); ?>", sans-serif;
+            font-family: "<?php echo get_theme_mod( 'closeclient_body_font', 'Inter' ); ?>", sans-serif;
             font-size: var(--base-font-size);
             line-height: var(--line-height);
             letter-spacing: var(--letter-spacing);

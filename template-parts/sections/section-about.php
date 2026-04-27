@@ -21,7 +21,7 @@
                 <p><?php echo esc_html( get_theme_mod( 'closeclient_about_text_p1', 'You didn\'t start your coaching business to spend 8 hours a day in the DMs. You started it to make an impact and build freedom.' ) ); ?></p>
                 <p><?php echo esc_html( get_theme_mod( 'closeclient_about_text_p2', 'I help established experts build the infrastructure they need to scale without sacrificing their personal life.' ) ); ?></p>
             </div>
-            <a href="<?php echo esc_url( home_url( '/about' ) ); ?>" class="button button-secondary"><?php echo esc_html( get_theme_mod( 'closeclient_about_button_text', 'Learn More About My Story' ) ); ?></a>
+            <a href="<?php echo esc_url( home_url( '/about' ) ); ?>" class="cc-button cc-button-secondary"><?php echo esc_html( get_theme_mod( 'closeclient_about_button_text', 'Learn More About My Story' ) ); ?></a>
         </div>
     </div>
 </section>

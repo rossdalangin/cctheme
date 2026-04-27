@@ -5,58 +5,47 @@
  * @package CloseClient
  */
 
-$headline = get_theme_mod( 'closeclient_pricing_headline', 'Invest in Your Growth' );
-
-$plans = array(
-    array(
-        'name'     => get_theme_mod( 'closeclient_plan1_name', 'Strategy Audit' ),
-        'price'    => get_theme_mod( 'closeclient_plan1_price', '$497' ),
-        'features' => get_theme_mod( 'closeclient_plan1_features', '60-Min Deep Dive, Growth Roadmap, Recording included' ),
-        'featured' => false,
-    ),
-    array(
-        'name'     => get_theme_mod( 'closeclient_plan2_name', 'Elite Coaching' ),
-        'price'    => get_theme_mod( 'closeclient_plan2_price', '$2,500/mo' ),
-        'features' => get_theme_mod( 'closeclient_plan2_features', 'Weekly 1:1 Calls, Priority Support, Full Systems Audit, Scale Blueprint' ),
-        'featured' => true,
-    ),
-    array(
-        'name'     => get_theme_mod( 'closeclient_plan3_name', 'Mastermind' ),
-        'price'    => get_theme_mod( 'closeclient_plan3_price', 'Custom' ),
-        'features' => get_theme_mod( 'closeclient_plan3_features', 'Annual Retreat, Group Calls, Private Slack, Implementation Days' ),
-        'featured' => false,
-    ),
-);
+$headline = get_theme_mod( 'closeclient_pricing_headline', 'Invest in Your Infinite Scale' );
 ?>
 
-<section class="section section-pricing">
+<section id="pricing" class="section section-pricing bg-secondary">
     <div class="container">
         <div class="section-header text-center reveal" style="margin-bottom: 80px;">
+            <span class="section-tag"><?php esc_html_e( 'INVESTMENT', 'closeclient' ); ?></span>
             <h2 class="section-headline"><?php echo esc_html( $headline ); ?></h2>
         </div>
 
         <div class="cc-grid-3">
-            <?php foreach ( $plans as $plan ) : ?>
-                <div class="pricing-card cc-card reveal <?php echo $plan['featured'] ? 'featured' : ''; ?>" style="text-align: center;">
-                    <div class="pricing-header" style="margin-bottom: 40px;">
-                        <h3 style="font-size: 1.4rem; margin-bottom: 15px;"><?php echo esc_html( $plan['name'] ); ?></h3>
-                        <div class="price" style="font-size: 3.5rem; font-weight: 800; letter-spacing: -0.04em; color: var(--c-white);"><?php echo esc_html( $plan['price'] ); ?></div>
-                    </div>
+            <?php
+            $plans = array(
+                array('id' => 1, 'featured' => false),
+                array('id' => 2, 'featured' => true),
+                array('id' => 3, 'featured' => false),
+            );
 
-                    <ul class="pricing-features" style="list-style: none; padding: 0; margin-bottom: 50px; text-align: left;">
-                        <?php
-                        $features = explode( ',', $plan['features'] );
-                        foreach ( $features as $feature ) : ?>
-                            <li style="margin-bottom: 14px; display: flex; gap: 12px; font-size: 0.95rem; color: var(--c-text-muted);">
-                                <span style="color: var(--c-accent); font-weight: 900;">✓</span>
-                                <?php echo esc_html( trim( $feature ) ); ?>
+            foreach ( $plans as $plan ) :
+                $name     = get_theme_mod( "closeclient_plan{$plan['id']}_name", "Growth Plan {$plan['id']}" );
+                $price    = get_theme_mod( "closeclient_plan{$plan['id']}_price", "$2,997" );
+                $features = get_theme_mod( "closeclient_plan{$plan['id']}_features", "Authority Audit, Bento Ecosystem, Weekly Strategy" );
+                $feature_list = explode( ',', $features );
+                ?>
+                <div class="pricing-card cc-card reveal <?php echo $plan['featured'] ? 'border-accent' : ''; ?>" style="position: relative;">
+                    <?php if ( $plan['featured'] ) : ?>
+                        <div class="popular-tag" style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--c-accent); color: white; padding: 4px 16px; border-radius: 20px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em;"><?php esc_html_e( 'MOST POPULAR', 'closeclient' ); ?></div>
+                    <?php endif; ?>
+
+                    <h3 class="h4 mb-2"><?php echo esc_html( $name ); ?></h3>
+                    <div class="price h2 mb-5" style="color: var(--c-white);"><?php echo esc_html( $price ); ?><span class="small text-muted" style="font-size: 1rem;">/mo</span></div>
+
+                    <ul class="list-unstyled mb-5">
+                        <?php foreach ( $feature_list as $feature ) : ?>
+                            <li class="mb-3 small d-flex gap-2">
+                                <span class="text-accent">✓</span> <?php echo esc_html( trim( $feature ) ); ?>
                             </li>
                         <?php endforeach; ?>
                     </ul>
 
-                    <div class="pricing-cta">
-                        <a href="<?php echo esc_url( get_theme_mod( 'closeclient_booking_link', '#' ) ); ?>" class="cc-button <?php echo ! $plan['featured'] ? 'cc-button-secondary' : ''; ?>" style="width: 100%;"><?php esc_html_e( 'Secure Your Spot', 'closeclient' ); ?></a>
-                    </div>
+                    <a href="<?php echo esc_url( get_theme_mod( 'closeclient_booking_link', '#' ) ); ?>" class="cc-button <?php echo ! $plan['featured'] ? 'cc-btn btn-secondary' : ''; ?>" style="width: 100%;"><?php esc_html_e( 'Secure Your Spot', 'closeclient' ); ?></a>
                 </div>
             <?php endforeach; ?>
         </div>

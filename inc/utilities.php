@@ -19,13 +19,13 @@ function closeclient_reset_defaults() {
         'closeclient_button_hover'     => '#4F46E5',
         'closeclient_heading_font'     => 'Inter',
         'closeclient_body_font'        => 'Inter',
-        'closeclient_h1_size'          => '7.5',
+        'closeclient_h1_size'          => '4.5',
         'closeclient_body_size'        => '18',
         'closeclient_line_height'      => '1.6',
-        'closeclient_letter_spacing'   => '-0.05',
+        'closeclient_letter_spacing'   => '-0.022',
         'closeclient_hero_headline'    => 'Design the Future of Digital Authority',
         'closeclient_hero_subheadline' => 'We build the elite infrastructure that powers the world\'s most ambitious brands and consultants. Performance-first, conversion-locked, and future-ready.',
-        'closeclient_hero_cta'         => 'Launch Your Ecosystem →',
+        'closeclient_hero_cta'         => 'Apply for Strategy Audit →',
     );
 
     foreach ( $defaults as $key => $value ) {
@@ -39,19 +39,19 @@ function closeclient_reset_defaults() {
 function closeclient_generate_pages() {
     $pages = array(
         'Home' => array(
-            'content'  => '[closeclient_hero][closeclient_authority][closeclient_stats][closeclient_portfolio][closeclient_services][closeclient_vsl][closeclient_process][closeclient_testimonials][closeclient_pricing][closeclient_faq][closeclient_booking_cta]',
+            'content'  => '[closeclient_hero][closeclient_authority][closeclient_vsl][closeclient_stats][closeclient_services][closeclient_process][closeclient_testimonials][closeclient_pricing][closeclient_faq][closeclient_booking_cta]',
             'template' => '',
         ),
         'Services' => array(
-            'content'  => '[closeclient_hero][closeclient_services][closeclient_process][closeclient_pricing][closeclient_booking_cta]',
+            'content'  => '[closeclient_services][closeclient_process][closeclient_pricing][closeclient_booking_cta]',
             'template' => 'template-services.php',
         ),
         'Sales Page' => array(
-            'content'  => '[closeclient_hero][closeclient_vsl][closeclient_services][closeclient_testimonials][closeclient_pricing][closeclient_faq][closeclient_booking_cta]',
+            'content'  => '[closeclient_vsl][closeclient_testimonials][closeclient_pricing][closeclient_faq][closeclient_booking_cta]',
             'template' => 'template-sales-page.php',
         ),
         'About' => array(
-            'content'  => '[closeclient_about][closeclient_team][closeclient_authority][closeclient_booking_cta]',
+            'content'  => '[closeclient_team][closeclient_authority][closeclient_booking_cta]',
             'template' => 'template-about.php',
         ),
         'Success Blueprint' => array(
@@ -65,10 +65,12 @@ function closeclient_generate_pages() {
     );
 
     foreach ( $pages as $title => $data ) {
+        // Check by title or content
         $page_check = get_posts( array(
             'post_type'  => 'page',
             'title'      => $title,
             'numberposts' => 1,
+            'post_status' => 'any'
         ) );
 
         $new_page = array(
@@ -81,18 +83,23 @@ function closeclient_generate_pages() {
 
         if ( empty( $page_check ) ) {
             $page_id = wp_insert_post( $new_page );
-            if ( ! empty( $data['template'] ) ) {
-                update_post_meta( $page_id, '_wp_page_template', $data['template'] );
-            }
+        } else {
+            $page_id = $page_check[0]->ID;
+            $new_page['ID'] = $page_id;
+            wp_update_post( $new_page );
+        }
 
-            if ( 'Home' === $title ) {
-                update_option( 'show_on_front', 'page' );
-                update_option( 'page_on_front', $page_id );
-            }
+        if ( ! empty( $data['template'] ) ) {
+            update_post_meta( $page_id, '_wp_page_template', $data['template'] );
+        }
+
+        if ( 'Home' === $title ) {
+            update_option( 'show_on_front', 'page' );
+            update_option( 'page_on_front', $page_id );
         }
     }
 
-    $hello_world = get_posts( array( 'title' => 'Hello world!', 'numberposts' => 1 ) );
+    $hello_world = get_posts( array( 'title' => 'Hello world!', 'numberposts' => 1, 'post_type' => 'post' ) );
     if ( ! empty( $hello_world ) ) {
         wp_delete_post( $hello_world[0]->ID, true );
     }

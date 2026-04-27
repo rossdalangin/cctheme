@@ -1,35 +1,39 @@
 <?php
 /**
- * Template part for displaying posts in archive
+ * Post Card Template Part
  *
  * @package CloseClient
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'archive-post cc-card reveal' ); ?> style="padding: 40px;">
-	<header class="entry-header" style="margin-bottom: 32px;">
-		<?php the_title( '<h2 class="entry-title" style="font-size: 1.8rem; line-height: 1.2; margin-bottom: 15px;"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark" style="color: var(--c-white); text-decoration: none;">', '</a></h2>' ); ?>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'blog-card cc-card reveal' ); ?> style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+    <?php if ( has_post_thumbnail() ) : ?>
+        <div class="post-thumbnail" style="aspect-ratio: 16/9; overflow: hidden;">
+            <a href="<?php echo esc_url( get_permalink() ); ?>">
+                <?php the_post_thumbnail( 'large', array( 'style' => 'width: 100%; height: 100%; object-fit: cover; border-radius: 0; transition: 0.5s;' ) ); ?>
+            </a>
+        </div>
+    <?php endif; ?>
 
-		<?php if ( 'post' === get_post_type() ) : ?>
-		<div class="entry-meta" style="font-size: 0.85rem; color: var(--c-accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;">
-			<?php closeclient_posted_on(); ?>
-		</div>
-		<?php endif; ?>
-	</header>
+    <div class="post-content" style="padding: 40px; flex-grow: 1; display: flex; flex-direction: column;">
+        <div class="post-meta section-tag mb-3" style="font-size: 0.65rem;">
+            <?php the_category( ', ' ); ?> • <?php echo get_the_date(); ?>
+        </div>
 
-	<div class="post-thumbnail-wrapper" style="margin-bottom: 32px; border-radius: 20px; overflow: hidden; background: var(--c-secondary);">
-        <?php if ( has_post_thumbnail() ) : ?>
-            <div class="aspect-hero">
-                <?php the_post_thumbnail( 'large', array( 'style' => 'width:100%; height:100%; object-fit:cover;' ) ); ?>
-            </div>
-        <?php endif; ?>
+        <h3 class="post-title h4 mb-3">
+            <a href="<?php echo esc_url( get_permalink() ); ?>" style="text-decoration: none; color: inherit;"><?php the_title(); ?></a>
+        </h3>
+
+        <div class="post-excerpt text-muted mb-5" style="font-size: 0.95rem;">
+            <?php echo wp_trim_words( get_the_excerpt(), 20 ); ?>
+        </div>
+
+        <div class="post-footer mt-auto">
+            <a href="<?php echo esc_url( get_permalink() ); ?>" class="cc-button cc-btn btn-secondary" style="padding: 12px 32px; font-size: 0.8rem;"><?php esc_html_e( 'Read Article', 'closeclient' ); ?></a>
+        </div>
     </div>
-
-	<div class="entry-summary" style="margin-bottom: 32px; color: var(--c-text-muted); font-size: 1.05rem; line-height: 1.7;">
-		<?php the_excerpt(); ?>
-	</div>
-
-	<footer class="entry-footer">
-		<a href="<?php echo esc_url( get_permalink() ); ?>" class="cc-button cc-button-secondary" style="padding: 12px 32px; font-size: 0.8rem;"><?php esc_html_e( 'Read Article', 'closeclient' ); ?></a>
-	</footer>
 </article>
+
+<style>
+.blog-card:hover .post-thumbnail img { transform: scale(1.05); }
+</style>
