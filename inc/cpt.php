@@ -1,6 +1,6 @@
 <?php
 /**
- * Register Custom Post Types for CloseClient
+ * Custom Post Types for CloseClient
  *
  * @package CloseClient
  */
@@ -9,41 +9,36 @@ function closeclient_register_cpts() {
 
     // Services CPT
     register_post_type( 'service', array(
-        'labels'      => array(
-            'name'          => __( 'Services', 'closeclient' ),
-            'singular_name' => __( 'Service', 'closeclient' ),
-        ),
+        'labels'      => array( 'name' => 'Services', 'singular_name' => 'Service' ),
         'public'      => true,
-        'has_archive' => false,
+        'has_archive' => true,
         'menu_icon'   => 'dashicons-rest-api',
-        'supports'    => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
-        'show_in_rest' => true,
+        'supports'    => array( 'title', 'editor', 'thumbnail' ),
     ) );
 
     // Testimonials CPT
     register_post_type( 'testimonial', array(
-        'labels'      => array(
-            'name'          => __( 'Testimonials', 'closeclient' ),
-            'singular_name' => __( 'Testimonial', 'closeclient' ),
-        ),
+        'labels'      => array( 'name' => 'Testimonials', 'singular_name' => 'Testimonial' ),
         'public'      => true,
-        'has_archive' => false,
         'menu_icon'   => 'dashicons-testimonial',
         'supports'    => array( 'title', 'editor', 'thumbnail' ),
-        'show_in_rest' => true,
     ) );
 
     // FAQ CPT
     register_post_type( 'faq', array(
-        'labels'      => array(
-            'name'          => __( 'FAQs', 'closeclient' ),
-            'singular_name' => __( 'FAQ', 'closeclient' ),
-        ),
+        'labels'      => array( 'name' => 'FAQs', 'singular_name' => 'FAQ' ),
         'public'      => true,
-        'has_archive' => false,
         'menu_icon'   => 'dashicons-editor-help',
         'supports'    => array( 'title', 'editor' ),
-        'show_in_rest' => true,
+    ) );
+
+    // Portfolio CPT
+    register_post_type( 'portfolio', array(
+        'labels'      => array( 'name' => 'Portfolio', 'singular_name' => 'Project' ),
+        'public'      => true,
+        'has_archive' => true,
+        'menu_icon'   => 'dashicons-portfolio',
+        'supports'    => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
     ) );
 }
 add_action( 'init', 'closeclient_register_cpts' );

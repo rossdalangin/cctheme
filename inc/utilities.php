@@ -54,7 +54,7 @@ function closeclient_reset_defaults() {
 function closeclient_generate_pages() {
     $pages = array(
         'Home' => array(
-            'content'  => '[closeclient_hero][closeclient_authority][closeclient_vsl][closeclient_stats][closeclient_about][closeclient_services][closeclient_process][closeclient_pricing][closeclient_testimonials][closeclient_team][closeclient_lead_magnet][closeclient_faq][closeclient_booking_cta]',
+            'content'  => '[closeclient_hero][closeclient_authority][closeclient_vsl][closeclient_stats][closeclient_portfolio][closeclient_about][closeclient_services][closeclient_process][closeclient_pricing][closeclient_testimonials][closeclient_team][closeclient_lead_magnet][closeclient_faq][closeclient_booking_cta]',
             'template' => '',
         ),
         'Sales Page' => array(

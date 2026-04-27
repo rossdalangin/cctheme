@@ -31,6 +31,12 @@ function closeclient_customize_register( $wp_customize ) {
         'priority' => 40,
     ) );
 
+    $wp_customize->add_section( 'closeclient_portfolio_content', array( 'title' => '6. Portfolio Content', 'panel' => 'closeclient_homepage_panel' ) );
+    $wp_customize->add_setting( 'closeclient_portfolio_headline', array( 'default' => 'Our Engineered Success Stories', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_portfolio_headline', array( 'label' => 'Headline', 'section' => 'closeclient_portfolio_content' ) );
+    $wp_customize->add_setting( 'closeclient_portfolio_tag', array( 'default' => 'FEATURED WORK', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_portfolio_tag', array( 'label' => 'Tag', 'section' => 'closeclient_portfolio_content' ) );
+
     $wp_customize->add_section( 'closeclient_utilities_section', array(
         'title'    => __( '5. Theme Setup & Tools', 'closeclient' ),
         'priority' => 50,

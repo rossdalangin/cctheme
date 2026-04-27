@@ -43,6 +43,10 @@ function closeclient_render_shortcode_guide() {
                             'desc' => 'High-fidelity conversion hero with gradient headline.',
                             'outcome' => 'Immediate Authority'
                         ),
+                        '[closeclient_portfolio]' => array(
+                            'desc' => 'Interactive project grid showing engineered success.',
+                            'outcome' => 'Proof of Concept'
+                        ),
                         '[closeclient_services]' => array(
                             'desc' => 'Master grid of core expert capabilities.',
                             'outcome' => 'Expert Differentiation'

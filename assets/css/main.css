@@ -1,6 +1,6 @@
 /**
- * CloseClient Master Design System - Ultimate Agency Edition
- * The Pinnacle of High-Ticket Digital Architecture.
+ * CloseClient Master Design System - Ultimate Release
+ * The Absolute Zenith of High-Ticket Digital Architecture.
  */
 
 :root {
@@ -23,24 +23,26 @@
     /* Spacing & Radii */
     --s-xl: clamp(120px, 18vw, 240px);
     --s-lg: clamp(80px, 12vw, 120px);
+    --s-md: 40px;
+    --s-sm: 20px;
     --radius-xl: 48px;
     --radius-lg: 32px;
     --radius-md: 16px;
 
-    /* Typography */
-    --font-sans: "Inter", -apple-system, sans-serif;
+    /* Layout */
+    --container-max: 1500px;
+    --header-height: 110px;
 }
 
 /* --- Base & Reset --- */
 *, *::before, *::after { box-sizing: border-box; }
 body {
     margin: 0;
-    font-family: var(--font-sans);
+    font-family: "Inter", -apple-system, sans-serif;
     font-size: 18px;
     line-height: 1.6;
     color: var(--c-text);
     background-color: var(--c-onyx);
-    /* Noise & Grid Texture */
     background-image:
         radial-gradient(circle at 50% 0%, var(--c-indigo-soft) 0%, transparent 60%),
         linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
@@ -68,20 +70,18 @@ h2 { font-size: clamp(3rem, 10vw, 4.5rem); }
     display: inline-block;
 }
 
-.container { max-width: 1500px; margin: 0 auto; padding: 0 6vw; }
-.container-narrow { max-width: 900px; margin: 0 auto; }
+.container { max-width: var(--container-max); margin: 0 auto; padding: 0 6vw; }
 .text-center { text-align: center; }
 
-/* --- Core Components --- */
+/* --- Core UI Components --- */
 
-/* Header */
 .site-header {
     background: rgba(2, 2, 3, 0.6);
     backdrop-filter: var(--glass);
     position: sticky;
     top: 0;
     z-index: 2000;
-    height: 110px;
+    height: var(--header-height);
     display: flex;
     align-items: center;
     border-bottom: 1px solid var(--c-border);
@@ -89,7 +89,6 @@ h2 { font-size: clamp(3rem, 10vw, 4.5rem); }
 }
 .site-header.is-scrolled { height: 80px; background: rgba(2, 2, 3, 0.9); }
 
-/* Universal Button */
 .cc-button, .wpcf7-submit {
     position: relative;
     padding: 22px 56px;
@@ -97,8 +96,7 @@ h2 { font-size: clamp(3rem, 10vw, 4.5rem); }
     font-weight: 800;
     font-size: 0.85rem;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    text-decoration: none;
+    letter-spacing: 0.15em;
     display: inline-block;
     cursor: pointer;
     transition: 0.5s cubic-bezier(0.2, 1, 0.2, 1);
@@ -106,19 +104,19 @@ h2 { font-size: clamp(3rem, 10vw, 4.5rem); }
     background: var(--button-bg);
     color: var(--c-white);
     box-shadow: var(--glow-indigo);
+    text-decoration: none;
 }
 .cc-button:hover, .wpcf7-submit:hover {
     transform: translateY(-5px) scale(1.02);
     box-shadow: 0 20px 40px rgba(99, 102, 241, 0.4);
 }
-.cc-button-secondary { background: var(--c-onyx-light); border: 1px solid var(--c-border); }
+.cc-button-secondary { background: var(--c-onyx-light); border: 1px solid var(--c-border); box-shadow: none; }
 
-/* Advanced Cards */
 .cc-card, .cc-bento-item, .archive-post {
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid var(--c-border);
     border-radius: var(--radius-xl);
-    padding: 80px 60px;
+    padding: 60px;
     transition: 0.6s cubic-bezier(0.2, 1, 0.2, 1);
     position: relative;
     overflow: hidden;
@@ -130,11 +128,7 @@ h2 { font-size: clamp(3rem, 10vw, 4.5rem); }
     box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
 }
 
-/* Grids */
-.cc-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-.cc-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
-
-/* --- Section Stylings --- */
+/* --- Section Layouts --- */
 .section { padding: var(--s-xl) 0; }
 
 .section-tag {
@@ -146,6 +140,23 @@ h2 { font-size: clamp(3rem, 10vw, 4.5rem); }
     margin-bottom: 2rem;
     display: inline-block;
 }
+
+.cc-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.cc-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+
+/* Process Grid Refinement */
+.process-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 60px; position: relative; }
+.process-step { position: relative; padding-top: 40px; }
+.step-num { font-size: 8rem; font-weight: 900; color: var(--c-indigo); opacity: 0.05; position: absolute; top: -2rem; left: 0; line-height: 1; }
+
+/* Footer Overhaul */
+.site-footer { background: var(--c-onyx); padding: 180px 0 80px; border-top: 1px solid var(--c-border); }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 80px; margin-bottom: 120px; }
+.footer-column h3 { color: var(--c-white); font-size: 0.9rem; font-weight: 800; margin-bottom: 32px; text-transform: uppercase; letter-spacing: 0.2em; }
+.footer-column ul { list-style: none; padding: 0; margin: 0; }
+.footer-column ul li { margin-bottom: 16px; }
+.footer-column ul li a { color: var(--c-text-muted); text-decoration: none; transition: 0.3s; font-size: 0.95rem; }
+.footer-column ul li a:hover { color: var(--c-white); text-shadow: 0 0 10px var(--c-indigo); }
 
 /* Forms */
 .wpcf7-form input:not([type="submit"]), .wpcf7-form textarea {
@@ -161,18 +172,14 @@ h2 { font-size: clamp(3rem, 10vw, 4.5rem); }
 }
 .wpcf7-form input:focus { border-color: var(--c-indigo); outline: none; box-shadow: 0 0 0 4px var(--c-indigo-soft); }
 
-/* Blog Architecture */
-.blog-layout { display: flex; gap: 80px; margin-top: 100px; }
-.blog-posts { flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(450px, 1fr)); gap: 40px; }
-.sidebar { width: 360px; flex-shrink: 0; }
-
 /* Animations */
 .reveal { opacity: 0; transform: translateY(60px); transition: 1.4s cubic-bezier(0.16, 1, 0.3, 1); }
 .reveal.active { opacity: 1; transform: translateY(0); }
 .reading-progress-bar { position: fixed; top: 0; left: 0; height: 4px; background: linear-gradient(90deg, var(--c-indigo), var(--c-cyan)); z-index: 3000; width: 0; }
 
+/* Responsive */
 @media (max-width: 1024px) {
-    .cc-grid-3, .cc-grid-2, .footer-grid, .blog-layout { grid-template-columns: 1fr; gap: 60px; }
+    .cc-grid-3, .cc-grid-2, .footer-grid, .process-grid { grid-template-columns: 1fr; gap: 60px; }
     .site-header { height: 90px; }
     .menu-toggle { display: block; }
     .nav-menu-wrapper {

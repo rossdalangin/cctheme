@@ -8,7 +8,7 @@
 function closeclient_register_section_shortcodes() {
     $sections = array(
         'hero', 'authority', 'vsl', 'stats', 'about', 'services',
-        'process', 'pricing', 'testimonials', 'team',
+        'portfolio', 'process', 'pricing', 'testimonials', 'team',
         'lead_magnet', 'newsletter', 'faq', 'booking_cta'
     );
 
