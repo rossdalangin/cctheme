@@ -18,45 +18,53 @@ $tag      = get_theme_mod( 'closeclient_services_tag', 'SERVICES' );
 
         <div class="bento-grid" style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px;">
             <?php
-            $services = array(
-                array('id' => 1, 'span' => 'span 8', 'icon' => '⚡'),
-                array('id' => 2, 'span' => 'span 4', 'icon' => '💎'),
-                array('id' => 3, 'span' => 'span 4', 'icon' => '🚀'),
-                array('id' => 4, 'span' => 'span 8', 'icon' => '🎯'),
-            );
+            // Try CPT first
+            $services_query = new WP_Query( array(
+                'post_type'      => 'service',
+                'posts_per_page' => 4,
+            ) );
 
-            foreach ( $services as $s ) :
-                $title = get_theme_mod( "closeclient_service_{$s['id']}_title" );
-                $text  = get_theme_mod( "closeclient_service_{$s['id']}_text" );
+            if ( $services_query->have_posts() ) :
+                $i = 0;
+                while ( $services_query->have_posts() ) : $services_query->the_post();
+                    $i++;
+                    $span = ( $i == 1 || $i == 4 ) ? 'span 8' : 'span 4';
+                    $icons = array('⚡', '💎', '🚀', '🎯');
+                    $icon = isset($icons[$i-1]) ? $icons[$i-1] : '⚡';
+                    ?>
+                    <div class="service-item cc-card reveal" style="grid-column: <?php echo esc_attr($span); ?>;">
+                        <div class="service-icon mb-4" style="font-size: 2rem;"><?php echo $icon; ?></div>
+                        <h3 class="h4 mb-3"><?php the_title(); ?></h3>
+                        <div class="text-muted small"><?php the_excerpt(); ?></div>
+                    </div>
+                <?php endwhile;
+                wp_reset_postdata();
+            else :
+                // Fallback to Customizer
+                $services = array(
+                    array('id' => 1, 'span' => 'span 8', 'icon' => '⚡'),
+                    array('id' => 2, 'span' => 'span 4', 'icon' => '💎'),
+                    array('id' => 3, 'span' => 'span 4', 'icon' => '🚀'),
+                    array('id' => 4, 'span' => 'span 8', 'icon' => '🎯'),
+                );
 
-                // Fallbacks if not set
-                if ( empty($title) ) {
-                    $defaults = array(
-                        1 => 'Authority Infrastructure',
-                        2 => 'Revenue Engineering',
-                        3 => 'Vortex Funnels',
-                        4 => 'Elite Positioning'
-                    );
-                    $title = $defaults[$s['id']];
-                }
+                foreach ( $services as $s ) :
+                    $title = get_theme_mod( "closeclient_service_{$s['id']}_title" );
+                    $text  = get_theme_mod( "closeclient_service_{$s['id']}_text" );
 
-                if ( empty($text) ) {
-                    $text = "Engineered solutions designed to crush the complexity ceiling and scale your impact.";
-                }
-                ?>
-                <div class="service-item cc-card reveal" style="grid-column: <?php echo esc_attr($s['span']); ?>;">
-                    <div class="service-icon mb-4" style="font-size: 2rem;"><?php echo $s['icon']; ?></div>
-                    <h3 class="h4 mb-3"><?php echo esc_html( $title ); ?></h3>
-                    <p class="text-muted small"><?php echo esc_html( $text ); ?></p>
-                </div>
-            <?php endforeach; ?>
+                    if ( empty($title) ) {
+                        $defaults = array( 1 => 'Authority Infrastructure', 2 => 'Revenue Engineering', 3 => 'Vortex Funnels', 4 => 'Elite Positioning' );
+                        $title = $defaults[$s['id']];
+                    }
+                    if ( empty($text) ) { $text = "Engineered solutions designed to crush the complexity ceiling and scale your impact."; }
+                    ?>
+                    <div class="service-item cc-card reveal" style="grid-column: <?php echo esc_attr($s['span']); ?>;">
+                        <div class="service-icon mb-4" style="font-size: 2rem;"><?php echo $s['icon']; ?></div>
+                        <h3 class="h4 mb-3"><?php echo esc_html( $title ); ?></h3>
+                        <p class="text-muted small"><?php echo esc_html( $text ); ?></p>
+                    </div>
+                <?php endforeach;
+            endif; ?>
         </div>
     </div>
 </section>
-
-<style>
-@media (max-width: 992px) {
-    .bento-grid { grid-template-columns: 1fr !important; }
-    .service-item { grid-column: span 1 !important; }
-}
-</style>

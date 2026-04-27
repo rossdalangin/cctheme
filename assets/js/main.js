@@ -60,3 +60,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 });
+
+/* Header Scroll Effect */
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('.site-header');
+    if (window.scrollY > 50) {
+        header.classList.add('is-scrolled');
+    } else {
+        header.classList.remove('is-scrolled');
+    }
+});
+
+/* Mobile Menu Interaction Improvement */
+const toggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('.main-navigation');
+
+if (toggle) {
+    toggle.addEventListener('click', () => {
+        nav.classList.toggle('is-open');
+        const expanded = toggle.getAttribute('aria-expanded') === 'true' || false;
+        toggle.setAttribute('aria-expanded', !expanded);
+    });
+}

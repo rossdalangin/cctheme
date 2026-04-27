@@ -348,3 +348,36 @@ require get_template_directory() . '/inc/utilities.php';
  * Admin guide.
  */
 require get_template_directory() . '/inc/admin-guide.php';
+
+/**
+ * Menu Fallback
+ */
+function closeclient_menu_fallback() {
+    echo '<ul class="primary-menu-list">';
+    echo '<li><a href="' . esc_url( home_url( '/services' ) ) . '">Services</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/case-studies' ) ) . '">Case Studies</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/about' ) ) . '">About</a></li>';
+    echo '</ul>';
+}
+
+/**
+ * Footer 1 Fallback
+ */
+function closeclient_footer_1_fallback() {
+    echo '<ul class="list-unstyled small text-muted">';
+    echo '<li><a href="#">Authority Infrastructure</a></li>';
+    echo '<li><a href="#">Revenue Engineering</a></li>';
+    echo '<li><a href="#">Vortex Funnels</a></li>';
+    echo '</ul>';
+}
+
+/**
+ * Footer 2 Fallback
+ */
+function closeclient_footer_2_fallback() {
+    echo '<ul class="list-unstyled small text-muted">';
+    echo '<li><a href="' . esc_url( home_url( '/case-studies' ) ) . '">Case Studies</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/free-training' ) ) . '">Free Training</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/blog' ) ) . '">Blog</a></li>';
+    echo '</ul>';
+}

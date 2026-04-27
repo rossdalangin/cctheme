@@ -48,7 +48,7 @@
                             'theme_location' => 'footer-1',
                             'menu_id'        => 'footer-menu-1',
                             'container'      => false,
-                            'fallback_cb'    => false,
+                            'fallback_cb'    => 'closeclient_footer_1_fallback',
                             'menu_class'     => 'list-unstyled small text-muted',
                         )
                     );
@@ -64,7 +64,7 @@
                             'theme_location' => 'footer-2',
                             'menu_id'        => 'footer-menu-2',
                             'container'      => false,
-                            'fallback_cb'    => false,
+                            'fallback_cb'    => 'closeclient_footer_2_fallback',
                             'menu_class'     => 'list-unstyled small text-muted',
                         )
                     );

@@ -33,6 +33,7 @@
 							'menu_id'        => 'primary-menu',
 							'container'      => false,
 							'menu_class'     => 'primary-menu-list',
+							'fallback_cb'    => 'closeclient_menu_fallback',
 						)
 					);
 					?>
