@@ -8,9 +8,9 @@
 
 <section class="section section-services">
     <div class="container">
-        <div class="section-header text-center reveal" style="margin-bottom: 100px;">
-            <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_services_tag', 'OUR CORE CAPABILITIES' ) ); ?></span>
-            <h2 class="section-headline"><?php echo esc_html( get_theme_mod( 'closeclient_services_headline', 'Elite Solutions for the Digital Economy' ) ); ?></h2>
+        <div class="section-header text-center reveal" style="margin-bottom: 120px;">
+            <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_services_tag', 'CORE CAPABILITIES' ) ); ?></span>
+            <h2 class="section-headline"><?php echo esc_html( get_theme_mod( 'closeclient_services_headline', 'The New Standard of Digital Architecture' ) ); ?></h2>
         </div>
 
         <div class="cc-grid-3">
@@ -20,8 +20,9 @@
 
                 if ( $title || $text ) : ?>
                 <div class="service-card cc-card reveal">
-                    <h3 class="gradient-text" style="font-size: 1.8rem; margin-bottom: 1.5rem;"><?php echo esc_html( $title ); ?></h3>
-                    <p style="color: var(--c-text-muted); font-size: 1rem; line-height: 1.8;"><?php echo esc_html( $text ); ?></p>
+                    <div class="card-count" style="font-size: 0.85rem; font-weight: 900; color: var(--c-indigo); margin-bottom: 24px; opacity: 0.5;">0<?php echo $i; ?></div>
+                    <h3 class="gradient-text" style="font-size: 2.2rem; margin-bottom: 1.5rem;"><?php echo esc_html( $title ); ?></h3>
+                    <p style="color: var(--c-text-muted); font-size: 1.1rem; line-height: 1.8;"><?php echo esc_html( $text ); ?></p>
                 </div>
                 <?php endif;
             endfor; ?>
