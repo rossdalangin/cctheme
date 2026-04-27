@@ -53,8 +53,20 @@ Every section and page template is 100% manageable via **Appearance > Customize*
 
 - **Homepage Sections:** Toggle visibility and edit text for all 15 modular blocks.
 - **Page Templates:** Edit headlines and content for specialized layouts (Sales, Lead Magnet, etc.).
-- **Global Settings:** Control your "Signature Agency" colors and typography globally.
+- **Global Settings:** Control your "Signature Agency" colors, typography, and header behavior (Sticky/Glass).
 
-## 4. Recreating Starter Pages
+## 4. Automation & Data Population
 
-If you need to reset your site structure, go to **Customize > 5. Theme Setup & Tools** and click **Generate Now**. This will programmatically create all the pages listed above with the correct shortcodes and templates already applied.
+If you need to reset your site structure or populate it with high-end sample data:
+1. Go to **Customize > 5. Theme Setup & Tools**.
+2. Click **Generate Now**.
+
+**What this does:**
+- Creates all 10 strategic pages.
+- Sets the Home page as the static front page.
+- Programmatically generates sample **Services**, **FAQs**, **Testimonials**, and **Portfolio** records.
+- Automatically creates and assigns the Primary and Footer navigation menus.
+- Deletes default "Hello World" boilerplate.
+
+## 5. 404 Recovery Strategy
+Our 404 page is designed as a "Recapture Funnel." Instead of a dead end, it offers a search tool, a direct link back to your home, and a CTA to your Lead Magnet training to keep the prospect engaged even when they are lost.

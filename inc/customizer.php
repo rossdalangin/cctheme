@@ -133,6 +133,13 @@ function closeclient_customize_register( $wp_customize ) {
 
     // Header & Navigation
     $wp_customize->add_section( 'closeclient_header_settings', array( 'title' => 'Header & Navigation', 'panel' => 'closeclient_layout_panel' ) );
+
+    $wp_customize->add_setting( 'closeclient_header_sticky', array( 'default' => true, 'sanitize_callback' => 'absint' ) );
+    $wp_customize->add_control( 'closeclient_header_sticky', array( 'label' => 'Sticky Header', 'section' => 'closeclient_header_settings', 'type' => 'checkbox' ) );
+
+    $wp_customize->add_setting( 'closeclient_header_glass', array( 'default' => '0.7', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_header_glass', array( 'label' => 'Glass Opacity (0.1 to 1.0)', 'section' => 'closeclient_header_settings', 'type' => 'text' ) );
+
     $wp_customize->add_setting( 'closeclient_header_cta_text', array( 'default' => 'Book a Call', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_header_cta_text', array( 'label' => 'Header Button Text', 'section' => 'closeclient_header_settings' ) );
     $wp_customize->add_setting( 'closeclient_header_cta_link', array( 'default' => '#', 'sanitize_callback' => 'esc_url_raw' ) );
@@ -457,6 +464,12 @@ function closeclient_customize_css() {
             --font-weight: <?php echo get_theme_mod( 'closeclient_body_weight', '400' ); ?>;
             --h1-weight: <?php echo get_theme_mod( 'closeclient_h1_weight', '700' ); ?>;
             --container-width: <?php echo get_theme_mod( 'closeclient_container_width', '1200' ); ?>px;
+            --header-glass: <?php echo get_theme_mod( 'closeclient_header_glass', '0.7' ); ?>;
+        }
+
+        .site-header {
+            position: <?php echo get_theme_mod( 'closeclient_header_sticky', true ) ? 'sticky' : 'relative'; ?>;
+            background: rgba(2, 2, 3, var(--header-glass));
         }
 
         h1, h2, h3, h4, h5, h6 {

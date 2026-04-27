@@ -1,40 +1,68 @@
 /**
  * CloseClient Main Interactions
- * Luxury Minimalist Edition.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Header Scroll State
-    const header = document.getElementById('masthead');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 40) {
+    // --- Smooth Scrolling for Anchor Links ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // --- Header Scroll Effect ---
+    const header = document.querySelector('.site-header');
+    const updateHeader = () => {
+        if (window.scrollY > 50) {
             header.classList.add('is-scrolled');
         } else {
             header.classList.remove('is-scrolled');
         }
-    });
+    };
+    window.addEventListener('scroll', updateHeader);
+    updateHeader();
 
-    // Scroll Reveal System
+    // --- Reveal Animation System (Intersection Observer) ---
     const revealElements = document.querySelectorAll('.reveal');
-
     const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
+        entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
                 revealObserver.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.1,
+        threshold: 0.15,
         rootMargin: '0px 0px -50px 0px'
     });
 
-    revealElements.forEach(el => {
-        revealObserver.observe(el);
-    });
+    revealElements.forEach(el => revealObserver.observe(el));
 
-    // Reading Progress Bar
+    // --- Mobile Menu Toggle ---
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.main-navigation');
+
+    if (toggle) {
+        toggle.addEventListener('click', () => {
+            nav.classList.toggle('is-open');
+            const expanded = toggle.getAttribute('aria-expanded') === 'true' || false;
+            toggle.setAttribute('aria-expanded', !expanded);
+            document.body.style.overflow = nav.classList.contains('is-open') ? 'hidden' : '';
+        });
+    }
+
+    // --- Reading Progress Bar ---
     const progressBar = document.createElement('div');
     progressBar.className = 'reading-progress-bar';
     document.body.appendChild(progressBar);
@@ -46,39 +74,19 @@ document.addEventListener('DOMContentLoaded', () => {
         progressBar.style.width = scrolled + "%";
     });
 
-    // Mobile Menu Toggle
-    const menuToggle = document.querySelector('.menu-toggle');
-    const siteNav = document.getElementById('site-navigation');
+    // --- Subtle Hover Magnet Effect for Buttons ---
+    const magneticButtons = document.querySelectorAll('.cc-button:not(.cc-button-secondary)');
+    magneticButtons.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const position = btn.getBoundingClientRect();
+            const x = e.pageX - position.left - position.width / 2;
+            const y = e.pageY - position.top - position.height / 2;
 
-    if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
-            siteNav.classList.toggle('is-open');
-            const isOpen = siteNav.classList.contains('is-open');
-            menuToggle.setAttribute('aria-expanded', isOpen);
-            document.body.style.overflow = isOpen ? 'hidden' : '';
+            btn.style.transform = `translate(${x * 0.15}px, ${y * 0.3}px)`;
         });
-    }
 
-});
-
-/* Header Scroll Effect */
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('.site-header');
-    if (window.scrollY > 50) {
-        header.classList.add('is-scrolled');
-    } else {
-        header.classList.remove('is-scrolled');
-    }
-});
-
-/* Mobile Menu Interaction Improvement */
-const toggle = document.querySelector('.menu-toggle');
-const nav = document.querySelector('.main-navigation');
-
-if (toggle) {
-    toggle.addEventListener('click', () => {
-        nav.classList.toggle('is-open');
-        const expanded = toggle.getAttribute('aria-expanded') === 'true' || false;
-        toggle.setAttribute('aria-expanded', !expanded);
+        btn.addEventListener('mouseout', () => {
+            btn.style.transform = 'translate(0, 0)';
+        });
     });
-}
+});
