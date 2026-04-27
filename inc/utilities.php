@@ -23,24 +23,9 @@ function closeclient_reset_defaults() {
         'closeclient_body_size'        => '18',
         'closeclient_line_height'      => '1.6',
         'closeclient_letter_spacing'   => '-0.05',
-        'closeclient_hero_headline'    => 'Stop Begging for Leads and Start Commanding Authority.',
-        'closeclient_hero_subheadline' => 'Most coaches are one referral drought away from bankruptcy. We build the elite digital infrastructure that pre-qualifies your leads and positions you as the only logical choice.',
-        'closeclient_hero_cta'         => 'Yes! Build My Authority Engine →',
-        'closeclient_services_headline' => 'Strategic Systems for the 1% Expert.',
-        'closeclient_services_tag'      => 'ARCHITECTING DOMINANCE',
-        'closeclient_service_1_title'   => 'Authority Infrastructure',
-        'closeclient_service_1_text'    => 'The digital home that makes your $25k+ fees feel like an absolute bargain to your prospects.',
-        'closeclient_service_2_title'   => 'Vortex Funnels',
-        'closeclient_service_2_text'    => 'High-velocity acquisition systems that turn cold attention into applications on autopilot.',
-        'closeclient_service_3_title'   => 'ScaleOps',
-        'closeclient_service_3_text'    => 'The backend brain that manages your lead flow so you can focus on being the visionary.',
-        'closeclient_process_headline'  => 'The 3-Step Authority Roadmap',
-        'closeclient_process_step_1_title' => 'The Authority Audit',
-        'closeclient_process_step_1_text'  => 'We find the leaks in your current positioning that are draining your revenue.',
-        'closeclient_process_step_2_title' => 'The Ecosystem Build',
-        'closeclient_process_step_2_text'  => 'We engineer your platform with psychological authority triggers that force respect.',
-        'closeclient_process_step_3_title' => 'The Infinite Scale',
-        'closeclient_process_step_3_text'  => 'Launch and watch your website become your top-performing sales associate 24/7.',
+        'closeclient_hero_headline'    => 'Design the Future of Digital Authority',
+        'closeclient_hero_subheadline' => 'We build the elite infrastructure that powers the world\'s most ambitious brands and consultants. Performance-first, conversion-locked, and future-ready.',
+        'closeclient_hero_cta'         => 'Launch Your Ecosystem →',
     );
 
     foreach ( $defaults as $key => $value ) {
@@ -54,24 +39,24 @@ function closeclient_reset_defaults() {
 function closeclient_generate_pages() {
     $pages = array(
         'Home' => array(
-            'content'  => '[closeclient_hero][closeclient_authority][closeclient_vsl][closeclient_stats][closeclient_portfolio][closeclient_about][closeclient_services][closeclient_process][closeclient_pricing][closeclient_testimonials][closeclient_team][closeclient_lead_magnet][closeclient_faq][closeclient_booking_cta]',
+            'content'  => '[closeclient_hero][closeclient_authority][closeclient_stats][closeclient_portfolio][closeclient_services][closeclient_vsl][closeclient_process][closeclient_testimonials][closeclient_pricing][closeclient_faq][closeclient_booking_cta]',
             'template' => '',
         ),
-        'Sales Page' => array(
-            'content'  => '[closeclient_hero][closeclient_vsl][closeclient_about][closeclient_services][closeclient_pricing][closeclient_testimonials][closeclient_faq][closeclient_booking_cta]',
-            'template' => 'template-sales-page.php',
-        ),
-        'Lead Magnet' => array(
-            'content'  => '[closeclient_lead_magnet]',
-            'template' => 'template-lead-magnet.php',
-        ),
         'Services' => array(
-            'content'  => '[closeclient_services][closeclient_pricing]',
+            'content'  => '[closeclient_hero][closeclient_services][closeclient_process][closeclient_pricing][closeclient_booking_cta]',
             'template' => 'template-services.php',
         ),
+        'Sales Page' => array(
+            'content'  => '[closeclient_hero][closeclient_vsl][closeclient_services][closeclient_testimonials][closeclient_pricing][closeclient_faq][closeclient_booking_cta]',
+            'template' => 'template-sales-page.php',
+        ),
         'About' => array(
-            'content'  => '[closeclient_about][closeclient_team]',
+            'content'  => '[closeclient_about][closeclient_team][closeclient_authority][closeclient_booking_cta]',
             'template' => 'template-about.php',
+        ),
+        'Success Blueprint' => array(
+            'content'  => '[closeclient_lead_magnet]',
+            'template' => 'template-lead-magnet.php',
         ),
         'Contact' => array(
             'content'  => '[closeclient_booking_cta]',

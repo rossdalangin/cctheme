@@ -1,31 +1,45 @@
 <?php
 /**
- * Template part for displaying posts in single.php (Enhanced)
+ * Template part for displaying single posts
  *
  * @package CloseClient
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemscope itemtype="https://schema.org/Article">
-	<header class="entry-header">
-		<div class="entry-category">
-			<?php the_category( ', ' ); ?>
-		</div>
-		<?php the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>' ); ?>
+<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	<header class="entry-header text-center section">
+        <div class="container container-narrow">
+            <div class="entry-meta" style="font-size: 0.9rem; color: var(--c-accent); font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px;">
+                <?php closeclient_posted_on(); ?>
+            </div>
+            <?php the_title( '<h1 class="entry-title reveal">', '</h1>' ); ?>
+        </div>
+	</header>
 
-		<div class="entry-meta">
-			<?php
-			closeclient_posted_on();
-			closeclient_posted_by();
-			?>
-		</div><!-- .entry-meta -->
-	</header><!-- .entry-header -->
+	<div class="post-thumbnail-container container reveal" style="margin-bottom: 80px;">
+		<?php if ( has_post_thumbnail() ) : ?>
+            <div class="aspect-hero" style="border-radius: var(--radius-xl); overflow: hidden;">
+                <?php the_post_thumbnail( 'full', array( 'style' => 'width:100%; height:100%; object-fit:cover;' ) ); ?>
+            </div>
+        <?php endif; ?>
+	</div>
 
-	<?php closeclient_post_thumbnail(); ?>
-
-	<div class="entry-content" itemprop="articleBody">
+	<div class="entry-content container container-narrow reveal">
 		<?php
-		the_content();
+		the_content(
+			sprintf(
+				wp_kses(
+					/* translators: %s: Name of current post. Only visible to screen readers */
+					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'closeclient' ),
+					array(
+						'span' => array(
+							'class' => array(),
+						),
+					)
+				),
+				wp_kses_post( get_the_title() )
+			)
+		);
 
 		wp_link_pages(
 			array(
@@ -36,24 +50,17 @@
 		?>
 	</div><!-- .entry-content -->
 
-	<footer class="entry-footer">
-		<div class="social-sharing">
-			<span class="share-title"><?php esc_html_e( 'Share this post:', 'closeclient' ); ?></span>
-			<a href="https://twitter.com/intent/tweet?text=<?php echo urlencode( get_the_title() ); ?>&url=<?php echo urlencode( get_permalink() ); ?>" class="share-link">Twitter</a>
-			<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode( get_permalink() ); ?>" class="share-link">Facebook</a>
-			<a href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo urlencode( get_permalink() ); ?>" class="share-link">LinkedIn</a>
-		</div>
-
-		<div class="author-box" itemprop="author" itemscope itemtype="https://schema.org/Person">
-			<div class="author-avatar">
-				<?php echo get_avatar( get_the_author_meta( 'ID' ), 80 ); ?>
-			</div>
-			<div class="author-info">
-				<h3 class="author-name" itemprop="name"><?php the_author(); ?></h3>
-				<p class="author-bio"><?php the_author_meta( 'description' ); ?></p>
-			</div>
-		</div>
-
+	<footer class="entry-footer container container-narrow">
 		<?php closeclient_entry_footer(); ?>
+
+        <div class="author-box reveal">
+            <div class="author-avatar">
+                <?php echo get_avatar( get_the_author_meta( 'ID' ), 100 ); ?>
+            </div>
+            <div class="author-info">
+                <h4><?php echo esc_html( get_the_author() ); ?></h4>
+                <p><?php echo esc_html( get_the_author_meta( 'description' ) ); ?></p>
+            </div>
+        </div>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
