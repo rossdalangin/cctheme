@@ -8,7 +8,15 @@
 
 <section class="section section-hero">
     <div class="container hero-content-wrapper text-center reveal">
-        <h1 class="hero-headline reveal"><span class="gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_hero_headline', 'Stop Begging for Leads and Start Commanding Authority.' ) ); ?></span></h1>
+        <h1 class="hero-headline reveal">
+            <span class="gradient-text <?php echo get_theme_mod( 'closeclient_hero_typewriter', false ) ? 'typewriter-text' : ''; ?>" data-text="<?php echo esc_attr( get_theme_mod( 'closeclient_hero_headline', 'Stop Begging for Leads and Start Commanding Authority.' ) ); ?>">
+                <?php
+                if ( ! get_theme_mod( 'closeclient_hero_typewriter', false ) ) {
+                    echo esc_html( get_theme_mod( 'closeclient_hero_headline', 'Stop Begging for Leads and Start Commanding Authority.' ) );
+                }
+                ?>
+            </span>
+        </h1>
 
         <div class="container-narrow reveal">
             <p class="hero-subheadline" style="font-size: 1.5rem; color: var(--c-text-muted); margin-bottom: 60px; line-height: 1.5;"><?php echo esc_html( get_theme_mod( 'closeclient_hero_subheadline', 'Most coaches are one referral drought away from bankruptcy. We build the elite digital infrastructure that pre-qualifies your leads and positions you as the only logical choice.' ) ); ?></p>

@@ -219,6 +219,9 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_section( 'closeclient_hero_content', array( 'title' => '2. Hero Content', 'panel' => 'closeclient_homepage_panel' ) );
     $wp_customize->add_setting( 'closeclient_hero_headline', array( 'default' => 'Design the Future of Digital Authority', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_hero_headline', array( 'label' => 'Headline', 'section' => 'closeclient_hero_content' ) );
+
+    $wp_customize->add_setting( 'closeclient_hero_typewriter', array( 'default' => false, 'sanitize_callback' => 'absint' ) );
+    $wp_customize->add_control( 'closeclient_hero_typewriter', array( 'label' => 'Use Typewriter Effect', 'section' => 'closeclient_hero_content', 'type' => 'checkbox' ) );
     $wp_customize->add_setting( 'closeclient_hero_subheadline', array( 'default' => 'We build the elite infrastructure that powers the world\'s most ambitious brands and consultants. Performance-first, conversion-locked, and future-ready.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
     $wp_customize->add_control( 'closeclient_hero_subheadline', array( 'label' => 'Subheadline', 'section' => 'closeclient_hero_content', 'type' => 'textarea' ) );
     $wp_customize->add_setting( 'closeclient_hero_cta', array( 'default' => 'Apply for Strategy Audit', 'sanitize_callback' => 'sanitize_text_field' ) );
@@ -444,6 +447,10 @@ function closeclient_customize_register( $wp_customize ) {
 
     // Blog settings
     $wp_customize->add_section( 'closeclient_blog_global', array( 'title' => 'Blog & Newsletter', 'priority' => 90 ) );
+
+    $wp_customize->add_setting( 'closeclient_blog_sidebar', array( 'default' => true, 'sanitize_callback' => 'absint' ) );
+    $wp_customize->add_control( 'closeclient_blog_sidebar', array( 'label' => 'Show Blog Sticky Sidebar', 'section' => 'closeclient_blog_global', 'type' => 'checkbox' ) );
+
     $wp_customize->add_setting( 'closeclient_blog_title', array( 'default' => 'Insights & Authority', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_blog_title', array( 'label' => 'Blog Title', 'section' => 'closeclient_blog_global' ) );
     $wp_customize->add_setting( 'closeclient_blog_description', array( 'default' => 'Expert strategies to scale your coaching business.', 'sanitize_callback' => 'sanitize_text_field' ) );

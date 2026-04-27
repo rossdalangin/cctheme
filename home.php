@@ -20,6 +20,31 @@ get_header();
         </header>
 
         <?php if ( have_posts() ) : ?>
+            <div class="blog-featured-post mb-5 reveal">
+                <?php
+                $i = 0;
+                while ( have_posts() ) :
+                    the_post();
+                    $i++;
+                    if ( 1 === $i ) : ?>
+                        <article class="featured-article glass p-5 d-flex gap-5 align-items-center">
+                            <?php if ( has_post_thumbnail() ) : ?>
+                                <div class="featured-image" style="flex: 1; aspect-ratio: 16/10; border-radius: var(--radius-lg); overflow: hidden;">
+                                    <?php the_post_thumbnail( 'large', array( 'style' => 'width:100%; height:100%; object-fit:cover;' ) ); ?>
+                                </div>
+                            <?php endif; ?>
+                            <div class="featured-content" style="flex: 1.2;">
+                                <span class="section-tag"><?php esc_html_e( 'FEATURED INSIGHT', 'closeclient' ); ?></span>
+                                <h2 class="h3 mb-3"><?php the_title(); ?></h2>
+                                <p class="text-muted mb-4"><?php echo wp_trim_words( get_the_excerpt(), 35 ); ?></p>
+                                <a href="<?php the_permalink(); ?>" class="cc-button"><?php esc_html_e( 'Read Deep Dive →', 'closeclient' ); ?></a>
+                            </div>
+                        </article>
+                        <?php break; ?>
+                    <?php endif;
+                endwhile; ?>
+            </div>
+
             <div class="blog-posts-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 40px;">
                 <?php
                 while ( have_posts() ) :

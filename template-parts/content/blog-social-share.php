@@ -1,0 +1,47 @@
+<?php
+/**
+ * Template part for social sharing links in blog posts
+ *
+ * @package CloseClient
+ */
+
+$post_url   = urlencode( get_permalink() );
+$post_title = urlencode( get_the_title() );
+?>
+
+<div class="social-share-links d-flex gap-3 align-items-center mt-5 pt-5 border-top border-secondary">
+    <span class="small text-muted fw-bold"><?php esc_html_e( 'SHARE INSIGHTS:', 'closeclient' ); ?></span>
+
+    <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $post_url; ?>&title=<?php echo $post_title; ?>"
+       class="social-share-icon" target="_blank" rel="noopener" title="Share on LinkedIn">
+       <span class="social-icon-dot"></span>
+    </a>
+
+    <a href="https://twitter.com/intent/tweet?text=<?php echo $post_title; ?>&url=<?php echo $post_url; ?>"
+       class="social-share-icon" target="_blank" rel="noopener" title="Share on Twitter">
+       <span class="social-icon-dot"></span>
+    </a>
+
+    <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $post_url; ?>"
+       class="social-share-icon" target="_blank" rel="noopener" title="Share on Facebook">
+       <span class="social-icon-dot"></span>
+    </a>
+</div>
+
+<style>
+.social-share-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--c-secondary);
+    border: 1px solid var(--c-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+.social-share-icon:hover {
+    background: var(--c-accent);
+    transform: translateY(-3px);
+}
+</style>

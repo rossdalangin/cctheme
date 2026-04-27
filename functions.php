@@ -398,3 +398,37 @@ function closeclient_schema_json_ld() {
     }
 }
 add_action( 'wp_head', 'closeclient_schema_json_ld' );
+
+/**
+ * Add Custom User Profile Fields
+ */
+function closeclient_user_contact_methods( $methods ) {
+    $methods['linkedin'] = 'LinkedIn URL';
+    $methods['twitter']  = 'Twitter URL';
+    $methods['facebook'] = 'Facebook URL';
+    return $methods;
+}
+add_filter( 'user_contactmethods', 'closeclient_user_contact_methods' );
+
+/**
+ * Open Graph Meta Tags
+ */
+function closeclient_og_tags() {
+    if ( is_singular() ) {
+        global $post;
+        echo '<meta property="og:title" content="' . esc_attr( get_the_title() ) . '">';
+        echo '<meta property="og:type" content="article">';
+        echo '<meta property="og:url" content="' . esc_url( get_permalink() ) . '">';
+        if ( has_post_thumbnail() ) {
+            $img = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
+            echo '<meta property="og:image" content="' . esc_url( $img[0] ) . '">';
+        }
+        echo '<meta property="og:description" content="' . esc_attr( wp_trim_words( $post->post_excerpt, 25 ) ) . '">';
+    } else {
+        echo '<meta property="og:title" content="' . esc_attr( get_bloginfo( 'name' ) ) . '">';
+        echo '<meta property="og:type" content="website">';
+        echo '<meta property="og:url" content="' . esc_url( home_url() ) . '">';
+        echo '<meta property="og:description" content="' . esc_attr( get_bloginfo( 'description' ) ) . '">';
+    }
+}
+add_action( 'wp_head', 'closeclient_og_tags' );

@@ -100,3 +100,44 @@ window.addEventListener('load', () => {
         }, 500);
     }
 });
+
+/* Stats Counter Animation */
+const stats = document.querySelectorAll('.stat-value');
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const target = entry.target;
+            const count = parseInt(target.innerText.replace(/\D/g, ''));
+            const suffix = target.innerText.replace(/[0-9]/g, '');
+            let current = 0;
+            const increment = count / 50;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= count) {
+                    target.innerText = count + suffix;
+                    clearInterval(timer);
+                } else {
+                    target.innerText = Math.floor(current) + suffix;
+                }
+            }, 30);
+            statsObserver.unobserve(target);
+        }
+    });
+}, { threshold: 0.5 });
+stats.forEach(s => statsObserver.observe(s));
+
+/* Typewriter Effect */
+const typewriterElement = document.querySelector('.typewriter-text');
+if (typewriterElement) {
+    const text = typewriterElement.getAttribute('data-text');
+    let i = 0;
+    const speed = 100;
+    const type = () => {
+        if (i < text.length) {
+            typewriterElement.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    };
+    type();
+}
