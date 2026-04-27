@@ -24,8 +24,9 @@
         <?php endif; ?>
 	</div>
 
-	<div class="entry-content container container-narrow reveal">
-		<?php
+	<div class="entry-content container container-narrow reveal" style="display: grid; grid-template-columns: 1fr 300px; gap: 60px; align-items: start;">
+		<div class="content-body">
+            <?php
 		the_content(
 			sprintf(
 				wp_kses(
@@ -48,10 +49,17 @@
 			)
 		);
 		?>
+        </div>
+
+        <aside class="content-sidebar">
+            <?php get_template_part( 'template-parts/content/blog-sticky-cta' ); ?>
+        </aside>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer container container-narrow">
 		<?php closeclient_entry_footer(); ?>
+
+        <?php get_template_part( 'template-parts/content/content-related' ); ?>
 
         <div class="author-box reveal">
             <div class="author-avatar">

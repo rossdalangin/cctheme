@@ -718,3 +718,71 @@ select {
 .comment-form textarea {
     background: var(--c-bg);
 }
+
+/* --- Sticky Blog CTA Styles --- */
+.sticky-blog-cta {
+    position: sticky;
+    top: 120px;
+    z-index: 10;
+    margin-top: 40px;
+}
+
+.sticky-cta-content {
+    background: var(--c-secondary);
+    border: 1px solid var(--c-accent);
+    border-radius: var(--radius-lg);
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    transition: 0.3s;
+}
+
+.sticky-cta-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 60px rgba(99, 102, 241, 0.2);
+}
+
+.sticky-cta-content h4 {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    color: var(--c-white);
+}
+
+.sticky-cta-content p {
+    font-size: 0.9rem;
+    color: var(--c-text-muted);
+    margin-bottom: 25px;
+}
+
+@media (max-width: 1024px) {
+    .sticky-blog-cta {
+        position: static;
+        margin-bottom: 60px;
+    }
+}
+
+/* Grid Adjustment for Single Post Sidebar */
+@media (max-width: 1024px) {
+    .entry-content.container-narrow {
+        display: block !important;
+    }
+}
+
+/* --- Related Posts Styling --- */
+.related-posts {
+    margin-top: 80px;
+    padding-top: 80px;
+    border-top: 1px solid var(--c-border);
+}
+
+.related-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+@media (max-width: 768px) {
+    .related-posts-grid {
+        grid-template-columns: 1fr;
+    }
+}
