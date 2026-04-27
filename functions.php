@@ -381,3 +381,20 @@ function closeclient_footer_2_fallback() {
     echo '<li><a href="' . esc_url( home_url( '/blog' ) ) . '">Blog</a></li>';
     echo '</ul>';
 }
+
+/**
+ * Global Schema JSON-LD
+ */
+function closeclient_schema_json_ld() {
+    if ( is_front_page() ) {
+        $schema = array(
+            '@context' => 'https://schema.org',
+            '@type'    => 'ProfessionalService',
+            'name'     => get_bloginfo( 'name' ),
+            'url'      => home_url(),
+            'description' => get_bloginfo( 'description' ),
+        );
+        echo '<script type="application/ld+json">' . json_encode( $schema ) . '</script>';
+    }
+}
+add_action( 'wp_head', 'closeclient_schema_json_ld' );

@@ -7,6 +7,7 @@
 
 ?>
 
+    <?php if ( ! is_page_template( 'template-canvas.php' ) ) : ?>
 	<footer id="colophon" class="site-footer" itemscope itemtype="https://schema.org/WPFooter">
 		<div class="container">
             <div class="footer-grid">
@@ -96,6 +97,7 @@
             </div>
 		</div>
 	</footer><!-- #colophon -->
+    <?php endif; ?>
 </div><!-- #page -->
 
 <?php wp_footer(); ?>

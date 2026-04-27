@@ -26,6 +26,13 @@ $tag      = get_theme_mod( 'closeclient_testimonials_tag', 'SUCCESS STORIES' );
             if ( $testimonials_query->have_posts() ) :
                 while ( $testimonials_query->have_posts() ) : $testimonials_query->the_post(); ?>
                     <div class="testimonial-card cc-card reveal">
+                        <?php
+                        $rating = get_post_meta( get_the_ID(), '_testimonial_rating', true );
+                        if ( $rating ) : ?>
+                            <div class="testimonial-rating mb-3" style="color: #fbbf24; font-size: 0.8rem;">
+                                <?php echo str_repeat( '★', intval( $rating ) ); ?>
+                            </div>
+                        <?php endif; ?>
                         <div class="quote-icon mb-4" style="color: var(--c-accent); font-size: 2rem; font-family: serif;">"</div>
                         <div class="mb-5 small text-muted" style="font-style: italic; line-height: 1.8;">
                             <?php the_content(); ?>

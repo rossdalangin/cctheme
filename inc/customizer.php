@@ -60,6 +60,19 @@ function closeclient_customize_register( $wp_customize ) {
         'panel'    => 'closeclient_brand_panel',
     ) );
 
+    $wp_customize->add_setting( 'closeclient_color_preset', array( 'default' => 'deep-onyx', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_color_preset', array(
+        'label'    => 'Color Scheme Preset',
+        'section'  => 'closeclient_colors',
+        'type'     => 'select',
+        'choices'  => array(
+            'deep-onyx'     => 'Deep Onyx (Default)',
+            'royal-indigo'  => 'Royal Indigo',
+            'forest-expert' => 'Forest Expert',
+            'midnight-gold' => 'Midnight Gold'
+        )
+    ) );
+
     $colors = array(
         'primary_color'    => array( 'label' => __( 'Primary Color', 'closeclient' ), 'default' => '#020203' ),
         'secondary_color'  => array( 'label' => __( 'Secondary Color', 'closeclient' ), 'default' => '#0A0A0B' ),
@@ -124,6 +137,10 @@ function closeclient_customize_register( $wp_customize ) {
         'title'    => __( 'Site Layout Settings', 'closeclient' ),
         'panel'    => 'closeclient_layout_panel',
     ) );
+
+    $wp_customize->add_setting( 'closeclient_show_preloader', array( 'default' => true, 'sanitize_callback' => 'absint' ) );
+    $wp_customize->add_control( 'closeclient_show_preloader', array( 'label' => 'Show Preloader Animation', 'section' => 'closeclient_site_layout', 'type' => 'checkbox' ) );
+
     $wp_customize->add_setting( 'closeclient_site_layout_type', array( 'default' => 'full-width', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_site_layout_type', array( 'label' => 'Layout Type', 'section' => 'closeclient_site_layout', 'type' => 'radio', 'choices' => array('full-width' => 'Full Width', 'boxed' => 'Boxed') ) );
     $wp_customize->add_setting( 'closeclient_container_width', array( 'default' => '1200', 'sanitize_callback' => 'sanitize_text_field' ) );
@@ -446,10 +463,26 @@ add_action( 'customize_register', 'closeclient_customize_register' );
  * Render the Customizer CSS
  */
 function closeclient_customize_css() {
+    $preset = get_theme_mod( 'closeclient_color_preset', 'deep-onyx' );
+    $primary = get_theme_mod( 'closeclient_primary_color', '#020203' );
+    $accent  = get_theme_mod( 'closeclient_accent_color', '#6366F1' );
+
+    // Apply Presets (if user hasn't overridden or just to provide a base)
+    if ( 'royal-indigo' === $preset ) {
+        $primary = '#0f172a';
+        $accent  = '#818cf8';
+    } elseif ( 'forest-expert' === $preset ) {
+        $primary = '#061a15';
+        $accent  = '#10b981';
+    } elseif ( 'midnight-gold' === $preset ) {
+        $primary = '#0c0a09';
+        $accent  = '#fbbf24';
+    }
+
     ?>
     <style type="text/css">
         :root {
-            --c-primary: <?php echo get_theme_mod( 'closeclient_primary_color', '#020203' ); ?>;
+            --c-primary: <?php echo esc_attr( $primary ); ?>;
             --c-secondary: <?php echo get_theme_mod( 'closeclient_secondary_color', '#0A0A0B' ); ?>;
             --c-accent: <?php echo get_theme_mod( 'closeclient_accent_color', '#6366F1' ); ?>;
             --c-text: <?php echo get_theme_mod( 'closeclient_text_color', '#F9FAFB' ); ?>;

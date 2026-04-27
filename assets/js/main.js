@@ -90,3 +90,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+/* Preloader Execution */
+window.addEventListener('load', () => {
+    const preloader = document.querySelector('.cc-preloader');
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add('fade-out');
+        }, 500);
+    }
+});

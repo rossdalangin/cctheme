@@ -1,93 +1,80 @@
 <?php
 /**
- * Shortcode Guide for CloseClient Theme Dashboard
+ * Master Admin Guide for CloseClient
  *
  * @package CloseClient
  */
 
-function closeclient_add_shortcode_guide() {
-    add_menu_page(
-        __( 'Master Guide', 'closeclient' ),
-        __( 'Master Guide', 'closeclient' ),
-        'edit_theme_options',
-        'closeclient-shortcodes',
-        'closeclient_render_shortcode_guide',
-        'dashicons-superhero',
-        60
-    );
-}
-add_action( 'admin_menu', 'closeclient_add_shortcode_guide' );
-
-function closeclient_render_shortcode_guide() {
+function closeclient_admin_guide_page() {
     ?>
-    <div class="wrap" style="max-width: 1200px; margin-top: 40px;">
+    <div class="wrap" style="max-width: 1000px; margin-top: 40px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
         <h1 style="font-weight: 900; font-size: 3rem; letter-spacing: -0.06em; margin-bottom: 20px;"><?php _e( 'CloseClient Ultimate Authority System', 'closeclient' ); ?></h1>
-        <p style="font-size: 1.4rem; color: #64748b; line-height: 1.4;"><?php _e( 'The Master Agency Edition. Engineered for high-ticket client acquisition and psychological authority dominance.', 'closeclient' ); ?></p>
+        <p class="description" style="font-size: 1.2rem; line-height: 1.6; color: #666; margin-bottom: 40px;">
+            <?php _e( 'Welcome to your new digital authority engine. This dashboard provides a quick reference for the powerful conversion tools built into your theme.', 'closeclient' ); ?>
+        </p>
 
-        <div style="background: #0f172a; color: #fff; padding: 60px; border-radius: 32px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); margin-top: 50px;">
-            <h2 style="color: #fff; font-size: 2rem; margin-top: 0; letter-spacing: -0.04em;"><?php _e( 'Core Engine Shortcodes', 'closeclient' ); ?></h2>
-            <p style="color: #94a3b8; font-size: 1.1rem; margin-bottom: 40px;"><?php _e( 'Use these shortcodes to deploy the Authority Engine anywhere on your site.', 'closeclient' ); ?></p>
-
-            <table class="wp-list-table widefat fixed" style="background: transparent; color: #cbd5e1; border: none;">
-                <thead>
-                    <tr>
-                        <th style="color: #f8fafc; font-weight: 800; border-bottom: 1px solid #1e293b; padding: 20px;"><?php _e( 'Shortcode', 'closeclient' ); ?></th>
-                        <th style="color: #f8fafc; font-weight: 800; border-bottom: 1px solid #1e293b; padding: 20px;"><?php _e( 'Purpose', 'closeclient' ); ?></th>
-                        <th style="color: #f8fafc; font-weight: 800; border-bottom: 1px solid #1e293b; padding: 20px;"><?php _e( 'Target Outcome', 'closeclient' ); ?></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $shortcodes = array(
-                        '[closeclient_hero]' => array(
-                            'desc' => 'High-fidelity conversion hero with gradient headline.',
-                            'outcome' => 'Immediate Authority'
-                        ),
-                        '[closeclient_portfolio]' => array(
-                            'desc' => 'Interactive project grid showing engineered success.',
-                            'outcome' => 'Proof of Concept'
-                        ),
-                        '[closeclient_services]' => array(
-                            'desc' => 'Master grid of core expert capabilities.',
-                            'outcome' => 'Expert Differentiation'
-                        ),
-                        '[closeclient_pricing]' => array(
-                            'desc' => 'Cyber-tier pricing table with value stack.',
-                            'outcome' => 'Transaction Confidence'
-                        ),
-                        '[closeclient_testimonials]' => array(
-                            'desc' => 'High-impact social proof transformation stories.',
-                            'outcome' => 'Social Validation'
-                        ),
-                        '[closeclient_process]' => array(
-                            'desc' => 'The 3-Step architecture of your results.',
-                            'outcome' => 'Operational Trust'
-                        ),
-                        '[closeclient_faq]' => array(
-                            'desc' => 'Objection-obliterating interactive accordion.',
-                            'outcome' => 'Friction Removal'
-                        ),
-                        '[closeclient_booking_cta]' => array(
-                            'desc' => 'The high-velocity final call to action.',
-                            'outcome' => 'Lead Acquisition'
-                        ),
-                    );
-
-                    foreach ( $shortcodes as $code => $data ) : ?>
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 40px;">
+            <div class="guide-main">
+                <h2 style="font-weight: 800; border-bottom: 2px solid #eee; padding-bottom: 15px; margin-bottom: 25px;"><?php _e( '1. Authority Shortcodes', 'closeclient' ); ?></h2>
+                <table class="widefat striped" style="border:none; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-radius: 8px; overflow:hidden;">
+                    <thead>
                         <tr>
-                            <td style="padding: 20px; border-bottom: 1px solid #1e293b;"><code><?php echo esc_html( $code ); ?></code></td>
-                            <td style="padding: 20px; border-bottom: 1px solid #1e293b;"><?php echo esc_html( $data['desc'] ); ?></td>
-                            <td style="padding: 20px; border-bottom: 1px solid #1e293b;"><span style="color: #818cf8; font-weight: 700;"><?php echo esc_html( $data['outcome'] ); ?></span></td>
+                            <th style="padding:15px; font-weight:700;"><?php _e( 'Shortcode', 'closeclient' ); ?></th>
+                            <th style="padding:15px; font-weight:700;"><?php _e( 'Target Outcome', 'closeclient' ); ?></th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>[closeclient_hero]</code></td><td>Instant authority positioning & primary CTA.</td></tr>
+                        <tr><td><code>[closeclient_vsl]</code></td><td>Deep conversion via high-fidelity video training.</td></tr>
+                        <tr><td><code>[closeclient_services]</code></td><td>Clarity on your unique mechanism/framework.</td></tr>
+                        <tr><td><code>[closeclient_portfolio]</code></td><td>The "Big Proof" - Showcase elite client transformations.</td></tr>
+                        <tr><td><code>[closeclient_testimonials]</code></td><td>Social proof & borrowed authority.</td></tr>
+                        <tr><td><code>[closeclient_stats]</code></td><td>Quantifiable impact & dominance metrics.</td></tr>
+                        <tr><td><code>[closeclient_process]</code></td><td>Reduced friction via a clear roadmap.</td></tr>
+                        <tr><td><code>[closeclient_pricing]</code></td><td>Value stacking & logical investment tiers.</td></tr>
+                        <tr><td><code>[closeclient_faq]</code></td><td>Objection handling & trust building.</td></tr>
+                        <tr><td><code>[closeclient_lead_magnet]</code></td><td>List building & micro-commitments.</td></tr>
+                        <tr><td><code>[closeclient_booking_cta]</code></td><td>The final transition to a booked call.</td></tr>
+                    </tbody>
+                </table>
 
-        <div style="margin-top: 50px; background: #e0f2fe; color: #0369a1; padding: 40px; border-radius: 24px; border-left: 8px solid #0ea5e9;">
-            <h3 style="margin-top: 0; font-weight: 800;"><?php _e( 'The Big Domino Setup', 'closeclient' ); ?></h3>
-            <p style="font-size: 1.1rem;"><?php _e( 'Navigate to <strong>Appearance > Customize > 5. Theme Setup & Tools</strong> and click "Generate Now" to automatically deploy this entire ecosystem onto your site in 3 seconds.', 'closeclient' ); ?></p>
+                <h2 style="font-weight: 800; border-bottom: 2px solid #eee; padding-bottom: 15px; margin-top: 50px; margin-bottom: 25px;"><?php _e( '2. Automation Features', 'closeclient' ); ?></h2>
+                <div style="background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
+                    <h3 style="margin-top:0;"><?php _e( 'Recreate Starter Pages', 'closeclient' ); ?></h3>
+                    <p><?php _e( 'In the Customizer, under "5. Theme Setup & Tools", you can build a complete copy-ready authority funnel in one click.', 'closeclient' ); ?></p>
+                    <p style="color: #6366F1; font-weight: 700;">✓ Creates 10 Strategic Pages<br>✓ Populates Sample CPT Data<br>✓ Auto-Configures Menus</p>
+                </div>
+            </div>
+
+            <div class="guide-sidebar">
+                <div style="background: #111; color: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+                    <h3 style="color: #fff; margin-top:0;"><?php _e( 'Strategy Tip', 'closeclient' ); ?></h3>
+                    <p style="font-size: 0.95rem; line-height: 1.6; opacity: 0.8;">
+                        <?php _e( 'Your website should sell your expertise before you even speak. Focus your navigation on "Services," "Case Studies," and your primary "Book a Call" CTA.', 'closeclient' ); ?>
+                    </p>
+                    <hr style="border:0; border-top: 1px solid rgba(255,255,255,0.1); margin: 20px 0;">
+                    <a href="<?php echo admin_url('customize.php'); ?>" class="button button-primary button-large" style="width:100%; text-align:center; background: #6366F1; border:none;"><?php _e( 'Open Customizer', 'closeclient' ); ?></a>
+                </div>
+
+                <div style="background: #f0f0f1; padding: 25px; border-radius: 8px; margin-top: 30px; border-left: 4px solid #6366F1;">
+                    <h4 style="margin-top:0;"><?php _e( 'Documentation', 'closeclient' ); ?></h4>
+                    <p style="font-size: 0.85rem;"><?php _e( 'View the full strategy guide in your theme folder:', 'closeclient' ); ?><br><code>STRATEGY_GUIDE.md</code></p>
+                </div>
+            </div>
         </div>
     </div>
     <?php
 }
+
+function closeclient_add_admin_menu() {
+    add_menu_page(
+        __( 'CloseClient Guide', 'closeclient' ),
+        __( 'Theme Guide', 'closeclient' ),
+        'manage_options',
+        'closeclient-shortcodes',
+        'closeclient_admin_guide_page',
+        'dashicons-performance',
+        3
+    );
+}
+add_action( 'admin_menu', 'closeclient_add_admin_menu' );
