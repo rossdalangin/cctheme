@@ -193,3 +193,156 @@ img {
 .reveal { opacity: 0; transform: translateY(40px); transition: 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
 .reveal.active { opacity: 1; transform: translateY(0); }
 .reading-progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--c-accent); z-index: 3000; width: 0; }
+
+/* --- Specific Template Styling --- */
+
+/* About Page */
+.template-about-story { padding-top: 100px; }
+
+/* Contact Page Grid */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 4rem;
+}
+.contact-form-wrapper.glass {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-lg);
+    padding: 3rem;
+}
+
+/* Sales Page */
+.sales-hero { padding: 120px 0; background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent); }
+.border-accent { border: 2px solid var(--c-accent) !important; }
+
+/* Thank You Page */
+.thank-you-page .glass {
+    max-width: 800px;
+    margin: 60px auto;
+}
+.success-icon {
+    animation: bounceIn 0.8s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+/* Landing Page */
+.landing-page .landing-hero {
+    padding: 160px 0 100px;
+    background: linear-gradient(180deg, var(--c-secondary) 0%, var(--c-bg) 100%);
+}
+
+/* Lead Magnet */
+.lead-magnet-page .lead-magnet-grid img {
+    box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+    transition: 0.5s ease;
+}
+.lead-magnet-page .lead-magnet-grid img:hover {
+    transform: scale(1.02);
+}
+
+/* General Layout Utilities */
+.glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-xl);
+}
+
+.p-5 { padding: 3rem !important; }
+.p-4 { padding: 1.5rem !important; }
+.mb-5 { margin-bottom: 3rem !important; }
+.mt-5 { margin-top: 3rem !important; }
+.d-flex { display: flex; }
+.gap-4 { gap: 1.5rem; }
+.align-items-center { align-items: center; }
+.justify-content-center { justify-content: center; }
+.text-start { text-align: left; }
+.w-100 { width: 100%; }
+
+@keyframes bounceIn {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.05); opacity: 1; }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+    .contact-grid, .lead-magnet-grid, .thank-you-page .grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem !important;
+    }
+}
+
+/* Header CTA Fix & Customizer Support */
+.header-cta .button.button-accent {
+    background: var(--button-bg);
+    padding: 12px 28px;
+    font-size: 0.75rem;
+}
+.header-cta .button.button-accent:hover {
+    background: var(--button-hover);
+}
+
+/* Page Builder Compatibility Utilities */
+.page-template-template-landing-page .site-header,
+.page-template-template-landing-page .site-footer {
+    display: none !important;
+}
+
+/* Full Width Support for Builders */
+.alignfull {
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    width: 100vw;
+    max-width: 100vw;
+}
+
+/* Theme Setup Message Styles */
+.cc-setup-notice {
+    background: var(--c-accent);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: 700;
+}
+
+/* Final Polish for Typography and Spacing */
+.hero-headline {
+    margin-bottom: 2rem;
+    line-height: 1.1;
+    font-weight: 900;
+}
+
+.hero-subheadline {
+    font-size: 1.25rem;
+    color: var(--c-text-muted);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Page Headers */
+.page-header {
+    padding: 100px 0 60px;
+}
+
+/* Fix for nested sections in templates */
+.site-main > .section:first-child {
+    padding-top: 140px;
+}
+
+.bg-secondary {
+    background-color: var(--c-secondary);
+}
+
+/* Mobile Fixes */
+@media (max-width: 768px) {
+    .site-main > .section:first-child {
+        padding-top: 100px;
+    }
+    .hero-headline {
+        font-size: 2.5rem;
+    }
+}

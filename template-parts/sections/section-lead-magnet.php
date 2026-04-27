@@ -27,7 +27,7 @@
                 ?>
                 <form class="wpcf7-form">
                     <input type="email" placeholder="Enter your business email" required>
-                    <button type="submit" class="button button-accent" style="width: 100%;"><?php echo esc_html( get_theme_mod( 'closeclient_lm_button', 'Access The Blueprint' ) ); ?></button>
+                    <button type="submit" class="cc-button" style="width: 100%;"><?php echo esc_html( get_theme_mod( 'closeclient_lm_button', 'Access The Blueprint' ) ); ?></button>
                 </form>
             </div>
         </div>

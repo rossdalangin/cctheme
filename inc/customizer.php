@@ -336,6 +336,8 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_section( 'closeclient_about_tpl', array( 'title' => 'About Page Content', 'panel' => 'closeclient_pages_panel' ) );
     $wp_customize->add_setting( 'closeclient_about_headline_tpl', array( 'default' => 'Stop Chasing. Start Leading.', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_about_headline_tpl', array( 'label' => 'Hero Headline', 'section' => 'closeclient_about_tpl' ) );
+    $wp_customize->add_setting( 'closeclient_about_text_tpl', array( 'default' => "Most agencies focus on 'pretty.' We focus on Positioning & Profit. Founded on direct-response principles, CloseClient rescues experts from being the 'best-kept secret.'", 'sanitize_callback' => 'sanitize_textarea_field' ) );
+    $wp_customize->add_control( 'closeclient_about_text_tpl', array( 'label' => 'Main Content', 'section' => 'closeclient_about_tpl', 'type' => 'textarea' ) );
 
     // Contact Page Template
     $wp_customize->add_section( 'closeclient_contact_tpl', array( 'title' => 'Contact Page Content', 'panel' => 'closeclient_pages_panel' ) );
@@ -343,23 +345,45 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_control( 'closeclient_contact_headline_tpl', array( 'label' => 'Hero Headline', 'section' => 'closeclient_contact_tpl' ) );
     $wp_customize->add_setting( 'closeclient_contact_subheadline_tpl', array( 'default' => 'Ready to scale your coaching business? Fill out the form or book a call directly.', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_contact_subheadline_tpl', array( 'label' => 'Hero Subheadline', 'section' => 'closeclient_contact_tpl' ) );
+    $wp_customize->add_setting( 'closeclient_contact_form_shortcode', array( 'default' => '[contact-form-7 id="..."]', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_contact_form_shortcode', array( 'label' => 'Form Shortcode', 'section' => 'closeclient_contact_tpl' ) );
 
     // Sales Page Template
     $wp_customize->add_section( 'closeclient_sales_tpl', array( 'title' => 'Sales Page Content', 'panel' => 'closeclient_pages_panel' ) );
-    $wp_customize->add_setting( 'closeclient_sales_hero_headline_tpl', array( 'default' => 'The Exact Blueprint to Scale Your Coaching Business', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_setting( 'closeclient_sales_hero_headline_tpl', array( 'default' => 'Scale to $100k/mo Without Spending 8 Hours a Day in the DMs.', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_sales_hero_headline_tpl', array( 'label' => 'Hero Headline', 'section' => 'closeclient_sales_tpl' ) );
-    $wp_customize->add_setting( 'closeclient_sales_hero_subheadline_tpl', array( 'default' => 'Stop trading time for money. Build a scalable authority system that works for you.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
+    $wp_customize->add_setting( 'closeclient_sales_hero_subheadline_tpl', array( 'default' => 'For the elite consultant who is ready to graduate from "hustling" to "owning a machine."', 'sanitize_callback' => 'sanitize_textarea_field' ) );
     $wp_customize->add_control( 'closeclient_sales_hero_subheadline_tpl', array( 'label' => 'Hero Subheadline', 'section' => 'closeclient_sales_tpl', 'type' => 'textarea' ) );
+    $wp_customize->add_setting( 'closeclient_sales_value_stack', array( 'default' => "Authority Audit ($1,497 Value), Bento Ecosystem ($8,000 Value), Vortex Funnel ($3,500 Value)", 'sanitize_callback' => 'sanitize_textarea_field' ) );
+    $wp_customize->add_control( 'closeclient_sales_value_stack', array( 'label' => 'Value Stack (Comma separated)', 'section' => 'closeclient_sales_tpl', 'type' => 'textarea' ) );
 
     // Thank You Page Template
     $wp_customize->add_section( 'closeclient_thankyou_tpl', array( 'title' => 'Thank You Page Content', 'panel' => 'closeclient_pages_panel' ) );
     $wp_customize->add_setting( 'closeclient_thankyou_headline_tpl', array( 'default' => "You're All Set!", 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_thankyou_headline_tpl', array( 'label' => 'Hero Headline', 'section' => 'closeclient_thankyou_tpl' ) );
+    $wp_customize->add_setting( 'closeclient_thankyou_text_tpl', array( 'default' => "We've received your request. Check your inbox for the next steps.", 'sanitize_callback' => 'sanitize_textarea_field' ) );
+    $wp_customize->add_control( 'closeclient_thankyou_text_tpl', array( 'label' => 'Main Text', 'section' => 'closeclient_thankyou_tpl', 'type' => 'textarea' ) );
 
     // Services Page Template
     $wp_customize->add_section( 'closeclient_services_tpl', array( 'title' => 'Services Page Content', 'panel' => 'closeclient_pages_panel' ) );
+    $wp_customize->add_setting( 'closeclient_services_hero_headline_tpl', array( 'default' => 'Strategic Systems for the 1% Expert.', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_services_hero_headline_tpl', array( 'label' => 'Hero Headline', 'section' => 'closeclient_services_tpl' ) );
     $wp_customize->add_setting( 'closeclient_services_subheadline_tpl', array( 'default' => 'Premium solutions tailored for your stage of growth.', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_services_subheadline_tpl', array( 'label' => 'Hero Subheadline', 'section' => 'closeclient_services_tpl' ) );
+
+    // Landing Page Template
+    $wp_customize->add_section( 'closeclient_landing_tpl', array( 'title' => 'Landing Page Content', 'panel' => 'closeclient_pages_panel' ) );
+    $wp_customize->add_setting( 'closeclient_landing_headline_tpl', array( 'default' => 'Transform Your Expertise Into a High-Performance Machine.', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_landing_headline_tpl', array( 'label' => 'Hero Headline', 'section' => 'closeclient_landing_tpl' ) );
+    $wp_customize->add_setting( 'closeclient_landing_text_tpl', array( 'default' => 'Join the elite ranks of coaches who have automated their authority and scaled their impact.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
+    $wp_customize->add_control( 'closeclient_landing_text_tpl', array( 'label' => 'Hero Text', 'section' => 'closeclient_landing_tpl', 'type' => 'textarea' ) );
+
+    // Lead Magnet Template
+    $wp_customize->add_section( 'closeclient_leadmagnet_tpl', array( 'title' => 'Lead Magnet Page Content', 'panel' => 'closeclient_pages_panel' ) );
+    $wp_customize->add_setting( 'closeclient_leadmagnet_headline_tpl', array( 'default' => 'Get the Authority Blueprint', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_leadmagnet_headline_tpl', array( 'label' => 'Hero Headline', 'section' => 'closeclient_leadmagnet_tpl' ) );
+    $wp_customize->add_setting( 'closeclient_leadmagnet_text_tpl', array( 'default' => 'Download our proven framework for attracting high-ticket clients on autopilot.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
+    $wp_customize->add_control( 'closeclient_leadmagnet_text_tpl', array( 'label' => 'Hero Text', 'section' => 'closeclient_leadmagnet_tpl', 'type' => 'textarea' ) );
 
     // Theme Utilities
     $utility_nonce = wp_create_nonce( 'closeclient_utility_action' );

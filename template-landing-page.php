@@ -6,16 +6,32 @@
  */
 
 wp_head();
+
+$headline = get_theme_mod( 'closeclient_landing_headline_tpl', 'Transform Your Expertise Into a High-Performance Machine.' );
+$text     = get_theme_mod( 'closeclient_landing_text_tpl', 'Join the elite ranks of coaches who have automated their authority and scaled their impact.' );
 ?>
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
 <main id="primary" class="site-main landing-page">
+    <div class="landing-hero section reveal text-center">
+        <div class="container-narrow">
+            <h1 class="hero-headline"><?php echo esc_html( $headline ); ?></h1>
+            <p class="lead text-muted mb-5"><?php echo esc_html( $text ); ?></p>
+        </div>
+    </div>
+
     <?php
     while ( have_posts() ) :
         the_post();
-        the_content();
+        $content = get_the_content();
+        if ( ! empty( $content ) ) {
+            echo '<div class="container">' . apply_filters( 'the_content', $content ) . '</div>';
+        } else {
+            get_template_part( 'template-parts/sections/section-vsl' );
+            get_template_part( 'template-parts/sections/section-booking-cta' );
+        }
     endwhile;
     ?>
 </main>

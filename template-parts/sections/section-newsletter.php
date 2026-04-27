@@ -13,7 +13,7 @@
 
         <form class="newsletter-form-inline">
             <input type="email" placeholder="<?php esc_attr_e( 'Your primary email address', 'closeclient' ); ?>" required>
-            <button type="submit" class="button button-accent"><?php echo esc_html( get_theme_mod( 'closeclient_newsletter_button', 'Subscribe Now' ) ); ?></button>
+            <button type="submit" class="cc-button"><?php echo esc_html( get_theme_mod( 'closeclient_newsletter_button', 'Subscribe Now' ) ); ?></button>
         </form>
         <p class="form-disclaimer"><?php esc_html_e( 'No spam. Just value. Unsubscribe anytime.', 'closeclient' ); ?></p>
     </div>
