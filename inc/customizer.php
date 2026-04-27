@@ -140,8 +140,22 @@ function closeclient_customize_register( $wp_customize ) {
 
     // Footer Content
     $wp_customize->add_section( 'closeclient_footer_settings', array( 'title' => 'Footer Content', 'panel' => 'closeclient_layout_panel' ) );
+
+    $wp_customize->add_setting( 'closeclient_footer_about', array( 'default' => 'Engineering the future of digital authority for elite coaches and consultants.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
+    $wp_customize->add_control( 'closeclient_footer_about', array( 'label' => 'Footer About Text', 'section' => 'closeclient_footer_settings', 'type' => 'textarea' ) );
+
+    $wp_customize->add_setting( 'closeclient_footer_col2_title', array( 'default' => 'Solutions', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_footer_col2_title', array( 'label' => 'Column 2 Title', 'section' => 'closeclient_footer_settings' ) );
+
+    $wp_customize->add_setting( 'closeclient_footer_col3_title', array( 'default' => 'Resources', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_footer_col3_title', array( 'label' => 'Column 3 Title', 'section' => 'closeclient_footer_settings' ) );
+
+    $wp_customize->add_setting( 'closeclient_footer_col4_title', array( 'default' => 'Connect', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_footer_col4_title', array( 'label' => 'Column 4 Title', 'section' => 'closeclient_footer_settings' ) );
+
     $wp_customize->add_setting( 'closeclient_footer_copyright', array( 'default' => '© ' . date('Y') . ' CloseClient. All rights reserved.', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_footer_copyright', array( 'label' => 'Copyright Text', 'section' => 'closeclient_footer_settings' ) );
+
     $wp_customize->add_setting( 'closeclient_footer_disclaimer', array( 'default' => 'Consulting services are subject to terms and conditions. Results may vary.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
     $wp_customize->add_control( 'closeclient_footer_disclaimer', array( 'label' => 'Footer Disclaimer', 'section' => 'closeclient_footer_settings', 'type' => 'textarea' ) );
 

@@ -54,18 +54,33 @@ function closeclient_generate_pages() {
             'content'  => '[closeclient_team][closeclient_authority][closeclient_booking_cta]',
             'template' => 'template-about.php',
         ),
+        'Free Training' => array(
+            'content'  => '[closeclient_vsl][closeclient_booking_cta]',
+            'template' => 'template-landing-page.php',
+        ),
         'Success Blueprint' => array(
             'content'  => '[closeclient_lead_magnet]',
             'template' => 'template-lead-magnet.php',
+        ),
+        'Case Studies' => array(
+            'content'  => '[closeclient_portfolio][closeclient_testimonials][closeclient_booking_cta]',
+            'template' => '',
         ),
         'Contact' => array(
             'content'  => '[closeclient_booking_cta]',
             'template' => 'template-contact.php',
         ),
+        'Privacy Policy' => array(
+            'content'  => 'Your privacy is important to us. [Standard Privacy Text Here]',
+            'template' => '',
+        ),
+        'Terms of Service' => array(
+            'content'  => 'By using our services, you agree to the following terms. [Standard Terms Text Here]',
+            'template' => '',
+        ),
     );
 
     foreach ( $pages as $title => $data ) {
-        // Check by title or content
         $page_check = get_posts( array(
             'post_type'  => 'page',
             'title'      => $title,

@@ -7,41 +7,31 @@
 
 get_header();
 
-$layout = closeclient_get_layout();
+// We default to full-width for all pages to maintain a clean, conversion-focused look.
+// Coaches and consultants usually don't need sidebars on static pages.
+$layout = 'full-width';
 ?>
 
 <main id="primary" class="site-main">
-    <div class="container">
-        <div class="blog-layout">
-            <div class="content-area">
+    <div class="container section">
+        <article id="post-<?php the_ID(); ?>" <?php post_class( 'reveal' ); ?>>
+            <header class="entry-header text-center mb-5">
+                <?php the_title( '<h1 class="entry-title hero-headline">', '</h1>' ); ?>
+            </header>
+
+            <div class="entry-content">
                 <?php
-                while ( have_posts() ) :
-                    the_post();
-                    ?>
-                    <article id="post-<?php the_ID(); ?>" <?php post_class( 'reveal' ); ?>>
-                        <header class="entry-header section text-center">
-                            <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-                        </header>
+                the_content();
 
-                        <div class="entry-content">
-                            <?php the_content(); ?>
-                        </div>
-                    </article>
-                    <?php
-
-                    if ( comments_open() || get_comments_number() ) :
-                        comments_template();
-                    endif;
-                endwhile;
+                wp_link_pages(
+                    array(
+                        'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'closeclient' ),
+                        'after'  => '</div>',
+                    )
+                );
                 ?>
             </div>
-
-            <?php if ( 'full-width' !== $layout ) : ?>
-                <aside id="secondary" class="sidebar">
-                    <?php get_sidebar(); ?>
-                </aside>
-            <?php endif; ?>
-        </div>
+        </article>
     </div>
 
     <?php

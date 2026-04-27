@@ -28,11 +28,12 @@ function closeclient_setup() {
 	 */
 	add_theme_support( 'post-thumbnails' );
 
-	// This theme uses wp_nav_menu() in one location.
+	// Register theme navigation menus.
 	register_nav_menus(
 		array(
-			'menu-1' => esc_html__( 'Primary', 'closeclient' ),
-			'footer' => esc_html__( 'Footer', 'closeclient' ),
+			'menu-1'   => esc_html__( 'Primary', 'closeclient' ),
+			'footer-1' => esc_html__( 'Footer Solutions', 'closeclient' ),
+			'footer-2' => esc_html__( 'Footer Resources', 'closeclient' ),
 		)
 	);
 
