@@ -7,7 +7,7 @@
 ?>
 
 <section class="section section-lead-magnet">
-    <div class="container grid-2 reveal">
+    <div class="container cc-grid-2 reveal">
         <div class="lm-image" style="border-radius: 40px; overflow: hidden; box-shadow: var(--shadow-premium);">
             <?php if ( get_theme_mod( 'closeclient_lm_image' ) ) : ?>
                 <img src="<?php echo esc_url( get_theme_mod( 'closeclient_lm_image' ) ); ?>" alt="Elite Asset">

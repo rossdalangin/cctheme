@@ -432,3 +432,23 @@ function closeclient_og_tags() {
     }
 }
 add_action( 'wp_head', 'closeclient_og_tags' );
+
+/**
+ * Register Block Patterns
+ */
+function closeclient_register_block_patterns() {
+    register_block_pattern_category(
+        'closeclient',
+        array( 'label' => __( 'CloseClient Authority', 'closeclient' ) )
+    );
+
+    register_block_pattern(
+        'closeclient/hero-section',
+        array(
+            'title'       => __( 'Elite Hero Section', 'closeclient' ),
+            'categories'  => array( 'closeclient' ),
+            'content'     => '<!-- wp:group {"className":"section-hero text-center","layout":{"type":"constrained"}} --><div class="wp-block-group section-hero text-center"><!-- wp:heading {"level":1,"className":"hero-headline"} --><h1 class="hero-headline">Stop Begging for Leads and Start Commanding Authority.</h1><!-- /wp:heading --><!-- wp:paragraph --><p>We build the elite digital infrastructure that pre-qualifies your leads.</p><!-- /wp:paragraph --><!-- wp:buttons --><div class="wp-block-buttons"><!-- wp:button {"className":"cc-button"} --><div class="wp-block-button cc-button"><a class="wp-block-button__link">Apply for Strategy Audit →</a></div><!-- /wp:button --></div><!-- /wp:buttons --></div><!-- /wp:group -->',
+        )
+    );
+}
+add_action( 'init', 'closeclient_register_block_patterns' );

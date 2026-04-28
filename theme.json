@@ -1,0 +1,68 @@
+{
+    "version": 2,
+    "settings": {
+        "appearanceTools": true,
+        "color": {
+            "palette": [
+                { "slug": "primary", "color": "#020203", "name": "Primary" },
+                { "slug": "secondary", "color": "#0A0A0B", "name": "Secondary" },
+                { "slug": "accent", "color": "#6366F1", "name": "Accent" },
+                { "slug": "text", "color": "#F9FAFB", "name": "Text" }
+            ],
+            "custom": true,
+            "customGradient": true,
+            "link": true
+        },
+        "typography": {
+            "fontFamilies": [
+                {
+                    "fontFamily": "Inter, sans-serif",
+                    "name": "Inter",
+                    "slug": "inter"
+                }
+            ],
+            "customFontSize": true
+        },
+        "spacing": {
+            "units": ["px", "em", "rem", "vh", "vw"],
+            "blockGap": true
+        },
+        "layout": {
+            "contentSize": "1200px",
+            "wideSize": "1400px"
+        }
+    },
+    "styles": {
+        "color": {
+            "background": "var(--c-bg)",
+            "text": "var(--c-text)"
+        },
+        "typography": {
+            "fontFamily": "var(--body-font)",
+            "lineHeight": "1.6"
+        },
+        "elements": {
+            "link": {
+                "color": {
+                    "text": "var(--c-accent)"
+                }
+            },
+            "button": {
+                "appearance": "none",
+                "border": { "radius": "100px" },
+                "color": {
+                    "background": "var(--c-accent)",
+                    "text": "#ffffff"
+                },
+                "spacing": {
+                    "padding": {
+                        "top": "18px",
+                        "bottom": "18px",
+                        "left": "42px",
+                        "right": "42px"
+                    }
+                }
+            }
+        }
+    }
+}

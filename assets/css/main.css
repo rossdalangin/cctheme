@@ -914,3 +914,39 @@ select:focus {
         margin-top: 30px;
     }
 }
+
+/* --- block Editor (Gutenberg) Core Compatibility --- */
+.wp-block-button__link {
+    display: inline-block;
+    padding: 18px 42px;
+    border-radius: 100px;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.4s cubic-bezier(0.2, 1, 0.2, 1);
+    border: none;
+    background: var(--c-accent);
+    color: var(--c-white);
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+}
+
+.wp-block-button__link:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.4);
+    color: var(--c-white);
+}
+
+.wp-block-columns {
+    gap: 40px;
+}
+
+.wp-block-group.glass {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-xl);
+    padding: 60px;
+}
