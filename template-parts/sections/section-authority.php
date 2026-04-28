@@ -8,7 +8,7 @@
 
 <section class="section section-authority text-center py-5">
     <div class="container">
-        <p class="section-tag"><?php esc_html_e( 'POWERING WORLD-CLASS AUTHORITIES', 'closeclient' ); ?></p>
+        <p class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_authority_tag', 'POWERING WORLD-CLASS AUTHORITIES' ) ); ?></p>
 
         <div class="logo-bar">
             <?php

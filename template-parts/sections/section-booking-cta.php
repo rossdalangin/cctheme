@@ -18,7 +18,7 @@
         <?php endif; ?>
 
         <div class="booking-button-wrapper">
-            <a href="<?php echo esc_url( get_theme_mod( 'closeclient_booking_link', '#' ) ); ?>" class="button cc-button"><?php echo esc_html( get_theme_mod( 'closeclient_booking_text', 'Book Your Scaling Audit' ) ); ?></a>
+            <a href="<?php echo esc_url( get_theme_mod( 'closeclient_booking_link', '#audit' ) ); ?>" class="button cc-button"><?php echo esc_html( get_theme_mod( 'closeclient_booking_text', 'Book Your Scaling Audit' ) ); ?></a>
         </div>
 
         <p class="booking-note"><?php echo esc_html( get_theme_mod( 'closeclient_booking_note', 'Current Waiting List: 14 Days' ) ); ?></p>

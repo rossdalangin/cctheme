@@ -36,7 +36,7 @@ $headline = get_theme_mod( 'closeclient_pricing_headline', 'Investment Opportuni
                         <div class="pricing-features mb-5">
                             <?php the_content(); ?>
                         </div>
-                        <a href="<?php echo esc_url( get_theme_mod( 'closeclient_booking_link', '#' ) ); ?>" class="cc-button <?php echo ! $featured ? 'cc-button-secondary' : ''; ?>">
+                        <a href="<?php echo esc_url( get_theme_mod( 'closeclient_booking_link', '#audit' ) ); ?>" class="cc-button <?php echo ! $featured ? 'cc-button-secondary' : ''; ?>">
                             <?php esc_html_e( 'Secure Your Spot', 'closeclient' ); ?>
                         </a>
                     </div>
@@ -63,7 +63,7 @@ $headline = get_theme_mod( 'closeclient_pricing_headline', 'Investment Opportuni
                                 </li>
                             <?php endforeach; ?>
                         </ul>
-                        <a href="<?php echo esc_url( get_theme_mod( 'closeclient_booking_link', '#' ) ); ?>" class="cc-button <?php echo ! $plan['featured'] ? 'cc-button-secondary' : ''; ?>">
+                        <a href="<?php echo esc_url( get_theme_mod( 'closeclient_booking_link', '#audit' ) ); ?>" class="cc-button <?php echo ! $plan['featured'] ? 'cc-button-secondary' : ''; ?>">
                             <?php esc_html_e( 'Secure Your Spot', 'closeclient' ); ?>
                         </a>
                     </div>

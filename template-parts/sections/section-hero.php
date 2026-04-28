@@ -9,21 +9,21 @@
 <section class="section section-hero">
     <div class="container hero-content-wrapper text-center reveal">
         <h1 class="hero-headline reveal">
-            <span class="gradient-text <?php echo get_theme_mod( 'closeclient_hero_typewriter', false ) ? 'typewriter-text' : ''; ?>" data-text="<?php echo esc_attr( get_theme_mod( 'closeclient_hero_headline', 'Stop Begging for Leads and Start Commanding Authority.' ) ); ?>">
+            <span class="gradient-text <?php echo get_theme_mod( 'closeclient_hero_typewriter', false ) ? 'typewriter-text' : ''; ?>" data-text="<?php echo esc_attr( get_theme_mod( 'closeclient_hero_headline', 'Stop Losing High-Value Clients Before You Even Speak to Them' ) ); ?>">
                 <?php
                 if ( ! get_theme_mod( 'closeclient_hero_typewriter', false ) ) {
-                    echo esc_html( get_theme_mod( 'closeclient_hero_headline', 'Stop Begging for Leads and Start Commanding Authority.' ) );
+                    echo esc_html( get_theme_mod( 'closeclient_hero_headline', 'Stop Losing High-Value Clients Before You Even Speak to Them' ) );
                 }
                 ?>
             </span>
         </h1>
 
         <div class="container-narrow reveal">
-            <p class="hero-subheadline"><?php echo esc_html( get_theme_mod( 'closeclient_hero_subheadline', 'Most coaches are one referral drought away from bankruptcy. We build the elite digital infrastructure that pre-qualifies your leads and positions you as the only logical choice.' ) ); ?></p>
+            <p class="hero-subheadline"><?php echo esc_html( get_theme_mod( 'closeclient_hero_subheadline', 'Your website should act as your top-performing associate: pre-qualifying, positioning, and closing premium clients — automatically.' ) ); ?></p>
         </div>
 
         <div class="hero-cta reveal">
-            <a href="<?php echo esc_url( get_theme_mod( 'closeclient_hero_cta_link', '#' ) ); ?>" class="cc-button"><?php echo esc_html( get_theme_mod( 'closeclient_hero_cta', 'Yes! Build My Authority Engine →' ) ); ?></a>
+            <a href="<?php echo esc_url( get_theme_mod( 'closeclient_hero_cta_link', '#audit' ) ); ?>" class="cc-button"><?php echo esc_html( get_theme_mod( 'closeclient_hero_cta', 'Request Your Authority Audit →' ) ); ?></a>
         </div>
 
         <?php if ( get_theme_mod( 'closeclient_hero_image' ) ) : ?>
