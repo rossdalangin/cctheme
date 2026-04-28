@@ -184,7 +184,22 @@ input[type="submit"],
     transform: translateY(-12px);
     border-color: var(--c-accent);
     background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(99, 102, 241, 0.1);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 40px rgba(99, 102, 241, 0.15);
+}
+.cc-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(99, 102, 241, 0.06), transparent 40%);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+.cc-card:hover::before {
+    opacity: 1;
 }
 
 /* Forms */
@@ -215,6 +230,10 @@ input:focus, textarea:focus, select:focus {
 
 /* Bento Grid */
 .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+.bento-span-12 { grid-column: span 12; }
+.bento-span-8 { grid-column: span 8; }
+.bento-span-6 { grid-column: span 6; }
+.bento-span-4 { grid-column: span 4; }
 
 /* Section-specific Grid Overrides */
 .section-stats .bento-grid {
@@ -286,6 +305,17 @@ input:focus, textarea:focus, select:focus {
 /* Reveal Framework */
 .reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity; }
 .reveal.active { opacity: 1; transform: translateY(0); }
+
+/* Staggered Reveal Logic */
+.reveal-stagger > * { opacity: 0; transform: translateY(20px); transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity; }
+.reveal-stagger.active > * { opacity: 1; transform: translateY(0); }
+
+.reveal-stagger > *:nth-child(1) { transition-delay: 0.1s; }
+.reveal-stagger > *:nth-child(2) { transition-delay: 0.2s; }
+.reveal-stagger > *:nth-child(3) { transition-delay: 0.3s; }
+.reveal-stagger > *:nth-child(4) { transition-delay: 0.4s; }
+.reveal-stagger > *:nth-child(5) { transition-delay: 0.5s; }
+.reveal-stagger > *:nth-child(6) { transition-delay: 0.6s; }
 
 /* --- Accessibility --- */
 a:focus, button:focus, input:focus, textarea:focus, select:focus { outline: 2px solid var(--c-accent); outline-offset: 4px; }
@@ -602,6 +632,12 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
     width: 16px;
     display: inline-block;
 }
+.pricing-item {
+    position: relative;
+}
+.pricing-item .cc-button {
+    width: 100%;
+}
 
 /* Authority Section */
 .section-authority .section-tag {
@@ -848,6 +884,15 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 .aspect-square { aspect-ratio: 1/1; }
 .aspect-hero { aspect-ratio: 16/9; }
 
+/* Text Utilities */
+.gradient-text {
+    background: linear-gradient(135deg, var(--c-white) 0%, var(--c-accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+
 /* Process Section */
 .process-grid {
     display: grid;
@@ -869,4 +914,53 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
     line-height: 1;
     user-select: none;
     pointer-events: none;
+}
+
+/* Modal System */
+.cc-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+.cc-modal.active {
+    display: flex;
+}
+.cc-modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(2, 2, 3, 0.9);
+    backdrop-filter: blur(10px);
+}
+.cc-modal-content {
+    position: relative;
+    max-width: 600px;
+    width: 90%;
+    z-index: 10000;
+    animation: modalIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cc-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 0.3s;
+}
+.cc-modal-close:hover {
+    opacity: 1;
+}
+@keyframes modalIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }

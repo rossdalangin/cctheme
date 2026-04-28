@@ -19,15 +19,15 @@ get_header();
 
     <div class="container section">
         <?php if ( have_posts() ) : ?>
-            <div class="bento-grid">
+            <div class="portfolio-grid">
                 <?php
                 $i = 0;
                 while ( have_posts() ) :
                     the_post();
                     $i++;
-                    $span = ( $i % 3 == 1 ) ? 'span 8' : 'span 4';
+                    $span = ( $i % 3 == 1 ) ? 'bento-span-8' : 'bento-span-4';
                     ?>
-                    <article id="post-<?php the_ID(); ?>" <?php post_class( 'portfolio-item cc-card reveal' ); ?> style="grid-column: <?php echo esc_attr($span); ?>;">
+                    <article id="post-<?php the_ID(); ?>" <?php post_class( "portfolio-item cc-card reveal $span" ); ?>>
                         <?php if ( has_post_thumbnail() ) : ?>
                             <div class="portfolio-image">
                                 <a href="<?php the_permalink(); ?>">

@@ -27,7 +27,7 @@ $headline = get_theme_mod( 'closeclient_pricing_headline', 'Investment Opportuni
                     $price = get_post_meta( get_the_ID(), '_plan_price', true );
                     $featured = get_post_meta( get_the_ID(), '_plan_featured', true );
                     ?>
-                    <div class="pricing-item cc-card reveal <?php echo $featured ? 'border-accent' : ''; ?>" style="position: relative;">
+                    <div class="pricing-item cc-card reveal <?php echo $featured ? 'border-accent' : ''; ?>">
                         <?php if ( $featured ) : ?>
                             <div class="featured-badge"><?php esc_html_e( 'MOST POPULAR', 'closeclient' ); ?></div>
                         <?php endif; ?>
@@ -36,7 +36,9 @@ $headline = get_theme_mod( 'closeclient_pricing_headline', 'Investment Opportuni
                         <div class="pricing-features mb-5">
                             <?php the_content(); ?>
                         </div>
-                        <a href="<?php echo esc_url( get_theme_mod( 'closeclient_booking_link', '#' ) ); ?>" class="cc-button <?php echo ! $featured ? 'cc-button-secondary' : ''; ?>" style="width: 100%;"><?php esc_html_e( 'Secure Your Spot', 'closeclient' ); ?></a>
+                        <a href="<?php echo esc_url( get_theme_mod( 'closeclient_booking_link', '#' ) ); ?>" class="cc-button <?php echo ! $featured ? 'cc-button-secondary' : ''; ?>">
+                            <?php esc_html_e( 'Secure Your Spot', 'closeclient' ); ?>
+                        </a>
                     </div>
                 <?php endwhile;
                 wp_reset_postdata();
@@ -48,7 +50,7 @@ $headline = get_theme_mod( 'closeclient_pricing_headline', 'Investment Opportuni
                     array('name' => 'Mastery', 'price' => '$9,997', 'featured' => false, 'features' => array('Everything in Ecosystem', 'Omnipresent Branding', 'White-Glove Support'))
                 );
                 foreach ( $plans as $plan ) : ?>
-                    <div class="pricing-item cc-card reveal <?php echo $plan['featured'] ? 'border-accent' : ''; ?>" style="position: relative;">
+                    <div class="pricing-item cc-card reveal <?php echo $plan['featured'] ? 'border-accent' : ''; ?>">
                         <?php if ( $plan['featured'] ) : ?>
                             <div class="featured-badge"><?php esc_html_e( 'MOST POPULAR', 'closeclient' ); ?></div>
                         <?php endif; ?>
@@ -61,7 +63,9 @@ $headline = get_theme_mod( 'closeclient_pricing_headline', 'Investment Opportuni
                                 </li>
                             <?php endforeach; ?>
                         </ul>
-                        <a href="<?php echo esc_url( get_theme_mod( 'closeclient_booking_link', '#' ) ); ?>" class="cc-button <?php echo ! $plan['featured'] ? 'cc-button-secondary' : ''; ?>" style="width: 100%;"><?php esc_html_e( 'Secure Your Spot', 'closeclient' ); ?></a>
+                        <a href="<?php echo esc_url( get_theme_mod( 'closeclient_booking_link', '#' ) ); ?>" class="cc-button <?php echo ! $plan['featured'] ? 'cc-button-secondary' : ''; ?>">
+                            <?php esc_html_e( 'Secure Your Spot', 'closeclient' ); ?>
+                        </a>
                     </div>
                 <?php endforeach;
             endif; ?>

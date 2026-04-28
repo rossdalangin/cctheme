@@ -16,7 +16,7 @@ get_header();
                 <div class="container container-narrow">
                     <span class="section-tag"><?php esc_html_e( 'OUR CAPABILITIES', 'closeclient' ); ?></span>
 				<h1 class="hero-headline reveal"><?php esc_html_e( 'Strategic Systems', 'closeclient' ); ?></h1>
-                    <?php the_archive_description( '<div class="section-subheadline">', '</div>' ); ?>
+                    <?php the_archive_description( '<div class="section-subheadline section-subheadline-centered">', '</div>' ); ?>
                 </div>
 			</header>
 
@@ -27,13 +27,13 @@ get_header();
 				while ( have_posts() ) :
 					the_post();
                         $i++;
-                        $span = ( $i % 3 == 1 ) ? 'span 8' : 'span 4';
+                        $span = ( $i % 3 == 1 ) ? 'bento-span-8' : 'bento-span-4';
                         $icons = array('⚡', '💎', '🚀', '🎯', '🔥', '🛡️');
                         $icon = isset($icons[$i-1]) ? $icons[$i-1] : '⚡';
 					?>
-                        <article id="post-<?php the_ID(); ?>" <?php post_class( 'service-item cc-card reveal' ); ?> style="grid-column: <?php echo esc_attr($span); ?>;">
+                        <article id="post-<?php the_ID(); ?>" <?php post_class( "service-item cc-card reveal $span" ); ?>>
                             <div class="service-icon"><?php echo $icon; ?></div>
-                            <h3 class="h4 mb-3"><a href="<?php the_permalink(); ?>" style="text-decoration:none; color:inherit;"><?php the_title(); ?></a></h3>
+                            <h3 class="h4 mb-3"><a href="<?php the_permalink(); ?>" class="text-white text-decoration-none"><?php the_title(); ?></a></h3>
                             <div class="text-muted small mb-4"><?php the_excerpt(); ?></div>
                             <a href="<?php the_permalink(); ?>" class="cc-button cc-button-secondary read-more-btn"><?php esc_html_e( 'System Details →', 'closeclient' ); ?></a>
                         </article>

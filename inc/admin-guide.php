@@ -7,66 +7,189 @@
 
 function closeclient_admin_guide_page() {
     ?>
-    <div class="wrap closeclient-admin-wrap" style="max-width: 1200px; margin: 40px auto; padding-right: 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-        <header style="margin-bottom: 60px;">
-            <div style="background: #020203; color: #fff; padding: 60px; border-radius: 24px; box-shadow: 0 20px 50px rgba(0,0,0,0.15);">
-                <span style="font-size: 0.75rem; font-weight: 800; letter-spacing: 0.3em; color: #6366F1; text-transform: uppercase; margin-bottom: 20px; display: inline-block;">DEFINITIVE EDITION V10.0</span>
-                <h1 style="color: #fff; font-size: 3.5rem; font-weight: 900; letter-spacing: -0.05em; margin: 0; line-height: 1;"><?php _e( 'CloseClient Elite Command Center', 'closeclient' ); ?></h1>
-                <p style="font-size: 1.25rem; opacity: 0.6; margin-top: 20px; max-width: 700px; line-height: 1.6;">
-                    <?php _e( 'Your high-performance authority engine is active. Use this dashboard to manage your strategic assets and scale your high-ticket influence.', 'closeclient' ); ?>
+    <style>
+        .cc-admin-dashboard {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 40px;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #020203;
+            color: #F9FAFB;
+            border-radius: 32px;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+        }
+        .cc-admin-header {
+            margin-bottom: 60px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding-bottom: 60px;
+        }
+        .cc-admin-tag {
+            font-size: 0.75rem;
+            font-weight: 800;
+            letter-spacing: 0.3em;
+            color: #6366F1;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .cc-admin-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            margin: 0;
+            line-height: 1;
+            color: #FFFFFF;
+        }
+        .cc-admin-desc {
+            font-size: 1.25rem;
+            opacity: 0.6;
+            margin-top: 20px;
+            max-width: 700px;
+            line-height: 1.6;
+        }
+        .cc-admin-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+        }
+        .cc-admin-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 24px;
+            padding: 40px;
+        }
+        .cc-admin-card h2 {
+            font-weight: 900;
+            font-size: 1.5rem;
+            margin-top: 0;
+            margin-bottom: 30px;
+            color: #FFFFFF;
+        }
+        .cc-admin-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .cc-admin-list li {
+            margin-bottom: 15px;
+        }
+        .cc-admin-link {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            color: #F9FAFB;
+            font-weight: 600;
+            padding: 16px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 16px;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+        .cc-admin-link:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: #6366F1;
+            transform: translateX(5px);
+        }
+        .cc-admin-link .dashicons {
+            margin-right: 12px;
+            color: #6366F1;
+        }
+        .cc-admin-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .cc-admin-table th {
+            text-align: left;
+            padding: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            color: #6366F1;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+        }
+        .cc-admin-table td {
+            padding: 20px 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .cc-admin-code {
+            background: rgba(255,255,255,0.05);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-family: monospace;
+            color: #6366F1;
+        }
+        .cc-admin-tip {
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(99, 102, 241, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+    </style>
+
+    <div class="wrap">
+        <div class="cc-admin-dashboard">
+            <header class="cc-admin-header">
+                <span class="cc-admin-tag">DEFINITIVE EDITION V11.0</span>
+                <h1 class="cc-admin-title"><?php _e( 'Elite Command Center', 'closeclient' ); ?></h1>
+                <p class="cc-admin-desc">
+                    <?php _e( 'Your high-performance authority engine is active. Manage your strategic assets and scale your high-ticket influence from this centralized hub.', 'closeclient' ); ?>
                 </p>
-            </div>
-        </header>
+            </header>
 
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
-            <!-- Column 1: Shortcuts -->
-            <div style="background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
-                <h2 style="font-weight: 900; font-size: 1.5rem; margin-top: 0; margin-bottom: 30px; border-bottom: 2px solid #f0f0f1; padding-bottom: 15px;"><?php _e( 'Quick Access', 'closeclient' ); ?></h2>
-                <ul style="list-style: none; padding: 0; margin: 0;">
-                    <?php
-                    $cpts = array(
-                        'service'     => array('label' => 'Capabilities', 'icon' => 'rest-api'),
-                        'portfolio'   => array('label' => 'Case Studies', 'icon' => 'portfolio'),
-                        'testimonial' => array('label' => 'Social Proof', 'icon' => 'testimonial'),
-                        'product'     => array('label' => 'Ecosystem Tools', 'icon' => 'cart'),
-                        'team'        => array('label' => 'Meet the Team', 'icon' => 'groups'),
-                        'process'     => array('label' => 'The Roadmap', 'icon' => 'external'),
-                    );
-                    foreach ($cpts as $slug => $data) : ?>
-                        <li style="margin-bottom: 15px;">
-                            <a href="<?php echo admin_url("edit.php?post_type=$slug"); ?>" style="text-decoration:none; display:flex; align-items:center; color:#111; font-weight:600; padding:12px; background:#f9fafb; border-radius:12px; transition:0.3s;">
-                                <span class="dashicons dashicons-<?php echo $data['icon']; ?>" style="margin-right:10px; color:#6366F1;"></span>
-                                <?php echo $data['label']; ?>
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
+            <div class="cc-admin-grid">
+                <!-- Column 1: Shortcuts -->
+                <div class="cc-admin-card">
+                    <h2><?php _e( 'Strategic Assets', 'closeclient' ); ?></h2>
+                    <ul class="cc-admin-list">
+                        <?php
+                        $cpts = array(
+                            'service'     => array('label' => 'Capabilities', 'icon' => 'rest-api'),
+                            'portfolio'   => array('label' => 'Case Studies', 'icon' => 'portfolio'),
+                            'testimonial' => array('label' => 'Social Proof', 'icon' => 'testimonial'),
+                            'product'     => array('label' => 'Ecosystem Tools', 'icon' => 'cart'),
+                            'team'        => array('label' => 'The Architects', 'icon' => 'groups'),
+                            'process'     => array('label' => 'The Roadmap', 'icon' => 'external'),
+                            'pricing'     => array('label' => 'Investment Tiers', 'icon' => 'money-alt'),
+                        );
+                        foreach ($cpts as $slug => $data) : ?>
+                            <li>
+                                <a href="<?php echo admin_url("edit.php?post_type=$slug"); ?>" class="cc-admin-link">
+                                    <span class="dashicons dashicons-<?php echo $data['icon']; ?>"></span>
+                                    <?php echo $data['label']; ?>
+                                </a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
 
-            <!-- Column 2: Shortcodes -->
-            <div style="background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); grid-column: span 2;">
-                <h2 style="font-weight: 900; font-size: 1.5rem; margin-top: 0; margin-bottom: 30px; border-bottom: 2px solid #f0f0f1; padding-bottom: 15px;"><?php _e( 'Authority Shortcodes', 'closeclient' ); ?></h2>
-                <table class="widefat striped" style="border:none;">
-                    <thead>
-                        <tr>
-                            <th style="font-weight:700;"><?php _e( 'Shortcode', 'closeclient' ); ?></th>
-                            <th style="font-weight:700;"><?php _e( 'Target Outcome', 'closeclient' ); ?></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td><code>[closeclient_hero]</code></td><td>Instant authority positioning & primary CTA.</td></tr>
-                        <tr><td><code>[closeclient_logo_ticker]</code></td><td>Visual social proof via infinite logo scroll.</td></tr>
-                        <tr><td><code>[closeclient_vsl]</code></td><td>High-fidelity video sales training.</td></tr>
-                        <tr><td><code>[closeclient_products]</code></td><td>Monetize and display your ecosystem tools.</td></tr>
-                        <tr><td><code>[closeclient_stats]</code></td><td>Quantify your impact and market dominance.</td></tr>
-                        <tr><td><code>[closeclient_booking_cta]</code></td><td>Convert visitors into qualified strategy audits.</td></tr>
-                    </tbody>
-                </table>
-                <div style="margin-top: 40px; padding: 25px; background: #EEF2FF; border-radius: 16px; border: 1px solid #C7D2FE;">
-                    <p style="margin: 0; color: #4338CA; font-weight: 700;"><?php _e( 'Automation Tip:', 'closeclient' ); ?></p>
-                    <p style="margin: 10px 0 0; font-size: 0.95rem; line-height: 1.5; color: #4338CA;">
-                        <?php _e( 'Use the "Starter Page Generator" in the Customizer to build a complete 10-page high-converting funnel in 1 click.', 'closeclient' ); ?>
-                    </p>
+                <!-- Column 2: Shortcodes -->
+                <div class="cc-admin-card">
+                    <h2><?php _e( 'Authority Shortcodes', 'closeclient' ); ?></h2>
+                    <table class="cc-admin-table">
+                        <thead>
+                            <tr>
+                                <th><?php _e( 'Shortcode', 'closeclient' ); ?></th>
+                                <th><?php _e( 'Target Outcome', 'closeclient' ); ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><span class="cc-admin-code">[closeclient_hero]</span></td><td>Instant authority positioning & primary CTA.</td></tr>
+                            <tr><td><span class="cc-admin-code">[closeclient_logo_ticker]</span></td><td>Visual social proof via infinite logo scroll.</td></tr>
+                            <tr><td><span class="cc-admin-code">[closeclient_vsl]</span></td><td>High-fidelity video sales training.</td></tr>
+                            <tr><td><span class="cc-admin-code">[closeclient_products]</span></td><td>Display and monetize your ecosystem tools.</td></tr>
+                            <tr><td><span class="cc-admin-code">[closeclient_process]</span></td><td>Visualize your unique mechanism & roadmap.</td></tr>
+                        <tr><td><span class="cc-admin-code">[closeclient_pricing]</span></td><td>Present your investment tiers and value stack.</td></tr>
+                        <tr><td><span class="cc-admin-code">[closeclient_testimonials]</span></td><td>Showcase high-fidelity social proof.</td></tr>
+                            <tr><td><span class="cc-admin-code">[closeclient_booking_cta]</span></td><td>Convert visitors into qualified strategy audits.</td></tr>
+                        </tbody>
+                    </table>
+                    <div class="cc-admin-tip">
+                        <p style="margin: 0; color: #6366F1; font-weight: 800; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.1em;"><?php _e( 'Automation Tip:', 'closeclient' ); ?></p>
+                        <p style="margin: 15px 0 0; font-size: 1rem; line-height: 1.6; color: rgba(255,255,255,0.7);">
+                            <?php _e( 'Navigate to **Appearance > Customize > 5. Theme Setup & Tools** and select "Generate Now" to build a complete 10-page authority funnel in seconds.', 'closeclient' ); ?>
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>

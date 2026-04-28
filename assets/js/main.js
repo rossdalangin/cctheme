@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateHeader();
 
     // --- Reveal Animation System (Intersection Observer) ---
-    const revealElements = document.querySelectorAll('.reveal');
+    const revealElements = document.querySelectorAll('.reveal, .reveal-stagger');
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -72,6 +72,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrolled = (winScroll / height) * 100;
         progressBar.style.width = scrolled + "%";
+    });
+
+    // --- Card Glow Mouse Tracking ---
+    const cards = document.querySelectorAll('.cc-card');
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
     });
 
     // --- Premium Magnetic Effect with Hardware Acceleration ---
