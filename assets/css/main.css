@@ -93,6 +93,36 @@ img {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--c-bg); }
+::-webkit-scrollbar-thumb { background: var(--c-border); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--c-accent); }
+
+/* --- Unified Premium Button System --- */
+.cc-button,
+.wp-block-button__link,
+.wpcf7-submit,
+input[type="submit"],
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 18px 42px;
+    border-radius: 100px;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s, border-color 0.3s, color 0.3s, opacity 0.3s;
+    border: none;
+    background: var(--button-bg);
+    color: var(--c-white);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transform: translate(0, 0); /* Force initial state for magnetic effect */
 }
 
 .cc-button::after,
@@ -146,8 +176,16 @@ img {
     padding: 60px 48px;
     transition: 0.6s cubic-bezier(0.2, 1, 0.2, 1);
     will-change: transform, opacity;
+    position: relative;
+    overflow: hidden;
 }
-.cc-card:hover { transform: translateY(-12px); border-color: var(--c-accent); background: rgba(255, 255, 255, 0.05); }
+
+.cc-card:hover {
+    transform: translateY(-12px);
+    border-color: var(--c-accent);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(99, 102, 241, 0.1);
+}
 
 /* Forms */
 input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], input[type="number"], input[type="tel"], textarea, select {
@@ -177,6 +215,11 @@ input:focus, textarea:focus, select:focus {
 
 /* Bento Grid */
 .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px; }
+
+/* Section-specific Grid Overrides */
+.section-stats .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
 
 /* --- Specific Components --- */
 
@@ -241,8 +284,8 @@ input:focus, textarea:focus, select:focus {
 }
 
 /* Reveal Framework */
-.reveal { opacity: 0; transform: translateY(40px); transition: 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
-.reveal.active { opacity: 1; transform: translateY(0); transition-delay: 0.1s; }
+.reveal { opacity: 0; transform: translateY(30px); transition: 1s cubic-bezier(0.16, 1, 0.3, 1); will-change: transform, opacity; }
+.reveal.active { opacity: 1; transform: translateY(0); }
 
 /* --- Accessibility --- */
 a:focus, button:focus, input:focus, textarea:focus, select:focus { outline: 2px solid var(--c-accent); outline-offset: 4px; }
@@ -298,74 +341,104 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 
 /* Social */
 .social-share-links svg { width: 18px; height: 18px; }
-/* --- Unified Premium Button System --- */
-.cc-button,
-.wp-block-button__link,
-.wpcf7-submit,
-input[type="submit"],
-.btn {
-    display: inline-flex;
+
+/* Logo Ticker Section */
+.section-logo-ticker {
+    padding: 40px 0;
+    border-top: 1px solid var(--c-border);
+    border-bottom: 1px solid var(--c-border);
+    background: var(--c-bg);
+}
+.ticker-container {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+.ticker-wrapper {
+    display: inline-block;
+    animation: ticker 30s linear infinite;
+}
+.ticker-item {
+    display: inline-block;
+    margin: 0 40px;
+    opacity: 0.4;
+    transition: 0.3s;
+}
+.ticker-item:hover { opacity: 1 !important; }
+.ticker-item img {
+    height: 30px;
+    width: auto;
+    filter: grayscale(1);
+}
+@keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* VSL Section */
+.vsl-video-container {
+    border: 2px solid var(--c-border);
+    border-radius: 32px;
+    overflow: hidden;
+    box-shadow: var(--shadow-premium);
+    background: var(--c-secondary);
+}
+.video-placeholder {
+    aspect-ratio: 16/9;
+    display: flex;
     align-items: center;
     justify-content: center;
-    padding: 18px 42px;
+    color: var(--c-text-muted);
+}
+
+/* General Section Utilities */
+.section-header {
+    margin-bottom: 80px;
+}
+
+/* Services Section */
+.service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+/* Stats Section */
+.stat-value {
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.05em;
+}
+
+/* Booking CTA */
+.booking-scarcity {
     border-radius: 100px;
-    font-weight: 800;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background 0.3s, box-shadow 0.3s, border-color 0.3s, color 0.3s, opacity 0.3s;
-    border: none;
-    background: var(--button-bg);
-    color: var(--c-white);
-    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    font-size: 0.8rem;
-    position: relative;
+    color: var(--c-accent);
+    border: 1px solid var(--c-accent);
+}
+.booking-button-wrapper {
+    margin: 3rem 0;
+}
+.booking-note {
+    font-weight: 700;
+    color: var(--c-accent);
+}
+
+/* Products Section */
+.product-item {
+    padding: 0;
     overflow: hidden;
-    z-index: 1;
-    transform: translate(0, 0); /* Force initial state */
 }
-
-.cc-button::after,
-.wp-block-button__link::after,
-.wpcf7-submit::after,
-.btn::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%;
+.product-meta {
+    padding: 3rem;
+}
+.product-thumb {
+    flex: 0 0 150px;
+}
+.product-thumb img {
     width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.6s ease;
-    z-index: -1;
-}
-
-.cc-button:hover,
-.wp-block-button__link:hover,
-.wpcf7-submit:hover,
-.btn:hover {
-    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.4);
-    background: var(--button-hover);
-    color: var(--c-white);
-    /* NO TRANSFORM HERE - HANDLED BY JS */
-}
-
-.cc-button:hover::after,
-.wp-block-button__link:hover::after,
-.wpcf7-submit:hover::after,
-.btn:hover::after {
-    left: 100%;
-}
-
-.cc-button-secondary, .btn-secondary {
-    background: rgba(255, 255, 255, 0.03) !important;
-    border: 1px solid var(--c-border) !important;
-    box-shadow: none !important;
-    color: var(--c-text) !important;
-}
-
-.cc-button-secondary:hover, .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.08) !important;
-    border-color: var(--c-accent) !important;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }

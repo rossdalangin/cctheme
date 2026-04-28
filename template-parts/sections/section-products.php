@@ -10,7 +10,7 @@ $headline = get_theme_mod( 'closeclient_products_headline', 'Essential Tools Tha
 
 <section id="products" class="section section-products">
     <div class="container">
-        <div class="section-header text-center reveal" style="margin-bottom: 80px;">
+        <div class="section-header text-center reveal">
             <span class="section-tag"><?php esc_html_e( 'ECOSYSTEM TOOLS', 'closeclient' ); ?></span>
             <h2 class="section-headline"><?php echo esc_html( $headline ); ?></h2>
             <p class="lead text-muted mt-4"><?php esc_html_e( 'Themes and plugins trusted by elite coaches to streamline operations and elevate branding.', 'closeclient' ); ?></p>
@@ -29,11 +29,11 @@ $headline = get_theme_mod( 'closeclient_products_headline', 'Essential Tools Tha
                     $link  = get_post_meta( get_the_ID(), '_product_link', true );
                     $link  = $link ? $link : get_permalink();
                     ?>
-                    <div class="product-item cc-card reveal d-flex flex-column" style="padding:0; overflow:hidden;">
-                        <div class="product-meta d-flex gap-5 align-items-center p-5">
+                    <div class="product-item cc-card reveal d-flex flex-column">
+                        <div class="product-meta d-flex gap-5 align-items-center">
                             <?php if ( has_post_thumbnail() ) : ?>
-                                <div class="product-thumb" style="flex: 0 0 150px;">
-                                    <?php the_post_thumbnail( 'medium', array( 'style' => 'width:100%; height:auto; border-radius:12px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);' ) ); ?>
+                                <div class="product-thumb">
+                                    <?php the_post_thumbnail( 'medium' ); ?>
                                 </div>
                             <?php endif; ?>
                             <div class="product-info">

@@ -40,10 +40,10 @@ function closeclient_reset_defaults() {
 function closeclient_generate_cpt_data() {
     // 1. Services (Strategic Consultant terms from closeclient.com)
     $services = array(
-        'Prospect Conversion Architecture' => 'Visitors are guided into qualified, ready-to-pay clients automatically through strategic psychological triggers.',
-        'Market Dominance Positioning'   => 'Positions your firm as the obvious authority in your niche without over-promising or sounding desperate.',
-        'Automated Intake & Filtering'   => 'Protects your time and ensures only high-value, pre-qualified inquiries reach your calendar.',
-        'Deal Velocity Optimization'     => 'Intelligent follow-up systems that accelerate the decision-making process for premium high-ticket clients.'
+        'Revenue Architecture' => 'Transform your website into a high-performance sales associate that pre-qualifies and closes premium clients 24/7.',
+        'Authority Positioning' => 'Command the attention of the 1% by positioning your expertise as the only logical solution in a sea of generalists.',
+        'Vortex Intake Systems' => 'Filter out the "tire-kickers" and ensure only pre-sold, high-value inquiries ever reach your calendar.',
+        'Conversion Engineering' => 'Strategic psychological triggers engineered to accelerate deal velocity and maximize your client lifetime value.'
     );
     foreach ( $services as $title => $excerpt ) {
         if ( ! get_posts( array( 'post_type' => 'service', 'title' => $title, 'post_status' => 'any' ) ) ) {

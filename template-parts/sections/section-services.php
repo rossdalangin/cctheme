@@ -11,12 +11,12 @@ $tag      = get_theme_mod( 'closeclient_services_tag', 'SERVICES' );
 
 <section id="services" class="section section-services bg-dark">
     <div class="container">
-        <div class="section-header text-center reveal" style="margin-bottom: 80px;">
+        <div class="section-header text-center reveal">
             <span class="section-tag"><?php echo esc_html( $tag ); ?></span>
             <h2 class="section-headline"><?php echo esc_html( $headline ); ?></h2>
         </div>
 
-        <div class="bento-grid" style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px;">
+        <div class="bento-grid">
             <?php
             // Try CPT first
             $services_query = new WP_Query( array(
@@ -33,7 +33,7 @@ $tag      = get_theme_mod( 'closeclient_services_tag', 'SERVICES' );
                     $icon = isset($icons[$i-1]) ? $icons[$i-1] : '⚡';
                     ?>
                     <div class="service-item cc-card reveal" style="grid-column: <?php echo esc_attr($span); ?>;">
-                        <div class="service-icon mb-4" style="font-size: 2rem;"><?php echo $icon; ?></div>
+                        <div class="service-icon"><?php echo $icon; ?></div>
                         <h3 class="h4 mb-3"><?php the_title(); ?></h3>
                         <div class="text-muted small"><?php the_excerpt(); ?></div>
                     </div>
@@ -59,7 +59,7 @@ $tag      = get_theme_mod( 'closeclient_services_tag', 'SERVICES' );
                     if ( empty($text) ) { $text = "Engineered solutions designed to crush the complexity ceiling and scale your impact."; }
                     ?>
                     <div class="service-item cc-card reveal" style="grid-column: <?php echo esc_attr($s['span']); ?>;">
-                        <div class="service-icon mb-4" style="font-size: 2rem;"><?php echo $s['icon']; ?></div>
+                        <div class="service-icon"><?php echo $s['icon']; ?></div>
                         <h3 class="h4 mb-3"><?php echo esc_html( $title ); ?></h3>
                         <p class="text-muted small"><?php echo esc_html( $text ); ?></p>
                     </div>

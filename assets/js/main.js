@@ -74,21 +74,23 @@ document.addEventListener('DOMContentLoaded', () => {
         progressBar.style.width = scrolled + "%";
     });
 
-    // --- Subtle Hover Magnet Effect for Buttons ---
-    const magneticButtons = document.querySelectorAll('.cc-button:not(.cc-button-secondary)');
+    // --- Premium Magnetic Effect with Hardware Acceleration ---
+    const magneticButtons = document.querySelectorAll('.cc-button:not(.cc-button-secondary), .social-icon');
     magneticButtons.forEach(btn => {
         btn.addEventListener('mousemove', (e) => {
             const position = btn.getBoundingClientRect();
-            const x = e.clientX - position.left - position.width / 2;
-            const y = e.clientY - position.top - position.height / 2;
+            const x = (e.clientX - position.left - position.width / 2) * 0.25;
+            const y = (e.clientY - position.top - position.height / 2) * 0.25;
 
-            btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
-            btn.style.transition = 'none'; // Disable transition during mousemove for zero-lag
+            btn.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+            btn.style.transition = 'none';
+            btn.style.zIndex = '10';
         });
 
         btn.addEventListener('mouseleave', () => {
-            btn.style.transition = 'transform 0.5s cubic-bezier(0.2, 1, 0.2, 1)';
-            btn.style.transform = 'translate(0, 0)';
+            btn.style.transition = 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            btn.style.transform = 'translate3d(0, 0, 0)';
+            btn.style.zIndex = '';
         });
     });
 });
@@ -167,10 +169,15 @@ document.querySelectorAll('a[href="#audit"]').forEach(btn => {
 if (closeBtn) closeBtn.addEventListener('click', closeModal);
 if (overlay) overlay.addEventListener('click', closeModal);
 
-            floatingCta.classList.remove('is-visible');
-        }
-    });
-}
+/* Exit Intent Logic */
+let exitIntentFired = false;
+document.addEventListener('mouseleave', (e) => {
+    if (e.clientY <= 0 && !exitIntentFired) {
+        openModal();
+        exitIntentFired = true;
+        console.log('Exit intent triggered');
+    }
+});
 
 /* Floating CTA Interaction */
 const floatingCta = document.querySelector('.floating-cta');
