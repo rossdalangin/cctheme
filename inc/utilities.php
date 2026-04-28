@@ -27,6 +27,10 @@ function closeclient_reset_defaults() {
         'closeclient_hero_subheadline' => 'Your website should act as your top-performing associate: pre-qualifying, positioning, and closing premium clients — automatically.',
         'closeclient_hero_cta'         => 'Request Your Authority Audit →',
         'closeclient_hero_cta_link'    => '#audit',
+        'closeclient_portfolio_btn'    => 'View Case Study',
+        'closeclient_pricing_btn'      => 'Secure Your Spot',
+        'closeclient_newsletter_disclaimer' => 'No spam. Just value. Unsubscribe anytime.',
+        'closeclient_products_subheadline' => 'Themes and plugins trusted by elite coaches to streamline operations and elevate branding.',
     );
 
     foreach ( $defaults as $key => $value ) {
@@ -132,7 +136,7 @@ function closeclient_generate_cpt_data() {
     // 8. Pricing
     $pricing = array(
         'Authority Foundation' => array('price' => '$2,997', 'feat' => '0', 'content' => '<ul><li>Complete Authority Audit</li><li>Digital Infrastructure Build</li><li>Core Direct Response Copy</li></ul>'),
-        'Signature Ecosystem'  => array('price' => '$5,997', 'feat' => '1', 'content' => '<ul><li>Everything in Foundation</li><li>Vortex Application Funnel</li><li>Automated Lead Intake</li></ul>'),
+        'Signature Ecosystem'  => array('price' => '$5,997', 'feat' => '1', 'content' => '<ul><li>Everything in Foundation</li><li>Vortex Funnel</li><li>Automated Lead Intake</li></ul>'),
         'Legacy Mastery'       => array('price' => '$9,997', 'feat' => '0', 'content' => '<ul><li>Everything in Ecosystem</li><li>Omnipresent Branding</li><li>White-Glove Support</li></ul>')
     );
     foreach ( $pricing as $title => $data ) {
