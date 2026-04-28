@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const x = e.pageX - position.left - position.width / 2;
             const y = e.pageY - position.top - position.height / 2;
 
-            btn.style.transform = `translate(${x * 0.15}px, ${y * 0.3}px)`;
+            btn.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
         });
 
         btn.addEventListener('mouseout', () => {

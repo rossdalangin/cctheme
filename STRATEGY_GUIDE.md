@@ -53,9 +53,14 @@ Every section and page template is 100% manageable via **Appearance > Customize*
 
 - **Homepage Sections:** Toggle visibility and edit text for all 15 modular blocks.
 - **Page Templates:** Edit headlines and content for specialized layouts (Sales, Lead Magnet, etc.).
-- **Global Settings:** Control your "Signature Agency" colors, typography, and header behavior (Sticky/Glass).
+- **Global Settings:** Control your "Signature Agency" colors, typography, header behavior, and global "Content Max Width."
 
-## 4. Automation & Data Population
+## 4. Authority Sections v9.0
+- **Logo Ticker:** Infinite scroll of authority logos. Use `[closeclient_logo_ticker]`.
+- **Products:** High-fidelity cards for your tools and ecosystem. Use `[closeclient_products]`.
+- **Scarcity Booking:** Integrated scarcity triggers in the final CTA to increase conversion velocity.
+
+## 5. Automation & Data Population
 
 If you need to reset your site structure or populate it with high-end sample data:
 1. Go to **Customize > 5. Theme Setup & Tools**.

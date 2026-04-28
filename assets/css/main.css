@@ -1095,3 +1095,32 @@ input[type="submit"] {
         gap: 30px;
     }
 }
+
+/* Interaction Polish */
+.reveal.active {
+    transition-delay: 0.1s;
+}
+
+.cc-card {
+    will-change: transform, opacity;
+}
+
+.primary-menu-list a {
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.primary-menu-list a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--c-accent);
+    transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.primary-menu-list a:hover::after {
+    width: 100%;
+}

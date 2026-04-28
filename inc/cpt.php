@@ -140,3 +140,32 @@ function closeclient_save_custom_meta( $post_id ) {
     update_post_meta( $post_id, '_plan_featured', isset( $_POST['plan_featured'] ) ? '1' : '0' );
 }
 add_action( 'save_post', 'closeclient_save_custom_meta' );
+
+/**
+ * Add Product Metadata
+ */
+function closeclient_add_product_meta() {
+    add_meta_box( 'product_details', 'Product Details', 'closeclient_product_meta_callback', 'product', 'side' );
+}
+add_action( 'add_meta_boxes', 'closeclient_add_product_meta' );
+
+function closeclient_product_meta_callback( $post ) {
+    $price = get_post_meta( $post->ID, '_product_price', true );
+    $link  = get_post_meta( $post->ID, '_product_link', true );
+    ?>
+    <p><label for="product_price">Price (e.g. $49):</label></p>
+    <input type="text" id="product_price" name="product_price" value="<?php echo esc_attr( $price ); ?>" style="width:100%;">
+    <p><label for="product_link">External Link:</label></p>
+    <input type="url" id="product_link" name="product_link" value="<?php echo esc_attr( $link ); ?>" style="width:100%;">
+    <?php
+}
+
+function closeclient_save_product_meta( $post_id ) {
+    if ( isset( $_POST['product_price'] ) ) {
+        update_post_meta( $post_id, '_product_price', sanitize_text_field( $_POST['product_price'] ) );
+    }
+    if ( isset( $_POST['product_link'] ) ) {
+        update_post_meta( $post_id, '_product_link', esc_url_raw( $_POST['product_link'] ) );
+    }
+}
+add_action( 'save_post', 'closeclient_save_product_meta' );

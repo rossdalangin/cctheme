@@ -24,7 +24,11 @@ $headline = get_theme_mod( 'closeclient_products_headline', 'Essential Tools Tha
             ) );
 
             if ( $products_query->have_posts() ) :
-                while ( $products_query->have_posts() ) : $products_query->the_post(); ?>
+                while ( $products_query->have_posts() ) : $products_query->the_post();
+                    $price = get_post_meta( get_the_ID(), '_product_price', true );
+                    $link  = get_post_meta( get_the_ID(), '_product_link', true );
+                    $link  = $link ? $link : get_permalink();
+                    ?>
                     <div class="product-item cc-card reveal d-flex flex-column" style="padding:0; overflow:hidden;">
                         <div class="product-meta d-flex gap-5 align-items-center p-5">
                             <?php if ( has_post_thumbnail() ) : ?>
@@ -33,12 +37,15 @@ $headline = get_theme_mod( 'closeclient_products_headline', 'Essential Tools Tha
                                 </div>
                             <?php endif; ?>
                             <div class="product-info">
+                                <?php if ( $price ) : ?>
+                                    <span class="text-accent small fw-bold mb-2 d-block"><?php echo esc_html( $price ); ?></span>
+                                <?php endif; ?>
                                 <h3 class="h4 mb-3"><?php the_title(); ?></h3>
                                 <div class="text-muted small mb-4">
                                     <?php the_excerpt(); ?>
                                 </div>
-                                <a href="<?php the_permalink(); ?>" class="cc-button cc-button-secondary" style="padding:10px 24px; font-size: 0.7rem;">
-                                    <?php esc_html_e( 'Learn More →', 'closeclient' ); ?>
+                                <a href="<?php echo esc_url( $link ); ?>" class="cc-button cc-button-secondary" style="padding:10px 24px; font-size: 0.7rem;">
+                                    <?php esc_html_e( 'Get This Tool →', 'closeclient' ); ?>
                                 </a>
                             </div>
                         </div>

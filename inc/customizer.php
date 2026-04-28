@@ -375,6 +375,9 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'closeclient_booking_note', array( 'default' => 'Current Waiting List: 14 Days', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_booking_note', array( 'label' => 'Bottom Note', 'section' => 'closeclient_booking_content' ) );
 
+    $wp_customize->add_setting( 'closeclient_booking_scarcity', array( 'default' => 'Only 2 Strategy Audit slots remaining for this month.', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_booking_scarcity', array( 'label' => 'Scarcity Message', 'section' => 'closeclient_booking_content' ) );
+
     // ==========================================
     // 4. PAGE TEMPLATES PANEL
     // ==========================================
