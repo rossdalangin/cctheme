@@ -93,6 +93,10 @@
                          <a href="<?php echo esc_url( home_url( '/privacy-policy' ) ); ?>" class="text-muted text-decoration-none me-3"><?php esc_html_e( 'Privacy Policy', 'closeclient' ); ?></a>
                          <a href="<?php echo esc_url( home_url( '/terms-of-service' ) ); ?>" class="text-muted text-decoration-none"><?php esc_html_e( 'Terms of Service', 'closeclient' ); ?></a>
                     </div>
+
+                    <a href="#page" class="back-to-top small text-accent text-decoration-none fw-bold" style="cursor:pointer;">
+                        <?php esc_html_e( 'BACK TO TOP ↑', 'closeclient' ); ?>
+                    </a>
                 </div>
             </div>
 		</div>

@@ -99,6 +99,20 @@ function closeclient_generate_cpt_data() {
             update_post_meta( $post_id, '_step_order', $data['order'] );
         }
     }
+
+    // 6. Pricing
+    $pricing = array(
+        'Authority Foundation' => array('price' => '$2,997', 'feat' => '0', 'content' => '<ul><li>Audit</li><li>Basic Funnel</li></ul>'),
+        'Signature Ecosystem'  => array('price' => '$5,997', 'feat' => '1', 'content' => '<ul><li>Everything in Foundation</li><li>Vortex Application</li><li>Ads Management</li></ul>'),
+        'Legacy Mastery'       => array('price' => '$9,997', 'feat' => '0', 'content' => '<ul><li>Everything in Ecosystem</li><li>Omnipresent Branding</li><li>White-Glove Support</li></ul>')
+    );
+    foreach ( $pricing as $title => $data ) {
+        if ( ! get_posts( array( 'post_type' => 'pricing', 'title' => $title ) ) ) {
+            $post_id = wp_insert_post( array( 'post_type' => 'pricing', 'post_title' => $title, 'post_content' => $data['content'], 'post_status' => 'publish' ) );
+            update_post_meta( $post_id, '_plan_price', $data['price'] );
+            update_post_meta( $post_id, '_plan_featured', $data['feat'] );
+        }
+    }
 }
 
 /**

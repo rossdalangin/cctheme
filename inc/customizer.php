@@ -145,6 +145,9 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_control( 'closeclient_site_layout_type', array( 'label' => 'Layout Type', 'section' => 'closeclient_site_layout', 'type' => 'radio', 'choices' => array('full-width' => 'Full Width', 'boxed' => 'Boxed') ) );
     $wp_customize->add_setting( 'closeclient_container_width', array( 'default' => '1200', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_container_width', array( 'label' => 'Container Max Width (px)', 'section' => 'closeclient_site_layout', 'type' => 'number' ) );
+
+    $wp_customize->add_setting( 'closeclient_content_width', array( 'default' => '800', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_content_width', array( 'label' => 'Content Max Width (px)', 'section' => 'closeclient_site_layout', 'type' => 'number' ) );
     $wp_customize->add_setting( 'closeclient_default_layout', array( 'default' => 'right-sidebar', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_default_layout', array( 'label' => 'Content Sidebar', 'section' => 'closeclient_site_layout', 'type' => 'radio', 'choices' => array('full-width' => 'No Sidebar', 'right-sidebar' => 'Right Sidebar', 'left-sidebar' => 'Left Sidebar') ) );
 
@@ -164,6 +167,9 @@ function closeclient_customize_register( $wp_customize ) {
 
     // Footer Content
     $wp_customize->add_section( 'closeclient_footer_settings', array( 'title' => 'Footer Content', 'panel' => 'closeclient_layout_panel' ) );
+
+    $wp_customize->add_setting( 'closeclient_footer_glass', array( 'default' => false, 'sanitize_callback' => 'absint' ) );
+    $wp_customize->add_control( 'closeclient_footer_glass', array( 'label' => 'Use Glassmorphism Footer', 'section' => 'closeclient_footer_settings', 'type' => 'checkbox' ) );
 
     $wp_customize->add_setting( 'closeclient_footer_about', array( 'default' => 'Engineering the future of digital authority for elite coaches and consultants.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
     $wp_customize->add_control( 'closeclient_footer_about', array( 'label' => 'Footer About Text', 'section' => 'closeclient_footer_settings', 'type' => 'textarea' ) );
@@ -504,12 +510,20 @@ function closeclient_customize_css() {
             --font-weight: <?php echo get_theme_mod( 'closeclient_body_weight', '400' ); ?>;
             --h1-weight: <?php echo get_theme_mod( 'closeclient_h1_weight', '700' ); ?>;
             --container-width: <?php echo get_theme_mod( 'closeclient_container_width', '1200' ); ?>px;
+            --content-width: <?php echo get_theme_mod( 'closeclient_content_width', '800' ); ?>px;
             --header-glass: <?php echo get_theme_mod( 'closeclient_header_glass', '0.7' ); ?>;
         }
 
         .site-header {
             position: <?php echo get_theme_mod( 'closeclient_header_sticky', true ) ? 'sticky' : 'relative'; ?>;
             background: rgba(2, 2, 3, var(--header-glass));
+        }
+
+        .site-footer {
+            <?php if ( get_theme_mod( 'closeclient_footer_glass', false ) ) : ?>
+                background: rgba(10, 10, 11, 0.5);
+                backdrop-filter: blur(20px);
+            <?php endif; ?>
         }
 
         h1, h2, h3, h4, h5, h6 {
