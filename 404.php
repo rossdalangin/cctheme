@@ -2,36 +2,36 @@
 /**
  * The template for displaying 404 pages (not found)
  *
+ * @link https://codex.wordpress.org/Creating_an_Error_404_Page
+ *
  * @package CloseClient
  */
 
 get_header();
 ?>
 
-<main id="primary" class="site-main">
-    <div class="container section text-center reveal">
-        <section class="error-404 not-found glass p-5" style="max-width: 800px; margin: 60px auto;">
-            <header class="page-header mb-5">
-                <span class="section-tag"><?php esc_html_e( 'ERROR 404', 'closeclient' ); ?></span>
-                <h1 class="page-title h2"><?php esc_html_e( 'Lost in the Complexity Ceiling?', 'closeclient' ); ?></h1>
-                <p class="lead text-muted"><?php esc_html_e( 'The page you are looking for has been moved or retired. Let\'s get you back to engineering your authority.', 'closeclient' ); ?></p>
-            </header>
+	<main id="primary" class="site-main">
 
-            <div class="page-content">
-                <div class="mb-5">
-                    <?php get_search_form(); ?>
-                </div>
+		<section class="error-404 not-found glass p-5 error-404-container text-center reveal">
+			<header class="page-header mb-5">
+                <span class="section-tag"><?php esc_html_e( '404 ERROR', 'closeclient' ); ?></span>
+				<h1 class="page-title h2"><?php esc_html_e( 'That page can&rsquo;t be found.', 'closeclient' ); ?></h1>
+			</header><!-- .page-header -->
 
-                <div class="404-ctas d-flex justify-content-center gap-4">
-                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="cc-button"><?php esc_html_e( 'Back to Home', 'closeclient' ); ?></a>
-                    <a href="<?php echo esc_url( home_url( '/free-training' ) ); ?>" class="cc-button cc-button-secondary"><?php esc_html_e( 'Watch Free Training', 'closeclient' ); ?></a>
+			<div class="page-content">
+				<p class="lead text-muted mb-5"><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try a search or head back to the growth hub?', 'closeclient' ); ?></p>
+
+				<?php get_search_form(); ?>
+
+                <div class="cta-actions mt-5">
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="cc-button"><?php esc_html_e( 'Back to Growth Hub', 'closeclient' ); ?></a>
                 </div>
-            </div>
-        </section>
+			</div><!-- .page-content -->
+		</section><!-- .error-404 -->
 
         <?php get_template_part( 'template-parts/sections/section-lead-magnet' ); ?>
-    </div>
-</main>
+
+	</main><!-- #main -->
 
 <?php
 get_footer();

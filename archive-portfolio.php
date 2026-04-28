@@ -19,7 +19,7 @@ get_header();
 
     <div class="container section">
         <?php if ( have_posts() ) : ?>
-            <div class="bento-grid" style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px;">
+            <div class="bento-grid">
                 <?php
                 $i = 0;
                 while ( have_posts() ) :
@@ -27,18 +27,18 @@ get_header();
                     $i++;
                     $span = ( $i % 3 == 1 ) ? 'span 8' : 'span 4';
                     ?>
-                    <article id="post-<?php the_ID(); ?>" <?php post_class( 'portfolio-item cc-card reveal' ); ?> style="grid-column: <?php echo esc_attr($span); ?>; padding: 0; overflow: hidden;">
+                    <article id="post-<?php the_ID(); ?>" <?php post_class( 'portfolio-item cc-card reveal' ); ?> style="grid-column: <?php echo esc_attr($span); ?>;">
                         <?php if ( has_post_thumbnail() ) : ?>
-                            <div class="portfolio-image" style="aspect-ratio: 16/9; overflow: hidden;">
+                            <div class="portfolio-image">
                                 <a href="<?php the_permalink(); ?>">
-                                    <?php the_post_thumbnail( 'large', array( 'style' => 'width: 100%; height: 100%; object-fit: cover; transition: 0.5s;' ) ); ?>
+                                    <?php the_post_thumbnail( 'large' ); ?>
                                 </a>
                             </div>
                         <?php endif; ?>
-                        <div class="portfolio-content p-5">
-                            <h3 class="h4 mb-3"><a href="<?php the_permalink(); ?>" style="text-decoration:none; color:inherit;"><?php the_title(); ?></a></h3>
+                        <div class="portfolio-content">
+                            <h3 class="h4 mb-3"><a href="<?php the_permalink(); ?>" class="text-white text-decoration-none"><?php the_title(); ?></a></h3>
                             <div class="text-muted small mb-4"><?php echo wp_trim_words( get_the_excerpt(), 20 ); ?></div>
-                            <a href="<?php the_permalink(); ?>" class="cc-button cc-button-secondary" style="padding: 12px 32px; font-size: 0.8rem;"><?php esc_html_e( 'View Case Study', 'closeclient' ); ?></a>
+                            <a href="<?php the_permalink(); ?>" class="cc-button cc-button-secondary read-more-btn"><?php esc_html_e( 'View Case Study', 'closeclient' ); ?></a>
                         </div>
                     </article>
                 <?php endwhile; ?>
@@ -52,13 +52,6 @@ get_header();
 
     <?php get_template_part( 'template-parts/sections/section-booking-cta' ); ?>
 </main>
-
-<style>
-.portfolio-item:hover .portfolio-image img { transform: scale(1.05); }
-@media (max-width: 992px) {
-    .portfolio-item { grid-column: span 12 !important; }
-}
-</style>
 
 <?php
 get_footer();

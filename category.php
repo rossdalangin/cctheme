@@ -15,7 +15,7 @@ get_header();
             <header class="page-header section text-center">
                 <?php
                 the_archive_title( '<h1 class="page-title">', '</h1>' );
-                the_archive_description( '<div class="section-subheadline" style="margin: 0 auto;">', '</div>' );
+                the_archive_description( '<div class="section-subheadline section-subheadline-centered">', '</div>' );
                 ?>
             </header>
 

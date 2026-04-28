@@ -44,7 +44,7 @@ $headline = get_theme_mod( 'closeclient_products_headline', 'Essential Tools Tha
                                 <div class="text-muted small mb-4">
                                     <?php the_excerpt(); ?>
                                 </div>
-                                <a href="<?php echo esc_url( $link ); ?>" class="cc-button cc-button-secondary" style="padding:10px 24px; font-size: 0.7rem;">
+                                <a href="<?php echo esc_url( $link ); ?>" class="cc-button cc-button-secondary product-btn">
                                     <?php esc_html_e( 'Get This Tool →', 'closeclient' ); ?>
                                 </a>
                             </div>
@@ -53,7 +53,7 @@ $headline = get_theme_mod( 'closeclient_products_headline', 'Essential Tools Tha
                 <?php endwhile;
                 wp_reset_postdata();
             else : ?>
-                <div class="cc-card text-center py-5" style="grid-column: span 2;">
+                <div class="cc-card text-center py-5 product-empty-card">
                     <p class="text-muted"><?php esc_html_e( 'No products found. Add them in the dashboard.', 'closeclient' ); ?></p>
                 </div>
             <?php endif; ?>

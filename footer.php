@@ -76,7 +76,7 @@
                 <div class="footer-column">
                     <h3 class="footer-title h6 mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_footer_col4_title', 'Connect' ) ); ?></h3>
                     <p class="small text-muted mb-4"><?php esc_html_e( 'Ready to engineer your authority?', 'closeclient' ); ?></p>
-                    <a href="<?php echo esc_url( get_theme_mod( 'closeclient_header_cta_link', '#' ) ); ?>" class="cc-button" style="padding: 12px 24px; font-size: 0.7rem;">
+                    <a href="<?php echo esc_url( get_theme_mod( 'closeclient_header_cta_link', '#' ) ); ?>" class="cc-button footer-cta-btn">
                         <?php echo esc_html( get_theme_mod( 'closeclient_header_cta_text', 'Book a Call' ) ); ?>
                     </a>
                 </div>
@@ -94,7 +94,7 @@
                          <a href="<?php echo esc_url( home_url( '/terms-of-service' ) ); ?>" class="text-muted text-decoration-none"><?php esc_html_e( 'Terms of Service', 'closeclient' ); ?></a>
                     </div>
 
-                    <a href="#page" class="back-to-top small text-accent text-decoration-none fw-bold" style="cursor:pointer;">
+                    <a href="#page" class="back-to-top small text-accent text-decoration-none">
                         <?php esc_html_e( 'BACK TO TOP ↑', 'closeclient' ); ?>
                     </a>
                 </div>

@@ -11,12 +11,12 @@ $tag      = get_theme_mod( 'closeclient_process_tag', 'OUR PROCESS' );
 
 <section id="process" class="section section-process bg-secondary">
     <div class="container">
-        <div class="section-header text-center reveal" style="margin-bottom: 100px;">
+        <div class="section-header text-center reveal">
             <span class="section-tag"><?php echo esc_html( $tag ); ?></span>
             <h2 class="section-headline"><?php echo esc_html( $headline ); ?></h2>
         </div>
 
-        <div class="process-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; position: relative;">
+        <div class="process-grid">
             <?php
             $process_query = new WP_Query( array(
                 'post_type'      => 'process',
@@ -30,8 +30,8 @@ $tag      = get_theme_mod( 'closeclient_process_tag', 'OUR PROCESS' );
                 while ( $process_query->have_posts() ) : $process_query->the_post();
                     $order = get_post_meta( get_the_ID(), '_step_order', true );
                     ?>
-                    <div class="process-step cc-card reveal" style="position: relative; overflow: hidden; padding-top: 80px;">
-                        <div class="step-num" style="font-size: 8rem; font-weight: 900; color: var(--c-indigo); opacity: 0.05; position: absolute; top: -2rem; left: 0; line-height: 1;">0<?php echo esc_html($order); ?></div>
+                    <div class="process-step cc-card reveal">
+                        <div class="step-num">0<?php echo esc_html($order); ?></div>
                         <h3 class="h4 mb-3"><?php the_title(); ?></h3>
                         <div class="text-muted small"><?php the_content(); ?></div>
                     </div>
@@ -43,8 +43,8 @@ $tag      = get_theme_mod( 'closeclient_process_tag', 'OUR PROCESS' );
                     $title = get_theme_mod( "closeclient_process_step_{$i}_title", "Phase $i" );
                     $text  = get_theme_mod( "closeclient_process_step_{$i}_text", "Description for step $i of your proven roadmap." );
                     ?>
-                    <div class="process-step cc-card reveal" style="position: relative; overflow: hidden; padding-top: 80px;">
-                        <div class="step-num" style="font-size: 8rem; font-weight: 900; color: var(--c-indigo); opacity: 0.05; position: absolute; top: -2rem; left: 0; line-height: 1;">0<?php echo $i; ?></div>
+                    <div class="process-step cc-card reveal">
+                        <div class="step-num">0<?php echo $i; ?></div>
                         <h3 class="h4 mb-3"><?php echo esc_html( $title ); ?></h3>
                         <p class="text-muted small"><?php echo esc_html( $text ); ?></p>
                     </div>

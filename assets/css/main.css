@@ -395,6 +395,9 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 .section-header {
     margin-bottom: 80px;
 }
+.section-subheadline-centered {
+    margin: 0 auto;
+}
 
 /* Services Section */
 .service-icon {
@@ -433,6 +436,13 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 .product-meta {
     padding: 3rem;
 }
+.product-btn {
+    padding: 10px 24px;
+    font-size: 0.7rem;
+}
+.product-empty-card {
+    grid-column: span 2;
+}
 .product-thumb {
     flex: 0 0 150px;
 }
@@ -453,6 +463,12 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
     height: 100%;
     object-fit: cover;
 }
+.client-avatar-manual {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
 .case-study-block {
     margin-bottom: 3rem;
 }
@@ -465,4 +481,392 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 .service-detail-glass {
     padding: 3rem;
     margin-bottom: 3rem;
+}
+
+/* Blog Archive Cards */
+.blog-card {
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.blog-card .post-thumbnail {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+}
+.blog-card .post-content {
+    padding: 40px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.blog-card .post-meta {
+    font-size: 0.65rem;
+}
+.blog-card .entry-title a {
+    text-decoration: none;
+    color: inherit;
+}
+.blog-card .post-excerpt {
+    font-size: 0.95rem;
+}
+.blog-card .read-more-btn {
+    padding: 12px 32px;
+    font-size: 0.8rem;
+}
+
+/* Lead Magnet Template */
+.lead-magnet-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+.lead-magnet-mockup img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+}
+.lead-magnet-mockup .glass {
+    aspect-ratio: 4/5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+}
+
+/* Hero Section Refinements */
+.hero-subheadline {
+    font-size: 1.5rem;
+    color: var(--c-text-muted);
+    margin-bottom: 60px;
+    line-height: 1.5;
+}
+.hero-image-box {
+    margin-top: 80px;
+}
+
+/* Testimonials Section */
+.testimonial-rating {
+    color: #fbbf24;
+    font-size: 0.8rem;
+}
+.quote-icon {
+    color: var(--c-accent);
+    font-size: 2rem;
+    font-family: serif;
+    margin-bottom: 1.5rem;
+}
+.testimonial-text {
+    font-style: italic;
+    line-height: 1.8;
+}
+.client-name {
+    color: var(--c-white);
+}
+
+/* Team Section */
+.member-image {
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--c-secondary);
+    margin: 0 auto 30px;
+    max-width: 200px;
+}
+.member-role {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Pricing Section */
+.featured-badge {
+    background: var(--c-accent);
+    color: var(--c-white);
+    padding: 8px 24px;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    letter-spacing: 0.1em;
+}
+.price {
+    color: var(--c-white);
+}
+.price .small {
+    font-size: 1rem;
+}
+.pricing-feature-check {
+    width: 16px;
+    display: inline-block;
+}
+
+/* Authority Section */
+.section-authority .section-tag {
+    margin-bottom: 40px;
+    opacity: 0.6;
+}
+.logo-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 60px;
+    opacity: 0.3;
+    align-items: center;
+}
+.authority-logo {
+    height: 30px;
+}
+.authority-logo img {
+    height: 100%;
+    width: auto;
+    filter: grayscale(1) invert(1);
+}
+.authority-logo-text {
+    font-size: 1.4rem;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    color: var(--c-white);
+}
+
+/* About Section */
+.about-placeholder {
+    aspect-ratio: 1/1;
+    background: var(--c-secondary);
+    border-radius: 24px;
+}
+
+/* Content General */
+.entry-meta {
+    font-size: 0.9rem;
+    color: var(--c-accent);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+}
+.post-thumbnail-container {
+    margin-bottom: 80px;
+}
+
+/* Single Post Content */
+.single-post-grid {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 60px;
+}
+
+/* Sales Page Template */
+.value-stack-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-md);
+}
+.value-stack-icon {
+    font-size: 1.5rem;
+}
+.value-stack-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Footer Utilities */
+.footer-cta-btn {
+    padding: 12px 24px;
+    font-size: 0.7rem;
+}
+.back-to-top {
+    cursor: pointer;
+    font-weight: 700;
+}
+
+/* 404 Page */
+.error-404-container {
+    max-width: 800px;
+    margin: 60px auto;
+}
+
+/* Blog Index & Home */
+.featured-post-item {
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    margin-bottom: 120px;
+    text-align: left;
+}
+.featured-image {
+    flex: 1;
+    aspect-ratio: 16/10;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+.featured-content {
+    flex: 1.2;
+}
+.blog-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+/* Portfolio Archive */
+.portfolio-item {
+    padding: 0;
+    overflow: hidden;
+}
+.portfolio-item .portfolio-image {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+}
+.portfolio-item .portfolio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+}
+.portfolio-item:hover .portfolio-image img {
+    transform: scale(1.05);
+}
+.portfolio-item .portfolio-content {
+    padding: 3rem;
+}
+
+/* Page Templates: Contact & Thank You */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    margin-top: 4rem;
+}
+.success-icon {
+    font-size: 4rem;
+    color: var(--c-accent);
+}
+.thank-you-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+/* About Template */
+.template-about-text {
+    font-size: 1.25rem;
+    color: var(--c-text-muted);
+    line-height: 1.8;
+}
+
+/* Related Posts */
+.related-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 40px;
+}
+.related-post-card {
+    padding: 30px;
+}
+
+/* Navigation Utilities */
+.nav-subtitle {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--c-text-muted);
+}
+.nav-title {
+    display: block;
+    font-weight: 700;
+}
+
+/* Section-specific Lead Magnet */
+.lm-image {
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: var(--shadow-premium);
+}
+.lm-mockup {
+    aspect-ratio: 1/1;
+    background: linear-gradient(135deg, var(--c-accent), var(--c-cyan));
+    opacity: 0.1;
+}
+.cf7-integration-wrapper {
+    background: var(--c-secondary);
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid var(--c-border);
+}
+
+/* Portfolio Bento */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+}
+.portfolio-item-card {
+    padding: 0;
+    overflow: hidden;
+}
+.portfolio-item-card .portfolio-image {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+}
+.portfolio-item-card .portfolio-content {
+    padding: 3rem;
+}
+.portfolio-empty-card {
+    grid-column: span 12;
+    text-align: center;
+    padding: 100px;
+}
+
+/* Archive Service */
+.archive-service-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+}
+
+/* Testimonials Refinements */
+.client-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.client-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* FAQ Section */
+.faq-question {
+    color: var(--c-white);
+}
+
+/* General Layout Utilities */
+.aspect-square { aspect-ratio: 1/1; }
+.aspect-hero { aspect-ratio: 16/9; }
+
+/* Process Section */
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    position: relative;
+}
+.process-step {
+    padding-top: 80px;
+}
+.step-num {
+    font-size: 8rem;
+    font-weight: 900;
+    color: var(--c-accent);
+    opacity: 0.05;
+    position: absolute;
+    top: -2rem;
+    left: 0;
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
 }

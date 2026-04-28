@@ -5,13 +5,13 @@
  * @package CloseClient
  */
 
-$headline = get_theme_mod( 'closeclient_testimonials_headline', 'The Engineered Path to Success' );
-$tag      = get_theme_mod( 'closeclient_testimonials_tag', 'SUCCESS STORIES' );
+$headline = get_theme_mod( 'closeclient_testimonials_headline', 'Elite Success Stories' );
+$tag      = get_theme_mod( 'closeclient_testimonials_tag', 'SOCIAL PROOF' );
 ?>
 
 <section id="testimonials" class="section section-testimonials">
     <div class="container">
-        <div class="section-header text-center reveal" style="margin-bottom: 80px;">
+        <div class="section-header text-center reveal">
             <span class="section-tag"><?php echo esc_html( $tag ); ?></span>
             <h2 class="section-headline"><?php echo esc_html( $headline ); ?></h2>
         </div>
@@ -24,43 +24,43 @@ $tag      = get_theme_mod( 'closeclient_testimonials_tag', 'SUCCESS STORIES' );
             ) );
 
             if ( $testimonials_query->have_posts() ) :
-                while ( $testimonials_query->have_posts() ) : $testimonials_query->the_post(); ?>
-                    <div class="testimonial-card cc-card reveal">
-                        <?php
-                        $rating = get_post_meta( get_the_ID(), '_testimonial_rating', true );
-                        if ( $rating ) : ?>
-                            <div class="testimonial-rating mb-3" style="color: #fbbf24; font-size: 0.8rem;">
-                                <?php echo str_repeat( '★', intval( $rating ) ); ?>
+                while ( $testimonials_query->have_posts() ) : $testimonials_query->the_post();
+                    $rating = get_post_meta( get_the_ID(), '_testimonial_rating', true );
+                    ?>
+                    <div class="testimonial-item cc-card reveal">
+                        <?php if ( $rating ) : ?>
+                            <div class="testimonial-rating mb-3">
+                                <?php for ( $i = 1; $i <= $rating; $i++ ) { echo '★'; } ?>
                             </div>
                         <?php endif; ?>
-                        <div class="quote-icon mb-4" style="color: var(--c-accent); font-size: 2rem; font-family: serif;">"</div>
-                        <div class="mb-5 small text-muted" style="font-style: italic; line-height: 1.8;">
+                        <div class="quote-icon">"</div>
+                        <div class="mb-5 small text-muted testimonial-text">
                             <?php the_content(); ?>
                         </div>
-                        <div class="client-meta d-flex align-items-center gap-3">
+                        <div class="testimonial-client d-flex align-items-center gap-3">
+                            <?php if ( has_post_thumbnail() ) : ?>
+                                <div class="client-avatar">
+                                    <?php the_post_thumbnail( 'thumbnail' ); ?>
+                                </div>
+                            <?php endif; ?>
                             <div class="client-info">
-                                <div class="client-name h5 mb-0" style="color: var(--c-white);"><?php the_title(); ?></div>
+                                <div class="client-name h5 mb-0"><?php the_title(); ?></div>
                             </div>
                         </div>
                     </div>
                 <?php endwhile;
                 wp_reset_postdata();
             else :
-                // Fallback to Customizer
+                // Fallback
                 for ( $i = 1; $i <= 3; $i++ ) :
-                    $text = get_theme_mod( "closeclient_testimonial_{$i}_text", "Working with this team was the single most impactful decision for my coaching business. We scaled from $10k to $50k/mo in 90 days." );
-                    $name = get_theme_mod( "closeclient_testimonial_{$i}_name", "Founder $i" );
-                    $role = get_theme_mod( "closeclient_testimonial_{$i}_role", "Business Coach" );
+                    $text = get_theme_mod( "closeclient_testimonial_{$i}_text", "The system CloseClient built allowed me to scale to $100k months while working fewer hours." );
+                    $name = get_theme_mod( "closeclient_testimonial_{$i}_name", "Elite Expert $i" );
                     ?>
-                    <div class="testimonial-card cc-card reveal">
-                        <div class="quote-icon mb-4" style="color: var(--c-accent); font-size: 2rem; font-family: serif;">"</div>
-                        <p class="mb-5" style="font-style: italic; color: var(--c-text); line-height: 1.8;"><?php echo esc_html( $text ); ?></p>
-                        <div class="client-meta d-flex align-items-center gap-3">
-                            <div class="client-info">
-                                <div class="client-name h5 mb-0" style="color: var(--c-white);"><?php echo esc_html( $name ); ?></div>
-                                <div class="client-role small text-muted"><?php echo esc_html( $role ); ?></div>
-                            </div>
-                        </div>
+                    <div class="testimonial-item cc-card reveal">
+                        <div class="testimonial-rating mb-3">★★★★★</div>
+                        <div class="quote-icon">"</div>
+                        <p class="mb-5 testimonial-text"><?php echo esc_html( $text ); ?></p>
+                        <div class="client-name h5 mb-0"><?php echo esc_html( $name ); ?></div>
                     </div>
                 <?php endfor;
             endif; ?>

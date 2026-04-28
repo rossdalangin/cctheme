@@ -2,39 +2,38 @@
 /**
  * The template for displaying all single posts
  *
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
+ *
  * @package CloseClient
  */
 
 get_header();
 ?>
 
-<main id="primary" class="site-main">
-    <?php
-    while ( have_posts() ) :
-        the_post();
+	<main id="primary" class="site-main">
 
-        get_template_part( 'template-parts/content/content-single' );
+		<?php
+		while ( have_posts() ) :
+			the_post();
 
-        echo '<div class="container container-narrow reveal mb-5">';
-        the_post_navigation(
-            array(
-                'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous Article', 'closeclient' ) . '</span> <span class="nav-title" style="display:block; font-weight:700;">%title</span>',
-                'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next Article', 'closeclient' ) . '</span> <span class="nav-title" style="display:block; font-weight:700;">%title</span>',
-            )
-        );
-        echo '</div>';
+			get_template_part( 'template-parts/content/content-single' );
 
-        if ( comments_open() || get_comments_number() ) :
-            echo '<div class="container container-narrow mb-5">';
-            comments_template();
-            echo '</div>';
-        endif;
+			the_post_navigation(
+				array(
+					'prev_text' => '<span class="nav-subtitle">' . esc_html__( 'Previous Article', 'closeclient' ) . '</span> <span class="nav-title">%title</span>',
+					'next_text' => '<span class="nav-subtitle">' . esc_html__( 'Next Article', 'closeclient' ) . '</span> <span class="nav-title">%title</span>',
+				)
+			);
 
-    endwhile;
-    ?>
+			// If comments are open or we have at least one comment, load up the comment template.
+			if ( comments_open() || get_comments_number() ) :
+				comments_template();
+			endif;
 
-    <?php get_template_part( 'template-parts/sections/section-newsletter' ); ?>
-</main>
+		endwhile; // End of the loop.
+		?>
+
+	</main><!-- #main -->
 
 <?php
 get_footer();

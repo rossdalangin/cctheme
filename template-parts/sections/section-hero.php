@@ -19,7 +19,7 @@
         </h1>
 
         <div class="container-narrow reveal">
-            <p class="hero-subheadline" style="font-size: 1.5rem; color: var(--c-text-muted); margin-bottom: 60px; line-height: 1.5;"><?php echo esc_html( get_theme_mod( 'closeclient_hero_subheadline', 'Most coaches are one referral drought away from bankruptcy. We build the elite digital infrastructure that pre-qualifies your leads and positions you as the only logical choice.' ) ); ?></p>
+            <p class="hero-subheadline"><?php echo esc_html( get_theme_mod( 'closeclient_hero_subheadline', 'Most coaches are one referral drought away from bankruptcy. We build the elite digital infrastructure that pre-qualifies your leads and positions you as the only logical choice.' ) ); ?></p>
         </div>
 
         <div class="hero-cta reveal">
@@ -27,7 +27,7 @@
         </div>
 
         <?php if ( get_theme_mod( 'closeclient_hero_image' ) ) : ?>
-            <div class="hero-image-box container reveal" style="margin-top: 80px;">
+            <div class="hero-image-box container reveal">
                 <img src="<?php echo esc_url( get_theme_mod( 'closeclient_hero_image' ) ); ?>" alt="Coach Authority" class="aspect-hero">
             </div>
         <?php endif; ?>

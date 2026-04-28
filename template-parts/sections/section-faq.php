@@ -9,44 +9,44 @@ $headline = get_theme_mod( 'closeclient_faq_headline', 'Frequently Asked Questio
 $tag      = get_theme_mod( 'closeclient_faq_tag', 'FAQ' );
 ?>
 
-<section id="faq" class="section section-faq bg-dark">
+<section id="faq" class="section section-faq">
     <div class="container container-narrow">
-        <div class="section-header text-center reveal" style="margin-bottom: 60px;">
+        <div class="section-header text-center reveal">
             <span class="section-tag"><?php echo esc_html( $tag ); ?></span>
             <h2 class="section-headline"><?php echo esc_html( $headline ); ?></h2>
         </div>
 
-        <div class="faq-list">
+        <div class="faq-list mt-5">
             <?php
-            // Try to fetch from CPT first
-            $faqs = new WP_Query( array(
+            $faq_query = new WP_Query( array(
                 'post_type'      => 'faq',
                 'posts_per_page' => 10,
             ) );
 
-            if ( $faqs->have_posts() ) :
-                while ( $faqs->have_posts() ) : $faqs->the_post(); ?>
-                    <div class="faq-item cc-card reveal mb-4" style="padding: 30px;">
-                        <h3 class="h5 mb-3" style="color: var(--c-white);"><?php the_title(); ?></h3>
-                        <div class="faq-answer text-muted small">
+            if ( $faq_query->have_posts() ) :
+                while ( $faq_query->have_posts() ) : $faq_query->the_post(); ?>
+                    <div class="faq-item cc-card reveal mb-4">
+                        <h3 class="h5 mb-3 faq-question"><?php the_title(); ?></h3>
+                        <div class="text-muted small">
                             <?php the_content(); ?>
                         </div>
                     </div>
                 <?php endwhile;
                 wp_reset_postdata();
             else :
-                // Fallback to Customizer defaults
+                // Fallback to Customizer
                 for ( $i = 1; $i <= 3; $i++ ) :
-                    $question = get_theme_mod( "closeclient_faq_q{$i}", "Question $i?" );
-                    $answer   = get_theme_mod( "closeclient_faq_a{$i}", "Answer $i to build trust and reduce friction." );
-                    ?>
-                    <div class="faq-item cc-card reveal mb-4" style="padding: 30px;">
-                        <h3 class="h5 mb-3" style="color: var(--c-white);"><?php echo esc_html( $question ); ?></h3>
-                        <div class="faq-answer text-muted small">
-                            <?php echo esc_html( $answer ); ?>
+                    $question = get_theme_mod( "closeclient_faq_q{$i}" );
+                    $answer   = get_theme_mod( "closeclient_faq_a{$i}" );
+                    if ( ! empty( $question ) ) : ?>
+                        <div class="faq-item cc-card reveal mb-4">
+                            <h3 class="h5 mb-3 faq-question"><?php echo esc_html( $question ); ?></h3>
+                            <div class="text-muted small">
+                                <?php echo wp_kses_post( $answer ); ?>
+                            </div>
                         </div>
-                    </div>
-                <?php endfor;
+                    <?php endif;
+                endfor;
             endif; ?>
         </div>
     </div>
