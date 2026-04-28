@@ -164,3 +164,15 @@ document.querySelectorAll('a[href="#audit"]').forEach(btn => {
 
 if (closeBtn) closeBtn.addEventListener('click', closeModal);
 if (overlay) overlay.addEventListener('click', closeModal);
+
+/* Floating CTA Visibility */
+const floatingCta = document.querySelector('.floating-cta');
+if (floatingCta) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            floatingCta.classList.add('is-visible');
+        } else {
+            floatingCta.classList.remove('is-visible');
+        }
+    });
+}

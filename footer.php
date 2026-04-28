@@ -102,6 +102,12 @@
 		</div>
 	</footer><!-- #colophon -->
     <?php endif; ?>
+
+    <?php if ( get_theme_mod( 'closeclient_show_floating_cta', false ) ) : ?>
+        <a href="#audit" class="floating-cta cc-button reveal">
+            <?php echo esc_html( get_theme_mod( 'closeclient_header_cta_text', 'Book a Call' ) ); ?>
+        </a>
+    <?php endif; ?>
 </div><!-- #page -->
 
 <?php get_template_part( 'template-parts/content/audit-modal' ); ?>

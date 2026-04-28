@@ -160,6 +160,9 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'closeclient_header_glass', array( 'default' => '0.7', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_header_glass', array( 'label' => 'Glass Opacity (0.1 to 1.0)', 'section' => 'closeclient_header_settings', 'type' => 'text' ) );
 
+    $wp_customize->add_setting( 'closeclient_show_floating_cta', array( 'default' => false, 'sanitize_callback' => 'absint' ) );
+    $wp_customize->add_control( 'closeclient_show_floating_cta', array( 'label' => 'Show Floating Action Button', 'section' => 'closeclient_header_settings', 'type' => 'checkbox' ) );
+
     $wp_customize->add_setting( 'closeclient_header_cta_text', array( 'default' => 'Book a Call', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_header_cta_text', array( 'label' => 'Header Button Text', 'section' => 'closeclient_header_settings' ) );
     $wp_customize->add_setting( 'closeclient_header_cta_link', array( 'default' => '#audit', 'sanitize_callback' => 'sanitize_text_field' ) );
@@ -472,6 +475,15 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_control( 'closeclient_newsletter_button', array( 'label' => 'Newsletter Button Text', 'section' => 'closeclient_blog_global' ) );
     $wp_customize->add_setting( 'closeclient_sticky_cta_title', array( 'default' => 'Scale to $10k+ Months', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_sticky_cta_title', array( 'label' => 'Sticky CTA Title', 'section' => 'closeclient_blog_global' ) );
+
+    $wp_customize->add_setting( 'closeclient_sticky_cta_text', array( 'default' => 'Join 5,000+ coaches getting our weekly growth systems.', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_sticky_cta_text', array( 'label' => 'Sticky CTA Text', 'section' => 'closeclient_blog_global' ) );
+
+    $wp_customize->add_setting( 'closeclient_sticky_cta_button', array( 'default' => 'Join the Newsletter', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_sticky_cta_button', array( 'label' => 'Sticky CTA Button', 'section' => 'closeclient_blog_global' ) );
+
+    $wp_customize->add_setting( 'closeclient_sticky_cta_link', array( 'default' => '#', 'sanitize_callback' => 'esc_url_raw' ) );
+    $wp_customize->add_control( 'closeclient_sticky_cta_link', array( 'label' => 'Sticky CTA Link', 'section' => 'closeclient_blog_global' ) );
 }
 add_action( 'customize_register', 'closeclient_customize_register' );
 

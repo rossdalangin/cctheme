@@ -316,14 +316,14 @@ function closeclient_google_fonts() {
     $fonts = array();
 
     if ( $heading_font !== 'SF Pro Display' ) {
-        $fonts[] = $heading_font . ':400,600,700,800';
+        $fonts[] = 'family=' . str_replace( ' ', '+', $heading_font ) . ':wght@400;600;700;800';
     }
     if ( $body_font !== 'SF Pro Display' && $body_font !== $heading_font ) {
-        $fonts[] = $body_font . ':400,600,700';
+        $fonts[] = 'family=' . str_replace( ' ', '+', $body_font ) . ':wght@400;600;700';
     }
 
     if ( ! empty( $fonts ) ) {
-        $fonts_url = 'https://fonts.googleapis.com/css2?family=' . str_replace( ' ', '+', implode( '&family=', $fonts ) ) . '&display=swap';
+        $fonts_url = 'https://fonts.googleapis.com/css2?' . implode( '&', $fonts ) . '&display=swap';
         wp_enqueue_style( 'closeclient-google-fonts', $fonts_url, array(), null );
     }
 }

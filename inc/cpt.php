@@ -169,3 +169,37 @@ function closeclient_save_product_meta( $post_id ) {
     }
 }
 add_action( 'save_post', 'closeclient_save_product_meta' );
+
+/**
+ * Add Enhanced Portfolio Metadata
+ */
+function closeclient_add_portfolio_meta() {
+    add_meta_box( 'portfolio_enhanced', 'Strategic Case Study Details', 'closeclient_portfolio_meta_callback', 'portfolio', 'normal', 'high' );
+}
+add_action( 'add_meta_boxes', 'closeclient_add_portfolio_meta' );
+
+function closeclient_portfolio_meta_callback( $post ) {
+    $challenge = get_post_meta( $post->ID, '_portfolio_challenge', true );
+    $solution  = get_post_meta( $post->ID, '_portfolio_solution', true );
+    $outcome   = get_post_meta( $post->ID, '_portfolio_outcome', true );
+    ?>
+    <div style="padding: 20px;">
+        <p><strong>The Challenge:</strong><br><textarea name="portfolio_challenge" style="width:100%;" rows="4"><?php echo esc_textarea( $challenge ); ?></textarea></p>
+        <p><strong>The Solution:</strong><br><textarea name="portfolio_solution" style="width:100%;" rows="4"><?php echo esc_textarea( $solution ); ?></textarea></p>
+        <p><strong>The Outcome:</strong><br><textarea name="portfolio_outcome" style="width:100%;" rows="4"><?php echo esc_textarea( $outcome ); ?></textarea></p>
+    </div>
+    <?php
+}
+
+function closeclient_save_portfolio_meta( $post_id ) {
+    if ( isset( $_POST['portfolio_challenge'] ) ) {
+        update_post_meta( $post_id, '_portfolio_challenge', wp_kses_post( $_POST['portfolio_challenge'] ) );
+    }
+    if ( isset( $_POST['portfolio_solution'] ) ) {
+        update_post_meta( $post_id, '_portfolio_solution', wp_kses_post( $_POST['portfolio_solution'] ) );
+    }
+    if ( isset( $_POST['portfolio_outcome'] ) ) {
+        update_post_meta( $post_id, '_portfolio_outcome', wp_kses_post( $_POST['portfolio_outcome'] ) );
+    }
+}
+add_action( 'save_post', 'closeclient_save_portfolio_meta' );
