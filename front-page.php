@@ -31,8 +31,8 @@ get_header();
         // Fallback to modular layout if no static page content is found
         if ( ! $has_content ) {
             $sections = array(
-                'hero', 'authority', 'vsl', 'stats', 'about', 'services',
-                'process', 'pricing', 'testimonials', 'team',
+                'hero', 'logo_ticker', 'authority', 'vsl', 'stats', 'portfolio', 'about', 'services',
+                'products', 'process', 'pricing', 'testimonials', 'team',
                 'lead_magnet', 'newsletter', 'faq', 'booking'
             );
 

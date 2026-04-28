@@ -79,13 +79,15 @@ document.addEventListener('DOMContentLoaded', () => {
     magneticButtons.forEach(btn => {
         btn.addEventListener('mousemove', (e) => {
             const position = btn.getBoundingClientRect();
-            const x = e.pageX - position.left - position.width / 2;
-            const y = e.pageY - position.top - position.height / 2;
+            const x = e.clientX - position.left - position.width / 2;
+            const y = e.clientY - position.top - position.height / 2;
 
-            btn.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px)`;
+            btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+            btn.style.transition = 'none'; // Disable transition during mousemove for zero-lag
         });
 
-        btn.addEventListener('mouseout', () => {
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transition = 'transform 0.5s cubic-bezier(0.2, 1, 0.2, 1)';
             btn.style.transform = 'translate(0, 0)';
         });
     });
@@ -165,7 +167,12 @@ document.querySelectorAll('a[href="#audit"]').forEach(btn => {
 if (closeBtn) closeBtn.addEventListener('click', closeModal);
 if (overlay) overlay.addEventListener('click', closeModal);
 
-/* Floating CTA Visibility */
+            floatingCta.classList.remove('is-visible');
+        }
+    });
+}
+
+/* Floating CTA Interaction */
 const floatingCta = document.querySelector('.floating-cta');
 if (floatingCta) {
     window.addEventListener('scroll', () => {

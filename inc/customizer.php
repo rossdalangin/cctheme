@@ -209,7 +209,25 @@ function closeclient_customize_register( $wp_customize ) {
         'panel'    => 'closeclient_homepage_panel',
         'priority' => 5,
     ) );
-    $home_sections = array( 'hero' => 'Hero', 'authority' => 'Authority (Logos)', 'vsl' => 'VSL (Video)', 'stats' => 'Stats & Results', 'about' => 'About', 'services' => 'Services', 'process' => 'Process', 'pricing' => 'Pricing', 'testimonials' => 'Testimonials', 'team' => 'Team', 'lead_magnet' => 'Lead Magnet', 'newsletter' => 'Newsletter', 'faq' => 'FAQ', 'booking' => 'Booking CTA' );
+    $home_sections = array(
+        'hero' => 'Hero',
+        'logo_ticker' => 'Logo Ticker (v9.0)',
+        'authority' => 'Authority (Logos)',
+        'vsl' => 'VSL (Video)',
+        'stats' => 'Stats & Results',
+        'portfolio' => 'Portfolio Bento (v9.0)',
+        'about' => 'About',
+        'services' => 'Services Bento (v9.0)',
+        'products' => 'Products Ecosystem (v9.0)',
+        'process' => 'Process',
+        'pricing' => 'Pricing',
+        'testimonials' => 'Testimonials',
+        'team' => 'Team',
+        'lead_magnet' => 'Lead Magnet',
+        'newsletter' => 'Newsletter',
+        'faq' => 'FAQ',
+        'booking' => 'Booking CTA'
+    );
     foreach ( $home_sections as $id => $label ) {
         $wp_customize->add_setting( "closeclient_show_$id", array( 'default' => true, 'sanitize_callback' => 'absint' ) );
         $wp_customize->add_control( "closeclient_show_$id", array( 'label' => "Show $label Section", 'section' => 'closeclient_visibility', 'type' => 'checkbox' ) );

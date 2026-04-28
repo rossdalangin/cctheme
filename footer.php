@@ -104,7 +104,7 @@
     <?php endif; ?>
 
     <?php if ( get_theme_mod( 'closeclient_show_floating_cta', false ) ) : ?>
-        <a href="#audit" class="floating-cta cc-button reveal">
+        <a href="#audit" class="floating-cta cc-button">
             <?php echo esc_html( get_theme_mod( 'closeclient_header_cta_text', 'Book a Call' ) ); ?>
         </a>
     <?php endif; ?>
