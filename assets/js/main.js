@@ -141,3 +141,26 @@ if (typewriterElement) {
     };
     type();
 }
+
+/* Authority Audit Modal Logic */
+const modal = document.querySelector('#audit-modal');
+const closeBtn = document.querySelector('.cc-modal-close');
+const overlay = document.querySelector('.cc-modal-overlay');
+
+const openModal = (e) => {
+    if (e) e.preventDefault();
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+};
+
+const closeModal = () => {
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+};
+
+document.querySelectorAll('a[href="#audit"]').forEach(btn => {
+    btn.addEventListener('click', openModal);
+});
+
+if (closeBtn) closeBtn.addEventListener('click', closeModal);
+if (overlay) overlay.addEventListener('click', closeModal);

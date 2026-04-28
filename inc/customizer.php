@@ -162,7 +162,7 @@ function closeclient_customize_register( $wp_customize ) {
 
     $wp_customize->add_setting( 'closeclient_header_cta_text', array( 'default' => 'Book a Call', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_header_cta_text', array( 'label' => 'Header Button Text', 'section' => 'closeclient_header_settings' ) );
-    $wp_customize->add_setting( 'closeclient_header_cta_link', array( 'default' => '#', 'sanitize_callback' => 'esc_url_raw' ) );
+    $wp_customize->add_setting( 'closeclient_header_cta_link', array( 'default' => '#audit', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_header_cta_link', array( 'label' => 'Header Button Link', 'section' => 'closeclient_header_settings' ) );
 
     // Footer Content

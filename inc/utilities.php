@@ -23,9 +23,10 @@ function closeclient_reset_defaults() {
         'closeclient_body_size'        => '18',
         'closeclient_line_height'      => '1.6',
         'closeclient_letter_spacing'   => '-0.022',
-        'closeclient_hero_headline'    => 'Design the Future of Digital Authority',
-        'closeclient_hero_subheadline' => 'We build the elite infrastructure that powers the world\'s most ambitious brands and consultants. Performance-first, conversion-locked, and future-ready.',
-        'closeclient_hero_cta'         => 'Apply for Strategy Audit →',
+        'closeclient_hero_headline'    => 'Stop Losing High-Value Clients Before You Even Speak to Them',
+        'closeclient_hero_subheadline' => 'Your website should act as your top-performing associate: pre-qualifying, positioning, and closing premium clients — automatically.',
+        'closeclient_hero_cta'         => 'Request Your Authority Audit →',
+        'closeclient_hero_cta_link'    => '#audit',
     );
 
     foreach ( $defaults as $key => $value ) {
@@ -39,10 +40,10 @@ function closeclient_reset_defaults() {
 function closeclient_generate_cpt_data() {
     // 1. Services
     $services = array(
-        'Authority Infrastructure' => 'We build the foundation of your digital dominance.',
-        'Revenue Engineering'     => 'Optimizing your sales process for high-ticket scale.',
-        'Vortex Funnels'          => 'Automated application systems that pre-qualify every lead.',
-        'Elite Positioning'       => 'Moving you from commodity service provider to category king.'
+        'Authority Infrastructure' => 'Visitors are guided into qualified, ready-to-pay clients automatically.',
+        'Revenue Engineering'     => 'Positions your firm as the obvious authority in your niche without over-promising.',
+        'Vortex Funnels'          => 'Protects your time and ensures only high-value inquiries reach your calendar.',
+        'Elite Positioning'       => 'Intelligent follow-up accelerates the decision-making process for premium clients.'
     );
     foreach ( $services as $title => $excerpt ) {
         if ( ! get_posts( array( 'post_type' => 'service', 'title' => $title ) ) ) {
@@ -52,9 +53,9 @@ function closeclient_generate_cpt_data() {
 
     // 2. FAQs
     $faqs = array(
-        'How long does the implementation take?' => 'Typically 4-6 weeks for full infrastructure deployment.',
-        'Is this for new coaches or established experts?' => 'We focus on experts already doing $10k/mo who want to scale beyond themselves.',
-        'Do you provide the copywriting?' => 'Yes, our team handles all direct-response copy for the funnels.'
+        'What is a Client Acquisition Architecture?' => 'It is a strategic digital ecosystem designed to pre-qualify, position, and close premium clients without the owner needing to be involved in every step.',
+        'How long does the audit take?' => 'We typically deliver your complete authority roadmap within 5-7 business days after our discovery call.',
+        'Do you work with new coaches?' => 'We specialize in established experts doing $10k-$30k/mo who want to automate their intake and scale beyond their current ceiling.'
     );
     foreach ( $faqs as $title => $content ) {
         if ( ! get_posts( array( 'post_type' => 'faq', 'title' => $title ) ) ) {
@@ -64,8 +65,8 @@ function closeclient_generate_cpt_data() {
 
     // 3. Testimonials
     $testimonials = array(
-        'Scaled to $100k/mo' => array('content' => 'The system CloseClient built allowed me to step out of the daily grind.', 'rating' => 5),
-        'Best investment' => array('content' => 'Finally, a website that actually sells my expertise.', 'rating' => 5),
+        '42% Revenue Increase' => array('content' => 'This website for a high-ticket consultant converts visitors into strategy calls by replacing generic coaching language with pain-driven, outcome-focused copy.', 'rating' => 5),
+        'Market Dominance' => array('content' => 'The system CloseClient built allowed me to step out of the daily grind and focus on high-level strategy.', 'rating' => 5),
     );
     foreach ( $testimonials as $title => $data ) {
         if ( ! get_posts( array( 'post_type' => 'testimonial', 'title' => $title ) ) ) {
@@ -74,37 +75,36 @@ function closeclient_generate_cpt_data() {
         }
     }
 
-    // 4. Team
-    $team = array(
-        'Alex Rivers' => 'Founder & Chief Architect',
-        'Sarah Chen'  => 'Lead Conversion Strategist',
-        'Marcus Vane' => 'Revenue Engineer'
+    // 4. Products
+    $products = array(
+        'Freelance Flow Pro' => 'Bridge the gap between client acquisition and delivery by unifying contracts, proposals, and invoices.',
+        'Agency Nexus'       => 'The all-in-one Agency Operating System built directly on WordPress to centralize every aspect of your business.',
+        'CoachPress Theme'   => 'A specialized Authority Site framework designed to transform expertise into a trust-building online presence.',
+        'Organization Ecosystem' => 'A fully automated, revenue-generating digital engine designed for professional networks and associations.'
     );
-    foreach ( $team as $name => $role ) {
-        if ( ! get_posts( array( 'post_type' => 'team', 'title' => $name ) ) ) {
-            $post_id = wp_insert_post( array( 'post_type' => 'team', 'post_title' => $name, 'post_status' => 'publish' ) );
-            update_post_meta( $post_id, '_member_role', $role );
+    foreach ( $products as $title => $excerpt ) {
+        if ( ! get_posts( array( 'post_type' => 'product', 'title' => $title ) ) ) {
+            wp_insert_post( array( 'post_type' => 'product', 'post_title' => $title, 'post_excerpt' => $excerpt, 'post_status' => 'publish' ) );
         }
     }
 
-    // 5. Process
-    $process = array(
-        'Authority Audit' => array('desc' => 'We diagnose your current positioning gaps.', 'order' => 1),
-        'Infrastructure Build' => array('desc' => 'Deploying your elite digital ecosystem.', 'order' => 2),
-        'Scale Activation' => array('desc' => 'Launching the vortex application system.', 'order' => 3)
+    // 5. Portfolio (Consultant focused)
+    $portfolio = array(
+        'High-Ticket Strategy Audit' => 'A complete overhaul of authority for a leading executive consultant.',
+        'The $1M Consultant Rebrand' => 'Automated lead intake system for a premium business coach.',
+        'Digital Ecosystem Deployment' => 'Infrastructure for a global strategic advisory group.'
     );
-    foreach ( $process as $title => $data ) {
-        if ( ! get_posts( array( 'post_type' => 'process', 'title' => $title ) ) ) {
-            $post_id = wp_insert_post( array( 'post_type' => 'process', 'post_title' => $title, 'post_content' => $data['desc'], 'post_status' => 'publish' ) );
-            update_post_meta( $post_id, '_step_order', $data['order'] );
+    foreach ( $portfolio as $title => $excerpt ) {
+        if ( ! get_posts( array( 'post_type' => 'portfolio', 'title' => $title ) ) ) {
+            wp_insert_post( array( 'post_type' => 'portfolio', 'post_title' => $title, 'post_excerpt' => $excerpt, 'post_status' => 'publish' ) );
         }
     }
 
     // 6. Pricing
     $pricing = array(
-        'Authority Foundation' => array('price' => '$2,997', 'feat' => '0', 'content' => '<ul><li>Audit</li><li>Basic Funnel</li></ul>'),
-        'Signature Ecosystem'  => array('price' => '$5,997', 'feat' => '1', 'content' => '<ul><li>Everything in Foundation</li><li>Vortex Application</li><li>Ads Management</li></ul>'),
-        'Legacy Mastery'       => array('price' => '$9,997', 'feat' => '0', 'content' => '<ul><li>Everything in Ecosystem</li><li>Omnipresent Branding</li><li>White-Glove Support</li></ul>')
+        'Authority Foundation' => array('price' => '$2,997', 'feat' => '0', 'content' => '<ul><li>Positioning Audit</li><li>Authority Infrastructure</li><li>Direct Response Copy</li></ul>'),
+        'Signature Ecosystem'  => array('price' => '$5,997', 'feat' => '1', 'content' => '<ul><li>Everything in Foundation</li><li>Vortex Application Funnel</li><li>Automated Lead Intake</li></ul>'),
+        'Legacy Mastery'       => array('price' => '$9,997', 'feat' => '0', 'content' => '<ul><li>Everything in Ecosystem</li><li>Omnipresent Branding</li><li>White-Glove Implementation</li></ul>')
     );
     foreach ( $pricing as $title => $data ) {
         if ( ! get_posts( array( 'post_type' => 'pricing', 'title' => $title ) ) ) {
@@ -122,10 +122,11 @@ function closeclient_generate_pages() {
     closeclient_generate_cpt_data();
 
     $pages = array(
-        'Home' => array('content' => '[closeclient_hero][closeclient_authority][closeclient_vsl][closeclient_stats][closeclient_services][closeclient_process][closeclient_testimonials][closeclient_pricing][closeclient_faq][closeclient_booking_cta]', 'template' => ''),
-        'Services' => array('content' => '[closeclient_services][closeclient_process][closeclient_pricing][closeclient_booking_cta]', 'template' => 'template-services.php'),
+        'Home' => array('content' => '[closeclient_hero][closeclient_authority][closeclient_stats][closeclient_portfolio][closeclient_services][closeclient_products][closeclient_vsl][closeclient_process][closeclient_testimonials][closeclient_pricing][closeclient_faq][closeclient_booking_cta]', 'template' => ''),
+        'Services' => array('content' => '[closeclient_hero][closeclient_services][closeclient_process][closeclient_pricing][closeclient_booking_cta]', 'template' => 'template-services.php'),
+        'Products' => array('content' => '[closeclient_products][closeclient_booking_cta]', 'template' => ''),
         'Sales Page' => array('content' => '[closeclient_vsl][closeclient_testimonials][closeclient_pricing][closeclient_faq][closeclient_booking_cta]', 'template' => 'template-sales-page.php'),
-        'About' => array('content' => '[closeclient_about][closeclient_team][closeclient_authority][closeclient_booking_cta]', 'template' => 'template-about.php'),
+        'About' => array('content' => '[closeclient_team][closeclient_authority][closeclient_booking_cta]', 'template' => 'template-about.php'),
         'Free Training' => array('content' => '[closeclient_vsl][closeclient_booking_cta]', 'template' => 'template-landing-page.php'),
         'Success Blueprint' => array('content' => '[closeclient_lead_magnet]', 'template' => 'template-lead-magnet.php'),
         'Case Studies' => array('content' => '[closeclient_portfolio][closeclient_testimonials][closeclient_booking_cta]', 'template' => ''),
@@ -163,11 +164,10 @@ function closeclient_generate_pages() {
  * Setup Menus
  */
 function closeclient_setup_menus($pages) {
-    // Primary Menu
     $primary_menu_name = 'Primary Menu';
     if ( ! wp_get_nav_menu_object( $primary_menu_name ) ) {
         $menu_id = wp_create_nav_menu( $primary_menu_name );
-        $menu_items = array( 'Home', 'Services', 'Case Studies', 'About' );
+        $menu_items = array( 'Home', 'Services', 'Products', 'Case Studies', 'About' );
         foreach ( $menu_items as $title ) {
             if ( isset($pages[$title]) ) {
                 wp_update_nav_menu_item( $menu_id, 0, array('menu-item-title' => $title, 'menu-item-object-id' => $pages[$title], 'menu-item-object' => 'page', 'menu-item-type' => 'post_type', 'menu-item-status' => 'publish') );

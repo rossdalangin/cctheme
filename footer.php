@@ -104,6 +104,8 @@
     <?php endif; ?>
 </div><!-- #page -->
 
+<?php get_template_part( 'template-parts/content/audit-modal' ); ?>
+
 <?php wp_footer(); ?>
 
 </body>

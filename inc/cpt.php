@@ -64,6 +64,14 @@ function closeclient_register_cpts() {
         'menu_icon'   => 'dashicons-money-alt',
         'supports'    => array( 'title', 'editor', 'excerpt' ),
     ) );
+
+    // Product CPT
+    register_post_type( 'product', array(
+        'labels'      => array( 'name' => 'Products', 'singular_name' => 'Product' ),
+        'public'      => true,
+        'menu_icon'   => 'dashicons-cart',
+        'supports'    => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
+    ) );
 }
 add_action( 'init', 'closeclient_register_cpts' );
 
