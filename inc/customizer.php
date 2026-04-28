@@ -163,6 +163,14 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'closeclient_show_floating_cta', array( 'default' => false, 'sanitize_callback' => 'absint' ) );
     $wp_customize->add_control( 'closeclient_show_floating_cta', array( 'label' => 'Show Floating Action Button', 'section' => 'closeclient_header_settings', 'type' => 'checkbox' ) );
 
+    $wp_customize->add_setting( 'closeclient_floating_cta_threshold', array( 'default' => '500', 'sanitize_callback' => 'absint' ) );
+    $wp_customize->add_control( 'closeclient_floating_cta_threshold', array(
+        'label'       => 'Floating CTA Scroll Threshold (px)',
+        'description' => 'Pixel depth before the button appears.',
+        'section'     => 'closeclient_header_settings',
+        'type'        => 'number'
+    ) );
+
     $wp_customize->add_setting( 'closeclient_header_cta_text', array( 'default' => 'Book a Call', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_header_cta_text', array( 'label' => 'Header Button Text', 'section' => 'closeclient_header_settings' ) );
     $wp_customize->add_setting( 'closeclient_header_cta_link', array( 'default' => '#audit', 'sanitize_callback' => 'sanitize_text_field' ) );

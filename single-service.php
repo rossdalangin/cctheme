@@ -24,7 +24,7 @@ get_header();
 
             <div class="container section">
                 <div class="entry-content container-narrow reveal">
-                    <div class="glass p-5 mb-5 border-accent">
+                    <div class="glass border-accent service-detail-glass">
                         <?php the_content(); ?>
                     </div>
                 </div>

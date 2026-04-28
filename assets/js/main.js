@@ -182,8 +182,9 @@ document.addEventListener('mouseleave', (e) => {
 /* Floating CTA Interaction */
 const floatingCta = document.querySelector('.floating-cta');
 if (floatingCta) {
+    const threshold = (typeof closeclientData !== 'undefined' && closeclientData.ctaThreshold) ? parseInt(closeclientData.ctaThreshold) : 500;
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 500) {
+        if (window.scrollY > threshold) {
             floatingCta.classList.add('is-visible');
         } else {
             floatingCta.classList.remove('is-visible');

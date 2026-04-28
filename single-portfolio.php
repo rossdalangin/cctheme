@@ -30,29 +30,29 @@ get_header();
             <div class="container section">
                 <div class="portfolio-featured-image mb-5 reveal">
                     <?php if ( has_post_thumbnail() ) : ?>
-                        <div class="aspect-hero" style="border-radius: var(--radius-xl); overflow: hidden;">
-                            <?php the_post_thumbnail( 'full', array( 'style' => 'width:100%; height:100%; object-fit:cover;' ) ); ?>
+                        <div class="aspect-hero">
+                            <?php the_post_thumbnail( 'full' ); ?>
                         </div>
                     <?php endif; ?>
                 </div>
 
                 <div class="entry-content container-narrow reveal">
                     <?php if ( $challenge ) : ?>
-                        <div class="case-study-block glass p-5 mb-5 border-accent">
+                        <div class="case-study-block glass p-5 border-accent">
                             <h2 class="h4 mb-4 text-accent"><?php esc_html_e( '01. The Challenge', 'closeclient' ); ?></h2>
                             <div class="text-muted"><?php echo wp_kses_post( $challenge ); ?></div>
                         </div>
                     <?php endif; ?>
 
                     <?php if ( $solution ) : ?>
-                        <div class="case-study-block glass p-5 mb-5">
+                        <div class="case-study-block glass p-5">
                             <h2 class="h4 mb-4"><?php esc_html_e( '02. The Authority Architecture', 'closeclient' ); ?></h2>
                             <div class="text-muted"><?php echo wp_kses_post( $solution ); ?></div>
                         </div>
                     <?php endif; ?>
 
                     <?php if ( $outcome ) : ?>
-                        <div class="case-study-block glass p-5 mb-5" style="background: rgba(99, 102, 241, 0.05); border-color: var(--c-accent);">
+                        <div class="case-study-block glass p-5 outcome-block">
                             <h2 class="h4 mb-4"><?php esc_html_e( '03. The Result', 'closeclient' ); ?></h2>
                             <div class="h3 fw-bold mb-0"><?php echo wp_kses_post( $outcome ); ?></div>
                         </div>
