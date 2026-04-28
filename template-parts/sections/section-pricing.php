@@ -69,8 +69,8 @@ $headline = get_theme_mod( 'closeclient_pricing_headline', 'Invest in Your Infin
 
                         <ul class="list-unstyled mb-5">
                             <?php foreach ( $feature_list as $feature ) : ?>
-                                <li class="mb-3 small d-flex gap-2">
-                                    <span class="text-accent">✓</span> <?php echo esc_html( trim( $feature ) ); ?>
+                                <li class="mb-3 small d-flex gap-3 align-items-center">
+                                    <span class="text-accent" style="width:16px;"><?php echo closeclient_get_svg('check'); ?></span> <?php echo esc_html( trim( $feature ) ); ?>
                                 </li>
                             <?php endforeach; ?>
                         </ul>

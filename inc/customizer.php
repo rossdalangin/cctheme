@@ -542,3 +542,11 @@ function closeclient_customize_css() {
     <?php
 }
 add_action( 'wp_head', 'closeclient_customize_css' );
+
+/**
+ * Enqueue Customizer live preview scripts.
+ */
+function closeclient_customize_preview_js() {
+	wp_enqueue_script( 'closeclient-customizer', get_template_directory_uri() . '/assets/js/customizer.js', array( 'customize-preview' ), '1.0', true );
+}
+add_action( 'customize_preview_init', 'closeclient_customize_preview_js' );

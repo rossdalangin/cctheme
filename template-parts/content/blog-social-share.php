@@ -14,17 +14,17 @@ $post_title = urlencode( get_the_title() );
 
     <a href="https://www.linkedin.com/shareArticle?mini=true&url=<?php echo $post_url; ?>&title=<?php echo $post_title; ?>"
        class="social-share-icon" target="_blank" rel="noopener" title="Share on LinkedIn">
-       <span class="social-icon-dot"></span>
+       <?php echo closeclient_get_svg('linkedin'); ?>
     </a>
 
     <a href="https://twitter.com/intent/tweet?text=<?php echo $post_title; ?>&url=<?php echo $post_url; ?>"
        class="social-share-icon" target="_blank" rel="noopener" title="Share on Twitter">
-       <span class="social-icon-dot"></span>
+       <?php echo closeclient_get_svg('twitter'); ?>
     </a>
 
     <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $post_url; ?>"
        class="social-share-icon" target="_blank" rel="noopener" title="Share on Facebook">
-       <span class="social-icon-dot"></span>
+       <?php echo closeclient_get_svg('facebook'); ?>
     </a>
 </div>
 

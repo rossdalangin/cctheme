@@ -33,7 +33,7 @@
                             if ( $link && '#' !== $link ) : ?>
                                 <a href="<?php echo esc_url( $link ); ?>" class="social-icon" target="_blank" rel="noopener" title="<?php echo esc_attr( ucfirst( $social ) ); ?>">
                                     <span class="screen-reader-text"><?php echo esc_html( ucfirst( $social ) ); ?></span>
-                                    <i class="social-icon-dot"></i>
+                                    <?php echo closeclient_get_svg( $social ); ?>
                                 </a>
                             <?php endif;
                         endforeach; ?>

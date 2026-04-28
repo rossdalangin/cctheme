@@ -950,3 +950,52 @@ select:focus {
     border-radius: var(--radius-xl);
     padding: 60px;
 }
+
+/* SVG Icon Consistency */
+svg {
+    max-width: 100%;
+    height: auto;
+}
+
+.social-share-icon svg, .social-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* --- "Apple-tier" UX & Layout Refinement --- */
+
+/* Golden Ratio Spacing */
+:root {
+    --s-xl: 144px; /* Refined for 1.618 */
+    --s-lg: 89px;
+    --s-md: 55px;
+    --s-sm: 34px;
+    --s-xs: 21px;
+}
+
+/* Typography Refinement */
+h1, h2, h3 {
+    letter-spacing: -0.05em; /* Tighter tracking for premium feel */
+}
+
+p {
+    opacity: 0.85;
+}
+
+/* Card Refinement */
+.cc-card {
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+}
+
+/* Noise Texture Optimization */
+body::after {
+    opacity: 0.03; /* Subtler noise */
+}
+
+/* Responsive Padding Fix */
+@media (max-width: 768px) {
+    :root {
+        --s-xl: 80px;
+    }
+}
