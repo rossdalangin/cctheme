@@ -6,7 +6,7 @@
  */
 ?>
 
-<section class="section section-hero">
+<section class="section section-lg section-hero">
     <div class="container hero-content-wrapper text-center reveal">
         <h1 class="hero-headline reveal">
             <span class="gradient-text <?php echo get_theme_mod( 'closeclient_hero_typewriter', false ) ? 'typewriter-text' : ''; ?>" data-text="<?php echo esc_attr( get_theme_mod( 'closeclient_hero_headline', 'Stop Losing High-Value Clients Before You Even Speak to Them' ) ); ?>">

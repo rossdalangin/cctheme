@@ -31,6 +31,25 @@ function closeclient_customize_register( $wp_customize ) {
         'priority' => 40,
     ) );
 
+    $wp_customize->add_section( 'closeclient_portfolio_content', array( 'title' => '15. Portfolio Content', 'panel' => 'closeclient_homepage_panel' ) );
+    $wp_customize->add_setting( 'closeclient_portfolio_headline', array( 'default' => 'Our Engineered Success Stories', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_portfolio_headline', array( 'label' => 'Headline', 'section' => 'closeclient_portfolio_content' ) );
+    $wp_customize->add_setting( 'closeclient_portfolio_tag', array( 'default' => 'FEATURED WORK', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_portfolio_tag', array( 'label' => 'Tag', 'section' => 'closeclient_portfolio_content' ) );
+
+    $wp_customize->add_section( 'closeclient_utilities_section', array(
+        'title'    => __( '5. Theme Setup & Tools', 'closeclient' ),
+        'priority' => 50,
+    ) );
+
+    $wp_customize->add_setting( 'closeclient_guide_link', array( 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'closeclient_guide_link', array(
+        'label'       => __( 'Theme Guide & Shortcodes', 'closeclient' ),
+        'description' => sprintf( '<a href="%s" class="cc-button cc-button-secondary" target="_blank">%s</a>', admin_url('admin.php?page=closeclient-shortcodes'), __( 'Open Master Guide', 'closeclient' ) ),
+        'section'     => 'closeclient_utilities_section',
+        'type'        => 'hidden',
+    ) ) );
+
     // ==========================================
     // 1. BRAND IDENTITY
     // ==========================================
@@ -181,30 +200,12 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'closeclient_footer_disclaimer', array( 'default' => 'Consulting services are subject to terms and conditions. Results may vary.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
     $wp_customize->add_control( 'closeclient_footer_disclaimer', array( 'label' => 'Footer Disclaimer', 'section' => 'closeclient_footer_settings', 'type' => 'textarea' ) );
 
-    $wp_customize->add_setting( 'closeclient_footer_cta_text', array( 'default' => 'Ready to engineer your authority?', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_footer_cta_text', array( 'label' => 'Footer CTA Subtitle', 'section' => 'closeclient_footer_settings' ) );
-    $wp_customize->add_setting( 'closeclient_footer_privacy_text', array( 'default' => 'Privacy Policy', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_footer_privacy_text', array( 'label' => 'Privacy Policy Link Text', 'section' => 'closeclient_footer_settings' ) );
-    $wp_customize->add_setting( 'closeclient_footer_tos_text', array( 'default' => 'Terms of Service', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_footer_tos_text', array( 'label' => 'Terms of Service Link Text', 'section' => 'closeclient_footer_settings' ) );
-    $wp_customize->add_setting( 'closeclient_footer_back_top_text', array( 'default' => 'BACK TO TOP ↑', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_footer_back_top_text', array( 'label' => 'Back to Top Text', 'section' => 'closeclient_footer_settings' ) );
-
     // Social Media
     $wp_customize->add_section( 'closeclient_social_settings', array( 'title' => 'Social Media Links', 'panel' => 'closeclient_layout_panel' ) );
     foreach ( array('twitter','facebook','linkedin','instagram','youtube') as $id ) {
         $wp_customize->add_setting( "closeclient_social_$id", array( 'default' => '#', 'sanitize_callback' => 'esc_url_raw' ) );
         $wp_customize->add_control( "closeclient_social_$id", array( 'label' => ucfirst($id), 'section' => 'closeclient_social_settings' ) );
     }
-
-    // Audit Modal
-    $wp_customize->add_section( 'closeclient_modal_content', array( 'title' => '16. Audit Modal Content', 'panel' => 'closeclient_layout_panel' ) );
-    $wp_customize->add_setting( 'closeclient_modal_tag', array( 'default' => 'STRATEGY FIRST', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_modal_tag', array( 'label' => 'Modal Tag', 'section' => 'closeclient_modal_content' ) );
-    $wp_customize->add_setting( 'closeclient_modal_headline', array( 'default' => 'Request Your Authority Audit', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_modal_headline', array( 'label' => 'Modal Headline', 'section' => 'closeclient_modal_content' ) );
-    $wp_customize->add_setting( 'closeclient_modal_text', array( 'default' => 'Submit your details and we’ll tailor an audit and proposal based on your exact objectives.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
-    $wp_customize->add_control( 'closeclient_modal_text', array( 'label' => 'Modal Description', 'section' => 'closeclient_modal_content', 'type' => 'textarea' ) );
 
     // ==========================================
     // 3. HOMEPAGE SECTIONS
@@ -266,9 +267,9 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'closeclient_hero_image', array( 'label' => 'Hero Image', 'section' => 'closeclient_hero_content' ) ) );
 
     // Authority Logos
-    $wp_customize->add_section( 'closeclient_authority_logos', array( 'title' => '3. Authority Logos', 'panel' => 'closeclient_homepage_panel' ) );
-    $wp_customize->add_setting( 'closeclient_authority_tag', array( 'default' => 'POWERING WORLD-CLASS AUTHORITIES', 'sanitize_callback' => 'sanitize_text_field' ) );
+        $wp_customize->add_setting( 'closeclient_authority_tag', array( 'default' => 'POWERING WORLD-CLASS AUTHORITIES', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_authority_tag', array( 'label' => 'Tag', 'section' => 'closeclient_authority_logos' ) );
+    $wp_customize->add_section( 'closeclient_authority_logos', array( 'title' => '3. Authority Logos', 'panel' => 'closeclient_homepage_panel' ) );
     for ( $i = 1; $i <= 5; $i++ ) {
         $wp_customize->add_setting( "closeclient_authority_logo_$i", array( 'sanitize_callback' => 'esc_url_raw' ) );
         $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, "closeclient_authority_logo_$i", array( 'label' => "Logo $i", 'section' => 'closeclient_authority_logos' ) ) );
@@ -383,6 +384,7 @@ function closeclient_customize_register( $wp_customize ) {
         $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, "closeclient_team_{$i}_image", array( 'label' => "Member $i Photo", 'section' => 'closeclient_team_content' ) ) );
     }
 
+
     // Products
     $wp_customize->add_section( 'closeclient_products_content', array( 'title' => '11.5 Products Content', 'panel' => 'closeclient_homepage_panel' ) );
     $wp_customize->add_setting( 'closeclient_products_headline', array( 'default' => 'Essential Tools That Work as Hard as You Do', 'sanitize_callback' => 'sanitize_text_field' ) );
@@ -433,33 +435,12 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'closeclient_booking_scarcity', array( 'default' => 'Only 2 Strategy Audit slots remaining for this month.', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_booking_scarcity', array( 'label' => 'Scarcity Message', 'section' => 'closeclient_booking_content' ) );
 
-    $wp_customize->add_section( 'closeclient_portfolio_content', array( 'title' => '15. Portfolio Content', 'panel' => 'closeclient_homepage_panel' ) );
-    $wp_customize->add_setting( 'closeclient_portfolio_headline', array( 'default' => 'Our Engineered Success Stories', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_portfolio_headline', array( 'label' => 'Headline', 'section' => 'closeclient_portfolio_content' ) );
-    $wp_customize->add_setting( 'closeclient_portfolio_tag', array( 'default' => 'FEATURED WORK', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_portfolio_tag', array( 'label' => 'Tag', 'section' => 'closeclient_portfolio_content' ) );
-
-    $wp_customize->add_section( 'closeclient_utilities_section', array(
-        'title'    => __( '5. Theme Setup & Tools', 'closeclient' ),
-        'priority' => 50,
-    ) );
-
-    $wp_customize->add_setting( 'closeclient_guide_link', array( 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'closeclient_guide_link', array(
-        'label'       => __( 'Theme Guide & Shortcodes', 'closeclient' ),
-        'description' => sprintf( '<a href="%s" class="cc-button cc-button-secondary" target="_blank">%s</a>', admin_url('admin.php?page=closeclient-shortcodes'), __( 'Open Master Guide', 'closeclient' ) ),
-        'section'     => 'closeclient_utilities_section',
-        'type'        => 'hidden',
-    ) ) );
-
     // ==========================================
     // 4. PAGE TEMPLATES PANEL
     // ==========================================
 
     // About Page Template
     $wp_customize->add_section( 'closeclient_about_tpl', array( 'title' => '7. About Page Content', 'panel' => 'closeclient_pages_panel' ) );
-    $wp_customize->add_setting( 'closeclient_about_tag_tpl', array( 'default' => 'OUR MISSION', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_about_tag_tpl', array( 'label' => 'Hero Tag', 'section' => 'closeclient_about_tpl' ) );
     $wp_customize->add_setting( 'closeclient_about_headline_tpl', array( 'default' => 'Stop Chasing. Start Leading.', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_about_headline_tpl', array( 'label' => 'Hero Headline', 'section' => 'closeclient_about_tpl' ) );
     $wp_customize->add_setting( 'closeclient_about_text_tpl', array( 'default' => "Most agencies focus on 'pretty.' We focus on Positioning & Profit. Founded on direct-response principles, CloseClient rescues experts from being the 'best-kept secret.'", 'sanitize_callback' => 'sanitize_textarea_field' ) );
@@ -467,33 +448,19 @@ function closeclient_customize_register( $wp_customize ) {
 
     // Contact Page Template
     $wp_customize->add_section( 'closeclient_contact_tpl', array( 'title' => '8. Contact Page Content', 'panel' => 'closeclient_pages_panel' ) );
-    $wp_customize->add_setting( 'closeclient_contact_tag_tpl', array( 'default' => 'GET IN TOUCH', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_contact_tag_tpl', array( 'label' => 'Hero Tag', 'section' => 'closeclient_contact_tpl' ) );
     $wp_customize->add_setting( 'closeclient_contact_headline_tpl', array( 'default' => "Let's talk about your growth.", 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_contact_headline_tpl', array( 'label' => 'Hero Headline', 'section' => 'closeclient_contact_tpl' ) );
     $wp_customize->add_setting( 'closeclient_contact_subheadline_tpl', array( 'default' => 'Ready to scale your coaching business? Fill out the form or book a call directly.', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_contact_subheadline_tpl', array( 'label' => 'Hero Subheadline', 'section' => 'closeclient_contact_tpl' ) );
     $wp_customize->add_setting( 'closeclient_contact_form_shortcode', array( 'default' => '[contact-form-7 id="..."]', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_contact_form_shortcode', array( 'label' => 'Form Shortcode', 'section' => 'closeclient_contact_tpl' ) );
-    $wp_customize->add_setting( 'closeclient_contact_direct_title_tpl', array( 'default' => 'Direct Contact', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_contact_direct_title_tpl', array( 'label' => 'Direct Contact Title', 'section' => 'closeclient_contact_tpl' ) );
-    $wp_customize->add_setting( 'closeclient_contact_direct_text_tpl', array( 'default' => 'Prefer email? Reach out at:', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_contact_direct_text_tpl', array( 'label' => 'Direct Contact Text', 'section' => 'closeclient_contact_tpl' ) );
 
     // Sales Page Template
     $wp_customize->add_section( 'closeclient_sales_tpl', array( 'title' => '9. Sales Page Content', 'panel' => 'closeclient_pages_panel' ) );
-    $wp_customize->add_setting( 'closeclient_sales_tag_tpl', array( 'default' => 'EXCLUSIVE OFFER', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_sales_tag_tpl', array( 'label' => 'Hero Tag', 'section' => 'closeclient_sales_tpl' ) );
     $wp_customize->add_setting( 'closeclient_sales_hero_headline_tpl', array( 'default' => 'Scale to $100k/mo Without Spending 8 Hours a Day in the DMs.', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_sales_hero_headline_tpl', array( 'label' => 'Hero Headline', 'section' => 'closeclient_sales_tpl' ) );
     $wp_customize->add_setting( 'closeclient_sales_hero_subheadline_tpl', array( 'default' => 'For the elite consultant who is ready to graduate from "hustling" to "owning a machine."', 'sanitize_callback' => 'sanitize_textarea_field' ) );
     $wp_customize->add_control( 'closeclient_sales_hero_subheadline_tpl', array( 'label' => 'Hero Subheadline', 'section' => 'closeclient_sales_tpl', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_sales_cta_tpl', array( 'default' => 'Yes! Build My Machine →', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_sales_cta_tpl', array( 'label' => 'Hero CTA Text', 'section' => 'closeclient_sales_tpl' ) );
-    $wp_customize->add_setting( 'closeclient_sales_stack_title_tpl', array( 'default' => 'The Authority Ecosystem', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_sales_stack_title_tpl', array( 'label' => 'Value Stack Title', 'section' => 'closeclient_sales_tpl' ) );
-    $wp_customize->add_setting( 'closeclient_sales_stack_text_tpl', array( 'default' => 'Everything you need to command the market.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_sales_stack_text_tpl', array( 'label' => 'Value Stack Description', 'section' => 'closeclient_sales_tpl' ) );
     $wp_customize->add_setting( 'closeclient_sales_value_stack', array( 'default' => "Authority Audit ($1,497 Value), Bento Ecosystem ($8,000 Value), Vortex Funnel ($3,500 Value)", 'sanitize_callback' => 'sanitize_textarea_field' ) );
     $wp_customize->add_control( 'closeclient_sales_value_stack', array( 'label' => 'Value Stack (Comma separated)', 'section' => 'closeclient_sales_tpl', 'type' => 'textarea' ) );
 
@@ -503,8 +470,6 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_control( 'closeclient_thankyou_headline_tpl', array( 'label' => 'Hero Headline', 'section' => 'closeclient_thankyou_tpl' ) );
     $wp_customize->add_setting( 'closeclient_thankyou_text_tpl', array( 'default' => "We've received your request. Check your inbox for the next steps.", 'sanitize_callback' => 'sanitize_textarea_field' ) );
     $wp_customize->add_control( 'closeclient_thankyou_text_tpl', array( 'label' => 'Main Text', 'section' => 'closeclient_thankyou_tpl', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_thankyou_wait_title_tpl', array( 'default' => 'While You Wait...', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_thankyou_wait_title_tpl', array( 'label' => 'Resources Section Title', 'section' => 'closeclient_thankyou_tpl' ) );
 
     // Services Page Template
     $wp_customize->add_section( 'closeclient_services_tpl', array( 'title' => '11. Services Page Content', 'panel' => 'closeclient_pages_panel' ) );
@@ -520,61 +485,15 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'closeclient_landing_text_tpl', array( 'default' => 'Join the elite ranks of coaches who have automated their authority and scaled their impact.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
     $wp_customize->add_control( 'closeclient_landing_text_tpl', array( 'label' => 'Hero Text', 'section' => 'closeclient_landing_tpl', 'type' => 'textarea' ) );
 
+
+    // Products
+
     // Lead Magnet Template
     $wp_customize->add_section( 'closeclient_leadmagnet_tpl', array( 'title' => '13. Lead Magnet Page Content', 'panel' => 'closeclient_pages_panel' ) );
-    $wp_customize->add_setting( 'closeclient_leadmagnet_tag_tpl', array( 'default' => 'FREE TRAINING', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_leadmagnet_tag_tpl', array( 'label' => 'Hero Tag', 'section' => 'closeclient_leadmagnet_tpl' ) );
     $wp_customize->add_setting( 'closeclient_leadmagnet_headline_tpl', array( 'default' => 'Get the Authority Blueprint', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_leadmagnet_headline_tpl', array( 'label' => 'Hero Headline', 'section' => 'closeclient_leadmagnet_tpl' ) );
     $wp_customize->add_setting( 'closeclient_leadmagnet_text_tpl', array( 'default' => 'Download our proven framework for attracting high-ticket clients on autopilot.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
     $wp_customize->add_control( 'closeclient_leadmagnet_text_tpl', array( 'label' => 'Hero Text', 'section' => 'closeclient_leadmagnet_tpl', 'type' => 'textarea' ) );
-
-    // 404 Page
-    $wp_customize->add_section( 'closeclient_404_content', array( 'title' => '17. 404 Page Content', 'panel' => 'closeclient_pages_panel' ) );
-    $wp_customize->add_setting( 'closeclient_404_tag', array( 'default' => '404 ERROR', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_404_tag', array( 'label' => '404 Tag', 'section' => 'closeclient_404_content' ) );
-    $wp_customize->add_setting( 'closeclient_404_headline', array( 'default' => 'That page can’t be found.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_404_headline', array( 'label' => '404 Headline', 'section' => 'closeclient_404_content' ) );
-    $wp_customize->add_setting( 'closeclient_404_text', array( 'default' => 'It looks like nothing was found at this location. Maybe try a search or head back to the growth hub?', 'sanitize_callback' => 'sanitize_textarea_field' ) );
-    $wp_customize->add_control( 'closeclient_404_text', array( 'label' => '404 Text', 'section' => 'closeclient_404_content', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_404_cta', array( 'default' => 'Back to Growth Hub', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_404_cta', array( 'label' => '404 Button Text', 'section' => 'closeclient_404_content' ) );
-
-    // Archive Content
-    $wp_customize->add_section( 'closeclient_archives_content', array( 'title' => '18. Archive Content', 'panel' => 'closeclient_pages_panel' ) );
-    $wp_customize->add_setting( 'closeclient_portfolio_archive_tag', array( 'default' => 'CASE STUDIES', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_portfolio_archive_tag', array( 'label' => 'Portfolio Archive Tag', 'section' => 'closeclient_archives_content' ) );
-    $wp_customize->add_setting( 'closeclient_portfolio_archive_headline', array( 'default' => 'Engineered Success Stories', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_portfolio_archive_headline', array( 'label' => 'Portfolio Archive Headline', 'section' => 'closeclient_archives_content' ) );
-    $wp_customize->add_setting( 'closeclient_portfolio_archive_text', array( 'default' => 'Deep dives into how we transform expert knowledge into high-performance authority machines.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
-    $wp_customize->add_control( 'closeclient_portfolio_archive_text', array( 'label' => 'Portfolio Archive Description', 'section' => 'closeclient_archives_content', 'type' => 'textarea' ) );
-
-    $wp_customize->add_setting( 'closeclient_service_archive_tag', array( 'default' => 'OUR CAPABILITIES', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_service_archive_tag', array( 'label' => 'Service Archive Tag', 'section' => 'closeclient_archives_content' ) );
-    $wp_customize->add_setting( 'closeclient_service_archive_headline', array( 'default' => 'Strategic Systems', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_service_archive_headline', array( 'label' => 'Service Archive Headline', 'section' => 'closeclient_archives_content' ) );
-
-    // Global Labels
-    $wp_customize->add_section( 'closeclient_labels_content', array( 'title' => '19. Global UI Labels', 'panel' => 'closeclient_layout_panel' ) );
-
-    $labels = array(
-        'closeclient_label_search' => array('label' => 'Search Results Tag', 'default' => 'SEARCH RESULTS'),
-        'closeclient_label_archive' => array('label' => 'Generic Archive Tag', 'default' => 'ARCHIVE'),
-        'closeclient_label_service_single' => array('label' => 'Service Single Tag', 'default' => 'SERVICE DETAIL'),
-        'closeclient_label_portfolio_single' => array('label' => 'Portfolio Single Tag', 'default' => 'CASE STUDY'),
-        'closeclient_label_challenge' => array('label' => 'Portfolio Challenge Title', 'default' => '01. The Challenge'),
-        'closeclient_label_solution' => array('label' => 'Portfolio Solution Title', 'default' => '02. The Authority Architecture'),
-        'closeclient_label_outcome' => array('label' => 'Portfolio Outcome Title', 'default' => '03. The Result'),
-        'closeclient_label_cta_portfolio' => array('label' => 'Portfolio Single CTA', 'default' => 'Get Results Like This →'),
-        'closeclient_label_share' => array('label' => 'Social Share Label', 'default' => 'SHARE INSIGHTS:'),
-        'closeclient_label_related' => array('label' => 'Related Posts Title', 'default' => 'More Authority Insights'),
-        'closeclient_label_read_more' => array('label' => 'Read More Label', 'default' => 'READ ARTICLE →'),
-    );
-
-    foreach ($labels as $id => $data) {
-        $wp_customize->add_setting($id, array('default' => $data['default'], 'sanitize_callback' => 'sanitize_text_field'));
-        $wp_customize->add_control($id, array('label' => $data['label'], 'section' => 'closeclient_labels_content'));
-    }
 
     // Theme Utilities
     $utility_nonce = wp_create_nonce( 'closeclient_utility_action' );
@@ -622,6 +541,44 @@ function closeclient_customize_register( $wp_customize ) {
 
     $wp_customize->add_setting( 'closeclient_sticky_cta_link', array( 'default' => '#', 'sanitize_callback' => 'esc_url_raw' ) );
     $wp_customize->add_control( 'closeclient_sticky_cta_link', array( 'label' => 'Sticky CTA Link', 'section' => 'closeclient_blog_global' ) );
+
+    // Global UI Labels
+    $wp_customize->add_section( 'closeclient_labels_section', array( 'title' => 'Global UI Labels', 'priority' => 100 ) );
+
+    $labels = array(
+        'closeclient_label_search'          => 'SEARCH RESULTS',
+        'closeclient_label_archive'         => 'ARCHIVE',
+        'closeclient_label_service_single'  => 'SERVICE DETAIL',
+        'closeclient_label_portfolio_single'=> 'CASE STUDY',
+        'closeclient_label_challenge'       => '01. The Challenge',
+        'closeclient_label_solution'        => '02. The Authority Architecture',
+        'closeclient_label_outcome'         => '03. The Result',
+        'closeclient_label_cta_portfolio'   => 'Get Results Like This →',
+        'closeclient_label_read_more'       => 'READ ARTICLE →',
+        'closeclient_label_share'           => 'SHARE INSIGHTS:',
+        'closeclient_label_related'         => 'More Authority Insights'
+    );
+
+    foreach ( $labels as $id => $default ) {
+        $wp_customize->add_setting( $id, array( 'default' => $default, 'sanitize_callback' => 'sanitize_text_field' ) );
+        $wp_customize->add_control( $id, array( 'label' => ucwords(str_replace('closeclient_label_', '', $id)), 'section' => 'closeclient_labels_section' ) );
+    }
+
+    // Menu Labels
+    $wp_customize->add_section( 'closeclient_menu_labels_section', array( 'title' => 'Menu Labels (Fallback)', 'priority' => 110 ) );
+
+    $menu_labels = array(
+        'closeclient_menu_label_services' => 'Services',
+        'closeclient_menu_label_cases'    => 'Case Studies',
+        'closeclient_menu_label_about'    => 'About',
+        'closeclient_menu_label_training' => 'Free Training',
+        'closeclient_menu_label_blog'     => 'Blog'
+    );
+
+    foreach ( $menu_labels as $id => $default ) {
+        $wp_customize->add_setting( $id, array( 'default' => $default, 'sanitize_callback' => 'sanitize_text_field' ) );
+        $wp_customize->add_control( $id, array( 'label' => ucwords(str_replace('closeclient_menu_label_', '', $id)), 'section' => 'closeclient_menu_labels_section' ) );
+    }
 }
 add_action( 'customize_register', 'closeclient_customize_register' );
 

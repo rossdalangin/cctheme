@@ -6,7 +6,7 @@
  */
 ?>
 
-<section class="section section-booking-cta text-center">
+<section class="section section-lg section-booking-cta text-center">
     <div class="container container-narrow">
         <h2 class="section-headline"><?php echo esc_html( get_theme_mod( 'closeclient_booking_headline', 'Are You Ready to Scale Beyond Your Current Ceiling?' ) ); ?></h2>
         <p class="section-subheadline"><?php echo esc_html( get_theme_mod( 'closeclient_booking_subheadline', 'We only partner with 3 new experts per month to ensure elite-level execution. If you are ready to automate your authority, let\'s talk.' ) ); ?></p>

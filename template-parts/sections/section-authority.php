@@ -6,7 +6,7 @@
  */
 ?>
 
-<section class="section section-authority text-center py-5">
+<section class="section section-sm section-authority text-center">
     <div class="container">
         <p class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_authority_tag', 'POWERING WORLD-CLASS AUTHORITIES' ) ); ?></p>
 

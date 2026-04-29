@@ -13,7 +13,7 @@ $subheadline = get_theme_mod( 'closeclient_services_subheadline_tpl', 'Premium s
 
 <main id="primary" class="site-main">
     <div class="container section text-center reveal">
-        <span class="section-tag"><?php esc_html_e( 'OUR CAPABILITIES', 'closeclient' ); ?></span>
+        <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_service_archive_tag', 'OUR CAPABILITIES' ) ); ?></span>
         <h1 class="hero-headline"><?php echo esc_html( $headline ); ?></h1>
         <p class="hero-subheadline"><?php echo esc_html( $subheadline ); ?></p>
     </div>

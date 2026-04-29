@@ -91,7 +91,7 @@ function closeclient_testimonial_meta_callback( $post ) {
     $rating = get_post_meta( $post->ID, '_testimonial_rating', true );
     ?>
     <p><label for="testimonial_rating">Star Rating (1-5):</label></p>
-    <input type="number" id="testimonial_rating" name="testimonial_rating" value="<?php echo esc_attr( $rating ); ?>" min="1" max="5" style="width:100%;">
+    <input type="number" id="testimonial_rating" name="testimonial_rating" value="<?php echo esc_attr( $rating ); ?>" min="1" max="5" >
     <?php
 }
 
@@ -100,7 +100,7 @@ function closeclient_team_meta_callback( $post ) {
     $role = get_post_meta( $post->ID, '_member_role', true );
     ?>
     <p><label for="member_role">Member Role/Title:</label></p>
-    <input type="text" id="member_role" name="member_role" value="<?php echo esc_attr( $role ); ?>" style="width:100%;">
+    <input type="text" id="member_role" name="member_role" value="<?php echo esc_attr( $role ); ?>" >
     <?php
 }
 
@@ -109,7 +109,7 @@ function closeclient_process_meta_callback( $post ) {
     $order = get_post_meta( $post->ID, '_step_order', true );
     ?>
     <p><label for="step_order">Step Number (e.g. 1, 2, 3):</label></p>
-    <input type="number" id="step_order" name="step_order" value="<?php echo esc_attr( $order ); ?>" style="width:100%;">
+    <input type="number" id="step_order" name="step_order" value="<?php echo esc_attr( $order ); ?>" >
     <?php
 }
 
@@ -119,7 +119,7 @@ function closeclient_pricing_meta_callback( $post ) {
     $featured = get_post_meta( $post->ID, '_plan_featured', true );
     ?>
     <p><label for="plan_price">Price (e.g. $2,997):</label></p>
-    <input type="text" id="plan_price" name="plan_price" value="<?php echo esc_attr( $price ); ?>" style="width:100%;">
+    <input type="text" id="plan_price" name="plan_price" value="<?php echo esc_attr( $price ); ?>" >
     <p><label><input type="checkbox" name="plan_featured" value="1" <?php checked( $featured, '1' ); ?>> Featured Plan?</label></p>
     <?php
 }
@@ -154,9 +154,9 @@ function closeclient_product_meta_callback( $post ) {
     $link  = get_post_meta( $post->ID, '_product_link', true );
     ?>
     <p><label for="product_price">Price (e.g. $49):</label></p>
-    <input type="text" id="product_price" name="product_price" value="<?php echo esc_attr( $price ); ?>" style="width:100%;">
+    <input type="text" id="product_price" name="product_price" value="<?php echo esc_attr( $price ); ?>" >
     <p><label for="product_link">External Link:</label></p>
-    <input type="url" id="product_link" name="product_link" value="<?php echo esc_attr( $link ); ?>" style="width:100%;">
+    <input type="url" id="product_link" name="product_link" value="<?php echo esc_attr( $link ); ?>" >
     <?php
 }
 
@@ -183,10 +183,10 @@ function closeclient_portfolio_meta_callback( $post ) {
     $solution  = get_post_meta( $post->ID, '_portfolio_solution', true );
     $outcome   = get_post_meta( $post->ID, '_portfolio_outcome', true );
     ?>
-    <div style="padding: 20px;">
-        <p><strong>The Challenge:</strong><br><textarea name="portfolio_challenge" style="width:100%;" rows="4"><?php echo esc_textarea( $challenge ); ?></textarea></p>
-        <p><strong>The Solution:</strong><br><textarea name="portfolio_solution" style="width:100%;" rows="4"><?php echo esc_textarea( $solution ); ?></textarea></p>
-        <p><strong>The Outcome:</strong><br><textarea name="portfolio_outcome" style="width:100%;" rows="4"><?php echo esc_textarea( $outcome ); ?></textarea></p>
+    <div >
+        <p><strong>The Challenge:</strong><br><textarea name="portfolio_challenge"  rows="4"><?php echo esc_textarea( $challenge ); ?></textarea></p>
+        <p><strong>The Solution:</strong><br><textarea name="portfolio_solution"  rows="4"><?php echo esc_textarea( $solution ); ?></textarea></p>
+        <p><strong>The Outcome:</strong><br><textarea name="portfolio_outcome"  rows="4"><?php echo esc_textarea( $outcome ); ?></textarea></p>
     </div>
     <?php
 }

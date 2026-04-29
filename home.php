@@ -19,9 +19,9 @@ get_header();
             </div>
         </header>
 
-		<div class="container section">
+		<div class="container section-sm">
             <?php if ( have_posts() ) : ?>
-                <div class="featured-post-wrapper">
+                <div class="featured-post-wrapper mb-5">
                     <?php
                     // Display the latest post as featured
                     $featured_query = new WP_Query( array( 'posts_per_page' => 1 ) );
@@ -46,34 +46,47 @@ get_header();
 
                 <div class="blog-posts-grid">
                     <?php
-                    // Offset by 1 to avoid duplicating featured post
+                    // Display posts excluding the featured one
                     $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+                    $posts_per_page = 6;
+
+                    // Correcting pagination with offset
+                    $offset = 1;
+                    $actual_offset = ( ( $paged - 1 ) * $posts_per_page ) + $offset;
+
                     $grid_query = new WP_Query( array(
-                        'post_type' => 'post',
-                        'posts_per_page' => 6,
-                        'offset' => 1,
-                        'paged' => $paged
+                        'post_type'      => 'post',
+                        'posts_per_page' => $posts_per_page,
+                        'offset'         => $actual_offset,
+                        'paged'          => $paged
                     ) );
 
                     if ( $grid_query->have_posts() ) :
                         while ( $grid_query->have_posts() ) : $grid_query->the_post();
                             get_template_part( 'template-parts/content/content', 'archive' );
                         endwhile;
-                        wp_reset_postdata();
-                    endif;
                     ?>
                 </div>
 
                 <div class="pagination-wrapper mt-5 text-center">
-                    <?php the_posts_navigation(); ?>
+                    <?php
+                    echo paginate_links( array(
+                        'total'   => ceil( ( $grid_query->found_posts - $offset ) / $posts_per_page ),
+                        'current' => $paged,
+                    ) );
+                    ?>
                 </div>
+                <?php
+                    wp_reset_postdata();
+                    endif;
+                ?>
 
             <?php else : ?>
                 <?php get_template_part( 'template-parts/content/content-none' ); ?>
             <?php endif; ?>
         </div>
 
-        <?php get_template_part( 'template-parts/sections/section-newsletter' ); ?>
+        <?php get_template_part( 'template-parts/sections/section-booking-cta' ); ?>
 
 	</main><!-- #main -->
 

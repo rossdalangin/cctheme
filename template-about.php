@@ -15,7 +15,7 @@ $text     = get_theme_mod( 'closeclient_about_text_tpl', 'Engineering the future
     <section class="section template-about-story bg-dark">
         <div class="container">
             <div class="section-header text-center reveal">
-                <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_about_tag_tpl', 'OUR MISSION' ) ); ?></span>
+                <span class="section-tag"><?php esc_html_e( 'OUR MISSION', 'closeclient' ); ?></span>
                 <h1 class="hero-headline"><?php echo esc_html( $headline ); ?></h1>
             </div>
 

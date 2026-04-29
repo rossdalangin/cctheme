@@ -14,22 +14,22 @@ get_header();
 
 		<section class="error-404 not-found glass p-5 error-404-container text-center reveal">
 			<header class="page-header mb-5">
-                <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_404_tag', '404 ERROR' ) ); ?></span>
-				<h1 class="page-title h2"><?php echo esc_html( get_theme_mod( 'closeclient_404_headline', 'That page can’t be found.' ) ); ?></h1>
+                <span class="section-tag"><?php esc_html_e( '404 ERROR', 'closeclient' ); ?></span>
+				<h1 class="page-title h2"><?php esc_html_e( 'That page can&rsquo;t be found.', 'closeclient' ); ?></h1>
 			</header><!-- .page-header -->
 
 			<div class="page-content">
-				<p class="lead text-muted mb-5"><?php echo esc_html( get_theme_mod( 'closeclient_404_text', 'It looks like nothing was found at this location. Maybe try a search or head back to the growth hub?' ) ); ?></p>
+				<p class="lead text-muted mb-5"><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try a search or head back to the growth hub?', 'closeclient' ); ?></p>
 
 				<?php get_search_form(); ?>
 
                 <div class="cta-actions mt-5">
-                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="cc-button"><?php echo esc_html( get_theme_mod( 'closeclient_404_cta', 'Back to Growth Hub' ) ); ?></a>
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="cc-button"><?php esc_html_e( 'Back to Growth Hub', 'closeclient' ); ?></a>
                 </div>
 			</div><!-- .page-content -->
 		</section><!-- .error-404 -->
 
-        <?php get_template_part( 'template-parts/sections/section-lead-magnet' ); ?>
+        <?php get_template_part( 'template-parts/sections/section-booking-cta' ); ?>
 
 	</main><!-- #main -->
 

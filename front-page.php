@@ -30,10 +30,10 @@ get_header();
 
         // Fallback to modular layout if no static page content is found
         if ( ! $has_content ) {
+            // Optimized Authority Funnel Sequence: Only one terminal CTA (Booking)
             $sections = array(
                 'hero', 'logo_ticker', 'authority', 'vsl', 'stats', 'portfolio', 'about', 'services',
-                'products', 'process', 'pricing', 'testimonials', 'team',
-                'lead_magnet', 'newsletter', 'faq', 'booking'
+                'products', 'process', 'pricing', 'testimonials', 'team', 'faq', 'booking'
             );
 
             foreach ( $sections as $section ) {

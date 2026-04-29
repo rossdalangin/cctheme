@@ -27,7 +27,7 @@ $grid_class = $show_sidebar ? 'single-post-grid' : '';
         </div>
 	</div>
 
-	<div class="entry-content container container-narrow reveal <?php echo esc_attr( $grid_class ); ?>">
+	<div class="entry-content container container-narrow reveal-stagger <?php echo esc_attr( $grid_class ); ?>">
         <div class="post-body">
 		<?php
 		the_content(
@@ -76,3 +76,4 @@ $grid_class = $show_sidebar ? 'single-post-grid' : '';
 </article>
 
 <?php get_template_part( 'template-parts/content/content-related' ); ?>
+<?php get_template_part( 'template-parts/sections/section-booking-cta' ); ?>

@@ -42,6 +42,8 @@ get_header();
             </div>
         <?php endif; ?>
     </div>
+
+    <?php get_template_part( 'template-parts/sections/section-booking-cta' ); ?>
 </main>
 
 <?php

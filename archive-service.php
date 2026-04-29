@@ -14,8 +14,8 @@ get_header();
 
 			<header class="page-header section text-center">
                 <div class="container container-narrow">
-                    <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_service_archive_tag', 'OUR CAPABILITIES' ) ); ?></span>
-				<h1 class="hero-headline reveal"><?php echo esc_html( get_theme_mod( 'closeclient_service_archive_headline', 'Strategic Systems' ) ); ?></h1>
+                    <span class="section-tag"><?php esc_html_e( 'OUR CAPABILITIES', 'closeclient' ); ?></span>
+				<h1 class="hero-headline reveal"><?php esc_html_e( 'Strategic Systems', 'closeclient' ); ?></h1>
                     <?php the_archive_description( '<div class="section-subheadline section-subheadline-centered">', '</div>' ); ?>
                 </div>
 			</header>

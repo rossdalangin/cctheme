@@ -358,9 +358,9 @@ require get_template_directory() . '/inc/admin-guide.php';
  */
 function closeclient_menu_fallback() {
     echo '<ul class="primary-menu-list">';
-    echo '<li><a href="' . esc_url( home_url( '/services' ) ) . '">Services</a></li>';
-    echo '<li><a href="' . esc_url( home_url( '/case-studies' ) ) . '">Case Studies</a></li>';
-    echo '<li><a href="' . esc_url( home_url( '/about' ) ) . '">About</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/services' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_services', 'Services' ) ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/case-studies' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_cases', 'Case Studies' ) ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/about' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_about', 'About' ) ) . '</a></li>';
     echo '</ul>';
 }
 
@@ -369,9 +369,9 @@ function closeclient_menu_fallback() {
  */
 function closeclient_footer_1_fallback() {
     echo '<ul class="list-unstyled small text-muted">';
-    echo '<li><a href="#">Authority Infrastructure</a></li>';
-    echo '<li><a href="#">Revenue Engineering</a></li>';
-    echo '<li><a href="#">Vortex Funnels</a></li>';
+    echo '<li><a href="#">' . esc_html__( 'Authority Infrastructure', 'closeclient' ) . '</a></li>';
+    echo '<li><a href="#">' . esc_html__( 'Revenue Engineering', 'closeclient' ) . '</a></li>';
+    echo '<li><a href="#">' . esc_html__( 'Vortex Funnels', 'closeclient' ) . '</a></li>';
     echo '</ul>';
 }
 
@@ -380,9 +380,9 @@ function closeclient_footer_1_fallback() {
  */
 function closeclient_footer_2_fallback() {
     echo '<ul class="list-unstyled small text-muted">';
-    echo '<li><a href="' . esc_url( home_url( '/case-studies' ) ) . '">Case Studies</a></li>';
-    echo '<li><a href="' . esc_url( home_url( '/free-training' ) ) . '">Free Training</a></li>';
-    echo '<li><a href="' . esc_url( home_url( '/blog' ) ) . '">Blog</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/case-studies' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_cases', 'Case Studies' ) ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/free-training' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_training', 'Free Training' ) ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/blog' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_blog', 'Blog' ) ) . '</a></li>';
     echo '</ul>';
 }
 

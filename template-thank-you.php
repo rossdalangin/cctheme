@@ -16,7 +16,7 @@ get_header();
             <p class="lead text-muted mb-5"><?php echo esc_html( get_theme_mod( 'closeclient_thankyou_text_tpl', "We've received your request. Check your inbox for the next steps." ) ); ?></p>
 
             <div class="glass p-5">
-                <h2 class="h4 mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_thankyou_wait_title_tpl', 'While You Wait...' ) ); ?></h2>
+                <h2 class="h4 mb-4"><?php esc_html_e( 'While You Wait...', 'closeclient' ); ?></h2>
                 <div class="thank-you-grid">
                     <div class="resource-item">
                         <p class="small text-muted"><?php esc_html_e( 'Explore our latest insights', 'closeclient' ); ?></p>
