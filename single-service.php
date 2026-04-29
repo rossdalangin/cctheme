@@ -16,7 +16,7 @@ get_header();
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
             <header class="entry-header text-center section">
                 <div class="container container-narrow">
-                    <span class="section-tag"><?php esc_html_e( 'SERVICE DETAIL', 'closeclient' ); ?></span>
+                    <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_label_service_single', 'SERVICE DETAIL' ) ); ?></span>
                     <?php the_title( '<h1 class="entry-title hero-headline reveal">', '</h1>' ); ?>
                     <p class="lead text-muted mt-4 reveal"><?php echo get_the_excerpt(); ?></p>
                 </div>

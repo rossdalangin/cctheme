@@ -11,9 +11,9 @@ get_header();
 <main id="primary" class="site-main">
     <header class="archive-header section text-center bg-dark">
         <div class="container">
-            <span class="section-tag"><?php esc_html_e( 'CASE STUDIES', 'closeclient' ); ?></span>
-            <h1 class="hero-headline"><?php esc_html_e( 'Engineered Success Stories', 'closeclient' ); ?></h1>
-            <p class="lead text-muted mt-4"><?php esc_html_e( 'Deep dives into how we transform expert knowledge into high-performance authority machines.', 'closeclient' ); ?></p>
+            <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_portfolio_archive_tag', 'CASE STUDIES' ) ); ?></span>
+            <h1 class="hero-headline"><?php echo esc_html( get_theme_mod( 'closeclient_portfolio_archive_headline', 'Engineered Success Stories' ) ); ?></h1>
+            <p class="lead text-muted mt-4"><?php echo esc_html( get_theme_mod( 'closeclient_portfolio_archive_text', 'Deep dives into how we transform expert knowledge into high-performance authority machines.' ) ); ?></p>
         </div>
     </header>
 

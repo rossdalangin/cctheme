@@ -16,7 +16,7 @@ get_header();
 
 			<header class="page-header section text-center reveal">
                 <div class="container">
-                    <span class="section-tag"><?php esc_html_e( 'ARCHIVE', 'closeclient' ); ?></span>
+                    <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_label_archive', 'ARCHIVE' ) ); ?></span>
 				<?php
 				the_archive_title( '<h1 class="hero-headline">', '</h1>' );
 				the_archive_description( '<div class="archive-description text-muted">', '</div>' );

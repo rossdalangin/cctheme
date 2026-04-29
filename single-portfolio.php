@@ -19,7 +19,7 @@ get_header();
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
             <header class="entry-header text-center section bg-dark">
                 <div class="container">
-                    <span class="section-tag"><?php esc_html_e( 'CASE STUDY', 'closeclient' ); ?></span>
+                    <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_label_portfolio_single', 'CASE STUDY' ) ); ?></span>
                     <?php the_title( '<h1 class="entry-title hero-headline reveal">', '</h1>' ); ?>
                     <div class="portfolio-meta text-muted mt-4 reveal">
                         <?php echo get_the_excerpt(); ?>
@@ -39,21 +39,21 @@ get_header();
                 <div class="entry-content container-narrow reveal">
                     <?php if ( $challenge ) : ?>
                         <div class="case-study-block glass p-5 border-accent">
-                            <h2 class="h4 mb-4 text-accent"><?php esc_html_e( '01. The Challenge', 'closeclient' ); ?></h2>
+                            <h2 class="h4 mb-4 text-accent"><?php echo esc_html( get_theme_mod( 'closeclient_label_challenge', '01. The Challenge' ) ); ?></h2>
                             <div class="text-muted"><?php echo wp_kses_post( $challenge ); ?></div>
                         </div>
                     <?php endif; ?>
 
                     <?php if ( $solution ) : ?>
                         <div class="case-study-block glass p-5">
-                            <h2 class="h4 mb-4"><?php esc_html_e( '02. The Authority Architecture', 'closeclient' ); ?></h2>
+                            <h2 class="h4 mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_label_solution', '02. The Authority Architecture' ) ); ?></h2>
                             <div class="text-muted"><?php echo wp_kses_post( $solution ); ?></div>
                         </div>
                     <?php endif; ?>
 
                     <?php if ( $outcome ) : ?>
                         <div class="case-study-block glass p-5 outcome-block">
-                            <h2 class="h4 mb-4"><?php esc_html_e( '03. The Result', 'closeclient' ); ?></h2>
+                            <h2 class="h4 mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_label_outcome', '03. The Result' ) ); ?></h2>
                             <div class="h3 fw-bold mb-0"><?php echo wp_kses_post( $outcome ); ?></div>
                         </div>
                     <?php endif; ?>
@@ -64,7 +64,7 @@ get_header();
 
                     <div class="text-center mt-5">
                         <a href="<?php echo esc_url( get_theme_mod( 'closeclient_header_cta_link', '#audit' ) ); ?>" class="cc-button">
-                            <?php esc_html_e( 'Get Results Like This →', 'closeclient' ); ?>
+                            <?php echo esc_html( get_theme_mod( 'closeclient_label_cta_portfolio', 'Get Results Like This →' ) ); ?>
                         </a>
                     </div>
                 </div>

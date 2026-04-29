@@ -75,7 +75,7 @@
                 <!-- Column 4: Connect/CTA -->
                 <div class="footer-column">
                     <h3 class="footer-title h6 mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_footer_col4_title', 'Connect' ) ); ?></h3>
-                    <p class="small text-muted mb-4"><?php esc_html_e( 'Ready to engineer your authority?', 'closeclient' ); ?></p>
+                    <p class="small text-muted mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_footer_cta_text', 'Ready to engineer your authority?' ) ); ?></p>
                     <a href="<?php echo esc_url( get_theme_mod( 'closeclient_header_cta_link', '#' ) ); ?>" class="cc-button footer-cta-btn">
                         <?php echo esc_html( get_theme_mod( 'closeclient_header_cta_text', 'Book a Call' ) ); ?>
                     </a>
@@ -90,12 +90,12 @@
                 <div class="site-info d-flex justify-content-between align-items-center flex-wrap gap-3">
                     <p class="copyright small text-muted mb-0"><?php echo esc_html( get_theme_mod( 'closeclient_footer_copyright', '© ' . date('Y') . ' CloseClient. All rights reserved.' ) ); ?></p>
                     <div class="footer-meta-links small text-muted">
-                         <a href="<?php echo esc_url( home_url( '/privacy-policy' ) ); ?>" class="text-muted text-decoration-none me-3"><?php esc_html_e( 'Privacy Policy', 'closeclient' ); ?></a>
-                         <a href="<?php echo esc_url( home_url( '/terms-of-service' ) ); ?>" class="text-muted text-decoration-none"><?php esc_html_e( 'Terms of Service', 'closeclient' ); ?></a>
+                         <a href="<?php echo esc_url( home_url( '/privacy-policy' ) ); ?>" class="text-muted text-decoration-none me-3"><?php echo esc_html( get_theme_mod( 'closeclient_footer_privacy_text', 'Privacy Policy' ) ); ?></a>
+                         <a href="<?php echo esc_url( home_url( '/terms-of-service' ) ); ?>" class="text-muted text-decoration-none"><?php echo esc_html( get_theme_mod( 'closeclient_footer_tos_text', 'Terms of Service' ) ); ?></a>
                     </div>
 
                     <a href="#page" class="back-to-top small text-accent text-decoration-none">
-                        <?php esc_html_e( 'BACK TO TOP ↑', 'closeclient' ); ?>
+                        <?php echo esc_html( get_theme_mod( 'closeclient_footer_back_top_text', 'BACK TO TOP ↑' ) ); ?>
                     </a>
                 </div>
             </div>

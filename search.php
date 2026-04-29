@@ -16,7 +16,7 @@ get_header();
 
 			<header class="page-header section text-center reveal">
                 <div class="container">
-                    <span class="section-tag"><?php esc_html_e( 'SEARCH RESULTS', 'closeclient' ); ?></span>
+                    <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_label_search', 'SEARCH RESULTS' ) ); ?></span>
 				<h1 class="hero-headline">
 					<?php
 					/* translators: %s: search query. */

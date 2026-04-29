@@ -12,7 +12,7 @@ get_header();
     <section class="section">
         <div class="container">
             <div class="section-header text-center reveal">
-                <span class="section-tag"><?php esc_html_e( 'GET IN TOUCH', 'closeclient' ); ?></span>
+                <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_contact_tag_tpl', 'GET IN TOUCH' ) ); ?></span>
                 <h1 class="hero-headline"><?php echo esc_html( get_theme_mod( 'closeclient_contact_headline_tpl', "Let's talk about your growth." ) ); ?></h1>
                 <p class="lead text-muted mt-4"><?php echo esc_html( get_theme_mod( 'closeclient_contact_subheadline_tpl', 'Ready to scale your coaching business? Fill out the form or book a call directly.' ) ); ?></p>
             </div>
@@ -20,8 +20,8 @@ get_header();
             <div class="contact-grid reveal">
                 <div class="contact-info">
                     <div class="glass p-5 mb-4">
-                        <h3 class="h4 mb-4"><?php esc_html_e( 'Direct Contact', 'closeclient' ); ?></h3>
-                        <p class="text-muted"><?php esc_html_e( 'Prefer email? Reach out at:', 'closeclient' ); ?><br>
+                        <h3 class="h4 mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_contact_direct_title_tpl', 'Direct Contact' ) ); ?></h3>
+                        <p class="text-muted"><?php echo esc_html( get_theme_mod( 'closeclient_contact_direct_text_tpl', 'Prefer email? Reach out at:' ) ); ?><br>
                         <a href="mailto:<?php echo antispambot( get_option('admin_email') ); ?>" class="text-white fw-bold"><?php echo antispambot( get_option('admin_email') ); ?></a></p>
                     </div>
                     <?php get_template_part( 'template-parts/sections/section-stats' ); ?>

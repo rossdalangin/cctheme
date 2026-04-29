@@ -12,7 +12,7 @@ get_header();
     <section class="section">
         <div class="container lead-magnet-grid reveal">
             <div class="lead-magnet-content">
-                <span class="section-tag"><?php esc_html_e( 'FREE TRAINING', 'closeclient' ); ?></span>
+                <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_leadmagnet_tag_tpl', 'FREE TRAINING' ) ); ?></span>
                 <h1 class="hero-headline"><?php echo esc_html( get_theme_mod( 'closeclient_leadmagnet_headline_tpl', 'Get the Authority Blueprint' ) ); ?></h1>
                 <p class="lead text-muted mb-5"><?php echo esc_html( get_theme_mod( 'closeclient_leadmagnet_text_tpl', 'Download our proven framework for attracting high-ticket clients on autopilot.' ) ); ?></p>
 
