@@ -62,6 +62,26 @@ function closeclient_reset_defaults() {
         'closeclient_newsletter_text'   => 'Weekly insights on authority positioning, high-ticket sales, and scaling systems for coaches.',
         'closeclient_newsletter_button' => 'Subscribe Now',
         'closeclient_newsletter_disclaimer' => 'No spam. Just value. Unsubscribe anytime.',
+
+        // Global UI Labels
+        'closeclient_label_search'          => 'SEARCH RESULTS',
+        'closeclient_label_archive'         => 'ARCHIVE',
+        'closeclient_label_service_single'  => 'SERVICE DETAIL',
+        'closeclient_label_portfolio_single'=> 'CASE STUDY',
+        'closeclient_label_challenge'       => '01. The Challenge',
+        'closeclient_label_solution'        => '02. The Authority Architecture',
+        'closeclient_label_outcome'         => '03. The Result',
+        'closeclient_label_cta_portfolio'   => 'Get Results Like This →',
+        'closeclient_label_read_more'       => 'READ ARTICLE →',
+        'closeclient_label_share'           => 'SHARE INSIGHTS:',
+        'closeclient_label_related'         => 'More Authority Insights',
+
+        // Menu Labels
+        'closeclient_menu_label_services' => 'Services',
+        'closeclient_menu_label_cases'    => 'Case Studies',
+        'closeclient_menu_label_about'    => 'About',
+        'closeclient_menu_label_training' => 'Free Training',
+        'closeclient_menu_label_blog'     => 'Blog',
     );
 
     foreach ( $defaults as $key => $value ) {
@@ -231,16 +251,56 @@ function closeclient_setup_menus($pages) {
     $primary_menu_name = 'Primary Menu';
     if ( ! wp_get_nav_menu_object( $primary_menu_name ) ) {
         $menu_id = wp_create_nav_menu( $primary_menu_name );
-        $menu_items = array( 'Home', 'Services', 'Products', 'Case Studies', 'About' );
-        foreach ( $menu_items as $title ) {
-            if ( isset($pages[$title]) ) {
-                wp_update_nav_menu_item( $menu_id, 0, array('menu-item-title' => $title, 'menu-item-object-id' => $pages[$title], 'menu-item-object' => 'page', 'menu-item-type' => 'post_type', 'menu-item-status' => 'publish') );
+
+        // Strategic Elite Navigation Structure
+        $menu_items = array(
+            'Solutions'       => 'Services',
+            'Success Stories' => 'Case Studies',
+            'The Method'      => 'About',
+            'Insights'        => 'Home', // Fallback to Home if blog isn't defined, but normally mapped to Blog
+        );
+
+        foreach ( $menu_items as $label => $page_title ) {
+            if ( isset($pages[$page_title]) ) {
+                wp_update_nav_menu_item( $menu_id, 0, array(
+                    'menu-item-title'     => $label,
+                    'menu-item-object-id' => $pages[$page_title],
+                    'menu-item-object'    => 'page',
+                    'menu-item-type'      => 'post_type',
+                    'menu-item-status'    => 'publish'
+                ) );
             }
         }
+
+        // Add custom CTA to menu
+        wp_update_nav_menu_item( $menu_id, 0, array(
+            'menu-item-title'  => 'Book Audit',
+            'menu-item-url'    => '#audit',
+            'menu-item-type'   => 'custom',
+            'menu-item-status' => 'publish'
+        ) );
+
         $locations = get_theme_mod( 'nav_menu_locations' );
         if ( ! is_array( $locations ) ) { $locations = array(); }
         $locations['menu-1'] = $menu_id;
         set_theme_mod( 'nav_menu_locations', $locations );
+    }
+
+    $footer_menu_name = 'Footer Menu';
+    if ( ! wp_get_nav_menu_object( $footer_menu_name ) ) {
+        $f_menu_id = wp_create_nav_menu( $footer_menu_name );
+        $f_items = array( 'Services', 'Case Studies', 'About', 'Contact' );
+        foreach ( $f_items as $title ) {
+            if ( isset($pages[$title]) ) {
+                wp_update_nav_menu_item( $f_menu_id, 0, array(
+                    'menu-item-title'     => $title,
+                    'menu-item-object-id' => $pages[$title],
+                    'menu-item-object'    => 'page',
+                    'menu-item-type'      => 'post_type',
+                    'menu-item-status'    => 'publish'
+                ) );
+            }
+        }
     }
 }
 
