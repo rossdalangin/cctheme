@@ -14,17 +14,17 @@ get_header();
         the_post();
         ?>
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <header class="entry-header text-center section">
+            <header class="entry-header text-center section section-lg bg-dark">
                 <div class="container container-narrow">
                     <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_label_service_single', 'SERVICE DETAIL' ) ); ?></span>
-                    <?php the_title( '<h1 class="entry-title hero-headline reveal">', '</h1>' ); ?>
-                    <p class="lead text-muted mt-4 reveal"><?php echo get_the_excerpt(); ?></p>
+                    <?php the_title( '<h1 class="entry-title hero-headline gradient-text reveal">', '</h1>' ); ?>
+                    <p class="lead text-muted mt-4 reveal py-md"><?php echo get_the_excerpt(); ?></p>
                 </div>
             </header>
 
-            <div class="container section">
-                <div class="entry-content container-narrow reveal">
-                    <div class="glass border-accent service-detail-glass">
+            <div class="container section py-xl">
+                <div class="entry-content container-narrow reveal py-md">
+                    <div class="glass border-accent service-detail-glass p-5">
                         <?php the_content(); ?>
                     </div>
                 </div>

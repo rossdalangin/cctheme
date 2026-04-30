@@ -536,6 +536,10 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_control( 'closeclient_newsletter_text', array( 'label' => 'Newsletter Text', 'section' => 'closeclient_blog_global' ) );
     $wp_customize->add_setting( 'closeclient_newsletter_button', array( 'default' => 'Subscribe Now', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_newsletter_button', array( 'label' => 'Newsletter Button Text', 'section' => 'closeclient_blog_global' ) );
+
+    $wp_customize->add_setting( 'closeclient_newsletter_form_action', array( 'default' => '', 'sanitize_callback' => 'esc_url_raw' ) );
+    $wp_customize->add_control( 'closeclient_newsletter_form_action', array( 'label' => 'Custom Form Action URL (Optional)', 'description' => 'If set, the newsletter form will target this URL.', 'section' => 'closeclient_blog_global' ) );
+
     $wp_customize->add_setting( 'closeclient_sticky_cta_title', array( 'default' => 'Scale to $10k+ Months', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_sticky_cta_title', array( 'label' => 'Sticky CTA Title', 'section' => 'closeclient_blog_global' ) );
 

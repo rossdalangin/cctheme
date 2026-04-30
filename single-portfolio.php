@@ -17,18 +17,18 @@ get_header();
         $outcome   = get_post_meta( get_the_ID(), '_portfolio_outcome', true );
         ?>
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <header class="entry-header text-center section bg-dark">
+            <header class="entry-header text-center section section-lg bg-dark">
                 <div class="container">
                     <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_label_portfolio_single', 'CASE STUDY' ) ); ?></span>
-                    <?php the_title( '<h1 class="entry-title hero-headline reveal">', '</h1>' ); ?>
-                    <div class="portfolio-meta text-muted mt-4 reveal">
+                    <?php the_title( '<h1 class="entry-title hero-headline gradient-text reveal">', '</h1>' ); ?>
+                    <div class="portfolio-meta text-muted mt-4 reveal py-md">
                         <?php echo get_the_excerpt(); ?>
                     </div>
                 </div>
             </header>
 
-            <div class="container section">
-                <div class="portfolio-featured-image mb-5 reveal">
+            <div class="container section py-xl">
+                <div class="portfolio-featured-image mb-5 reveal py-md">
                     <?php if ( has_post_thumbnail() ) : ?>
                         <div class="aspect-hero">
                             <?php the_post_thumbnail( 'full' ); ?>
@@ -36,9 +36,9 @@ get_header();
                     <?php endif; ?>
                 </div>
 
-                <div class="entry-content container-narrow reveal">
+                <div class="entry-content container-narrow reveal py-lg">
                     <?php if ( $challenge ) : ?>
-                        <div class="case-study-block glass p-5 border-accent">
+                        <div class="case-study-block glass p-5 border-accent mb-4">
                             <h2 class="h4 mb-4 text-accent"><?php echo esc_html( get_theme_mod( 'closeclient_label_challenge', '01. The Challenge' ) ); ?></h2>
                             <div class="text-muted"><?php echo wp_kses_post( $challenge ); ?></div>
                         </div>
@@ -62,7 +62,7 @@ get_header();
                         <?php the_content(); ?>
                     </div>
 
-                    <div class="text-center mt-5">
+                    <div class="text-center mt-5 py-lg">
                         <a href="<?php echo esc_url( get_theme_mod( 'closeclient_header_cta_link', '#audit' ) ); ?>" class="cc-button">
                             <?php echo esc_html( get_theme_mod( 'closeclient_label_cta_portfolio', 'Get Results Like This →' ) ); ?>
                         </a>
@@ -70,7 +70,7 @@ get_header();
                 </div>
             </article>
 
-            <?php get_template_part( 'template-parts/sections/section-testimonials' ); ?>
+            <?php get_template_part( 'template-parts/sections/section-booking-cta' ); ?>
 
         <?php
     endwhile;
