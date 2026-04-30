@@ -26,8 +26,9 @@ get_header();
                     the_post();
                     $i++;
                     $span = ( $i % 3 == 1 ) ? 'bento-span-8' : 'bento-span-4';
+                    $reveal_class = ( $i <= 3 ) ? '' : 'reveal';
                     ?>
-                    <article id="post-<?php the_ID(); ?>" <?php post_class( "portfolio-item cc-card reveal $span" ); ?>>
+                    <article id="post-<?php the_ID(); ?>" <?php post_class( "portfolio-item cc-card $reveal_class $span" ); ?>>
                         <?php if ( has_post_thumbnail() ) : ?>
                             <div class="portfolio-image">
                                 <a href="<?php the_permalink(); ?>">

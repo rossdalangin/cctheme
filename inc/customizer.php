@@ -455,6 +455,9 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'closeclient_contact_form_shortcode', array( 'default' => '[contact-form-7 id="..."]', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_contact_form_shortcode', array( 'label' => 'Form Shortcode', 'section' => 'closeclient_contact_tpl' ) );
 
+    $wp_customize->add_setting( 'closeclient_contact_form_action', array( 'default' => '', 'sanitize_callback' => 'esc_url_raw' ) );
+    $wp_customize->add_control( 'closeclient_contact_form_action', array( 'label' => 'Custom Form Action URL (Optional)', 'description' => 'If set, this will replace the shortcode with a basic HTML form targeting this URL.', 'section' => 'closeclient_contact_tpl' ) );
+
     // Sales Page Template
     $wp_customize->add_section( 'closeclient_sales_tpl', array( 'title' => '9. Sales Page Content', 'panel' => 'closeclient_pages_panel' ) );
     $wp_customize->add_setting( 'closeclient_sales_hero_headline_tpl', array( 'default' => 'Scale to $100k/mo Without Spending 8 Hours a Day in the DMs.', 'sanitize_callback' => 'sanitize_text_field' ) );
@@ -494,6 +497,9 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_control( 'closeclient_leadmagnet_headline_tpl', array( 'label' => 'Hero Headline', 'section' => 'closeclient_leadmagnet_tpl' ) );
     $wp_customize->add_setting( 'closeclient_leadmagnet_text_tpl', array( 'default' => 'Download our proven framework for attracting high-ticket clients on autopilot.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
     $wp_customize->add_control( 'closeclient_leadmagnet_text_tpl', array( 'label' => 'Hero Text', 'section' => 'closeclient_leadmagnet_tpl', 'type' => 'textarea' ) );
+
+    $wp_customize->add_setting( 'closeclient_lm_form_action', array( 'default' => '', 'sanitize_callback' => 'esc_url_raw' ) );
+    $wp_customize->add_control( 'closeclient_lm_form_action', array( 'label' => 'Custom Form Action URL (Optional)', 'description' => 'If set, this will replace the page content with a basic HTML form targeting this URL.', 'section' => 'closeclient_leadmagnet_tpl' ) );
 
     // Theme Utilities
     $utility_nonce = wp_create_nonce( 'closeclient_utility_action' );

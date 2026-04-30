@@ -27,8 +27,8 @@ $grid_class = $show_sidebar ? 'single-post-grid' : '';
         </div>
 	</div>
 
-	<div class="entry-content container container-narrow reveal-stagger <?php echo esc_attr( $grid_class ); ?>">
-        <div class="post-body">
+	<div class="entry-content container reveal-stagger <?php echo esc_attr( $grid_class ); ?>">
+        <div class="post-body glass p-5">
 		<?php
 		the_content(
 			sprintf(
@@ -55,9 +55,11 @@ $grid_class = $show_sidebar ? 'single-post-grid' : '';
         </div>
 
         <?php if ( $show_sidebar ) : ?>
-            <aside class="post-sidebar">
+            <aside class="post-sidebar px-lg">
                 <?php get_template_part( 'template-parts/content/blog-sticky-cta' ); ?>
-                <?php get_sidebar(); ?>
+                <div class="sidebar-widgets glass p-4 mt-4">
+                    <?php get_sidebar(); ?>
+                </div>
             </aside>
         <?php endif; ?>
 	</div>
