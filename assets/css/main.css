@@ -280,6 +280,7 @@ input:focus, textarea:focus, select:focus {
     align-items: center;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 2000;
+    padding: 0 var(--s-sm);
 }
 
 .site-header.is-scrolled {
@@ -374,7 +375,7 @@ input:focus, textarea:focus, select:focus {
 .floating-cta.is-visible { opacity: 1; visibility: visible; transform: translateY(0); }
 
 /* --- Footer --- */
-.site-footer { padding: 100px 0 60px; background: var(--c-bg); border-top: 1px solid var(--c-border); }
+.site-footer { padding: var(--s-lg) 0; background: var(--c-bg); border-top: 1px solid var(--c-border); }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: var(--s-md); }
 .footer-title { color: var(--c-white); text-transform: uppercase; letter-spacing: 0.15em; font-weight: 800; }
 .footer-column ul { list-style: none; padding: 0; margin: 0; }
@@ -392,7 +393,7 @@ input:focus, textarea:focus, select:focus {
 
 /* --- Mobile Friendliness --- */
 @media (max-width: 1024px) {
-    .cc-grid-3, .cc-grid-2, .footer-grid, .blog-layout, .bento-grid { grid-template-columns: 1fr !important; gap: var(--s-md); }
+    .cc-grid-3, .cc-grid-2, .footer-grid, .blog-layout-wrapper, .single-post-grid, .bento-grid { grid-template-columns: 1fr !important; gap: var(--s-md); }
     .bento-grid > div { grid-column: span 12 !important; }
     .site-header { height: 80px; }
     .menu-toggle { display: block; z-index: 2001; }
@@ -411,6 +412,7 @@ input:focus, textarea:focus, select:focus {
     .main-navigation.is-open .nav-menu-wrapper { right: 0; }
     .primary-menu-list { flex-direction: column; gap: 32px; }
     .primary-menu-list a { font-size: 2.5rem; font-weight: 900; }
+    .cc-button-nav { display: none; }
 
     .floating-cta { bottom: 20px; right: 20px; left: 20px; text-align: center; }
 }
@@ -477,6 +479,14 @@ a:focus, button:focus, input:focus, textarea:focus, select:focus { outline: 2px 
 /* Form Elements */
 label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; color: var(--c-text-muted); }
 select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='white'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1.5rem center; background-size: 1rem; padding-right: 3.5rem; }
+
+/* Post Body Typography & Content */
+.post-body p { margin-bottom: var(--s-md); font-size: 1.15rem; color: var(--c-text-muted); }
+.post-body h2 { margin-top: var(--s-lg); margin-bottom: var(--s-md); font-size: 2.25rem; }
+.post-body h3 { margin-top: var(--s-md); margin-bottom: var(--s-sm); font-size: 1.75rem; }
+.post-body ul, .post-body ol { margin-bottom: var(--s-md); padding-left: var(--s-md); }
+.post-body li { margin-bottom: var(--s-xs); color: var(--c-text-muted); }
+.post-body blockquote { border-left: 4px solid var(--c-accent); padding: var(--s-md); background: rgba(255, 255, 255, 0.02); border-radius: 0 var(--radius-md) var(--radius-md) 0; margin-bottom: var(--s-md); font-style: italic; }
 
 /* block Editor */
 .wp-block-columns { gap: var(--s-sm); }
@@ -822,9 +832,17 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 }
 
 /* Footer Utilities */
-.footer-cta-btn {
+.header-cta .cc-button, .cc-button-nav {
     padding: 12px 24px;
     font-size: 0.7rem;
+}
+.cc-button-nav {
+    background: var(--button-bg);
+    color: white !important;
+    border-radius: 100px;
+    text-decoration: none;
+    font-weight: 800;
+    text-transform: uppercase;
 }
 .back-to-top {
     cursor: pointer;
@@ -859,6 +877,18 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: var(--s-sm);
 }
+
+/* Sticky Blog CTA Enhancements */
+.sticky-blog-cta {
+    background: linear-gradient(135deg, var(--c-accent), var(--c-accent-hover));
+    border-radius: var(--radius-lg);
+    padding: var(--s-md);
+    color: white;
+    box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+}
+.sticky-blog-cta h4 { color: white; margin-bottom: 10px; }
+.sticky-blog-cta p { font-size: 0.9rem; opacity: 0.9; margin-bottom: 20px; }
+.sticky-blog-cta .cc-button { background: white; color: var(--c-accent); width: 100%; border-radius: 12px; }
 
 .blog-layout-wrapper {
     display: grid;

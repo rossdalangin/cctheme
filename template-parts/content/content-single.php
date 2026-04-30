@@ -60,8 +60,8 @@ $grid_class = $show_sidebar ? 'single-post-grid' : '';
 
                 <div class="featured-insight-box glass p-4 mt-4">
                     <span class="section-tag small"><?php esc_html_e( 'FEATURED INSIGHT', 'closeclient' ); ?></span>
-                    <h4 class="h6 mt-2 text-white"><?php esc_html_e( 'The Authority Flywheel', 'closeclient' ); ?></h4>
-                    <p class="small text-muted mb-0"><?php esc_html_e( 'Learn how to transform your expertise into an omnipresent brand that closes deals while you sleep.', 'closeclient' ); ?></p>
+                    <h4 class="h6 mt-2 text-white"><?php echo esc_html( get_theme_mod( 'closeclient_sidebar_insight_title', 'The Authority Flywheel' ) ); ?></h4>
+                    <p class="small text-muted mb-0"><?php echo esc_html( get_theme_mod( 'closeclient_sidebar_insight_text', 'Learn how to transform your expertise into an omnipresent brand that closes deals while you sleep.' ) ); ?></p>
                 </div>
 
                 <div class="sidebar-widgets glass p-4 mt-4">

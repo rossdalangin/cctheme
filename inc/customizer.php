@@ -400,7 +400,7 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_control( 'closeclient_lm_headline', array( 'label' => 'Headline', 'section' => 'closeclient_lm_content' ) );
     $wp_customize->add_setting( 'closeclient_lm_subheadline', array( 'default' => 'Download the exact roadmap I use to help consultants land high-ticket clients without cold outreach.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
     $wp_customize->add_control( 'closeclient_lm_subheadline', array( 'label' => 'Subheadline', 'section' => 'closeclient_lm_content', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_lm_button', array( 'default' => 'Get the Blueprint', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_setting( 'closeclient_lm_button', array( 'default' => 'Access The Blueprint', 'sanitize_callback' => 'sanitize_text_field' ) );
     $wp_customize->add_control( 'closeclient_lm_button', array( 'label' => 'Button Text', 'section' => 'closeclient_lm_content' ) );
     $wp_customize->add_setting( 'closeclient_lm_image', array( 'sanitize_callback' => 'esc_url_raw' ) );
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'closeclient_lm_image', array( 'label' => 'Mockup Image', 'section' => 'closeclient_lm_content' ) ) );
@@ -467,6 +467,15 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'closeclient_sales_value_stack', array( 'default' => "Authority Audit ($1,497 Value), Bento Ecosystem ($8,000 Value), Vortex Funnel ($3,500 Value)", 'sanitize_callback' => 'sanitize_textarea_field' ) );
     $wp_customize->add_control( 'closeclient_sales_value_stack', array( 'label' => 'Value Stack (Comma separated)', 'section' => 'closeclient_sales_tpl', 'type' => 'textarea' ) );
 
+    $wp_customize->add_setting( 'closeclient_about_method_title', array( 'default' => 'The $100M Methodology', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_about_method_title', array( 'label' => 'Methodology Title', 'section' => 'closeclient_about_tpl' ) );
+
+    $wp_customize->add_setting( 'closeclient_about_method_text', array( 'default' => 'We don\'t just build websites; we engineer authority. Our methodology is rooted in the psychological triggers of the high-ticket prospect.', 'sanitize_callback' => 'sanitize_textarea_field' ) );
+    $wp_customize->add_control( 'closeclient_about_method_text', array( 'label' => 'Methodology Text', 'section' => 'closeclient_about_tpl', 'type' => 'textarea' ) );
+
+    $wp_customize->add_setting( 'closeclient_about_methodology', array( 'default' => 'Direct-Response System Architecture, Vortex Lead Intake & Pre-qualification, Bento-style Social Proof Engineering', 'sanitize_callback' => 'sanitize_textarea_field' ) );
+    $wp_customize->add_control( 'closeclient_about_methodology', array( 'label' => 'Methodology Items (Comma separated)', 'section' => 'closeclient_about_tpl', 'type' => 'textarea' ) );
+
     // Thank You Page Template
     $wp_customize->add_section( 'closeclient_thankyou_tpl', array( 'title' => '10. Thank You Page Content', 'panel' => 'closeclient_pages_panel' ) );
     $wp_customize->add_setting( 'closeclient_thankyou_headline_tpl', array( 'default' => "You're All Set!", 'sanitize_callback' => 'sanitize_text_field' ) );
@@ -500,6 +509,9 @@ function closeclient_customize_register( $wp_customize ) {
 
     $wp_customize->add_setting( 'closeclient_lm_form_action', array( 'default' => '', 'sanitize_callback' => 'esc_url_raw' ) );
     $wp_customize->add_control( 'closeclient_lm_form_action', array( 'label' => 'Custom Form Action URL (Optional)', 'description' => 'If set, this will replace the page content with a basic HTML form targeting this URL.', 'section' => 'closeclient_leadmagnet_tpl' ) );
+
+    $wp_customize->add_setting( 'closeclient_lm_benefits', array( 'default' => 'The "Authority Flywheel" Framework, 3 Conversion-Killing Mistakes to Avoid, Automated Lead Intake Blueprints', 'sanitize_callback' => 'sanitize_textarea_field' ) );
+    $wp_customize->add_control( 'closeclient_lm_benefits', array( 'label' => 'What\'s Inside (Comma separated)', 'section' => 'closeclient_leadmagnet_tpl', 'type' => 'textarea' ) );
 
     // Theme Utilities
     $utility_nonce = wp_create_nonce( 'closeclient_utility_action' );
@@ -552,6 +564,12 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_setting( 'closeclient_sticky_cta_link', array( 'default' => '#', 'sanitize_callback' => 'esc_url_raw' ) );
     $wp_customize->add_control( 'closeclient_sticky_cta_link', array( 'label' => 'Sticky CTA Link', 'section' => 'closeclient_blog_global' ) );
 
+    $wp_customize->add_setting( 'closeclient_sidebar_insight_title', array( 'default' => 'The Authority Flywheel', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_sidebar_insight_title', array( 'label' => 'Sidebar Insight Title', 'section' => 'closeclient_blog_global' ) );
+
+    $wp_customize->add_setting( 'closeclient_sidebar_insight_text', array( 'default' => 'Learn how to transform your expertise into an omnipresent brand that closes deals while you sleep.', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_sidebar_insight_text', array( 'label' => 'Sidebar Insight Text', 'section' => 'closeclient_blog_global', 'type' => 'textarea' ) );
+
     // Global UI Labels
     $wp_customize->add_section( 'closeclient_labels_section', array( 'title' => 'Global UI Labels', 'priority' => 100 ) );
 
@@ -585,11 +603,11 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_section( 'closeclient_menu_labels_section', array( 'title' => 'Menu Labels (Fallback)', 'priority' => 110 ) );
 
     $menu_labels = array(
-        'closeclient_menu_label_services' => 'Services',
-        'closeclient_menu_label_cases'    => 'Case Studies',
-        'closeclient_menu_label_about'    => 'About',
+        'closeclient_menu_label_services' => 'Solutions',
+        'closeclient_menu_label_cases'    => 'Success Stories',
+        'closeclient_menu_label_about'    => 'The Method',
         'closeclient_menu_label_training' => 'Free Training',
-        'closeclient_menu_label_blog'     => 'Blog'
+        'closeclient_menu_label_blog'     => 'Insights'
     );
 
     foreach ( $menu_labels as $id => $default ) {

@@ -15,7 +15,7 @@ get_header();
 			<header class="page-header section text-center">
                 <div class="container container-narrow">
                     <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_label_service_archive_tag', 'OUR CAPABILITIES' ) ); ?></span>
-				<h1 class="hero-headline reveal"><?php echo esc_html( get_theme_mod( 'closeclient_label_service_archive_title', 'Strategic Systems' ) ); ?></h1>
+				<h1 class="hero-headline gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_label_service_archive_title', 'Strategic Systems' ) ); ?></h1>
                     <?php the_archive_description( '<div class="section-subheadline section-subheadline-centered">', '</div>' ); ?>
                 </div>
 			</header>
@@ -31,7 +31,8 @@ get_header();
                         $icons = array('⚡', '💎', '🚀', '🎯', '🔥', '🛡️');
                         $icon = isset($icons[$i-1]) ? $icons[$i-1] : '⚡';
 					?>
-                        <article id="post-<?php the_ID(); ?>" <?php post_class( "service-item cc-card reveal $span" ); ?>>
+                        <?php $reveal_class = ( $i <= 2 ) ? '' : 'reveal'; ?>
+                        <article id="post-<?php the_ID(); ?>" <?php post_class( "service-item cc-card $reveal_class $span" ); ?>>
                             <div class="service-icon"><?php echo $icon; ?></div>
                             <h3 class="h4 mb-3"><a href="<?php the_permalink(); ?>" class="text-white text-decoration-none"><?php the_title(); ?></a></h3>
                             <div class="text-muted small mb-4"><?php the_excerpt(); ?></div>

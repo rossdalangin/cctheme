@@ -8,11 +8,11 @@
 $headline = get_theme_mod( 'closeclient_products_headline', 'Essential Tools That Work as Hard as You Do' );
 ?>
 
-<section id="products" class="section section-products">
+<section id="products" class="section section-lg section-products bg-dark">
     <div class="container">
         <div class="section-header text-center reveal">
             <span class="section-tag"><?php esc_html_e( 'ECOSYSTEM TOOLS', 'closeclient' ); ?></span>
-            <h2 class="section-headline"><?php echo esc_html( $headline ); ?></h2>
+            <h2 class="section-headline gradient-text"><?php echo esc_html( $headline ); ?></h2>
             <p class="lead text-muted mt-4"><?php esc_html_e( 'Themes and plugins trusted by elite coaches to streamline operations and elevate branding.', 'closeclient' ); ?></p>
         </div>
 

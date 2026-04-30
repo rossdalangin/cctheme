@@ -9,11 +9,11 @@ $headline = get_theme_mod( 'closeclient_team_headline', 'The Authority Architect
 $tag      = get_theme_mod( 'closeclient_team_tag', 'MEET THE TEAM' );
 ?>
 
-<section id="team" class="section section-team">
+<section id="team" class="section section-lg section-team">
     <div class="container">
         <div class="section-header text-center reveal">
             <span class="section-tag"><?php echo esc_html( $tag ); ?></span>
-            <h2 class="section-headline"><?php echo esc_html( $headline ); ?></h2>
+            <h2 class="section-headline gradient-text"><?php echo esc_html( $headline ); ?></h2>
         </div>
 
         <div class="cc-grid-3">

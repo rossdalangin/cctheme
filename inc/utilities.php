@@ -84,11 +84,29 @@ function closeclient_reset_defaults() {
         'closeclient_label_related'         => 'More Authority Insights',
 
         // Menu Labels
-        'closeclient_menu_label_services' => 'Services',
-        'closeclient_menu_label_cases'    => 'Case Studies',
-        'closeclient_menu_label_about'    => 'About',
+        'closeclient_menu_label_services' => 'Solutions',
+        'closeclient_menu_label_cases'    => 'Success Stories',
+        'closeclient_menu_label_about'    => 'The Method',
         'closeclient_menu_label_training' => 'Free Training',
-        'closeclient_menu_label_blog'     => 'Blog',
+        'closeclient_menu_label_blog'     => 'Insights',
+
+        // Form Actions
+        'closeclient_lm_form_action'         => '',
+        'closeclient_contact_form_action'    => '',
+        'closeclient_newsletter_form_action' => '',
+
+        // Lead Magnet Benefits
+        'closeclient_lm_benefits' => 'The "Authority Flywheel" Framework, 3 Conversion-Killing Mistakes to Avoid, Automated Lead Intake Blueprints',
+
+        // About Values
+        'closeclient_about_values' => 'Precision: We eliminate the guesswork from client acquisition, Authority: Positioning is the lead domino for experts, Profit: Engineered systems to maximize your ROI',
+        'closeclient_about_method_title' => 'The $100M Methodology',
+        'closeclient_about_method_text'  => 'We don\'t just build websites; we engineer authority. Our methodology is rooted in the psychological triggers of the high-ticket prospect.',
+        'closeclient_about_methodology'  => 'Direct-Response System Architecture, Vortex Lead Intake & Pre-qualification, Bento-style Social Proof Engineering',
+
+        // Sidebar Insight
+        'closeclient_sidebar_insight_title' => 'The Authority Flywheel',
+        'closeclient_sidebar_insight_text'  => 'Learn how to transform your expertise into an omnipresent brand that closes deals while you sleep.',
     );
 
     foreach ( $defaults as $key => $value ) {

@@ -14,12 +14,12 @@ get_header();
 
 		<?php if ( have_posts() ) : ?>
 
-			<header class="page-header section text-center reveal">
+			<header class="page-header section section-lg text-center reveal">
                 <div class="container">
                     <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_label_archive', 'ARCHIVE' ) ); ?></span>
 				<?php
-				the_archive_title( '<h1 class="hero-headline">', '</h1>' );
-				the_archive_description( '<div class="archive-description text-muted">', '</div>' );
+				the_archive_title( '<h1 class="hero-headline gradient-text">', '</h1>' );
+				the_archive_description( '<div class="archive-description text-muted py-md">', '</div>' );
 				?>
                 </div>
 			</header>

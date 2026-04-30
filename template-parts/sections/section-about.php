@@ -25,7 +25,7 @@ $img = get_theme_mod( 'closeclient_about_image' );
 
             <div class="about-content reveal py-lg">
                 <span class="section-tag"><?php esc_html_e( 'THE VISION', 'closeclient' ); ?></span>
-                <h2 class="section-headline mb-5"><?php echo esc_html( $headline ); ?></h2>
+                <h2 class="section-headline gradient-text mb-5"><?php echo esc_html( $headline ); ?></h2>
                 <div class="about-text mb-5">
                     <p class="lead text-muted mb-4"><?php echo esc_html( $p1 ); ?></p>
                     <p class="text-muted"><?php echo esc_html( $p2 ); ?></p>

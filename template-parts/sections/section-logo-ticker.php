@@ -6,7 +6,7 @@
  */
 ?>
 
-<section class="section section-logo-ticker">
+<section class="section section-logo-ticker py-md">
     <div class="container-fluid ticker-container">
         <div class="ticker-wrapper">
             <?php

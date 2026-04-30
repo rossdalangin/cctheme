@@ -18,13 +18,25 @@
 
         <div class="modal-form-wrapper">
             <?php
-            $form_code = get_theme_mod( 'closeclient_contact_form_shortcode' );
-            if ( $form_code && $form_code !== '[contact-form-7 id="..."]' ) {
-                echo do_shortcode( $form_code );
-            } else {
-                echo '<p class="text-center small text-muted">' . esc_html__( 'Contact form not configured in Customizer.', 'closeclient' ) . '</p>';
-            }
-            ?>
+            $custom_action = get_theme_mod( 'closeclient_contact_form_action' );
+            if ( $custom_action ) : ?>
+                <form action="<?php echo esc_url( $custom_action ); ?>" method="POST" class="custom-contact-form">
+                    <div class="mb-4">
+                        <input type="text" name="name" placeholder="Full Name" required>
+                    </div>
+                    <div class="mb-4">
+                        <input type="email" name="email" placeholder="Business Email" required>
+                    </div>
+                    <button type="submit" class="cc-button w-100"><?php esc_html_e( 'Request Audit →', 'closeclient' ); ?></button>
+                </form>
+            <?php else :
+                $form_code = get_theme_mod( 'closeclient_contact_form_shortcode' );
+                if ( $form_code && $form_code !== '[contact-form-7 id="..."]' ) {
+                    echo do_shortcode( $form_code );
+                } else {
+                    echo '<p class="text-center small text-muted">' . esc_html__( 'Contact form not configured in Customizer.', 'closeclient' ) . '</p>';
+                }
+            endif; ?>
         </div>
     </div>
 </div>

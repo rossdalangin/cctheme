@@ -6,7 +6,7 @@
  */
 ?>
 
-<section class="section section-lead-magnet">
+<section class="section section-lg section-lead-magnet">
     <div class="container cc-grid-2 reveal">
         <div class="lm-image">
             <?php if ( get_theme_mod( 'closeclient_lm_image' ) ) : ?>
@@ -17,7 +17,7 @@
         </div>
         <div class="lm-content">
             <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_lm_tag', 'FREE RESOURCE' ) ); ?></span>
-            <h2 class="section-headline"><?php echo esc_html( get_theme_mod( 'closeclient_lm_headline', 'The $100M Authority Blueprint' ) ); ?></h2>
+            <h2 class="section-headline gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_lm_headline', 'The $100M Authority Blueprint' ) ); ?></h2>
             <p class="section-subheadline lead text-muted mb-5"><?php echo esc_html( get_theme_mod( 'closeclient_lm_subheadline', 'Discover the exact infrastructure used by the world\'s top 1% of experts to scale to high-figures while working fewer hours.' ) ); ?></p>
 
             <div class="cf7-integration-wrapper">

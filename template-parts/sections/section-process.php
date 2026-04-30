@@ -9,11 +9,11 @@ $headline = get_theme_mod( 'closeclient_process_headline', 'The Authority Roadma
 $tag      = get_theme_mod( 'closeclient_process_tag', 'OUR PROCESS' );
 ?>
 
-<section id="process" class="section section-process bg-secondary">
+<section id="process" class="section section-lg section-process bg-secondary">
     <div class="container">
         <div class="section-header text-center reveal">
             <span class="section-tag"><?php echo esc_html( $tag ); ?></span>
-            <h2 class="section-headline"><?php echo esc_html( $headline ); ?></h2>
+            <h2 class="section-headline gradient-text"><?php echo esc_html( $headline ); ?></h2>
         </div>
 
         <div class="process-grid">

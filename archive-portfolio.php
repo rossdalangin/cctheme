@@ -12,7 +12,7 @@ get_header();
     <header class="archive-header section text-center bg-dark">
         <div class="container">
             <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_label_portfolio_archive_tag', 'CASE STUDIES' ) ); ?></span>
-            <h1 class="hero-headline"><?php echo esc_html( get_theme_mod( 'closeclient_label_portfolio_archive_title', 'Engineered Success Stories' ) ); ?></h1>
+            <h1 class="hero-headline gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_label_portfolio_archive_title', 'Engineered Success Stories' ) ); ?></h1>
             <p class="lead text-muted mt-4"><?php echo esc_html( get_theme_mod( 'closeclient_label_portfolio_archive_desc', 'Deep dives into how we transform expert knowledge into high-performance authority machines.' ) ); ?></p>
         </div>
     </header>

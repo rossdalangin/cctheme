@@ -15,12 +15,16 @@ get_header();
         <header class="page-header section text-center reveal">
             <div class="container">
                 <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_blog_title', 'Insights & Authority' ) ); ?></span>
-                <h1 class="hero-headline"><?php echo esc_html( get_theme_mod( 'closeclient_blog_description', 'Expert strategies to scale your coaching business.' ) ); ?></h1>
+                <h1 class="hero-headline gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_blog_description', 'Expert strategies to scale your coaching business.' ) ); ?></h1>
             </div>
         </header>
 
 		<div class="container section-sm">
             <?php if ( have_posts() ) : ?>
+                <?php
+                $show_sidebar = get_theme_mod( 'closeclient_blog_sidebar', true );
+                $layout_class = $show_sidebar ? 'blog-layout-wrapper' : '';
+                ?>
                 <div class="featured-post-wrapper mb-5">
                     <?php
                     // Display the latest post as featured
@@ -44,6 +48,7 @@ get_header();
                     ?>
                 </div>
 
+                <div class="<?php echo esc_attr( $layout_class ); ?>">
                 <div class="blog-posts-grid">
                     <?php
                     // Display posts excluding the featured one
@@ -80,6 +85,17 @@ get_header();
                     wp_reset_postdata();
                     endif;
                 ?>
+                </div>
+
+                <?php if ( $show_sidebar ) : ?>
+                    <aside class="post-sidebar px-lg">
+                        <?php get_template_part( 'template-parts/content/blog-sticky-cta' ); ?>
+                        <div class="sidebar-widgets glass p-4 mt-4">
+                            <?php get_sidebar(); ?>
+                        </div>
+                    </aside>
+                <?php endif; ?>
+                </div>
 
             <?php else : ?>
                 <?php get_template_part( 'template-parts/content/content-none' ); ?>

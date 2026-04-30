@@ -25,7 +25,7 @@ get_header();
                         <a href="mailto:<?php echo antispambot( get_option('admin_email') ); ?>" class="text-white fw-bold"><?php echo antispambot( get_option('admin_email') ); ?></a></p>
                     </div>
                     <div class="contact-stats-visual mt-5">
-                         <?php get_template_part( 'template-parts/sections/section-stats' ); ?>
+                         <?php get_template_part( 'template-parts/sections/section-stats', null, array('is_nested' => true) ); ?>
                     </div>
                 </div>
 

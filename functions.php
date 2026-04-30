@@ -358,9 +358,11 @@ require get_template_directory() . '/inc/admin-guide.php';
  */
 function closeclient_menu_fallback() {
     echo '<ul class="primary-menu-list">';
-    echo '<li><a href="' . esc_url( home_url( '/services' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_services', 'Services' ) ) . '</a></li>';
-    echo '<li><a href="' . esc_url( home_url( '/case-studies' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_cases', 'Case Studies' ) ) . '</a></li>';
-    echo '<li><a href="' . esc_url( home_url( '/about' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_about', 'About' ) ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/services' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_services', 'Solutions' ) ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/case-studies' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_cases', 'Success Stories' ) ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/about' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_about', 'The Method' ) ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/blog' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_blog', 'Insights' ) ) . '</a></li>';
+    echo '<li><a href="#audit" class="cc-button-nav">' . esc_html__( 'Book Audit', 'closeclient' ) . '</a></li>';
     echo '</ul>';
 }
 
@@ -456,6 +458,19 @@ function closeclient_register_block_patterns() {
     );
 }
 add_action( 'init', 'closeclient_register_block_patterns' );
+
+/**
+ * Excerpt refinements.
+ */
+function closeclient_excerpt_length( $length ) {
+    return 25;
+}
+add_filter( 'excerpt_length', 'closeclient_excerpt_length', 999 );
+
+function closeclient_excerpt_more( $more ) {
+    return '...';
+}
+add_filter( 'excerpt_more', 'closeclient_excerpt_more' );
 
 /**
  * SVG Icons.

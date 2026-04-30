@@ -12,10 +12,10 @@ get_header();
 
 	<main id="primary" class="site-main">
 
-		<section class="error-404 not-found glass p-5 error-404-container text-center reveal">
+		<section class="error-404 not-found glass p-5 error-404-container text-center reveal section-lg">
 			<header class="page-header mb-5">
                 <span class="section-tag"><?php esc_html_e( '404 ERROR', 'closeclient' ); ?></span>
-				<h1 class="page-title h2"><?php esc_html_e( 'That page can&rsquo;t be found.', 'closeclient' ); ?></h1>
+				<h1 class="page-title h2 gradient-text"><?php esc_html_e( 'That page can&rsquo;t be found.', 'closeclient' ); ?></h1>
 			</header><!-- .page-header -->
 
 			<div class="page-content">

@@ -14,10 +14,10 @@ get_header();
 
 		<?php if ( have_posts() ) : ?>
 
-			<header class="page-header section text-center reveal">
+			<header class="page-header section section-lg text-center reveal">
                 <div class="container">
                     <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_label_search', 'SEARCH RESULTS' ) ); ?></span>
-				<h1 class="hero-headline">
+				<h1 class="hero-headline gradient-text">
 					<?php
 					/* translators: %s: search query. */
 					printf( esc_html__( 'Search Results for: %s', 'closeclient' ), '<span>' . get_search_query() . '</span>' );

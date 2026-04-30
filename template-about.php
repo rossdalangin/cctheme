@@ -38,18 +38,19 @@ $text     = get_theme_mod( 'closeclient_about_text_tpl', 'Engineering the future
                 <h2 class="h1"><?php esc_html_e( 'Engineering Elite Authority', 'closeclient' ); ?></h2>
             </div>
             <div class="cc-grid-3 py-lg">
-                <div class="value-item cc-card">
-                    <div class="h3 mb-3 text-accent"><?php esc_html_e( 'Precision', 'closeclient' ); ?></div>
-                    <p class="text-muted"><?php esc_html_e( 'We eliminate the "guesswork" from your client acquisition by deploying systems built on direct-response data.', 'closeclient' ); ?></p>
-                </div>
-                <div class="value-item cc-card">
-                    <div class="h3 mb-3 text-accent"><?php esc_html_e( 'Authority', 'closeclient' ); ?></div>
-                    <p class="text-muted"><?php esc_html_e( 'Positioning is the lead domino. We ensure you are perceived as the only logical choice in your market.', 'closeclient' ); ?></p>
-                </div>
-                <div class="value-item cc-card">
-                    <div class="h3 mb-3 text-accent"><?php esc_html_e( 'Profit', 'closeclient' ); ?></div>
-                    <p class="text-muted"><?php esc_html_e( 'Impact is the goal, but profit is the engine. Our systems are built to maximize your ROI and lifetime value.', 'closeclient' ); ?></p>
-                </div>
+                <?php
+                $values = get_theme_mod( 'closeclient_about_values', 'Precision: Data-driven systems, Authority: Strategic positioning, Profit: ROI focused engineering' );
+                $items = explode( ',', $values );
+                foreach ( $items as $item ) :
+                    $parts = explode( ':', $item );
+                    $title = isset($parts[0]) ? trim($parts[0]) : '';
+                    $desc = isset($parts[1]) ? trim($parts[1]) : '';
+                    ?>
+                    <div class="value-item cc-card">
+                        <div class="h3 mb-3 text-accent"><?php echo esc_html( $title ); ?></div>
+                        <p class="text-muted"><?php echo esc_html( $desc ); ?></p>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
@@ -64,12 +65,15 @@ $text     = get_theme_mod( 'closeclient_about_text_tpl', 'Engineering the future
             </div>
             <div class="cc-grid-2 py-lg">
                 <div class="expertise-content">
-                    <h3 class="h2 mb-4"><?php esc_html_e( 'The $100M Methodology', 'closeclient' ); ?></h3>
-                    <p class="lead text-muted mb-4"><?php esc_html_e( 'We don\'t just build websites; we engineer authority. Our methodology is rooted in the psychological triggers of the high-ticket prospect.', 'closeclient' ); ?></p>
+                    <h3 class="h2 mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_about_method_title', 'The $100M Methodology' ) ); ?></h3>
+                    <p class="lead text-muted mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_about_method_text', 'We don\'t just build websites; we engineer authority. Our methodology is rooted in the psychological triggers of the high-ticket prospect.' ) ); ?></p>
                     <ul class="list-unstyled">
-                        <li class="mb-3 d-flex align-items-center"><span class="text-accent me-3">✓</span> <?php esc_html_e( 'Direct-Response System Architecture', 'closeclient' ); ?></li>
-                        <li class="mb-3 d-flex align-items-center"><span class="text-accent me-3">✓</span> <?php esc_html_e( 'Vortex Lead Intake & Pre-qualification', 'closeclient' ); ?></li>
-                        <li class="mb-3 d-flex align-items-center"><span class="text-accent me-3">✓</span> <?php esc_html_e( 'Bento-style Social Proof Engineering', 'closeclient' ); ?></li>
+                        <?php
+                        $methodology = get_theme_mod( 'closeclient_about_methodology', 'Direct-Response System Architecture, Vortex Lead Intake & Pre-qualification, Bento-style Social Proof Engineering' );
+                        $m_items = explode( ',', $methodology );
+                        foreach ( $m_items as $m_item ) : ?>
+                            <li class="mb-3 d-flex align-items-center"><span class="text-accent me-3">✓</span> <?php echo esc_html( trim( $m_item ) ); ?></li>
+                        <?php endforeach; ?>
                     </ul>
                 </div>
                 <div class="expertise-visual glass p-5">

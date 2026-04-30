@@ -13,7 +13,7 @@ $tag      = get_theme_mod( 'closeclient_faq_tag', 'FAQ' );
     <div class="container container-narrow">
         <div class="section-header text-center reveal">
             <span class="section-tag"><?php echo esc_html( $tag ); ?></span>
-            <h2 class="section-headline"><?php echo esc_html( $headline ); ?></h2>
+            <h2 class="section-headline gradient-text"><?php echo esc_html( $headline ); ?></h2>
         </div>
 
         <div class="faq-list mt-5">

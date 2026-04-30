@@ -45,6 +45,18 @@ get_header();
                         <span class="text-muted"><?php esc_html_e( 'Lead Magnet Mockup', 'closeclient' ); ?></span>
                     </div>
                 <?php endif; ?>
+
+                <div class="what-is-inside mt-5 glass p-4 reveal">
+                    <h3 class="h6 text-accent mb-3 uppercase letter-spacing-1"><?php esc_html_e( 'What’s Inside:', 'closeclient' ); ?></h3>
+                    <ul class="list-unstyled small text-muted">
+                        <?php
+                        $benefits = get_theme_mod( 'closeclient_lm_benefits', 'The "Authority Flywheel" Framework, 3 Conversion-Killing Mistakes to Avoid, Automated Lead Intake Blueprints' );
+                        $items = explode( ',', $benefits );
+                        foreach ( $items as $item ) : ?>
+                            <li class="mb-2">✓ <?php echo esc_html( trim( $item ) ); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>

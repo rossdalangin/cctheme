@@ -12,7 +12,7 @@ $headline = get_theme_mod( 'closeclient_pricing_headline', 'Investment Opportuni
     <div class="container">
         <div class="section-header text-center reveal">
             <span class="section-tag"><?php esc_html_e( 'INVESTMENT', 'closeclient' ); ?></span>
-            <h2 class="section-headline"><?php echo esc_html( $headline ); ?></h2>
+            <h2 class="section-headline gradient-text"><?php echo esc_html( $headline ); ?></h2>
         </div>
 
         <div class="cc-grid-3">
