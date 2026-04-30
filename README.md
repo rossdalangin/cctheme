@@ -22,6 +22,9 @@ The high-performance authority system for coaches, consultants, and premium serv
 - [Marketing Plan](MARKETING_PLAN.md): Omnichannel strategy (LinkedIn, VSL, Vortex).
 - [Sales Scripts](SALES_OUTREACH_SCRIPTS.md): High-ticket DM and email templates.
 - [Offer Structure](PREMIUM_OFFER_STRUCTURE.md): How to price and guarantee $15k+ services.
+- [Content Strategy](CONTENT_STRATEGY.md): Omnichannel authority building roadmap.
+- [Onboarding Checklist](CLIENT_ONBOARDING_CHECKLIST.md): 4-week authority sprint for clients.
+- [Lead Magnet Ideas](LEAD_MAGNET_IDEAS.md): Strategic assets that pre-sell your coaching.
 - [Video Sales Letter Script](VSL_SCRIPT.md): The "Big Domino" script for your main video.
 - [AI Agent Guidelines](AGENTS.md): Technical standards for engineers and AI agents.
 

@@ -6,9 +6,9 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'page-content-wrapper' ); ?>>
+	<header class="entry-header mb-5">
+		<?php the_title( '<h1 class="entry-title hero-headline gradient-text">', '</h1>' ); ?>
 	</header><!-- .entry-header -->
 
 	<?php closeclient_post_thumbnail(); ?>

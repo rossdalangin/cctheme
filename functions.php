@@ -362,7 +362,7 @@ function closeclient_menu_fallback() {
     echo '<li><a href="' . esc_url( home_url( '/case-studies' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_cases', 'Success Stories' ) ) . '</a></li>';
     echo '<li><a href="' . esc_url( home_url( '/about' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_about', 'The Method' ) ) . '</a></li>';
     echo '<li><a href="' . esc_url( home_url( '/blog' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_blog', 'Insights' ) ) . '</a></li>';
-    echo '<li><a href="#audit" class="cc-button-nav">' . esc_html__( 'Book Audit', 'closeclient' ) . '</a></li>';
+    echo '<li><a href="#audit" class="cc-button-nav">' . esc_html( get_theme_mod( 'closeclient_menu_label_audit', 'Book Audit' ) ) . '</a></li>';
     echo '</ul>';
 }
 

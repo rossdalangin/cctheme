@@ -65,6 +65,11 @@ function closeclient_reset_defaults() {
 
         // Global UI Labels
         'closeclient_label_search'          => 'SEARCH RESULTS',
+        'closeclient_label_search_query'    => 'Search Results for: %s',
+        'closeclient_label_404_tag'         => '404 ERROR',
+        'closeclient_label_404_title'       => 'That page can’t be found.',
+        'closeclient_label_404_text'        => 'It looks like nothing was found at this location. Maybe try a search or head back to the growth hub?',
+        'closeclient_label_404_btn'         => 'Back to Growth Hub',
         'closeclient_label_archive'         => 'ARCHIVE',
         'closeclient_label_service_single'  => 'SERVICE DETAIL',
         'closeclient_label_portfolio_single'=> 'CASE STUDY',
@@ -89,6 +94,7 @@ function closeclient_reset_defaults() {
         'closeclient_menu_label_about'    => 'The Method',
         'closeclient_menu_label_training' => 'Free Training',
         'closeclient_menu_label_blog'     => 'Insights',
+        'closeclient_menu_label_audit'    => 'Book Audit',
 
         // Form Actions
         'closeclient_lm_form_action'         => '',

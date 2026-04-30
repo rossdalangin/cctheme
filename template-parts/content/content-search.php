@@ -21,7 +21,7 @@
 		<?php the_excerpt(); ?>
 	</div>
 
-	<footer class="entry-footer">
-		<a href="<?php echo esc_url( get_permalink() ); ?>" class="read-more"><?php esc_html_e( 'View Result', 'closeclient' ); ?></a>
+	<footer class="entry-footer mt-4">
+		<a href="<?php echo esc_url( get_permalink() ); ?>" class="cc-button cc-button-secondary small"><?php esc_html_e( 'View Result →', 'closeclient' ); ?></a>
 	</footer>
 </article>

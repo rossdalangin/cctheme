@@ -20,8 +20,7 @@ get_header();
                     <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_label_search', 'SEARCH RESULTS' ) ); ?></span>
 				<h1 class="hero-headline gradient-text">
 					<?php
-					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'closeclient' ), '<span>' . get_search_query() . '</span>' );
+					printf( esc_html( get_theme_mod( 'closeclient_label_search_query', 'Search Results for: %s' ) ), '<span>' . get_search_query() . '</span>' );
 					?>
 				</h1>
                 </div>
