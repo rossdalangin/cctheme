@@ -28,7 +28,7 @@ $tag      = get_theme_mod( 'closeclient_services_tag', 'SERVICES' );
                 $i = 0;
                 while ( $services_query->have_posts() ) : $services_query->the_post();
                     $i++;
-                    $span = ( $i == 1 || $i == 4 ) ? 'bento-span-8' : 'bento-span-4';
+                    $span = ( $i == 1 ) ? 'bento-span-7' : ( ( $i == 2 ) ? 'bento-span-5' : ( ( $i == 3 ) ? 'bento-span-4' : 'bento-span-8' ) );
                     $icons = array('⚡', '💎', '🚀', '🎯');
                     $icon = isset($icons[$i-1]) ? $icons[$i-1] : '⚡';
                     ?>
