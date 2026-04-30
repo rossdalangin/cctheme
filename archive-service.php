@@ -32,7 +32,7 @@ get_header();
                         $icons = array('⚡', '💎', '🚀', '🎯', '🔥', '🛡️');
                         $icon = isset($icons[$i-1]) ? $icons[$i-1] : '⚡';
 					?>
-                        <?php $reveal_class = ( $i <= 2 ) ? '' : 'reveal'; ?>
+                        <?php $reveal_class = ( $i <= 3 ) ? '' : 'reveal'; ?>
                         <article id="post-<?php the_ID(); ?>" <?php post_class( "service-item cc-card $reveal_class $span" ); ?>>
                             <div class="service-icon"><?php echo $icon; ?></div>
                             <h3 class="h4 mb-3"><a href="<?php the_permalink(); ?>" class="text-white text-decoration-none"><?php the_title(); ?></a></h3>
@@ -50,7 +50,6 @@ get_header();
             </div>
 
             <?php get_template_part( 'template-parts/sections/section-booking-cta' ); ?>
-            <?php get_template_part( 'template-parts/sections/section-pricing' ); ?>
 
 		<?php else : ?>
 

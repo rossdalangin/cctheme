@@ -32,7 +32,7 @@ $tag      = get_theme_mod( 'closeclient_services_tag', 'SERVICES' );
                     $icons = array('⚡', '💎', '🚀', '🎯');
                     $icon = isset($icons[$i-1]) ? $icons[$i-1] : '⚡';
                     ?>
-                    <?php $reveal_class = ( $i <= 2 ) ? '' : 'reveal'; ?>
+                    <?php $reveal_class = ( $i <= 3 ) ? '' : 'reveal'; ?>
                     <div class="service-item cc-card <?php echo esc_attr($reveal_class); ?> <?php echo esc_attr($span); ?>">
                         <div class="service-icon"><?php echo $icon; ?></div>
                         <h3 class="h4 mb-3"><?php the_title(); ?></h3>
@@ -59,7 +59,7 @@ $tag      = get_theme_mod( 'closeclient_services_tag', 'SERVICES' );
                     }
                     if ( empty($text) ) { $text = "Engineered solutions designed to crush the complexity ceiling and scale your impact."; }
                     ?>
-                    <?php $reveal_class = ( $s['id'] <= 2 ) ? '' : 'reveal'; ?>
+                    <?php $reveal_class = ( $s['id'] <= 3 ) ? '' : 'reveal'; ?>
                     <div class="service-item cc-card <?php echo esc_attr($reveal_class); ?> <?php echo esc_attr($s['span']); ?>">
                         <div class="service-icon"><?php echo $s['icon']; ?></div>
                         <h3 class="h4 mb-3"><?php echo esc_html( $title ); ?></h3>

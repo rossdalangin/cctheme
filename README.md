@@ -25,6 +25,7 @@ The high-performance authority system for coaches, consultants, and premium serv
 - [Content Strategy](CONTENT_STRATEGY.md): Omnichannel authority building roadmap.
 - [Onboarding Checklist](CLIENT_ONBOARDING_CHECKLIST.md): 4-week authority sprint for clients.
 - [Lead Magnet Ideas](LEAD_MAGNET_IDEAS.md): Strategic assets that pre-sell your coaching.
+- [Results Framework](CLIENT_RESULTS_FRAMEWORK.md): How to structure Bento-style case studies.
 - [Video Sales Letter Script](VSL_SCRIPT.md): The "Big Domino" script for your main video.
 - [AI Agent Guidelines](AGENTS.md): Technical standards for engineers and AI agents.
 

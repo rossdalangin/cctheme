@@ -117,10 +117,22 @@ document.addEventListener('DOMContentLoaded', () => {
     cursor.className = 'cc-cursor';
     document.body.appendChild(cursor);
 
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+
     document.addEventListener('mousemove', (e) => {
-        cursor.style.transform = `translate3d(${e.clientX - 10}px, ${e.clientY - 10}px, 0)`;
+        mouseX = e.clientX;
+        mouseY = e.clientY;
         cursor.style.opacity = '1';
     });
+
+    const animateCursor = () => {
+        cursorX += (mouseX - cursorX) * 0.15;
+        cursorY += (mouseY - cursorY) * 0.15;
+        cursor.style.transform = `translate3d(${cursorX - 10}px, ${cursorY - 10}px, 0)`;
+        requestAnimationFrame(animateCursor);
+    };
+    animateCursor();
 
     document.querySelectorAll('a, button, .cc-card, .social-icon').forEach(el => {
         el.addEventListener('mouseenter', () => cursor.classList.add('is-active'));
