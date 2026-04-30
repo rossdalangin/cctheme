@@ -14,7 +14,8 @@ get_header();
 
 		<?php if ( have_posts() ) : ?>
 
-			<header class="page-header section section-lg text-center reveal">
+			<header class="page-header section section-lg text-center reveal bg-dark overflow-hidden">
+                <div class="mesh-gradient"></div>
                 <div class="container">
                     <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_label_search', 'SEARCH RESULTS' ) ); ?></span>
 				<h1 class="hero-headline gradient-text">

@@ -14,7 +14,8 @@ get_header();
         the_post();
         ?>
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <header class="entry-header text-center section section-lg bg-dark">
+            <header class="entry-header text-center section section-lg bg-dark overflow-hidden">
+                <div class="mesh-gradient"></div>
                 <div class="container container-narrow">
                     <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_label_service_single', 'SERVICE DETAIL' ) ); ?></span>
                     <?php the_title( '<h1 class="entry-title hero-headline gradient-text reveal">', '</h1>' ); ?>

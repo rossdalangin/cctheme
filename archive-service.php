@@ -12,7 +12,8 @@ get_header();
 
 		<?php if ( have_posts() ) : ?>
 
-			<header class="page-header section text-center">
+			<header class="page-header section text-center bg-dark overflow-hidden">
+                <div class="mesh-gradient"></div>
                 <div class="container container-narrow">
                     <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_label_service_archive_tag', 'OUR CAPABILITIES' ) ); ?></span>
 				<h1 class="hero-headline gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_label_service_archive_title', 'Strategic Systems' ) ); ?></h1>

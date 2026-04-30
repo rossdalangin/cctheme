@@ -9,7 +9,8 @@ get_header();
 ?>
 
 <main id="primary" class="site-main">
-    <header class="archive-header section text-center bg-dark">
+    <header class="archive-header section text-center bg-dark overflow-hidden">
+        <div class="mesh-gradient"></div>
         <div class="container">
             <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_label_portfolio_archive_tag', 'CASE STUDIES' ) ); ?></span>
             <h1 class="hero-headline gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_label_portfolio_archive_title', 'Engineered Success Stories' ) ); ?></h1>

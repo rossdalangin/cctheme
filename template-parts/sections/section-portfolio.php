@@ -27,7 +27,7 @@ $tag      = get_theme_mod( 'closeclient_portfolio_tag', 'FEATURED WORK' );
                 $i = 0;
                 while ( $portfolio_query->have_posts() ) : $portfolio_query->the_post();
                     $i++;
-                    $span = ( $i == 1 ) ? 'bento-span-12' : 'bento-span-6';
+                    $span = ( $i == 1 ) ? 'bento-span-8' : ( ( $i == 2 ) ? 'bento-span-4' : 'bento-span-12' );
                     $reveal_class = ( $i <= 2 ) ? '' : 'reveal';
                     ?>
                     <div class="portfolio-item-card cc-card <?php echo esc_attr($reveal_class); ?> <?php echo esc_attr($span); ?>">

@@ -112,6 +112,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // --- Custom Cursor Logic ---
+    const cursor = document.createElement('div');
+    cursor.className = 'cc-cursor';
+    document.body.appendChild(cursor);
+
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.transform = `translate3d(${e.clientX - 10}px, ${e.clientY - 10}px, 0)`;
+        cursor.style.opacity = '1';
+    });
+
+    document.querySelectorAll('a, button, .cc-card, .social-icon').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('is-active'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('is-active'));
+    });
+
     // --- Premium Magnetic Effect with Hardware Acceleration ---
     const magneticButtons = document.querySelectorAll('.cc-button:not(.cc-button-secondary), .social-icon');
     magneticButtons.forEach(btn => {

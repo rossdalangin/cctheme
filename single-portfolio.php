@@ -17,7 +17,8 @@ get_header();
         $outcome   = get_post_meta( get_the_ID(), '_portfolio_outcome', true );
         ?>
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-            <header class="entry-header text-center section section-lg bg-dark">
+            <header class="entry-header text-center section section-lg bg-dark overflow-hidden">
+                <div class="mesh-gradient"></div>
                 <div class="container">
                     <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_label_portfolio_single', 'CASE STUDY' ) ); ?></span>
                     <?php the_title( '<h1 class="entry-title hero-headline gradient-text reveal">', '</h1>' ); ?>
