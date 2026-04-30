@@ -16,16 +16,16 @@
     --c-white: #FFFFFF;
     --c-border: rgba(255, 255, 255, 0.08);
 
-    /* Golden Ratio Spacing System (Fibonacci based) */
-    --s-3xl: 377px;
-    --s-2xl: 233px;
-    --s-xl: 144px;
-    --s-lg: 89px;
-    --s-md: 55px;
-    --s-sm: 34px;
-    --s-xs: 21px;
-    --s-2xs: 13px;
-    --s-3xs: 8px;
+    /* Fluid Golden Ratio Spacing System (Fibonacci based) */
+    --s-3xl: clamp(144px, 20vw, 377px);
+    --s-2xl: clamp(89px, 12vw, 233px);
+    --s-xl:  clamp(55px, 8vw, 144px);
+    --s-lg:  clamp(34px, 5vw, 89px);
+    --s-md:  clamp(21px, 3vw, 55px);
+    --s-sm:  clamp(13px, 2vw, 34px);
+    --s-xs:  clamp(8px, 1.5vw, 21px);
+    --s-2xs: clamp(5px, 1vw, 13px);
+    --s-3xs: clamp(3px, 0.5vw, 8px);
 
     /* Layout Constants */
     --container-width: 1300px;
@@ -75,9 +75,9 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: var(--s-sm);
 }
 
-h1 { font-size: clamp(3rem, 10vw, 5.5rem); letter-spacing: -0.06em; line-height: 0.95; }
-h2 { font-size: clamp(2.25rem, 6vw, 3.5rem); }
-h3 { font-size: clamp(1.5rem, 4vw, 2.25rem); }
+h1 { font-size: clamp(3.5rem, 12vw, 6.5rem); letter-spacing: -0.06em; line-height: 0.9; }
+h2 { font-size: clamp(2.5rem, 8vw, 4.5rem); letter-spacing: -0.04em; line-height: 1; }
+h3 { font-size: clamp(1.75rem, 5vw, 3rem); letter-spacing: -0.03em; line-height: 1.1; }
 
 .container { max-width: var(--container-width); margin: 0 auto; padding: 0 40px; }
 .container-narrow { max-width: var(--content-width); margin: 0 auto; }
@@ -229,6 +229,24 @@ input:focus, textarea:focus, select:focus {
 
 /* --- Section Layouts --- */
 .section { padding: var(--s-xl) 0; position: relative; }
+
+.section-divider-top {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100px;
+    background: var(--c-bg);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 30%);
+    z-index: 5;
+    pointer-events: none;
+}
+
+.section-divider-bottom {
+    position: absolute;
+    bottom: 0; left: 0; width: 100%; height: 100px;
+    background: var(--c-bg);
+    clip-path: polygon(0 0, 100% 70%, 100% 100%, 0 100%);
+    z-index: 5;
+    pointer-events: none;
+}
 .section-lg { padding: var(--s-2xl) 0; }
 .section-xl { padding: var(--s-3xl) 0; }
 .section-sm { padding: var(--s-lg) 0; }
@@ -1134,4 +1152,23 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 @keyframes modalIn {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* Side-over Panel Extension */
+.cc-side-over .cc-modal-content {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    max-width: 500px;
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    border-left: 1px solid var(--c-border);
+    transition: right 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: none;
+    overflow-y: auto;
+}
+.cc-side-over.active .cc-modal-content {
+    right: 0;
 }

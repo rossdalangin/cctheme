@@ -12,12 +12,14 @@ function closeclient_customize_register( $wp_customize ) {
     // ==========================================
 
     $wp_customize->add_panel( 'closeclient_brand_panel', array(
-        'title'       => __( '1. Brand Identity', 'closeclient' ),
+        'title'       => __( '1. Elite Brand Identity', 'closeclient' ),
+        'description' => __( 'Manage your high-ticket visual ecosystem and authority assets.', 'closeclient' ),
         'priority'    => 10,
     ) );
 
     $wp_customize->add_panel( 'closeclient_layout_panel', array(
-        'title'       => __( '2. Site Layout & Global', 'closeclient' ),
+        'title'       => __( '2. Strategic Layout Control', 'closeclient' ),
+        'description' => __( 'Configure the structural architecture of your digital headquarters.', 'closeclient' ),
         'priority'    => 20,
     ) );
 

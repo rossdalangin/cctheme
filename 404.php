@@ -24,7 +24,7 @@ get_header();
 				<?php get_search_form(); ?>
 
                 <div class="cta-actions mt-5">
-                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="cc-button"><?php esc_html_e( 'Back to Growth Hub', 'closeclient' ); ?></a>
+                    <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="cc-button cc-button-secondary"><?php esc_html_e( 'Back to Growth Hub', 'closeclient' ); ?></a>
                 </div>
 			</div><!-- .page-content -->
 		</section><!-- .error-404 -->

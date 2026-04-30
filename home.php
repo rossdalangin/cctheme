@@ -39,7 +39,7 @@ get_header();
                                     <div class="post-meta section-tag mb-3"><?php closeclient_posted_on(); ?></div>
                                     <h2 class="h2 mb-4"><a href="<?php the_permalink(); ?>" class="text-white text-decoration-none"><?php the_title(); ?></a></h2>
                                     <div class="post-excerpt text-muted mb-5"><?php the_excerpt(); ?></div>
-                                    <a href="<?php the_permalink(); ?>" class="cc-button"><?php esc_html_e( 'Read Deep Dive →', 'closeclient' ); ?></a>
+                                    <a href="<?php the_permalink(); ?>" class="cc-button cc-button-secondary"><?php esc_html_e( 'Read Deep Dive →', 'closeclient' ); ?></a>
                                 </div>
                             </div>
                         <?php endwhile;

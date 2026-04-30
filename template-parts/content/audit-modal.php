@@ -6,7 +6,7 @@
  */
 ?>
 
-<div id="audit-modal" class="cc-modal">
+<div id="audit-modal" class="cc-modal cc-side-over">
     <div class="cc-modal-overlay"></div>
     <div class="cc-modal-content glass p-5">
         <button class="cc-modal-close">×</button>

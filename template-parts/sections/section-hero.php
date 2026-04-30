@@ -33,4 +33,5 @@
             </div>
         <?php endif; ?>
     </div>
+    <div class="section-divider-bottom"></div>
 </section>
