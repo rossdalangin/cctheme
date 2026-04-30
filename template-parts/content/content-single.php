@@ -57,6 +57,13 @@ $grid_class = $show_sidebar ? 'single-post-grid' : '';
         <?php if ( $show_sidebar ) : ?>
             <aside class="post-sidebar px-lg">
                 <?php get_template_part( 'template-parts/content/blog-sticky-cta' ); ?>
+
+                <div class="featured-insight-box glass p-4 mt-4">
+                    <span class="section-tag small"><?php esc_html_e( 'FEATURED INSIGHT', 'closeclient' ); ?></span>
+                    <h4 class="h6 mt-2 text-white"><?php esc_html_e( 'The Authority Flywheel', 'closeclient' ); ?></h4>
+                    <p class="small text-muted mb-0"><?php esc_html_e( 'Learn how to transform your expertise into an omnipresent brand that closes deals while you sleep.', 'closeclient' ); ?></p>
+                </div>
+
                 <div class="sidebar-widgets glass p-4 mt-4">
                     <?php get_sidebar(); ?>
                 </div>

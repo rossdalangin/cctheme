@@ -6,8 +6,8 @@
  */
 ?>
 
-<section class="section section-newsletter text-center">
-    <div class="container container-narrow">
+<section class="section section-lg section-newsletter text-center">
+    <div class="container container-narrow py-lg">
         <h2 class="section-headline"><?php echo esc_html( get_theme_mod( 'closeclient_newsletter_title', 'Join the Authority Circle' ) ); ?></h2>
         <p class="section-subheadline"><?php echo esc_html( get_theme_mod( 'closeclient_newsletter_text', 'Weekly insights on authority positioning, high-ticket sales, and scaling systems for coaches.' ) ); ?></p>
 

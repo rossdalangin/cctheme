@@ -9,7 +9,7 @@ $headline = get_theme_mod( 'closeclient_services_headline', 'The Architecture of
 $tag      = get_theme_mod( 'closeclient_services_tag', 'SERVICES' );
 ?>
 
-<section id="services" class="section section-services bg-dark">
+<section id="services" class="section section-lg section-services bg-dark">
     <div class="container">
         <div class="section-header text-center reveal">
             <span class="section-tag"><?php echo esc_html( $tag ); ?></span>
@@ -32,7 +32,8 @@ $tag      = get_theme_mod( 'closeclient_services_tag', 'SERVICES' );
                     $icons = array('⚡', '💎', '🚀', '🎯');
                     $icon = isset($icons[$i-1]) ? $icons[$i-1] : '⚡';
                     ?>
-                    <div class="service-item cc-card reveal <?php echo esc_attr($span); ?>">
+                    <?php $reveal_class = ( $i <= 2 ) ? '' : 'reveal'; ?>
+                    <div class="service-item cc-card <?php echo esc_attr($reveal_class); ?> <?php echo esc_attr($span); ?>">
                         <div class="service-icon"><?php echo $icon; ?></div>
                         <h3 class="h4 mb-3"><?php the_title(); ?></h3>
                         <div class="text-muted small"><?php the_excerpt(); ?></div>
@@ -58,7 +59,8 @@ $tag      = get_theme_mod( 'closeclient_services_tag', 'SERVICES' );
                     }
                     if ( empty($text) ) { $text = "Engineered solutions designed to crush the complexity ceiling and scale your impact."; }
                     ?>
-                    <div class="service-item cc-card reveal <?php echo esc_attr($s['span']); ?>">
+                    <?php $reveal_class = ( $s['id'] <= 2 ) ? '' : 'reveal'; ?>
+                    <div class="service-item cc-card <?php echo esc_attr($reveal_class); ?> <?php echo esc_attr($s['span']); ?>">
                         <div class="service-icon"><?php echo $s['icon']; ?></div>
                         <h3 class="h4 mb-3"><?php echo esc_html( $title ); ?></h3>
                         <p class="text-muted small"><?php echo esc_html( $text ); ?></p>

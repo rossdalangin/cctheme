@@ -12,7 +12,7 @@ $btn = get_theme_mod( 'closeclient_about_button_text', 'Learn More About My Stor
 $img = get_theme_mod( 'closeclient_about_image' );
 ?>
 
-<section id="about" class="section section-about">
+<section id="about" class="section section-lg section-about">
     <div class="container">
         <div class="cc-grid-2">
             <div class="about-image reveal">
@@ -23,7 +23,7 @@ $img = get_theme_mod( 'closeclient_about_image' );
                 <?php endif; ?>
             </div>
 
-            <div class="about-content reveal">
+            <div class="about-content reveal py-lg">
                 <span class="section-tag"><?php esc_html_e( 'THE VISION', 'closeclient' ); ?></span>
                 <h2 class="section-headline mb-5"><?php echo esc_html( $headline ); ?></h2>
                 <div class="about-text mb-5">

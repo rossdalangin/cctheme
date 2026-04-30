@@ -9,7 +9,7 @@ $headline = get_theme_mod( 'closeclient_testimonials_headline', 'Elite Success S
 $tag      = get_theme_mod( 'closeclient_testimonials_tag', 'SOCIAL PROOF' );
 ?>
 
-<section id="testimonials" class="section section-testimonials">
+<section id="testimonials" class="section section-lg section-testimonials">
     <div class="container">
         <div class="section-header text-center reveal">
             <span class="section-tag"><?php echo esc_html( $tag ); ?></span>

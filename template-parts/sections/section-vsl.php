@@ -6,7 +6,7 @@
  */
 ?>
 
-<section class="section section-vsl reveal">
+<section class="section section-lg section-vsl reveal">
     <div class="container container-narrow text-center">
         <p class="section-tag reveal"><?php echo esc_html( get_theme_mod( 'closeclient_vsl_tag', 'EXCLUSIVE TRAINING' ) ); ?></p>
         <h2 class="section-headline reveal"><?php echo esc_html( get_theme_mod( 'closeclient_vsl_headline', 'The Big Domino: Why Your Expert Business is Stalled (And How to Fix It)' ) ); ?></h2>

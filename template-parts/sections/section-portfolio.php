@@ -9,7 +9,7 @@ $headline = get_theme_mod( 'closeclient_portfolio_headline', 'Our Engineered Suc
 $tag      = get_theme_mod( 'closeclient_portfolio_tag', 'FEATURED WORK' );
 ?>
 
-<section id="portfolio" class="section section-portfolio bg-dark">
+<section id="portfolio" class="section section-lg section-portfolio bg-dark">
     <div class="container">
         <div class="section-header text-center reveal">
             <span class="section-tag"><?php echo esc_html( $tag ); ?></span>

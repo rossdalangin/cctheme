@@ -9,7 +9,7 @@ $headline = get_theme_mod( 'closeclient_faq_headline', 'Frequently Asked Questio
 $tag      = get_theme_mod( 'closeclient_faq_tag', 'FAQ' );
 ?>
 
-<section id="faq" class="section section-faq">
+<section id="faq" class="section section-lg section-faq">
     <div class="container container-narrow">
         <div class="section-header text-center reveal">
             <span class="section-tag"><?php echo esc_html( $tag ); ?></span>

@@ -8,7 +8,7 @@
 $headline = get_theme_mod( 'closeclient_pricing_headline', 'Investment Opportunities' );
 ?>
 
-<section id="pricing" class="section section-pricing">
+<section id="pricing" class="section section-lg section-pricing bg-dark">
     <div class="container">
         <div class="section-header text-center reveal">
             <span class="section-tag"><?php esc_html_e( 'INVESTMENT', 'closeclient' ); ?></span>

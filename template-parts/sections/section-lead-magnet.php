@@ -21,10 +21,21 @@
             <p class="section-subheadline lead text-muted mb-5"><?php echo esc_html( get_theme_mod( 'closeclient_lm_subheadline', 'Discover the exact infrastructure used by the world\'s top 1% of experts to scale to high-figures while working fewer hours.' ) ); ?></p>
 
             <div class="cf7-integration-wrapper">
-                <form class="wpcf7-form">
-                    <input type="email" placeholder="Enter your business email" required>
-                    <button type="submit" class="cc-button w-100 mt-4"><?php echo esc_html( get_theme_mod( 'closeclient_lm_button', 'Access The Blueprint' ) ); ?></button>
-                </form>
+                <?php
+                $custom_action = get_theme_mod( 'closeclient_lm_form_action' );
+                if ( $custom_action ) : ?>
+                    <form action="<?php echo esc_url( $custom_action ); ?>" method="POST" class="custom-lead-form">
+                        <div class="mb-4">
+                            <input type="email" name="email" placeholder="Enter your business email" required>
+                        </div>
+                        <button type="submit" class="cc-button w-100"><?php echo esc_html( get_theme_mod( 'closeclient_lm_button', 'Access The Blueprint' ) ); ?></button>
+                    </form>
+                <?php else : ?>
+                    <form class="wpcf7-form">
+                        <input type="email" placeholder="Enter your business email" required>
+                        <button type="submit" class="cc-button w-100 mt-4"><?php echo esc_html( get_theme_mod( 'closeclient_lm_button', 'Access The Blueprint' ) ); ?></button>
+                    </form>
+                <?php endif; ?>
             </div>
         </div>
     </div>

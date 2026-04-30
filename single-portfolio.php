@@ -62,11 +62,6 @@ get_header();
                         <?php the_content(); ?>
                     </div>
 
-                    <div class="text-center mt-5 py-lg">
-                        <a href="<?php echo esc_url( get_theme_mod( 'closeclient_header_cta_link', '#audit' ) ); ?>" class="cc-button">
-                            <?php echo esc_html( get_theme_mod( 'closeclient_label_cta_portfolio', 'Get Results Like This →' ) ); ?>
-                        </a>
-                    </div>
                 </div>
             </article>
 
