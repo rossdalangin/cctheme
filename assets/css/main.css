@@ -1004,6 +1004,35 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
     line-height: 1.8;
 }
 
+/* Comments Styling */
+.comment-list .comment-body {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-lg);
+    padding: var(--s-md);
+    margin-bottom: var(--s-sm);
+    position: relative;
+}
+.comment-list .vcard img {
+    border-radius: 50%;
+    margin-right: 15px;
+}
+.comment-list .reply {
+    margin-top: 15px;
+}
+.comment-list .comment-metadata {
+    font-size: 0.8rem;
+    opacity: 0.6;
+    margin-bottom: 10px;
+}
+.comment-list .comment-metadata a { text-decoration: none; color: inherit; }
+
+.comment-form .comment-notes, .comment-form .logged-in-as {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    color: var(--c-text-muted);
+}
+
 /* Related Posts */
 .related-posts-grid {
     display: grid;

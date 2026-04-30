@@ -15,8 +15,8 @@ CloseClient is not a "blog" theme; it is a **conversion engine** for high-ticket
 ### 1. Style & Design Logic
 -   **Strict No-Inline Policy**: Never use `style="..."` in PHP templates.
 -   **Centralization**: All CSS must reside in `assets/css/main.css`.
+-   **Fluid Design**: Use fluid variables (`--s-xl`, `--s-lg`, etc.) for all spacing. Never use static pixel values for margins or padding.
 -   **Bento Grid**: Use the utility class system (`.bento-grid`, `.bento-span-*`) for all grid layouts.
--   **Spacing**: Use the Golden Ratio CSS variables (`--s-xl`, `--s-lg`, etc.).
 
 ### 2. Data Synchronization (The Single Source of Truth)
 We maintain a "Triple-Lock" synchronization for every theme setting:

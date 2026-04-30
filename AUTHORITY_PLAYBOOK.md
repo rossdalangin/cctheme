@@ -26,18 +26,19 @@ All CTAs are mapped to the global #audit intake modal, ensuring a unified lead c
 ## 🏗 Development Standards
 
 ### Spacing & Layout
-The theme uses a **Golden Ratio Spacing System** managed via CSS variables in `assets/css/main.css`.
--   `--s-2xl`: 233px
--   `--s-xl`: 144px
--   `--s-lg`: 89px
--   `--s-md`: 55px
--   `--s-sm`: 34px
+The theme uses a **Fluid Golden Ratio Spacing System** managed via CSS variables in `assets/css/main.css` using `clamp()`.
+-   `--s-3xl`: clamp(144px, 20vw, 377px)
+-   `--s-2xl`: clamp(89px, 12vw, 233px)
+-   `--s-xl`: clamp(55px, 8vw, 144px)
+-   `--s-lg`: clamp(34px, 5vw, 89px)
 
 ### Interactions
 All animations are hardware-accelerated using `translate3d`. The theme leverages:
 -   **Magnetic Hover**: For buttons and social icons.
+-   **Side-over Intake**: A modern right-aligned panel for high-ticket lead capture.
 -   **Premium Glow**: Mouse-tracked radial gradients on cards.
 -   **Intersection Observer**: Staggered reveal animations (`.reveal-stagger`).
+-   **Custom Cursor**: A subtle interaction layer for creative professional branding.
 
 ### Customization
 Every user-visible string, tag, and headline is 100% manageable via the **WordPress Customizer**. We maintain strict data parity between:

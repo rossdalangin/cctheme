@@ -48,9 +48,14 @@ For elite positioning, we recommend the following menu structure:
 - **Resources**: Case studies, VSL training, and elite insights.
 - **Company**: About, contact, and legal compliance.
 
-## 📖 Strategy Resources
-- [Authority Playbook](AUTHORITY_PLAYBOOK.md): The psychological frameworks behind the theme.
-- [VSL Script](VSL_SCRIPT.md): The definitive "Big Domino" script.
+## 📖 Strategic Asset Suite
+
+This system includes a complete roadmap for launching an Authority Agency:
+- **Market Research**: [MARKET_RESEARCH_REPORT.md](MARKET_RESEARCH_REPORT.md)
+- **Launch Roadmap**: [LAUNCH_PLAN_90_DAYS.md](LAUNCH_PLAN_90_DAYS.md)
+- **Operations**: [BUSINESS_PLAN.md](BUSINESS_PLAN.md)
+- **Growth Strategy**: [MARKETING_PLAN.md](MARKETING_PLAN.md)
+- **Closing Assets**: [SALES_OUTREACH_SCRIPTS.md](SALES_OUTREACH_SCRIPTS.md) and [PREMIUM_OFFER_STRUCTURE.md](PREMIUM_OFFER_STRUCTURE.md)
 
 ---
-*CloseClient: Engineering the future of digital authority.*
+*CloseClient Elite: High-Ticket by Design.*
