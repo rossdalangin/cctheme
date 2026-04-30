@@ -68,6 +68,13 @@ function closeclient_reset_defaults() {
         'closeclient_label_archive'         => 'ARCHIVE',
         'closeclient_label_service_single'  => 'SERVICE DETAIL',
         'closeclient_label_portfolio_single'=> 'CASE STUDY',
+        'closeclient_label_portfolio_archive_tag'   => 'CASE STUDIES',
+        'closeclient_label_portfolio_archive_title' => 'Engineered Success Stories',
+        'closeclient_label_portfolio_archive_desc'  => 'Deep dives into how we transform expert knowledge into high-performance authority machines.',
+        'closeclient_label_portfolio_btn'           => 'View Case Study',
+        'closeclient_label_service_archive_tag'     => 'OUR CAPABILITIES',
+        'closeclient_label_service_archive_title'   => 'Strategic Systems',
+        'closeclient_label_service_btn'             => 'System Details →',
         'closeclient_label_challenge'       => '01. The Challenge',
         'closeclient_label_solution'        => '02. The Authority Architecture',
         'closeclient_label_outcome'         => '03. The Result',
@@ -286,13 +293,13 @@ function closeclient_setup_menus($pages) {
         set_theme_mod( 'nav_menu_locations', $locations );
     }
 
-    $footer_menu_name = 'Footer Menu';
-    if ( ! wp_get_nav_menu_object( $footer_menu_name ) ) {
-        $f_menu_id = wp_create_nav_menu( $footer_menu_name );
-        $f_items = array( 'Services', 'Case Studies', 'About', 'Contact' );
-        foreach ( $f_items as $title ) {
+    $footer_1_name = 'Footer Solutions';
+    if ( ! wp_get_nav_menu_object( $footer_1_name ) ) {
+        $f1_id = wp_create_nav_menu( $footer_1_name );
+        $f1_items = array( 'Services', 'Products', 'Success Blueprint' );
+        foreach ( $f1_items as $title ) {
             if ( isset($pages[$title]) ) {
-                wp_update_nav_menu_item( $f_menu_id, 0, array(
+                wp_update_nav_menu_item( $f1_id, 0, array(
                     'menu-item-title'     => $title,
                     'menu-item-object-id' => $pages[$title],
                     'menu-item-object'    => 'page',
@@ -301,6 +308,29 @@ function closeclient_setup_menus($pages) {
                 ) );
             }
         }
+        $locations = get_theme_mod( 'nav_menu_locations' );
+        $locations['footer-1'] = $f1_id;
+        set_theme_mod( 'nav_menu_locations', $locations );
+    }
+
+    $footer_2_name = 'Footer Resources';
+    if ( ! wp_get_nav_menu_object( $footer_2_name ) ) {
+        $f2_id = wp_create_nav_menu( $footer_2_name );
+        $f2_items = array( 'Case Studies', 'Free Training', 'About', 'Contact' );
+        foreach ( $f2_items as $title ) {
+            if ( isset($pages[$title]) ) {
+                wp_update_nav_menu_item( $f2_id, 0, array(
+                    'menu-item-title'     => $title,
+                    'menu-item-object-id' => $pages[$title],
+                    'menu-item-object'    => 'page',
+                    'menu-item-type'      => 'post_type',
+                    'menu-item-status'    => 'publish'
+                ) );
+            }
+        }
+        $locations = get_theme_mod( 'nav_menu_locations' );
+        $locations['footer-2'] = $f2_id;
+        set_theme_mod( 'nav_menu_locations', $locations );
     }
 }
 
