@@ -757,36 +757,122 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 }
 
 /* Testimonials Section */
-.testimonial-rating {
-    color: #fbbf24;
-    font-size: 0.8rem;
+.testimonial-rating .star-icon {
+    width: 16px;
+    height: 16px;
 }
-.quote-icon {
+.text-warning { color: #FBBF24 !important; }
+.text-secondary { color: rgba(255, 255, 255, 0.1) !important; }
+
+.quote-icon-top {
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin-bottom: var(--s-md);
     color: var(--c-accent);
-    font-size: 2rem;
-    font-family: serif;
-    margin-bottom: var(--s-sm);
+    opacity: 0.5;
 }
+
 .testimonial-text {
     font-style: italic;
     line-height: 1.8;
+    position: relative;
 }
-.client-name {
-    color: var(--c-white);
+
+.client-avatar, .client-avatar-placeholder {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 2px solid var(--c-border);
+}
+
+.client-avatar-placeholder {
+    background: var(--c-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Team Section */
-.member-image {
-    aspect-ratio: 1/1;
+.member-image-wrapper {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin: 0 auto;
+}
+
+.member-image-circle {
+    width: 100%;
+    height: 100%;
     border-radius: 50%;
     overflow: hidden;
+    border: 3px solid var(--c-border);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     background: var(--c-secondary);
-    margin: 0 auto 30px;
-    max-width: 200px;
 }
+
+.member-image-placeholder {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--c-secondary), var(--c-primary));
+    border: 3px solid var(--c-border);
+}
+
+.member-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: all 0.5s ease;
+}
+
+.team-item:hover .member-img {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
+.team-item:hover .member-image-circle {
+    border-color: var(--c-accent);
+    box-shadow: 0 0 30px rgba(var(--c-accent-rgb), 0.3);
+}
+
+.member-social-link {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 36px;
+    height: 36px;
+    background: var(--c-accent);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(0);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.member-social-link svg {
+    width: 18px;
+    height: 18px;
+}
+
+.team-item:hover .member-social-link {
+    transform: scale(1);
+}
+
+.member-social-link:hover {
+    background: var(--c-white);
+    color: var(--c-accent);
+    transform: scale(1.1);
+}
+
 .member-role {
+    letter-spacing: 0.15em;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
 }
 
 /* Pricing Section */
