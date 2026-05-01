@@ -269,9 +269,9 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'closeclient_hero_image', array( 'label' => 'Hero Image', 'section' => 'closeclient_hero_content' ) ) );
 
     // Authority Logos
-        $wp_customize->add_setting( 'closeclient_authority_tag', array( 'default' => 'POWERING WORLD-CLASS AUTHORITIES', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_authority_tag', array( 'label' => 'Tag', 'section' => 'closeclient_authority_logos' ) );
     $wp_customize->add_section( 'closeclient_authority_logos', array( 'title' => '3. Authority Logos', 'panel' => 'closeclient_homepage_panel' ) );
+    $wp_customize->add_setting( 'closeclient_authority_tag', array( 'default' => 'POWERING WORLD-CLASS AUTHORITIES', 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( 'closeclient_authority_tag', array( 'label' => 'Tag', 'section' => 'closeclient_authority_logos' ) );
     for ( $i = 1; $i <= 5; $i++ ) {
         $wp_customize->add_setting( "closeclient_authority_logo_$i", array( 'sanitize_callback' => 'esc_url_raw' ) );
         $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, "closeclient_authority_logo_$i", array( 'label' => "Logo $i", 'section' => 'closeclient_authority_logos' ) ) );
