@@ -6,9 +6,9 @@
  */
 ?>
 
-<div id="audit-modal" class="cc-modal cc-side-over">
+<div id="audit-modal" class="cc-modal">
     <div class="cc-modal-overlay"></div>
-    <div class="cc-modal-content glass p-5">
+    <div class="cc-modal-content glass p-5 border-accent shadow-premium">
         <button class="cc-modal-close">×</button>
         <div class="text-center mb-5">
             <span class="section-tag"><?php esc_html_e( 'STRATEGY FIRST', 'closeclient' ); ?></span>

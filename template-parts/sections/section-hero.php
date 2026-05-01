@@ -8,6 +8,11 @@
 
 <section class="section section-lg section-hero overflow-hidden">
     <div class="mesh-gradient"></div>
+    <div class="hero-bg-glow"></div>
+    <div class="hero-creative-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+    </div>
     <div class="container hero-content-wrapper text-center">
         <h1 class="hero-headline">
             <span class="gradient-text <?php echo get_theme_mod( 'closeclient_hero_typewriter', false ) ? 'typewriter-text' : ''; ?>" data-text="<?php echo esc_attr( get_theme_mod( 'closeclient_hero_headline', 'Stop Losing High-Value Clients Before You Even Speak to Them' ) ); ?>">

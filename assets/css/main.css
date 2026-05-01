@@ -267,6 +267,7 @@ input:focus, textarea:focus, select:focus {
     pointer-events: none;
 }
 .section-lg { padding: var(--s-2xl) 0; }
+.section-hero { padding-top: var(--s-md) !important; margin-top: 0; }
 .section-xl { padding: var(--s-3xl) 0; }
 .section-sm { padding: var(--s-lg) 0; }
 .section-xs { padding: var(--s-md) 0; }
@@ -1247,15 +1248,19 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
     border-radius: var(--radius-md);
     overflow: hidden;
     transition: all 0.3s ease;
+    border: 1px solid var(--c-border);
+    margin-bottom: var(--s-sm);
 }
 
 .faq-item:hover {
     border-color: var(--c-accent);
+    box-shadow: 0 0 20px rgba(var(--c-accent-rgb), 0.1);
 }
 
 .faq-item.active {
     border-color: var(--c-accent);
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .faq-header {
@@ -1317,6 +1322,50 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
         radial-gradient(at 100% 0%, rgba(6, 182, 212, 0.1) 0px, transparent 50%);
     z-index: -1;
     pointer-events: none;
+}
+.hero-bg-glow {
+    position: absolute;
+    top: 20%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+    filter: blur(80px);
+}
+
+.hero-creative-shapes {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.hero-creative-shapes .shape {
+    position: absolute;
+    filter: blur(100px);
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: float-shapes 20s infinite alternate ease-in-out;
+}
+
+.hero-creative-shapes .shape-1 {
+    top: -100px; right: -100px;
+    width: 400px; height: 400px;
+    background: var(--c-accent);
+}
+
+.hero-creative-shapes .shape-2 {
+    bottom: -100px; left: -100px;
+    width: 500px; height: 500px;
+    background: var(--c-cyan);
+    animation-delay: -5s;
+}
+
+@keyframes float-shapes {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    100% { transform: translate3d(50px, 100px, 0) scale(1.2); }
 }
 
 /* Process Section - Modern Staggered */
