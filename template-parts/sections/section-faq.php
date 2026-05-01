@@ -16,7 +16,7 @@ $tag      = get_theme_mod( 'closeclient_faq_tag', 'FAQ' );
             <h2 class="section-headline gradient-text"><?php echo esc_html( $headline ); ?></h2>
         </div>
 
-        <div class="faq-list mt-5">
+        <div class="faq-accordion mt-5">
             <?php
             $faq_query = new WP_Query( array(
                 'post_type'      => 'faq',
@@ -25,10 +25,15 @@ $tag      = get_theme_mod( 'closeclient_faq_tag', 'FAQ' );
 
             if ( $faq_query->have_posts() ) :
                 while ( $faq_query->have_posts() ) : $faq_query->the_post(); ?>
-                    <div class="faq-item cc-card reveal mb-4">
-                        <h3 class="h5 mb-3 faq-question"><?php the_title(); ?></h3>
-                        <div class="text-muted small">
-                            <?php the_content(); ?>
+                    <div class="faq-item glass reveal mb-3" role="region">
+                        <button class="faq-header d-flex justify-content-between align-items-center w-100 text-start p-4" aria-expanded="false">
+                            <h3 class="h6 mb-0 text-white"><?php the_title(); ?></h3>
+                            <span class="faq-icon"><?php echo closeclient_get_svg('arrow-right', 'chevron-svg'); ?></span>
+                        </button>
+                        <div class="faq-body">
+                            <div class="p-4 pt-0 text-muted small lead">
+                                <?php the_content(); ?>
+                            </div>
                         </div>
                     </div>
                 <?php endwhile;
@@ -39,10 +44,15 @@ $tag      = get_theme_mod( 'closeclient_faq_tag', 'FAQ' );
                     $question = get_theme_mod( "closeclient_faq_q{$i}" );
                     $answer   = get_theme_mod( "closeclient_faq_a{$i}" );
                     if ( ! empty( $question ) ) : ?>
-                        <div class="faq-item cc-card reveal mb-4">
-                            <h3 class="h5 mb-3 faq-question"><?php echo esc_html( $question ); ?></h3>
-                            <div class="text-muted small">
-                                <?php echo wp_kses_post( $answer ); ?>
+                        <div class="faq-item glass reveal mb-3" role="region">
+                            <button class="faq-header d-flex justify-content-between align-items-center w-100 text-start p-4" aria-expanded="false">
+                                <h3 class="h6 mb-0 text-white"><?php echo esc_html( $question ); ?></h3>
+                                <span class="faq-icon"><?php echo closeclient_get_svg('arrow-right', 'chevron-svg'); ?></span>
+                            </button>
+                            <div class="faq-body">
+                                <div class="p-4 pt-0 text-muted small lead">
+                                    <?php echo wp_kses_post( $answer ); ?>
+                                </div>
                             </div>
                         </div>
                     <?php endif;

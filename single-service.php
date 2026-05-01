@@ -34,6 +34,8 @@ get_header();
                 <?php get_template_part( 'template-parts/sections/section-pricing' ); ?>
                 <?php get_template_part( 'template-parts/sections/section-faq' ); ?>
             </div>
+
+            <?php get_template_part( 'template-parts/sections/section-booking-cta' ); ?>
         </article>
 
         <?php

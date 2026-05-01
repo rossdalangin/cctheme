@@ -16,6 +16,8 @@
     --c-white: #FFFFFF;
     --c-border: rgba(255, 255, 255, 0.08);
     --c-accent-rgb: 99, 102, 241;
+    --c-onyx-light: rgba(255, 255, 255, 0.03);
+    --c-indigo: var(--c-accent);
 
     /* Fluid Golden Ratio Spacing System (Fibonacci based) */
     --s-3xl: clamp(144px, 20vw, 377px);
@@ -1204,8 +1206,61 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 }
 
 /* FAQ Section */
-.faq-question {
-    color: var(--c-white);
+.faq-accordion {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: var(--c-accent);
+}
+
+.faq-item.active {
+    border-color: var(--c-accent);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.faq-header {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.faq-header:hover h3 {
+    color: var(--c-accent) !important;
+}
+
+.faq-icon {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: var(--c-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(90deg);
+}
+
+.faq-body {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-item.active .faq-body {
+    max-height: 500px;
+    opacity: 1;
 }
 
 /* General Layout Utilities */

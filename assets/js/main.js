@@ -231,6 +231,35 @@ document.addEventListener('DOMContentLoaded', () => {
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
     if (overlay) overlay.addEventListener('click', closeModal);
 
+    // --- FAQ Accordion Logic ---
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const header = item.querySelector('.faq-header');
+
+        if (header) {
+            header.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+
+                // Close other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                        otherItem.querySelector('.faq-header').setAttribute('aria-expanded', 'false');
+                    }
+                });
+
+                // Toggle current item
+                if (isActive) {
+                    item.classList.remove('active');
+                    header.setAttribute('aria-expanded', 'false');
+                } else {
+                    item.classList.add('active');
+                    header.setAttribute('aria-expanded', 'true');
+                }
+            });
+        }
+    });
+
     // --- Exit Intent Logic ---
     let exitIntentFired = false;
     document.addEventListener('mouseleave', (e) => {
