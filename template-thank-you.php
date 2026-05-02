@@ -16,15 +16,15 @@ get_header();
             <p class="lead text-muted mb-5 py-md"><?php echo esc_html( get_theme_mod( 'closeclient_thankyou_text_tpl', "We've received your request. Check your inbox for the next steps." ) ); ?></p>
 
             <div class="glass p-5 mt-5">
-                <h2 class="h4 mb-4"><?php esc_html_e( 'While You Wait...', 'closeclient' ); ?></h2>
+                <h2 class="h4 mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_thankyou_wait_title', 'While You Wait...' ) ); ?></h2>
                 <div class="thank-you-grid cc-grid-2">
                     <div class="resource-item py-md">
-                        <p class="small text-muted mb-3"><?php esc_html_e( 'Explore our latest insights', 'closeclient' ); ?></p>
-                        <a href="<?php echo esc_url( home_url( '/blog' ) ); ?>" class="cc-button cc-button-secondary w-100"><?php esc_html_e( 'Read the Blog', 'closeclient' ); ?></a>
+                        <p class="small text-muted mb-3"><?php echo esc_html( get_theme_mod( 'closeclient_thankyou_insights_text', 'Explore our latest insights' ) ); ?></p>
+                        <a href="<?php echo esc_url( home_url( '/blog' ) ); ?>" class="cc-button cc-button-secondary w-100"><?php echo esc_html( get_theme_mod( 'closeclient_thankyou_blog_btn', 'Read the Blog' ) ); ?></a>
                     </div>
                     <div class="resource-item py-md">
-                        <p class="small text-muted mb-3"><?php esc_html_e( 'See our recent success stories', 'closeclient' ); ?></p>
-                        <a href="<?php echo esc_url( home_url( '/case-studies' ) ); ?>" class="cc-button cc-button-secondary w-100"><?php esc_html_e( 'Case Studies', 'closeclient' ); ?></a>
+                        <p class="small text-muted mb-3"><?php echo esc_html( get_theme_mod( 'closeclient_thankyou_stories_text', 'See our recent success stories' ) ); ?></p>
+                        <a href="<?php echo esc_url( home_url( '/case-studies' ) ); ?>" class="cc-button cc-button-secondary w-100"><?php echo esc_html( get_theme_mod( 'closeclient_thankyou_cases_btn', 'Case Studies' ) ); ?></a>
                     </div>
                 </div>
             </div>

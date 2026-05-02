@@ -9,7 +9,8 @@
 
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class( 'blog-card cc-card reveal' ); ?>>
+<?php $reveal_class = get_query_var( 'closeclient_reveal_class', 'reveal' ); ?>
+<article id="post-<?php the_ID(); ?>" <?php post_class( "blog-card cc-card $reveal_class" ); ?>>
     <div class="post-thumbnail">
         <?php closeclient_post_thumbnail(); ?>
     </div>

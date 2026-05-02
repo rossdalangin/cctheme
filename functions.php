@@ -470,14 +470,47 @@ function closeclient_register_block_patterns() {
         array( 'label' => __( 'CloseClient Authority', 'closeclient' ) )
     );
 
-    register_block_pattern(
-        'closeclient/hero-section',
-        array(
-            'title'       => __( 'Elite Hero Section', 'closeclient' ),
-            'categories'  => array( 'closeclient' ),
-            'content'     => '<!-- wp:group {"className":"section-hero text-center","layout":{"type":"constrained"}} --><div class="wp-block-group section-hero text-center"><!-- wp:heading {"level":1,"className":"hero-headline"} --><h1 class="hero-headline">Stop Begging for Leads and Start Commanding Authority.</h1><!-- /wp:heading --><!-- wp:paragraph --><p>We build the elite digital infrastructure that pre-qualifies your leads.</p><!-- /wp:paragraph --><!-- wp:buttons --><div class="wp-block-buttons"><!-- wp:button {"className":"cc-button"} --><div class="wp-block-button cc-button"><a class="wp-block-button__link">Apply for Strategy Audit →</a></div><!-- /wp:button --></div><!-- /wp:buttons --></div><!-- /wp:group -->',
+    $patterns = array(
+        'hero' => array(
+            'title' => 'Elite Hero Section',
+            'content' => '<!-- wp:shortcode -->[closeclient_hero]<!-- /wp:shortcode -->'
+        ),
+        'vsl' => array(
+            'title' => 'Big Domino VSL Section',
+            'content' => '<!-- wp:shortcode -->[closeclient_vsl]<!-- /wp:shortcode -->'
+        ),
+        'services' => array(
+            'title' => 'Authority Services Grid',
+            'content' => '<!-- wp:shortcode -->[closeclient_services]<!-- /wp:shortcode -->'
+        ),
+        'testimonials' => array(
+            'title' => 'Social Proof Section',
+            'content' => '<!-- wp:shortcode -->[closeclient_testimonials]<!-- /wp:shortcode -->'
+        ),
+        'process' => array(
+            'title' => 'Authority Roadmap',
+            'content' => '<!-- wp:shortcode -->[closeclient_process]<!-- /wp:shortcode -->'
+        ),
+        'pricing' => array(
+            'title' => 'Investment Tiers',
+            'content' => '<!-- wp:shortcode -->[closeclient_pricing]<!-- /wp:shortcode -->'
+        ),
+        'booking' => array(
+            'title' => 'Terminal CTA Section',
+            'content' => '<!-- wp:shortcode -->[closeclient_booking_cta]<!-- /wp:shortcode -->'
         )
     );
+
+    foreach ( $patterns as $slug => $data ) {
+        register_block_pattern(
+            'closeclient/' . $slug,
+            array(
+                'title'      => $data['title'],
+                'categories' => array( 'closeclient' ),
+                'content'    => $data['content'],
+            )
+        );
+    }
 }
 add_action( 'init', 'closeclient_register_block_patterns' );
 

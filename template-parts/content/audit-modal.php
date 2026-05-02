@@ -11,9 +11,9 @@
     <div class="cc-modal-content glass p-5 border-accent shadow-premium">
         <button class="cc-modal-close">×</button>
         <div class="text-center mb-5">
-            <span class="section-tag"><?php esc_html_e( 'STRATEGY FIRST', 'closeclient' ); ?></span>
-            <h2 class="h3 mb-3"><?php esc_html_e( 'Request Your Authority Audit', 'closeclient' ); ?></h2>
-            <p class="text-muted small"><?php esc_html_e( 'Submit your details and we’ll tailor an audit and proposal based on your exact objectives.', 'closeclient' ); ?></p>
+            <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_audit_modal_tag', 'STRATEGY FIRST' ) ); ?></span>
+            <h2 class="h3 mb-3"><?php echo esc_html( get_theme_mod( 'closeclient_audit_modal_title', 'Request Your Authority Audit' ) ); ?></h2>
+            <p class="text-muted small"><?php echo esc_html( get_theme_mod( 'closeclient_audit_modal_desc', 'Submit your details and we’ll tailor an audit and proposal based on your exact objectives.' ) ); ?></p>
         </div>
 
         <div class="modal-form-wrapper">
@@ -22,12 +22,12 @@
             if ( $custom_action ) : ?>
                 <form action="<?php echo esc_url( $custom_action ); ?>" method="POST" class="custom-contact-form">
                     <div class="mb-4">
-                        <input type="text" name="name" placeholder="Full Name" required>
+                        <input type="text" name="name" placeholder="<?php echo esc_attr( get_theme_mod( 'closeclient_audit_modal_name_placeholder', 'Full Name' ) ); ?>" required>
                     </div>
                     <div class="mb-4">
-                        <input type="email" name="email" placeholder="Business Email" required>
+                        <input type="email" name="email" placeholder="<?php echo esc_attr( get_theme_mod( 'closeclient_audit_modal_email_placeholder', 'Business Email' ) ); ?>" required>
                     </div>
-                    <button type="submit" class="cc-button w-100"><?php esc_html_e( 'Request Audit →', 'closeclient' ); ?></button>
+                    <button type="submit" class="cc-button w-100"><?php echo esc_html( get_theme_mod( 'closeclient_audit_modal_btn', 'Request Audit →' ) ); ?></button>
                 </form>
             <?php else :
                 $form_code = get_theme_mod( 'closeclient_contact_form_shortcode' );

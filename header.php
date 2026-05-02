@@ -18,7 +18,7 @@
 <?php endif; ?>
 
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'closeclient' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#primary"><?php echo esc_html( get_theme_mod( 'closeclient_label_skip_link', 'Skip to content' ) ); ?></a>
 
 	<?php
     if ( ! is_page_template( 'template-canvas.php' ) ) {

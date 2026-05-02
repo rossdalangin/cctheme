@@ -18,7 +18,8 @@
 <?php wp_body_open(); ?>
 
 <main id="primary" class="site-main landing-page">
-    <div class="landing-hero section section-lg reveal text-center">
+    <div class="landing-hero section section-lg reveal text-center overflow-hidden">
+        <div class="mesh-gradient"></div>
         <div class="container-narrow">
             <?php
             $headline = get_theme_mod( 'closeclient_landing_headline_tpl', 'Transform Your Expertise Into a High-Performance Machine.' );
