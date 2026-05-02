@@ -16,7 +16,7 @@ $text     = get_theme_mod( 'closeclient_about_text_tpl', 'Engineering the future
         <div class="container">
             <div class="cc-grid-2 reveal">
                 <div class="about-hero-content">
-                    <span class="section-tag"><?php esc_html_e( 'OUR MISSION', 'closeclient' ); ?></span>
+                    <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_about_hero_tag', 'OUR MISSION' ) ); ?></span>
                     <h1 class="hero-headline gradient-text"><?php echo esc_html( $headline ); ?></h1>
                     <p class="lead text-muted mb-5"><?php echo nl2br( esc_html( $text ) ); ?></p>
                 </div>
@@ -34,8 +34,8 @@ $text     = get_theme_mod( 'closeclient_about_text_tpl', 'Engineering the future
     <section class="section section-lg bg-black">
         <div class="container reveal">
             <div class="section-header text-center mb-5">
-                <span class="section-tag"><?php esc_html_e( 'THE CORE VALUES', 'closeclient' ); ?></span>
-                <h2 class="h1"><?php esc_html_e( 'Engineering Elite Authority', 'closeclient' ); ?></h2>
+                <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_about_values_tag', 'THE CORE VALUES' ) ); ?></span>
+                <h2 class="h1"><?php echo esc_html( get_theme_mod( 'closeclient_about_values_title', 'Engineering Elite Authority' ) ); ?></h2>
             </div>
             <div class="cc-grid-3 py-lg">
                 <?php
@@ -60,8 +60,8 @@ $text     = get_theme_mod( 'closeclient_about_text_tpl', 'Engineering the future
     <section class="section section-lg bg-dark">
         <div class="container reveal">
             <div class="section-header text-center mb-5">
-                <span class="section-tag"><?php esc_html_e( 'THE EXPERTISE', 'closeclient' ); ?></span>
-                <h2 class="h1"><?php esc_html_e( 'Architecting Global Authority', 'closeclient' ); ?></h2>
+                <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_about_expertise_tag', 'THE EXPERTISE' ) ); ?></span>
+                <h2 class="h1"><?php echo esc_html( get_theme_mod( 'closeclient_about_expertise_title', 'Architecting Global Authority' ) ); ?></h2>
             </div>
             <div class="cc-grid-2 py-lg">
                 <div class="expertise-content">
@@ -77,10 +77,10 @@ $text     = get_theme_mod( 'closeclient_about_text_tpl', 'Engineering the future
                     </ul>
                 </div>
                 <div class="expertise-visual glass p-5">
-                    <div class="h1 gradient-text mb-2"><?php esc_html_e( '94%', 'closeclient' ); ?></div>
-                    <p class="small text-muted uppercase letter-spacing-1"><?php esc_html_e( 'Client Retention Rate', 'closeclient' ); ?></p>
-                    <div class="h1 gradient-text mb-2 mt-5"><?php esc_html_e( '$250M+', 'closeclient' ); ?></div>
-                    <p class="small text-muted uppercase letter-spacing-1"><?php esc_html_e( 'Revenue Generated for Clients', 'closeclient' ); ?></p>
+                    <div class="h1 gradient-text mb-2"><?php echo esc_html( get_theme_mod( 'closeclient_about_stat_1_val', '94%' ) ); ?></div>
+                    <p class="small text-muted uppercase letter-spacing-1"><?php echo esc_html( get_theme_mod( 'closeclient_about_stat_1_label', 'Client Retention Rate' ) ); ?></p>
+                    <div class="h1 gradient-text mb-2 mt-5"><?php echo esc_html( get_theme_mod( 'closeclient_about_stat_2_val', '$250M+' ) ); ?></div>
+                    <p class="small text-muted uppercase letter-spacing-1"><?php echo esc_html( get_theme_mod( 'closeclient_about_stat_2_label', 'Revenue Generated for Clients' ) ); ?></p>
                 </div>
             </div>
         </div>

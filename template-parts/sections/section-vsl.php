@@ -18,7 +18,7 @@
                 echo wp_oembed_get( $video_url );
             else : ?>
                 <div class="video-placeholder">
-                    <p>Enter a video URL in Customizer > Homepage > VSL Section</p>
+                    <p><?php echo esc_html( get_theme_mod( 'closeclient_vsl_placeholder', 'Enter a video URL in Customizer > Homepage > VSL Section' ) ); ?></p>
                 </div>
             <?php endif; ?>
         </div>

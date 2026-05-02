@@ -11,7 +11,7 @@ $headline = get_theme_mod( 'closeclient_pricing_headline', 'Investment Opportuni
 <section id="pricing" class="section section-lg section-pricing bg-dark">
     <div class="container">
         <div class="section-header text-center reveal">
-            <span class="section-tag"><?php esc_html_e( 'INVESTMENT', 'closeclient' ); ?></span>
+            <span class="section-tag"><?php echo esc_html( $tag ); ?></span>
             <h2 class="section-headline gradient-text"><?php echo esc_html( $headline ); ?></h2>
         </div>
 
@@ -29,7 +29,7 @@ $headline = get_theme_mod( 'closeclient_pricing_headline', 'Investment Opportuni
                     ?>
                     <div class="pricing-item glass reveal p-4 p-md-5 d-flex flex-column h-100 <?php echo $featured ? 'featured-plan' : ''; ?>">
                         <?php if ( $featured ) : ?>
-                            <div class="featured-badge"><?php esc_html_e( 'MOST POPULAR', 'closeclient' ); ?></div>
+                            <div class="featured-badge"><?php echo esc_html( get_theme_mod( 'closeclient_label_popular', 'MOST POPULAR' ) ); ?></div>
                         <?php endif; ?>
 
                         <div class="pricing-header mb-5">
@@ -38,13 +38,13 @@ $headline = get_theme_mod( 'closeclient_pricing_headline', 'Investment Opportuni
                         </div>
 
                         <div class="pricing-features flex-grow-1 mb-5">
-                            <div class="small text-muted mb-4 text-uppercase tracking-widest fw-bold"><?php esc_html_e( 'What\'s Included', 'closeclient' ); ?></div>
+                            <div class="small text-muted mb-4 text-uppercase tracking-widest fw-bold"><?php echo esc_html( get_theme_mod( 'closeclient_label_included', 'What\'s Included' ) ); ?></div>
                             <?php the_content(); ?>
                         </div>
 
                         <div class="pricing-footer mt-auto pt-4">
                             <a href="<?php echo esc_url( get_theme_mod( 'closeclient_booking_link', '#audit' ) ); ?>" class="cc-button w-100 <?php echo ! $featured ? 'cc-button-secondary' : ''; ?>">
-                                <?php esc_html_e( 'Secure Your Spot →', 'closeclient' ); ?>
+                                <?php echo esc_html( get_theme_mod( 'closeclient_label_secure', 'Secure Your Spot →' ) ); ?>
                             </a>
                         </div>
                     </div>
@@ -60,7 +60,7 @@ $headline = get_theme_mod( 'closeclient_pricing_headline', 'Investment Opportuni
                 foreach ( $plans as $plan ) : ?>
                     <div class="pricing-item glass reveal p-4 p-md-5 d-flex flex-column h-100 <?php echo $plan['featured'] ? 'featured-plan' : ''; ?>">
                         <?php if ( $plan['featured'] ) : ?>
-                            <div class="featured-badge"><?php esc_html_e( 'MOST POPULAR', 'closeclient' ); ?></div>
+                            <div class="featured-badge"><?php echo esc_html( get_theme_mod( 'closeclient_label_popular', 'MOST POPULAR' ) ); ?></div>
                         <?php endif; ?>
 
                         <div class="pricing-header mb-5">
@@ -69,7 +69,7 @@ $headline = get_theme_mod( 'closeclient_pricing_headline', 'Investment Opportuni
                         </div>
 
                         <div class="pricing-features flex-grow-1 mb-5">
-                            <div class="small text-muted mb-4 text-uppercase tracking-widest fw-bold"><?php esc_html_e( 'What\'s Included', 'closeclient' ); ?></div>
+                            <div class="small text-muted mb-4 text-uppercase tracking-widest fw-bold"><?php echo esc_html( get_theme_mod( 'closeclient_label_included', 'What\'s Included' ) ); ?></div>
                             <ul class="list-unstyled mb-0">
                                 <?php foreach ( $plan['features'] as $feature ) : ?>
                                     <li class="mb-3 d-flex align-items-center gap-2 small text-muted">
@@ -81,7 +81,7 @@ $headline = get_theme_mod( 'closeclient_pricing_headline', 'Investment Opportuni
 
                         <div class="pricing-footer mt-auto pt-4">
                             <a href="<?php echo esc_url( get_theme_mod( 'closeclient_booking_link', '#audit' ) ); ?>" class="cc-button w-100 <?php echo ! $plan['featured'] ? 'cc-button-secondary' : ''; ?>">
-                                <?php esc_html_e( 'Secure Your Spot →', 'closeclient' ); ?>
+                                <?php echo esc_html( get_theme_mod( 'closeclient_label_secure', 'Secure Your Spot →' ) ); ?>
                             </a>
                         </div>
                     </div>

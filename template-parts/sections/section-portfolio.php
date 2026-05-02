@@ -39,14 +39,14 @@ $tag      = get_theme_mod( 'closeclient_portfolio_tag', 'FEATURED WORK' );
                         <div class="portfolio-content">
                             <h3 class="h4 mb-3"><?php the_title(); ?></h3>
                             <div class="text-muted small mb-4"><?php the_excerpt(); ?></div>
-                            <a href="<?php the_permalink(); ?>" class="cc-button cc-button-secondary read-more-btn"><?php esc_html_e( 'View Case Study', 'closeclient' ); ?></a>
+                            <a href="<?php the_permalink(); ?>" class="cc-button cc-button-secondary read-more-btn"><?php echo esc_html( get_theme_mod( 'closeclient_label_portfolio_btn', 'View Case Study' ) ); ?></a>
                         </div>
                     </div>
                 <?php endwhile;
                 wp_reset_postdata();
             else : ?>
                 <div class="portfolio-empty-card cc-card reveal">
-                    <p class="text-muted"><?php esc_html_e( 'Success stories are being engineered. Check back soon.', 'closeclient' ); ?></p>
+                    <p class="text-muted"><?php echo esc_html( get_theme_mod( 'closeclient_portfolio_empty_text', 'Success stories are being engineered. Check back soon.' ) ); ?></p>
                 </div>
             <?php endif; ?>
         </div>

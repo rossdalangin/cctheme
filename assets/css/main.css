@@ -69,6 +69,17 @@ body {
     background-color: var(--c-bg);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
+    position: relative;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 /* Noise Texture Overlay */
@@ -87,15 +98,16 @@ body::after {
 
 h1, h2, h3, h4, h5, h6 {
     font-weight: 800;
-    letter-spacing: -0.05em;
+    letter-spacing: -0.06em;
     color: var(--c-white);
     line-height: 1.1;
     margin-bottom: var(--s-sm);
 }
 
-h1 { font-size: clamp(3.5rem, 12vw, 6.5rem); letter-spacing: -0.05em; line-height: 0.85; }
-h2 { font-size: clamp(2.5rem, 8vw, 4.5rem); letter-spacing: -0.03em; line-height: 0.95; }
-h3 { font-size: clamp(1.75rem, 5vw, 3rem); letter-spacing: -0.02em; line-height: 1.05; }
+h1 { font-size: clamp(3.5rem, 12vw, 6.5rem); letter-spacing: -0.06em; line-height: 0.85; }
+h2 { font-size: clamp(2.5rem, 8vw, 4.5rem); letter-spacing: -0.05em; line-height: 0.95; }
+h3 { font-size: clamp(1.75rem, 5vw, 3rem); letter-spacing: -0.04em; line-height: 1.05; }
+h4 { font-size: clamp(1.25rem, 3vw, 1.75rem); letter-spacing: -0.03em; line-height: 1.1; }
 
 .container { max-width: var(--container-width); margin: 0 auto; padding: 0 40px; }
 .container-narrow { max-width: var(--content-width); margin: 0 auto; }
@@ -1247,24 +1259,20 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 .faq-item {
     border-radius: var(--radius-md);
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.3s ease;
     border: 1px solid var(--c-border);
     margin-bottom: var(--s-sm);
-    background: rgba(255, 255, 255, 0.01);
 }
 
 .faq-item:hover {
-    border-color: rgba(var(--c-accent-rgb), 0.4);
-    background: rgba(255, 255, 255, 0.02);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-color: var(--c-accent);
+    box-shadow: 0 0 20px rgba(var(--c-accent-rgb), 0.1);
 }
 
 .faq-item.active {
     border-color: var(--c-accent);
-    background: rgba(255, 255, 255, 0.04);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .faq-header {
@@ -1327,15 +1335,6 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
         radial-gradient(at 50% 100%, rgba(99, 102, 241, 0.05) 0px, transparent 50%);
     z-index: -1;
     pointer-events: none;
-}
-
-.mesh-gradient::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    opacity: 0.04;
-    pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 .hero-bg-glow {
     position: absolute;

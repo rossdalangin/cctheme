@@ -13,9 +13,9 @@
 
         <?php $custom_action = get_theme_mod( 'closeclient_newsletter_form_action' ); ?>
         <form class="newsletter-form-inline" action="<?php echo esc_url( $custom_action ); ?>" method="<?php echo $custom_action ? 'POST' : 'GET'; ?>">
-            <input type="email" name="email" placeholder="<?php esc_attr_e( 'Your primary email address', 'closeclient' ); ?>" required>
+            <input type="email" name="email" placeholder="<?php echo esc_attr( get_theme_mod( 'closeclient_newsletter_placeholder', 'Your primary email address' ) ); ?>" required>
             <button type="submit" class="cc-button"><?php echo esc_html( get_theme_mod( 'closeclient_newsletter_button', 'Subscribe Now' ) ); ?></button>
         </form>
-        <p class="form-disclaimer"><?php esc_html_e( 'No spam. Just value. Unsubscribe anytime.', 'closeclient' ); ?></p>
+        <p class="form-disclaimer"><?php echo esc_html( get_theme_mod( 'closeclient_newsletter_disclaimer', 'No spam. Just value. Unsubscribe anytime.' ) ); ?></p>
     </div>
 </section>

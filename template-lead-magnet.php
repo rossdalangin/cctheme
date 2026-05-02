@@ -12,7 +12,7 @@ get_header();
     <section class="section section-lg">
         <div class="container lead-magnet-grid reveal">
             <div class="lead-magnet-content py-lg">
-                <span class="section-tag"><?php esc_html_e( 'FREE TRAINING', 'closeclient' ); ?></span>
+                <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_leadmagnet_tag_tpl', 'FREE TRAINING' ) ); ?></span>
                 <h1 class="hero-headline gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_leadmagnet_headline_tpl', 'Get the Authority Blueprint' ) ); ?></h1>
                 <p class="lead text-muted mb-5"><?php echo esc_html( get_theme_mod( 'closeclient_leadmagnet_text_tpl', 'Download our proven framework for attracting high-ticket clients on autopilot.' ) ); ?></p>
 
@@ -42,12 +42,12 @@ get_header();
                     <img src="<?php echo esc_url( get_theme_mod( 'closeclient_lm_image' ) ); ?>" alt="Lead Magnet" class="glass">
                 <?php else : ?>
                     <div class="glass">
-                        <span class="text-muted"><?php esc_html_e( 'Lead Magnet Mockup', 'closeclient' ); ?></span>
+                        <span class="text-muted"><?php echo esc_html( get_theme_mod( 'closeclient_leadmagnet_mockup_text', 'Lead Magnet Mockup' ) ); ?></span>
                     </div>
                 <?php endif; ?>
 
                 <div class="what-is-inside mt-5 glass p-4 reveal">
-                    <h3 class="h6 text-accent mb-3 uppercase letter-spacing-1"><?php esc_html_e( 'What’s Inside:', 'closeclient' ); ?></h3>
+                    <h3 class="h6 text-accent mb-3 uppercase letter-spacing-1"><?php echo esc_html( get_theme_mod( 'closeclient_leadmagnet_inside_title', 'What’s Inside:' ) ); ?></h3>
                     <ul class="list-unstyled small text-muted">
                         <?php
                         $benefits = get_theme_mod( 'closeclient_lm_benefits', 'The "Authority Flywheel" Framework, 3 Conversion-Killing Mistakes to Avoid, Automated Lead Intake Blueprints' );

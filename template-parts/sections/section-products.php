@@ -6,6 +6,7 @@
  */
 
 $headline = get_theme_mod( 'closeclient_products_headline', 'Essential Tools That Work as Hard as You Do' );
+$desc     = get_theme_mod( 'closeclient_products_desc', 'Themes and plugins trusted by elite coaches to streamline operations and elevate branding.' );
 ?>
 
 <section id="products" class="section section-lg section-products bg-dark">
@@ -13,7 +14,7 @@ $headline = get_theme_mod( 'closeclient_products_headline', 'Essential Tools Tha
         <div class="section-header text-center reveal">
             <span class="section-tag"><?php esc_html_e( 'ECOSYSTEM TOOLS', 'closeclient' ); ?></span>
             <h2 class="section-headline gradient-text"><?php echo esc_html( $headline ); ?></h2>
-            <p class="lead text-muted mt-4"><?php esc_html_e( 'Themes and plugins trusted by elite coaches to streamline operations and elevate branding.', 'closeclient' ); ?></p>
+            <p class="lead text-muted mt-4"><?php echo esc_html( $desc ); ?></p>
         </div>
 
         <div class="cc-grid-2">
@@ -45,7 +46,7 @@ $headline = get_theme_mod( 'closeclient_products_headline', 'Essential Tools Tha
                                     <?php the_excerpt(); ?>
                                 </div>
                                 <a href="<?php echo esc_url( $link ); ?>" class="cc-button cc-button-secondary product-btn">
-                                    <?php esc_html_e( 'Get This Tool →', 'closeclient' ); ?>
+                                    <?php echo esc_html( get_theme_mod( 'closeclient_product_btn_text', 'Get This Tool →' ) ); ?>
                                 </a>
                             </div>
                         </div>
@@ -54,7 +55,7 @@ $headline = get_theme_mod( 'closeclient_products_headline', 'Essential Tools Tha
                 wp_reset_postdata();
             else : ?>
                 <div class="cc-card text-center py-5 product-empty-card">
-                    <p class="text-muted"><?php esc_html_e( 'No products found. Add them in the dashboard.', 'closeclient' ); ?></p>
+                    <p class="text-muted"><?php echo esc_html( get_theme_mod( 'closeclient_product_empty_text', 'No products found. Add them in the dashboard.' ) ); ?></p>
                 </div>
             <?php endif; ?>
         </div>

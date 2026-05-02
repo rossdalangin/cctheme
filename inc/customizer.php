@@ -4,6 +4,20 @@
  * AUTO-GENERATED - Triple-Lock Sync
  */
 
+function closeclient_hex_to_rgb( $hex ) {
+    $hex = str_replace( '#', '', $hex );
+    if ( strlen( $hex ) == 3 ) {
+        $r = hexdec( substr( $hex, 0, 1 ) . substr( $hex, 0, 1 ) );
+        $g = hexdec( substr( $hex, 1, 1 ) . substr( $hex, 1, 1 ) );
+        $b = hexdec( substr( $hex, 2, 1 ) . substr( $hex, 2, 1 ) );
+    } else {
+        $r = hexdec( substr( $hex, 0, 2 ) );
+        $g = hexdec( substr( $hex, 2, 2 ) );
+        $b = hexdec( substr( $hex, 4, 2 ) );
+    }
+    return "$r, $g, $b";
+}
+
 function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_panel( 'closeclient_brand_panel', array( 'title' => '1. Elite Brand Identity' ) );
     $wp_customize->add_panel( 'closeclient_homepage_panel', array( 'title' => '3. Homepage Sections' ) );
@@ -182,6 +196,12 @@ function closeclient_customize_register( $wp_customize ) {
         'closeclient_social_linkedin' => 'LinkedIn URL',
         'closeclient_social_twitter' => 'Twitter URL',
         'closeclient_social_youtube' => 'YouTube URL',
+        'closeclient_products_headline' => 'Products Section Headline',
+        'closeclient_products_desc' => 'Products Section Description',
+        'closeclient_label_portfolio_archive_tag' => 'Portfolio Archive Tag',
+        'closeclient_label_portfolio_archive_title' => 'Portfolio Archive Title',
+        'closeclient_label_portfolio_archive_desc' => 'Portfolio Archive Description',
+        'closeclient_label_portfolio_btn' => 'Portfolio View Button Text',
     );
 
     // Dynamic Register
@@ -195,7 +215,7 @@ function closeclient_customize_register( $wp_customize ) {
         elseif (strpos($key, 'hero') !== false) $section = 'closeclient_hero';
         elseif (strpos($key, 'vsl') !== false) $section = 'closeclient_vsl';
         elseif (strpos($key, 'service') !== false) $section = 'closeclient_services';
-        elseif (strpos($key, 'portfolio') !== false) $section = 'closeclient_labels'; // Portfolio labels
+        elseif (strpos($key, 'portfolio') !== false) $section = 'closeclient_labels';
         elseif (strpos($key, 'stat') !== false) $section = 'closeclient_stats';
         elseif (strpos($key, 'team') !== false) $section = 'closeclient_team';
         elseif (strpos($key, 'faq') !== false) $section = 'closeclient_faq';
@@ -206,10 +226,23 @@ function closeclient_customize_register( $wp_customize ) {
         elseif (strpos($key, 'show_') !== false) $section = 'closeclient_visibility';
         elseif (strpos($key, 'width') !== false || strpos($key, 'header') !== false || strpos($key, 'footer') !== false) $section = 'closeclient_layout_section';
         elseif (strpos($key, 'form_action') !== false || strpos($key, 'shortcode') !== false) $section = 'closeclient_forms';
+        elseif (strpos($key, 'product') !== false) $section = 'closeclient_products';
 
         $label = isset($labels[$key]) ? $labels[$key] : $key;
 
-        if (strpos($key, 'color') !== false) {
+        if ($key === 'closeclient_color_preset') {
+            $wp_customize->add_control( $key, array(
+                'label' => $label,
+                'section' => 'closeclient_colors',
+                'type' => 'select',
+                'choices' => array(
+                    'deep-onyx' => 'Deep Onyx (Default)',
+                    'royal-indigo' => 'Royal Indigo',
+                    'forest-expert' => 'Forest Expert',
+                    'midnight-gold' => 'Midnight Gold',
+                )
+            ) );
+        } elseif (strpos($key, 'color') !== false) {
             $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $key, array( 'label' => $label, 'section' => $section ) ) );
         } elseif (strpos($key, 'show_') !== false || $key === 'closeclient_header_sticky' || $key === 'closeclient_hero_typewriter') {
             $wp_customize->add_control( $key, array( 'label' => $label, 'section' => $section, 'type' => 'checkbox' ) );
@@ -230,19 +263,36 @@ function closeclient_customize_register( $wp_customize ) {
 }
 add_action( 'customize_register', 'closeclient_customize_register' );
 
-/**
- * Output Customizer CSS variables to wp_head
- */
 function closeclient_customize_css() {
+    $preset = get_theme_mod( 'closeclient_color_preset', 'deep-onyx' );
+
+    // Preset Mappings
+    $presets = array(
+        'deep-onyx' => array( 'accent' => '#6366F1', 'bg' => '#020203', 'primary' => '#020203', 'secondary' => '#0A0A0B' ),
+        'royal-indigo' => array( 'accent' => '#818CF8', 'bg' => '#0F172A', 'primary' => '#0F172A', 'secondary' => '#1E293B' ),
+        'forest-expert' => array( 'accent' => '#10B981', 'bg' => '#064E3B', 'primary' => '#064E3B', 'secondary' => '#065F46' ),
+        'midnight-gold' => array( 'accent' => '#FBBF24', 'bg' => '#171717', 'primary' => '#171717', 'secondary' => '#262626' ),
+    );
+
+    $current = isset($presets[$preset]) ? $presets[$preset] : $presets['deep-onyx'];
+
+    $accent = get_theme_mod( 'closeclient_accent_color', $current['accent'] );
+    $bg = get_theme_mod( 'closeclient_bg_color', $current['bg'] );
+    $primary = get_theme_mod( 'closeclient_primary_color', $current['primary'] );
+    $secondary = get_theme_mod( 'closeclient_secondary_color', $current['secondary'] );
+    $text = get_theme_mod( 'closeclient_text_color', '#F9FAFB' );
+    $accent_rgb = closeclient_hex_to_rgb($accent);
+
     ?>
     <style type="text/css">
         :root {
-            --c-accent: <?php echo get_theme_mod( 'closeclient_accent_color', '#6366F1' ); ?>;
+            --c-accent: <?php echo $accent; ?>;
+            --c-accent-rgb: <?php echo $accent_rgb; ?>;
             --c-accent-hover: <?php echo get_theme_mod( 'closeclient_button_hover', '#4F46E5' ); ?>;
-            --c-primary: <?php echo get_theme_mod( 'closeclient_primary_color', '#020203' ); ?>;
-            --c-secondary: <?php echo get_theme_mod( 'closeclient_secondary_color', '#0A0A0B' ); ?>;
-            --c-bg: <?php echo get_theme_mod( 'closeclient_bg_color', '#020203' ); ?>;
-            --c-text: <?php echo get_theme_mod( 'closeclient_text_color', '#F9FAFB' ); ?>;
+            --c-primary: <?php echo $primary; ?>;
+            --c-secondary: <?php echo $secondary; ?>;
+            --c-bg: <?php echo $bg; ?>;
+            --c-text: <?php echo $text; ?>;
             --container-width: <?php echo get_theme_mod( 'closeclient_container_width', '1200' ); ?>px;
             --content-width: <?php echo get_theme_mod( 'closeclient_content_width', '800' ); ?>px;
             --heading-font: '<?php echo get_theme_mod( 'closeclient_heading_font', 'Inter' ); ?>', sans-serif;
