@@ -12,10 +12,13 @@ $subheadline = get_theme_mod( 'closeclient_services_subheadline_tpl', 'Premium s
 ?>
 
 <main id="primary" class="site-main">
-    <div class="container section section-lg text-center reveal">
+    <div class="container section section-lg text-center reveal overflow-hidden">
+        <div class="mesh-gradient"></div>
         <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_service_archive_tag', 'OUR CAPABILITIES' ) ); ?></span>
         <h1 class="hero-headline gradient-text"><?php echo esc_html( $headline ); ?></h1>
-        <p class="hero-subheadline py-md"><?php echo esc_html( $subheadline ); ?></p>
+        <div class="container-narrow">
+            <p class="hero-subheadline py-md text-muted lead"><?php echo esc_html( $subheadline ); ?></p>
+        </div>
     </div>
 
     <?php

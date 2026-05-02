@@ -17,7 +17,12 @@ get_header();
                 <div class="container container-narrow">
                     <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_label_service_archive_tag', 'OUR CAPABILITIES' ) ); ?></span>
 				<h1 class="hero-headline gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_label_service_archive_title', 'Strategic Systems' ) ); ?></h1>
-                    <?php the_archive_description( '<div class="section-subheadline section-subheadline-centered">', '</div>' ); ?>
+                    <div class="section-subheadline section-subheadline-centered lead text-muted mt-4">
+                        <?php
+                        $desc = get_the_archive_description();
+                        echo $desc ? $desc : esc_html( get_theme_mod( 'closeclient_label_service_archive_desc', 'Premium infrastructure components engineered to scale high-ticket expert businesses.' ) );
+                        ?>
+                    </div>
                 </div>
 			</header>
 

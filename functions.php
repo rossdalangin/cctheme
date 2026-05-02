@@ -392,14 +392,36 @@ function closeclient_footer_2_fallback() {
  * Global Schema JSON-LD
  */
 function closeclient_schema_json_ld() {
+    $schema = array(
+        '@context' => 'https://schema.org',
+    );
+
     if ( is_front_page() ) {
-        $schema = array(
-            '@context' => 'https://schema.org',
-            '@type'    => 'ProfessionalService',
-            'name'     => get_bloginfo( 'name' ),
-            'url'      => home_url(),
-            'description' => get_bloginfo( 'description' ),
+        $schema['@type'] = 'ProfessionalService';
+        $schema['name'] = get_bloginfo( 'name' );
+        $schema['url'] = home_url();
+        $schema['description'] = get_bloginfo( 'description' );
+    } elseif ( is_singular( 'service' ) ) {
+        global $post;
+        $schema['@type'] = 'Service';
+        $schema['serviceType'] = get_the_title();
+        $schema['provider'] = array(
+            '@type' => 'LocalBusiness',
+            'name' => get_bloginfo( 'name' )
         );
+        $schema['description'] = get_the_excerpt();
+    } elseif ( is_singular( 'portfolio' ) ) {
+        global $post;
+        $schema['@type'] = 'CreativeWork';
+        $schema['name'] = get_the_title();
+        $schema['description'] = get_the_excerpt();
+        $schema['author'] = array(
+            '@type' => 'Organization',
+            'name' => get_bloginfo( 'name' )
+        );
+    }
+
+    if ( count($schema) > 1 ) {
         echo '<script type="application/ld+json">' . json_encode( $schema ) . '</script>';
     }
 }

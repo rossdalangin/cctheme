@@ -50,7 +50,20 @@ function closeclient_customize_register( $wp_customize ) {
     // Helpers
     $labels = array(
         'closeclient_about_headline_tpl' => 'About Page Headline',
+        'closeclient_about_text_tpl' => 'About Page Main Copy',
+        'closeclient_about_hero_tag' => 'About Hero Tag',
         'closeclient_about_method_title' => 'Methodology Title',
+        'closeclient_about_method_text' => 'Methodology Copy',
+        'closeclient_about_methodology' => 'Methodology Pillars (Comma Sep)',
+        'closeclient_about_expertise_tag' => 'Expertise Tag',
+        'closeclient_about_expertise_title' => 'Expertise Title',
+        'closeclient_about_values_tag' => 'Values Tag',
+        'closeclient_about_values_title' => 'Values Title',
+        'closeclient_about_values' => 'Values List (Title:Desc, ...)',
+        'closeclient_about_stat_1_val' => 'About Stat 1 Value',
+        'closeclient_about_stat_1_label' => 'About Stat 1 Label',
+        'closeclient_about_stat_2_val' => 'About Stat 2 Value',
+        'closeclient_about_stat_2_label' => 'About Stat 2 Label',
         'closeclient_accent_color' => 'Accent Color (Brand)',
         'closeclient_bg_color' => 'Background Color',
         'closeclient_body_font' => 'Body Font Family',
@@ -106,12 +119,24 @@ function closeclient_customize_register( $wp_customize ) {
         'closeclient_label_search' => 'Search Results Label',
         'closeclient_label_share' => 'Social Share Label',
         'closeclient_label_solution' => 'Case Study: Solution Label',
+        'closeclient_label_popular' => 'Pricing: Featured Badge',
+        'closeclient_label_included' => 'Pricing: Included Label',
+        'closeclient_label_secure' => 'Pricing: CTA Text',
+        'closeclient_label_none_tag' => 'Empty State: Tag',
+        'closeclient_label_none_title' => 'Empty State: Title',
+        'closeclient_label_none_search' => 'Empty State: Search Fail Message',
+        'closeclient_label_none_general' => 'Empty State: General Fail Message',
         'closeclient_leadmagnet_headline_tpl' => 'Lead Magnet Headline',
         'closeclient_leadmagnet_text_tpl' => 'Lead Magnet Text',
+        'closeclient_leadmagnet_tag_tpl' => 'Lead Magnet Tag',
+        'closeclient_leadmagnet_mockup_text' => 'Lead Magnet Mockup Text',
+        'closeclient_leadmagnet_inside_title' => 'Lead Magnet "Inside" Title',
         'closeclient_letter_spacing' => 'Global Letter Spacing',
         'closeclient_line_height' => 'Global Line Height',
         'closeclient_lm_form_action' => 'Lead Magnet Form Action',
         'closeclient_newsletter_form_action' => 'Newsletter Form Action',
+        'closeclient_newsletter_placeholder' => 'Newsletter Placeholder',
+        'closeclient_newsletter_disclaimer' => 'Newsletter Disclaimer',
         'closeclient_plan1_features' => 'Plan 1: Features (Comma Separated)',
         'closeclient_plan1_name' => 'Plan 1: Name',
         'closeclient_plan1_price' => 'Plan 1: Price',
@@ -173,6 +198,7 @@ function closeclient_customize_register( $wp_customize ) {
         'closeclient_vsl_headline' => 'VSL Headline',
         'closeclient_vsl_tag' => 'VSL Tag',
         'closeclient_vsl_video_url' => 'VSL Video URL (YouTube/Vimeo)',
+        'closeclient_vsl_placeholder' => 'VSL Video Placeholder Text',
         'closeclient_show_authority' => 'Show Authority Section',
         'closeclient_show_booking' => 'Show Booking CTA',
         'closeclient_show_faq' => 'Show FAQ Section',
@@ -198,10 +224,18 @@ function closeclient_customize_register( $wp_customize ) {
         'closeclient_social_youtube' => 'YouTube URL',
         'closeclient_products_headline' => 'Products Section Headline',
         'closeclient_products_desc' => 'Products Section Description',
+        'closeclient_product_btn_text' => 'Product CTA Text',
+        'closeclient_product_empty_text' => 'Product Empty State Text',
+        'closeclient_logo_ticker_tag' => 'Logo Ticker Tag',
         'closeclient_label_portfolio_archive_tag' => 'Portfolio Archive Tag',
         'closeclient_label_portfolio_archive_title' => 'Portfolio Archive Title',
         'closeclient_label_portfolio_archive_desc' => 'Portfolio Archive Description',
         'closeclient_label_portfolio_btn' => 'Portfolio View Button Text',
+        'closeclient_portfolio_empty_text' => 'Portfolio Empty State Text',
+        'closeclient_label_service_archive_tag' => 'Service Archive Tag',
+        'closeclient_label_service_archive_title' => 'Service Archive Title',
+        'closeclient_label_service_archive_desc' => 'Service Archive Description',
+        'closeclient_label_service_btn' => 'Service View Button Text',
     );
 
     // Dynamic Register
@@ -227,6 +261,8 @@ function closeclient_customize_register( $wp_customize ) {
         elseif (strpos($key, 'width') !== false || strpos($key, 'header') !== false || strpos($key, 'footer') !== false) $section = 'closeclient_layout_section';
         elseif (strpos($key, 'form_action') !== false || strpos($key, 'shortcode') !== false) $section = 'closeclient_forms';
         elseif (strpos($key, 'product') !== false) $section = 'closeclient_products';
+        elseif (strpos($key, 'leadmagnet') !== false || strpos($key, 'lm_') !== false) $section = 'closeclient_leadmagnet_tpl';
+        elseif (strpos($key, 'newsletter') !== false) $section = 'closeclient_forms';
 
         $label = isset($labels[$key]) ? $labels[$key] : $key;
 
@@ -246,7 +282,7 @@ function closeclient_customize_register( $wp_customize ) {
             $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $key, array( 'label' => $label, 'section' => $section ) ) );
         } elseif (strpos($key, 'show_') !== false || $key === 'closeclient_header_sticky' || $key === 'closeclient_hero_typewriter') {
             $wp_customize->add_control( $key, array( 'label' => $label, 'section' => $section, 'type' => 'checkbox' ) );
-        } elseif (strpos($key, 'headline') !== false || strpos($key, 'text') !== false || strpos($key, 'desc') !== false || strpos($key, 'subheadline') !== false || strpos($key, 'note') !== false || strpos($key, 'scarcity') !== false || strpos($key, 'disclaimer') !== false || strpos($key, 'about') !== false) {
+        } elseif (strpos($key, 'headline') !== false || strpos($key, 'text') !== false || strpos($key, 'desc') !== false || strpos($key, 'subheadline') !== false || strpos($key, 'note') !== false || strpos($key, 'scarcity') !== false || strpos($key, 'disclaimer') !== false || strpos($key, 'about') !== false || strpos($key, 'methodology') !== false || strpos($key, 'search') !== false || strpos($key, 'general') !== false || strpos($key, 'placeholder') !== false) {
             $wp_customize->add_control( $key, array( 'label' => $label, 'section' => $section, 'type' => 'textarea' ) );
         } else {
             $wp_customize->add_control( $key, array( 'label' => $label, 'section' => $section ) );

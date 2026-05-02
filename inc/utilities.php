@@ -82,6 +82,10 @@ function closeclient_get_defaults() {
         'closeclient_label_popular' => 'MOST POPULAR',
         'closeclient_label_included' => 'What\'s Included',
         'closeclient_label_secure' => 'Secure Your Spot →',
+        'closeclient_label_none_tag' => 'NO RESULTS',
+        'closeclient_label_none_title' => 'Nothing Found',
+        'closeclient_label_none_search' => 'Sorry, but nothing matched your search terms. Please try again with some different keywords.',
+        'closeclient_label_none_general' => 'It seems we can’t find what you’re looking for. Perhaps searching can help.',
         'closeclient_leadmagnet_headline_tpl' => 'The Elite Authority Blueprint',
         'closeclient_leadmagnet_text_tpl' => 'Download our proven framework for attracting high-ticket clients on autopilot.',
         'closeclient_leadmagnet_tag_tpl' => 'FREE TRAINING',
@@ -189,6 +193,10 @@ function closeclient_get_defaults() {
         'closeclient_label_portfolio_archive_desc' => 'Deep dives into how we transform expert knowledge into high-performance authority machines.',
         'closeclient_label_portfolio_btn' => 'View Case Study',
         'closeclient_portfolio_empty_text' => 'Success stories are being engineered. Check back soon.',
+        'closeclient_label_service_archive_tag' => 'OUR CAPABILITIES',
+        'closeclient_label_service_archive_title' => 'Strategic Systems',
+        'closeclient_label_service_archive_desc' => 'Premium infrastructure components engineered to scale high-ticket expert businesses.',
+        'closeclient_label_service_btn' => 'System Details →',
     );
 }
 
@@ -218,19 +226,42 @@ function closeclient_generate_cpt_data() {
         ),
         'testimonial' => array(
             'John Doe' => 'CloseClient didn\'t just build a website; they built a revenue engine that works while I sleep.'
+        ),
+        'faq' => array(
+            'Who is this for?' => 'Our systems are engineered exclusively for established experts, coaches, and consultants doing $10k+ monthly.',
+            'How long does it take?' => 'Typical infrastructure builds are completed within 4 weeks of strategy approval.'
+        ),
+        'team' => array(
+            'Julian Thorne' => 'Strategy Architect with 15+ years experience in high-ticket conversion systems.'
+        ),
+        'process' => array(
+            'The Audit' => 'Deep diagnostic scan of your current authority leaks and revenue bottlenecks.',
+            'The Build' => 'Rapid installation of your core authority infrastructure and lead filters.',
+            'The Scale' => 'Continuous optimization and traffic injection to hit your $100k/mo targets.'
+        ),
+        'pricing' => array(
+            'The Foundation' => 'Core authority setup for experts ready to automate their first $30k months.'
+        ),
+        'product' => array(
+            'Authority OS' => 'The ultimate Notion dashboard for managing high-ticket coaching operations.'
         )
     );
 
     foreach ( $cpts as $type => $posts ) {
         foreach ( $posts as $title => $content ) {
             if ( ! get_posts( array( 'post_type' => $type, 'title' => $title, 'post_status' => 'any' ) ) ) {
-                wp_insert_post( array(
+                $pid = wp_insert_post( array(
                     'post_type'    => $type,
                     'post_title'   => $title,
                     'post_content' => $content,
                     'post_excerpt' => $content,
                     'post_status'  => 'publish'
                 ) );
+
+                // Meta fallbacks
+                if ($type === 'pricing') update_post_meta($pid, '_plan_price', '$2,997');
+                if ($type === 'testimonial') update_post_meta($pid, '_testimonial_rating', '5');
+                if ($type === 'product') update_post_meta($pid, '_product_price', '$97');
             }
         }
     }
