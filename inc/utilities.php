@@ -1,11 +1,14 @@
 <?php
 /**
  * Theme Utilities for CloseClient
- * AUTO-GENERATED
+ * AUTO-GENERATED - Triple-Lock Sync
  */
 
-function closeclient_reset_defaults() {
-    $defaults = array(
+/**
+ * Returns the definitive defaults for the theme.
+ */
+function closeclient_get_defaults() {
+    return array(
         'closeclient_about_headline_tpl' => 'The Authority Architect',
         'closeclient_about_method_title' => 'The High-Fidelity Methodology',
         'closeclient_accent_color' => '#6366F1',
@@ -17,7 +20,7 @@ function closeclient_reset_defaults() {
         'closeclient_booking_link' => '#audit',
         'closeclient_booking_note' => 'Current Waiting List: 14 Days',
         'closeclient_booking_scarcity' => 'Only 2 Strategy Audit slots remaining for this month.',
-        'closeclient_booking_subheadline' => 'We only partner with 3 new experts per month to ensure elite-level execution. If you are ready to automate your authority, let\'s talk.',
+        'closeclient_booking_subheadline' => 'We only partner with 3 new experts per month to ensure elite-level execution.',
         'closeclient_booking_text' => 'Book Your Scaling Audit',
         'closeclient_button_color' => '#6366F1',
         'closeclient_button_hover' => '#4F46E5',
@@ -50,7 +53,7 @@ function closeclient_reset_defaults() {
         'closeclient_hero_cta' => 'Request Your Authority Audit →',
         'closeclient_hero_cta_link' => '#audit',
         'closeclient_hero_headline' => 'Stop Losing High-Value Clients to Better-Positioned Competition.',
-        'closeclient_hero_subheadline' => 'We build the high-fidelity "Authority Engines" that transform world-class experts into omnipresent leaders, making your competition look like commodities.',
+        'closeclient_hero_subheadline' => 'We build the high-fidelity Authority Engines that transform world-class experts into omnipresent leaders.',
         'closeclient_hero_typewriter' => '0',
         'closeclient_label_404_btn' => 'Back to Growth Hub',
         'closeclient_label_404_tag' => '404 ERROR',
@@ -155,5 +158,144 @@ function closeclient_reset_defaults() {
         'closeclient_vsl_tag' => 'EXCLUSIVE STRATEGY TRAINING',
         'closeclient_vsl_video_url' => '',
     );
-    foreach ( $defaults as $key => $value ) { set_theme_mod( $key, $value ); }
 }
+
+/**
+ * Resets all theme settings to definitive defaults.
+ */
+function closeclient_reset_defaults() {
+    $defaults = closeclient_get_defaults();
+    foreach ( $defaults as $key => $value ) {
+        set_theme_mod( $key, $value );
+    }
+}
+
+/**
+ * Generates sample data for all Custom Post Types.
+ */
+function closeclient_generate_cpt_data() {
+    $cpts = array(
+        'service' => array(
+            'Authority Architecture' => 'Transform your digital presence from a passive brochure into an active associate.',
+            'Revenue Engineering' => 'Strategic psychological triggers designed to accelerate deal velocity.',
+            'Omnipresent Branding' => 'Position your expertise as the only logical solution in your niche.'
+        ),
+        'portfolio' => array(
+            'Global Scale Success' => 'Taking a consultancy from regional to international through high-fidelity positioning.',
+            'The $1M Pivot' => 'How we re-architected a coach’s funnel to hit seven figures in 12 months.'
+        ),
+        'testimonial' => array(
+            'John Doe' => 'CloseClient didn\'t just build a website; they built a revenue engine that works while I sleep.'
+        )
+    );
+
+    foreach ( $cpts as $type => $posts ) {
+        foreach ( $posts as $title => $content ) {
+            if ( ! get_posts( array( 'post_type' => $type, 'title' => $title, 'post_status' => 'any' ) ) ) {
+                wp_insert_post( array(
+                    'post_type'    => $type,
+                    'post_title'   => $title,
+                    'post_content' => $content,
+                    'post_excerpt' => $content,
+                    'post_status'  => 'publish'
+                ) );
+            }
+        }
+    }
+}
+
+/**
+ * Automatically builds the authority funnel pages and assigns the front page.
+ */
+function closeclient_generate_pages() {
+    closeclient_generate_cpt_data();
+
+    $pages = array(
+        'Home' => array('content' => '[closeclient_hero][closeclient_logo_ticker][closeclient_authority][closeclient_stats][closeclient_portfolio][closeclient_services][closeclient_vsl][closeclient_process][closeclient_testimonials][closeclient_pricing][closeclient_faq][closeclient_booking_cta]', 'template' => ''),
+        'Services' => array('content' => '[closeclient_hero][closeclient_services][closeclient_process][closeclient_pricing][closeclient_booking_cta]', 'template' => 'template-services.php'),
+        'About' => array('content' => '[closeclient_team][closeclient_authority][closeclient_booking_cta]', 'template' => 'template-about.php'),
+        'Contact' => array('content' => '[closeclient_booking_cta]', 'template' => 'template-contact.php'),
+        'Success Blueprint' => array('content' => '[closeclient_lead_magnet]', 'template' => 'template-lead-magnet.php'),
+        'Thank You' => array('content' => '<h2>Request Received</h2>', 'template' => 'template-thank-you.php'),
+    );
+
+    foreach ( $pages as $title => $pdata ) {
+        $check = get_page_by_title( $title );
+        $args = array(
+            'post_type'    => 'page',
+            'post_title'   => $title,
+            'post_content' => $pdata['content'],
+            'post_status'  => 'publish'
+        );
+
+        if ( ! $check ) {
+            $pid = wp_insert_post( $args );
+        } else {
+            $pid = $check->ID;
+            $args['ID'] = $pid;
+            wp_update_post( $args );
+        }
+
+        if ( ! empty($pdata['template']) ) {
+            update_post_meta( $pid, '_wp_page_template', $pdata['template'] );
+        }
+
+        // Set Front Page
+        if ( 'Home' === $title ) {
+            update_option( 'show_on_front', 'page' );
+            update_option( 'page_on_front', $pid );
+        }
+    }
+
+    closeclient_setup_menus();
+}
+
+/**
+ * Automates menu creation and assignment.
+ */
+function closeclient_setup_menus() {
+    $menu_name = 'Elite Authority Menu';
+    $menu_exists = wp_get_nav_menu_object( $menu_name );
+
+    if ( ! $menu_exists ) {
+        $menu_id = wp_create_nav_menu( $menu_name );
+        $pages = array('Home', 'Services', 'About', 'Contact');
+        foreach ( $pages as $title ) {
+            $page = get_page_by_title( $title );
+            if ( $page ) {
+                wp_update_nav_menu_item( $menu_id, 0, array(
+                    'menu-item-title'     => $title,
+                    'menu-item-object'    => 'page',
+                    'menu-item-object-id' => $page->ID,
+                    'menu-item-type'      => 'post_type',
+                    'menu-item-status'    => 'publish'
+                ) );
+            }
+        }
+
+        $locations = get_theme_mod( 'nav_menu_locations' );
+        $locations['menu-1'] = $menu_id;
+        set_theme_mod( 'nav_menu_locations', $locations );
+    }
+}
+
+/**
+ * Utility Action Handler.
+ */
+function closeclient_handle_utilities() {
+    if ( ! isset( $_GET['closeclient_action'] ) ) return;
+    if ( ! current_user_can( 'manage_options' ) ) wp_die( 'Insufficient permissions.' );
+    if ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( $_GET['_wpnonce'], 'closeclient_utility_action' ) ) wp_die( 'Security check failed.' );
+
+    $action = sanitize_text_field( $_GET['closeclient_action'] );
+    if ( 'reset' === $action ) {
+        closeclient_reset_defaults();
+        wp_redirect( admin_url( 'customize.php?closeclient_msg=reset_success' ) );
+        exit;
+    } elseif ( 'generate' === $action ) {
+        closeclient_generate_pages();
+        wp_redirect( admin_url( 'edit.php?post_type=page&closeclient_msg=gen_success' ) );
+        exit;
+    }
+}
+add_action( 'admin_init', 'closeclient_handle_utilities' );

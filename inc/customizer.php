@@ -1,7 +1,7 @@
 <?php
 /**
- * Customizer
- * AUTO-GENERATED
+ * CloseClient Customizer functionality
+ * AUTO-GENERATED - Triple-Lock Sync
  */
 
 function closeclient_customize_register( $wp_customize ) {
@@ -9,6 +9,7 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_panel( 'closeclient_homepage_panel', array( 'title' => '3. Homepage Sections' ) );
     $wp_customize->add_panel( 'closeclient_layout_panel', array( 'title' => '2. Strategic Layout Control' ) );
     $wp_customize->add_panel( 'closeclient_pages_panel', array( 'title' => '4. Page Templates' ) );
+
     $wp_customize->add_section( 'closeclient_about_tpl', array( 'title' => 'About Template', 'panel' => 'closeclient_pages_panel' ) );
     $wp_customize->add_section( 'closeclient_booking', array( 'title' => 'Booking CTA', 'panel' => 'closeclient_homepage_panel' ) );
     $wp_customize->add_section( 'closeclient_colors', array( 'title' => 'Theme Colors', 'panel' => 'closeclient_brand_panel' ) );
@@ -28,303 +29,230 @@ function closeclient_customize_register( $wp_customize ) {
     $wp_customize->add_section( 'closeclient_testimonials', array( 'title' => 'Testimonials', 'panel' => 'closeclient_homepage_panel' ) );
     $wp_customize->add_section( 'closeclient_thankyou_tpl', array( 'title' => 'Thank You Template', 'panel' => 'closeclient_pages_panel' ) );
     $wp_customize->add_section( 'closeclient_typography', array( 'title' => 'Typography', 'panel' => 'closeclient_brand_panel' ) );
+    $wp_customize->add_section( 'closeclient_utilities', array( 'title' => '5. Theme Setup & Tools' ) );
     $wp_customize->add_section( 'closeclient_visibility', array( 'title' => '0. Visibility', 'panel' => 'closeclient_homepage_panel' ) );
     $wp_customize->add_section( 'closeclient_vsl', array( 'title' => '2. VSL Training', 'panel' => 'closeclient_homepage_panel' ) );
-    $wp_customize->add_setting( 'closeclient_about_headline_tpl', array( 'default' => 'The Authority Architect', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_about_headline_tpl', array( 'label' => 'closeclient_about_headline_tpl', 'section' => 'closeclient_typography', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_about_method_title', array( 'default' => 'The High-Fidelity Methodology', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_about_method_title', array( 'label' => 'closeclient_about_method_title', 'section' => 'closeclient_layout_section', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_accent_color', array( 'default' => '#6366F1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'closeclient_accent_color', array( 'label' => 'closeclient_accent_color', 'section' => 'closeclient_colors' ) ) );
-    $wp_customize->add_setting( 'closeclient_bg_color', array( 'default' => '#020203', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'closeclient_bg_color', array( 'label' => 'closeclient_bg_color', 'section' => 'closeclient_colors' ) ) );
-    $wp_customize->add_setting( 'closeclient_body_font', array( 'default' => 'Inter', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_body_font', array( 'label' => 'closeclient_body_font', 'section' => 'closeclient_typography' ) );
-    $wp_customize->add_setting( 'closeclient_body_size', array( 'default' => '18', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_body_size', array( 'label' => 'closeclient_body_size', 'section' => 'closeclient_typography' ) );
-    $wp_customize->add_setting( 'closeclient_body_weight', array( 'default' => '400', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_body_weight', array( 'label' => 'closeclient_body_weight', 'section' => 'closeclient_typography' ) );
-    $wp_customize->add_setting( 'closeclient_booking_headline', array( 'default' => 'Are You Ready to Scale Beyond Your Current Ceiling?', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_booking_headline', array( 'label' => 'closeclient_booking_headline', 'section' => 'closeclient_typography', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_booking_link', array( 'default' => '#audit', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_booking_link', array( 'label' => 'closeclient_booking_link', 'section' => 'closeclient_booking' ) );
-    $wp_customize->add_setting( 'closeclient_booking_note', array( 'default' => 'Current Waiting List: 14 Days', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_booking_note', array( 'label' => 'closeclient_booking_note', 'section' => 'closeclient_booking', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_booking_scarcity', array( 'default' => 'Only 2 Strategy Audit slots remaining for this month.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_booking_scarcity', array( 'label' => 'closeclient_booking_scarcity', 'section' => 'closeclient_booking', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_booking_subheadline', array( 'default' => 'We only partner with 3 new experts per month to ensure elite-level execution. If you are ready to automate your authority, let\'s talk.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_booking_subheadline', array( 'label' => 'closeclient_booking_subheadline', 'section' => 'closeclient_typography', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_booking_text', array( 'default' => 'Book Your Scaling Audit', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_booking_text', array( 'label' => 'closeclient_booking_text', 'section' => 'closeclient_booking', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_button_color', array( 'default' => '#6366F1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'closeclient_button_color', array( 'label' => 'closeclient_button_color', 'section' => 'closeclient_colors' ) ) );
-    $wp_customize->add_setting( 'closeclient_button_hover', array( 'default' => '#4F46E5', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_button_hover', array( 'label' => 'closeclient_button_hover', 'section' => 'closeclient_colors' ) );
-    $wp_customize->add_setting( 'closeclient_color_preset', array( 'default' => 'deep-onyx', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'closeclient_color_preset', array( 'label' => 'closeclient_color_preset', 'section' => 'closeclient_colors' ) ) );
-    $wp_customize->add_setting( 'closeclient_contact_form_action', array( 'default' => '', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_contact_form_action', array( 'label' => 'closeclient_contact_form_action', 'section' => 'closeclient_forms' ) );
-    $wp_customize->add_setting( 'closeclient_contact_form_shortcode', array( 'default' => '[contact-form-7 id="..."]', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_contact_form_shortcode', array( 'label' => 'closeclient_contact_form_shortcode', 'section' => 'closeclient_forms', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_contact_headline_tpl', array( 'default' => 'Let\'s Talk About Your Growth.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_contact_headline_tpl', array( 'label' => 'closeclient_contact_headline_tpl', 'section' => 'closeclient_typography', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_contact_subheadline_tpl', array( 'default' => 'Ready to scale your expert business? Fill out the form or apply for your Authority Audit directly.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_contact_subheadline_tpl', array( 'label' => 'closeclient_contact_subheadline_tpl', 'section' => 'closeclient_typography', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_container_width', array( 'default' => '1200', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_container_width', array( 'label' => 'closeclient_container_width', 'section' => 'closeclient_layout_section' ) );
-    $wp_customize->add_setting( 'closeclient_content_width', array( 'default' => '800', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_content_width', array( 'label' => 'closeclient_content_width', 'section' => 'closeclient_layout_section' ) );
-    $wp_customize->add_setting( 'closeclient_faq_a1', array( 'default' => 'Answer 1 to build trust and reduce friction.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_faq_a1', array( 'label' => 'closeclient_faq_a1', 'section' => 'closeclient_faq' ) );
-    $wp_customize->add_setting( 'closeclient_faq_a2', array( 'default' => 'Answer 2 to build trust and reduce friction.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_faq_a2', array( 'label' => 'closeclient_faq_a2', 'section' => 'closeclient_faq' ) );
-    $wp_customize->add_setting( 'closeclient_faq_a3', array( 'default' => 'Answer 3 to build trust and reduce friction.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_faq_a3', array( 'label' => 'closeclient_faq_a3', 'section' => 'closeclient_faq' ) );
-    $wp_customize->add_setting( 'closeclient_faq_headline', array( 'default' => 'Frequently Asked Questions', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_faq_headline', array( 'label' => 'closeclient_faq_headline', 'section' => 'closeclient_typography', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_faq_q1', array( 'default' => 'Question 1?', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_faq_q1', array( 'label' => 'closeclient_faq_q1', 'section' => 'closeclient_faq' ) );
-    $wp_customize->add_setting( 'closeclient_faq_q2', array( 'default' => 'Question 2?', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_faq_q2', array( 'label' => 'closeclient_faq_q2', 'section' => 'closeclient_faq' ) );
-    $wp_customize->add_setting( 'closeclient_faq_q3', array( 'default' => 'Question 3?', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_faq_q3', array( 'label' => 'closeclient_faq_q3', 'section' => 'closeclient_faq' ) );
-    $wp_customize->add_setting( 'closeclient_faq_tag', array( 'default' => 'FAQ', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_faq_tag', array( 'label' => 'closeclient_faq_tag', 'section' => 'closeclient_faq' ) );
-    $wp_customize->add_setting( 'closeclient_floating_cta_threshold', array( 'default' => '500', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_floating_cta_threshold', array( 'label' => 'closeclient_floating_cta_threshold', 'section' => 'closeclient_layout_section' ) );
-    $wp_customize->add_setting( 'closeclient_footer_about', array( 'default' => 'Engineering the future of digital authority for elite coaches and consultants.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_footer_about', array( 'label' => 'closeclient_footer_about', 'section' => 'closeclient_layout_section', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_footer_copyright', array( 'default' => '© CloseClient. All rights reserved.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_footer_copyright', array( 'label' => 'closeclient_footer_copyright', 'section' => 'closeclient_layout_section' ) );
-    $wp_customize->add_setting( 'closeclient_footer_disclaimer', array( 'default' => 'Consulting services are subject to terms and conditions. Results may vary.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_footer_disclaimer', array( 'label' => 'closeclient_footer_disclaimer', 'section' => 'closeclient_layout_section' ) );
-    $wp_customize->add_setting( 'closeclient_h1_size', array( 'default' => '4.5', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_h1_size', array( 'label' => 'closeclient_h1_size', 'section' => 'closeclient_typography' ) );
-    $wp_customize->add_setting( 'closeclient_h1_weight', array( 'default' => '700', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_h1_weight', array( 'label' => 'closeclient_h1_weight', 'section' => 'closeclient_typography' ) );
-    $wp_customize->add_setting( 'closeclient_header_cta_link', array( 'default' => '#audit', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_header_cta_link', array( 'label' => 'closeclient_header_cta_link', 'section' => 'closeclient_colors' ) );
-    $wp_customize->add_setting( 'closeclient_header_cta_text', array( 'default' => 'Apply for Your Authority Audit →', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_header_cta_text', array( 'label' => 'closeclient_header_cta_text', 'section' => 'closeclient_colors', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_header_glass', array( 'default' => '0.7', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_header_glass', array( 'label' => 'closeclient_header_glass', 'section' => 'closeclient_layout_section' ) );
-    $wp_customize->add_setting( 'closeclient_header_sticky', array( 'default' => '1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_header_sticky', array( 'label' => 'closeclient_header_sticky', 'section' => 'closeclient_layout_section', 'type' => 'checkbox' ) );
-    $wp_customize->add_setting( 'closeclient_heading_font', array( 'default' => 'Inter', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_heading_font', array( 'label' => 'closeclient_heading_font', 'section' => 'closeclient_typography' ) );
-    $wp_customize->add_setting( 'closeclient_hero_cta', array( 'default' => 'Request Your Authority Audit →', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_hero_cta', array( 'label' => 'closeclient_hero_cta', 'section' => 'closeclient_hero' ) );
-    $wp_customize->add_setting( 'closeclient_hero_cta_link', array( 'default' => '#audit', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_hero_cta_link', array( 'label' => 'closeclient_hero_cta_link', 'section' => 'closeclient_hero' ) );
-    $wp_customize->add_setting( 'closeclient_hero_headline', array( 'default' => 'Stop Losing High-Value Clients to Better-Positioned Competition.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_hero_headline', array( 'label' => 'closeclient_hero_headline', 'section' => 'closeclient_typography', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_hero_subheadline', array( 'default' => 'We build the high-fidelity "Authority Engines" that transform world-class experts into omnipresent leaders, making your competition look like commodities.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_hero_subheadline', array( 'label' => 'closeclient_hero_subheadline', 'section' => 'closeclient_typography', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_hero_typewriter', array( 'default' => '0', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_hero_typewriter', array( 'label' => 'closeclient_hero_typewriter', 'section' => 'closeclient_hero' ) );
-    $wp_customize->add_setting( 'closeclient_label_404_btn', array( 'default' => 'Back to Growth Hub', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_label_404_btn', array( 'label' => 'closeclient_label_404_btn', 'section' => 'closeclient_labels' ) );
-    $wp_customize->add_setting( 'closeclient_label_404_tag', array( 'default' => '404 ERROR', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_label_404_tag', array( 'label' => 'closeclient_label_404_tag', 'section' => 'closeclient_labels' ) );
-    $wp_customize->add_setting( 'closeclient_label_404_text', array( 'default' => 'It looks like nothing was found at this location.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_label_404_text', array( 'label' => 'closeclient_label_404_text', 'section' => 'closeclient_labels', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_label_404_title', array( 'default' => 'That page can’t be found.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_label_404_title', array( 'label' => 'closeclient_label_404_title', 'section' => 'closeclient_labels' ) );
-    $wp_customize->add_setting( 'closeclient_label_challenge', array( 'default' => '01. The Challenge', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_label_challenge', array( 'label' => 'closeclient_label_challenge', 'section' => 'closeclient_labels' ) );
-    $wp_customize->add_setting( 'closeclient_label_outcome', array( 'default' => '03. The Result', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_label_outcome', array( 'label' => 'closeclient_label_outcome', 'section' => 'closeclient_labels' ) );
-    $wp_customize->add_setting( 'closeclient_label_read_more', array( 'default' => 'READ ARTICLE →', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_label_read_more', array( 'label' => 'closeclient_label_read_more', 'section' => 'closeclient_labels' ) );
-    $wp_customize->add_setting( 'closeclient_label_related', array( 'default' => 'More Authority Insights', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_label_related', array( 'label' => 'closeclient_label_related', 'section' => 'closeclient_labels' ) );
-    $wp_customize->add_setting( 'closeclient_label_search', array( 'default' => 'SEARCH RESULTS', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_label_search', array( 'label' => 'closeclient_label_search', 'section' => 'closeclient_labels' ) );
-    $wp_customize->add_setting( 'closeclient_label_share', array( 'default' => 'SHARE INSIGHTS:', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_label_share', array( 'label' => 'closeclient_label_share', 'section' => 'closeclient_labels' ) );
-    $wp_customize->add_setting( 'closeclient_label_solution', array( 'default' => '02. The Authority Architecture', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_label_solution', array( 'label' => 'closeclient_label_solution', 'section' => 'closeclient_labels' ) );
-    $wp_customize->add_setting( 'closeclient_leadmagnet_headline_tpl', array( 'default' => 'The Elite Authority Blueprint', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_leadmagnet_headline_tpl', array( 'label' => 'closeclient_leadmagnet_headline_tpl', 'section' => 'closeclient_typography', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_leadmagnet_text_tpl', array( 'default' => 'Download our proven framework for attracting high-ticket clients on autopilot.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_leadmagnet_text_tpl', array( 'label' => 'closeclient_leadmagnet_text_tpl', 'section' => 'closeclient_leadmagnet_tpl', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_letter_spacing', array( 'default' => '-0.022', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_letter_spacing', array( 'label' => 'closeclient_letter_spacing', 'section' => 'closeclient_typography' ) );
-    $wp_customize->add_setting( 'closeclient_line_height', array( 'default' => '1.6', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_line_height', array( 'label' => 'closeclient_line_height', 'section' => 'closeclient_typography' ) );
-    $wp_customize->add_setting( 'closeclient_lm_form_action', array( 'default' => '', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_lm_form_action', array( 'label' => 'closeclient_lm_form_action', 'section' => 'closeclient_forms' ) );
-    $wp_customize->add_setting( 'closeclient_newsletter_form_action', array( 'default' => '', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_newsletter_form_action', array( 'label' => 'closeclient_newsletter_form_action', 'section' => 'closeclient_forms' ) );
-    $wp_customize->add_setting( 'closeclient_plan1_features', array( 'default' => 'Feature 1, Feature 2', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_plan1_features', array( 'label' => 'closeclient_plan1_features', 'section' => 'closeclient_pricing', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_plan1_name', array( 'default' => 'Plan 1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_plan1_name', array( 'label' => 'closeclient_plan1_name', 'section' => 'closeclient_pricing' ) );
-    $wp_customize->add_setting( 'closeclient_plan1_price', array( 'default' => '$0', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_plan1_price', array( 'label' => 'closeclient_plan1_price', 'section' => 'closeclient_pricing' ) );
-    $wp_customize->add_setting( 'closeclient_plan2_features', array( 'default' => 'Feature 1, Feature 2', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_plan2_features', array( 'label' => 'closeclient_plan2_features', 'section' => 'closeclient_pricing', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_plan2_name', array( 'default' => 'Plan 2', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_plan2_name', array( 'label' => 'closeclient_plan2_name', 'section' => 'closeclient_pricing' ) );
-    $wp_customize->add_setting( 'closeclient_plan2_price', array( 'default' => '$0', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_plan2_price', array( 'label' => 'closeclient_plan2_price', 'section' => 'closeclient_pricing' ) );
-    $wp_customize->add_setting( 'closeclient_plan3_features', array( 'default' => 'Feature 1, Feature 2', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_plan3_features', array( 'label' => 'closeclient_plan3_features', 'section' => 'closeclient_pricing', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_plan3_name', array( 'default' => 'Plan 3', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_plan3_name', array( 'label' => 'closeclient_plan3_name', 'section' => 'closeclient_pricing' ) );
-    $wp_customize->add_setting( 'closeclient_plan3_price', array( 'default' => '$0', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_plan3_price', array( 'label' => 'closeclient_plan3_price', 'section' => 'closeclient_pricing' ) );
-    $wp_customize->add_setting( 'closeclient_pricing_headline', array( 'default' => 'Investment Opportunities', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_pricing_headline', array( 'label' => 'closeclient_pricing_headline', 'section' => 'closeclient_typography', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_pricing_tag', array( 'default' => 'INVESTMENT', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_pricing_tag', array( 'label' => 'closeclient_pricing_tag', 'section' => 'closeclient_pricing' ) );
-    $wp_customize->add_setting( 'closeclient_primary_color', array( 'default' => '#020203', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'closeclient_primary_color', array( 'label' => 'closeclient_primary_color', 'section' => 'closeclient_colors' ) ) );
-    $wp_customize->add_setting( 'closeclient_process_headline', array( 'default' => 'The Authority Roadmap', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_process_headline', array( 'label' => 'closeclient_process_headline', 'section' => 'closeclient_typography', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_process_step_1_text', array( 'default' => 'Description for step 1 of your proven process.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_process_step_1_text', array( 'label' => 'closeclient_process_step_1_text', 'section' => 'closeclient_process', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_process_step_1_title', array( 'default' => 'Step 1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_process_step_1_title', array( 'label' => 'closeclient_process_step_1_title', 'section' => 'closeclient_process' ) );
-    $wp_customize->add_setting( 'closeclient_process_step_2_text', array( 'default' => 'Description for step 2 of your proven process.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_process_step_2_text', array( 'label' => 'closeclient_process_step_2_text', 'section' => 'closeclient_process', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_process_step_2_title', array( 'default' => 'Step 2', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_process_step_2_title', array( 'label' => 'closeclient_process_step_2_title', 'section' => 'closeclient_process' ) );
-    $wp_customize->add_setting( 'closeclient_process_step_3_text', array( 'default' => 'Description for step 3 of your proven process.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_process_step_3_text', array( 'label' => 'closeclient_process_step_3_text', 'section' => 'closeclient_process', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_process_step_3_title', array( 'default' => 'Step 3', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_process_step_3_title', array( 'label' => 'closeclient_process_step_3_title', 'section' => 'closeclient_process' ) );
-    $wp_customize->add_setting( 'closeclient_process_tag', array( 'default' => 'OUR PROCESS', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_process_tag', array( 'label' => 'closeclient_process_tag', 'section' => 'closeclient_process' ) );
-    $wp_customize->add_setting( 'closeclient_secondary_color', array( 'default' => '#0A0A0B', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'closeclient_secondary_color', array( 'label' => 'closeclient_secondary_color', 'section' => 'closeclient_colors' ) ) );
-    $wp_customize->add_setting( 'closeclient_service_1_text', array( 'default' => 'Description of your elite service capability.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_service_1_text', array( 'label' => 'closeclient_service_1_text', 'section' => 'closeclient_services', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_service_1_title', array( 'default' => 'Capability 1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_service_1_title', array( 'label' => 'closeclient_service_1_title', 'section' => 'closeclient_services' ) );
-    $wp_customize->add_setting( 'closeclient_service_2_text', array( 'default' => 'Description of your elite service capability.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_service_2_text', array( 'label' => 'closeclient_service_2_text', 'section' => 'closeclient_services', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_service_2_title', array( 'default' => 'Capability 2', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_service_2_title', array( 'label' => 'closeclient_service_2_title', 'section' => 'closeclient_services' ) );
-    $wp_customize->add_setting( 'closeclient_service_3_text', array( 'default' => 'Description of your elite service capability.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_service_3_text', array( 'label' => 'closeclient_service_3_text', 'section' => 'closeclient_services', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_service_3_title', array( 'default' => 'Capability 3', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_service_3_title', array( 'label' => 'closeclient_service_3_title', 'section' => 'closeclient_services' ) );
-    $wp_customize->add_setting( 'closeclient_services_headline', array( 'default' => 'The Architecture of Dominance', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_services_headline', array( 'label' => 'closeclient_services_headline', 'section' => 'closeclient_typography', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_services_tag', array( 'default' => 'SERVICES', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_services_tag', array( 'label' => 'closeclient_services_tag', 'section' => 'closeclient_services' ) );
-    $wp_customize->add_setting( 'closeclient_show_about', array( 'default' => '1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_show_about', array( 'label' => 'closeclient_show_about', 'section' => 'closeclient_layout_section', 'type' => 'checkbox' ) );
-    $wp_customize->add_setting( 'closeclient_show_authority', array( 'default' => '1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_show_authority', array( 'label' => 'closeclient_show_authority', 'section' => 'closeclient_visibility', 'type' => 'checkbox' ) );
-    $wp_customize->add_setting( 'closeclient_show_booking', array( 'default' => '1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_show_booking', array( 'label' => 'closeclient_show_booking', 'section' => 'closeclient_visibility', 'type' => 'checkbox' ) );
-    $wp_customize->add_setting( 'closeclient_show_faq', array( 'default' => '1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_show_faq', array( 'label' => 'closeclient_show_faq', 'section' => 'closeclient_visibility', 'type' => 'checkbox' ) );
-    $wp_customize->add_setting( 'closeclient_show_floating_cta', array( 'default' => '0', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_show_floating_cta', array( 'label' => 'closeclient_show_floating_cta', 'section' => 'closeclient_visibility', 'type' => 'checkbox' ) );
-    $wp_customize->add_setting( 'closeclient_show_hero', array( 'default' => '1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_show_hero', array( 'label' => 'closeclient_show_hero', 'section' => 'closeclient_visibility', 'type' => 'checkbox' ) );
-    $wp_customize->add_setting( 'closeclient_show_lead_magnet', array( 'default' => '1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_show_lead_magnet', array( 'label' => 'closeclient_show_lead_magnet', 'section' => 'closeclient_visibility', 'type' => 'checkbox' ) );
-    $wp_customize->add_setting( 'closeclient_show_logo_ticker', array( 'default' => '1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_show_logo_ticker', array( 'label' => 'closeclient_show_logo_ticker', 'section' => 'closeclient_visibility', 'type' => 'checkbox' ) );
-    $wp_customize->add_setting( 'closeclient_show_newsletter', array( 'default' => '1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_show_newsletter', array( 'label' => 'closeclient_show_newsletter', 'section' => 'closeclient_visibility', 'type' => 'checkbox' ) );
-    $wp_customize->add_setting( 'closeclient_show_portfolio', array( 'default' => '1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_show_portfolio', array( 'label' => 'closeclient_show_portfolio', 'section' => 'closeclient_visibility', 'type' => 'checkbox' ) );
-    $wp_customize->add_setting( 'closeclient_show_preloader', array( 'default' => '1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_show_preloader', array( 'label' => 'closeclient_show_preloader', 'section' => 'closeclient_layout_section', 'type' => 'checkbox' ) );
-    $wp_customize->add_setting( 'closeclient_show_pricing', array( 'default' => '1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_show_pricing', array( 'label' => 'closeclient_show_pricing', 'section' => 'closeclient_visibility', 'type' => 'checkbox' ) );
-    $wp_customize->add_setting( 'closeclient_show_process', array( 'default' => '1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_show_process', array( 'label' => 'closeclient_show_process', 'section' => 'closeclient_visibility', 'type' => 'checkbox' ) );
-    $wp_customize->add_setting( 'closeclient_show_products', array( 'default' => '1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_show_products', array( 'label' => 'closeclient_show_products', 'section' => 'closeclient_visibility', 'type' => 'checkbox' ) );
-    $wp_customize->add_setting( 'closeclient_show_services', array( 'default' => '1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_show_services', array( 'label' => 'closeclient_show_services', 'section' => 'closeclient_visibility', 'type' => 'checkbox' ) );
-    $wp_customize->add_setting( 'closeclient_show_stats', array( 'default' => '1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_show_stats', array( 'label' => 'closeclient_show_stats', 'section' => 'closeclient_visibility', 'type' => 'checkbox' ) );
-    $wp_customize->add_setting( 'closeclient_show_team', array( 'default' => '1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_show_team', array( 'label' => 'closeclient_show_team', 'section' => 'closeclient_visibility', 'type' => 'checkbox' ) );
-    $wp_customize->add_setting( 'closeclient_show_testimonials', array( 'default' => '1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_show_testimonials', array( 'label' => 'closeclient_show_testimonials', 'section' => 'closeclient_visibility', 'type' => 'checkbox' ) );
-    $wp_customize->add_setting( 'closeclient_show_vsl', array( 'default' => '1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_show_vsl', array( 'label' => 'closeclient_show_vsl', 'section' => 'closeclient_visibility', 'type' => 'checkbox' ) );
-    $wp_customize->add_setting( 'closeclient_social_facebook', array( 'default' => '#', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_social_facebook', array( 'label' => 'closeclient_social_facebook', 'section' => 'closeclient_social' ) );
-    $wp_customize->add_setting( 'closeclient_social_instagram', array( 'default' => '#', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_social_instagram', array( 'label' => 'closeclient_social_instagram', 'section' => 'closeclient_social' ) );
-    $wp_customize->add_setting( 'closeclient_social_linkedin', array( 'default' => '#', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_social_linkedin', array( 'label' => 'closeclient_social_linkedin', 'section' => 'closeclient_social' ) );
-    $wp_customize->add_setting( 'closeclient_social_twitter', array( 'default' => '#', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_social_twitter', array( 'label' => 'closeclient_social_twitter', 'section' => 'closeclient_social' ) );
-    $wp_customize->add_setting( 'closeclient_social_youtube', array( 'default' => '#', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_social_youtube', array( 'label' => 'closeclient_social_youtube', 'section' => 'closeclient_social' ) );
-    $wp_customize->add_setting( 'closeclient_stat_1_label', array( 'default' => 'Clients Helped', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_stat_1_label', array( 'label' => 'closeclient_stat_1_label', 'section' => 'closeclient_stats' ) );
-    $wp_customize->add_setting( 'closeclient_stat_1_value', array( 'default' => '100+', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_stat_1_value', array( 'label' => 'closeclient_stat_1_value', 'section' => 'closeclient_stats' ) );
-    $wp_customize->add_setting( 'closeclient_stat_2_label', array( 'default' => 'Clients Helped', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_stat_2_label', array( 'label' => 'closeclient_stat_2_label', 'section' => 'closeclient_stats' ) );
-    $wp_customize->add_setting( 'closeclient_stat_2_value', array( 'default' => '100+', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_stat_2_value', array( 'label' => 'closeclient_stat_2_value', 'section' => 'closeclient_stats' ) );
-    $wp_customize->add_setting( 'closeclient_stat_3_label', array( 'default' => 'Clients Helped', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_stat_3_label', array( 'label' => 'closeclient_stat_3_label', 'section' => 'closeclient_stats' ) );
-    $wp_customize->add_setting( 'closeclient_stat_3_value', array( 'default' => '100+', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_stat_3_value', array( 'label' => 'closeclient_stat_3_value', 'section' => 'closeclient_stats' ) );
-    $wp_customize->add_setting( 'closeclient_stats_tag', array( 'default' => 'OUR IMPACT', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_stats_tag', array( 'label' => 'closeclient_stats_tag', 'section' => 'closeclient_stats' ) );
-    $wp_customize->add_setting( 'closeclient_team_1_name', array( 'default' => 'Expert 1', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_team_1_name', array( 'label' => 'closeclient_team_1_name', 'section' => 'closeclient_team' ) );
-    $wp_customize->add_setting( 'closeclient_team_1_role', array( 'default' => 'Specialist', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_team_1_role', array( 'label' => 'closeclient_team_1_role', 'section' => 'closeclient_team' ) );
-    $wp_customize->add_setting( 'closeclient_team_2_name', array( 'default' => 'Expert 2', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_team_2_name', array( 'label' => 'closeclient_team_2_name', 'section' => 'closeclient_team' ) );
-    $wp_customize->add_setting( 'closeclient_team_2_role', array( 'default' => 'Specialist', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_team_2_role', array( 'label' => 'closeclient_team_2_role', 'section' => 'closeclient_team' ) );
-    $wp_customize->add_setting( 'closeclient_team_3_name', array( 'default' => 'Expert 3', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_team_3_name', array( 'label' => 'closeclient_team_3_name', 'section' => 'closeclient_team' ) );
-    $wp_customize->add_setting( 'closeclient_team_3_role', array( 'default' => 'Specialist', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_team_3_role', array( 'label' => 'closeclient_team_3_role', 'section' => 'closeclient_team' ) );
-    $wp_customize->add_setting( 'closeclient_team_headline', array( 'default' => 'The Authority Architects', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_team_headline', array( 'label' => 'closeclient_team_headline', 'section' => 'closeclient_typography', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_team_tag', array( 'default' => 'MEET THE TEAM', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_team_tag', array( 'label' => 'closeclient_team_tag', 'section' => 'closeclient_team' ) );
-    $wp_customize->add_setting( 'closeclient_testimonial_1_name', array( 'default' => 'Client Name', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_testimonial_1_name', array( 'label' => 'closeclient_testimonial_1_name', 'section' => 'closeclient_testimonials' ) );
-    $wp_customize->add_setting( 'closeclient_testimonial_1_role', array( 'default' => 'Founder & CEO', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_testimonial_1_role', array( 'label' => 'closeclient_testimonial_1_role', 'section' => 'closeclient_testimonials' ) );
-    $wp_customize->add_setting( 'closeclient_testimonial_1_text', array( 'default' => 'Premium results for our elite partners.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_testimonial_1_text', array( 'label' => 'closeclient_testimonial_1_text', 'section' => 'closeclient_testimonials', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_testimonial_2_name', array( 'default' => 'Client Name', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_testimonial_2_name', array( 'label' => 'closeclient_testimonial_2_name', 'section' => 'closeclient_testimonials' ) );
-    $wp_customize->add_setting( 'closeclient_testimonial_2_role', array( 'default' => 'Founder & CEO', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_testimonial_2_role', array( 'label' => 'closeclient_testimonial_2_role', 'section' => 'closeclient_testimonials' ) );
-    $wp_customize->add_setting( 'closeclient_testimonial_2_text', array( 'default' => 'Premium results for our elite partners.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_testimonial_2_text', array( 'label' => 'closeclient_testimonial_2_text', 'section' => 'closeclient_testimonials', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_testimonial_3_name', array( 'default' => 'Client Name', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_testimonial_3_name', array( 'label' => 'closeclient_testimonial_3_name', 'section' => 'closeclient_testimonials' ) );
-    $wp_customize->add_setting( 'closeclient_testimonial_3_role', array( 'default' => 'Founder & CEO', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_testimonial_3_role', array( 'label' => 'closeclient_testimonial_3_role', 'section' => 'closeclient_testimonials' ) );
-    $wp_customize->add_setting( 'closeclient_testimonial_3_text', array( 'default' => 'Premium results for our elite partners.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_testimonial_3_text', array( 'label' => 'closeclient_testimonial_3_text', 'section' => 'closeclient_testimonials', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_testimonials_headline', array( 'default' => 'Elite Results for Elite Experts', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_testimonials_headline', array( 'label' => 'closeclient_testimonials_headline', 'section' => 'closeclient_typography', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_testimonials_tag', array( 'default' => 'SOCIAL PROOF', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_testimonials_tag', array( 'label' => 'closeclient_testimonials_tag', 'section' => 'closeclient_testimonials' ) );
-    $wp_customize->add_setting( 'closeclient_text_color', array( 'default' => '#F9FAFB', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'closeclient_text_color', array( 'label' => 'closeclient_text_color', 'section' => 'closeclient_colors' ) ) );
-    $wp_customize->add_setting( 'closeclient_thankyou_headline_tpl', array( 'default' => 'You\'re All Set!', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_thankyou_headline_tpl', array( 'label' => 'closeclient_thankyou_headline_tpl', 'section' => 'closeclient_typography', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_thankyou_text_tpl', array( 'default' => 'We\'ve received your request. Check your inbox for the next steps.', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_thankyou_text_tpl', array( 'label' => 'closeclient_thankyou_text_tpl', 'section' => 'closeclient_thankyou_tpl', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_vsl_headline', array( 'default' => 'The Big Domino: Why Your Expert Business is Stalled (And The Precise Mechanism to Fix It)', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_vsl_headline', array( 'label' => 'closeclient_vsl_headline', 'section' => 'closeclient_typography', 'type' => 'textarea' ) );
-    $wp_customize->add_setting( 'closeclient_vsl_tag', array( 'default' => 'EXCLUSIVE STRATEGY TRAINING', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_vsl_tag', array( 'label' => 'closeclient_vsl_tag', 'section' => 'closeclient_vsl' ) );
-    $wp_customize->add_setting( 'closeclient_vsl_video_url', array( 'default' => '', 'sanitize_callback' => 'sanitize_text_field' ) );
-    $wp_customize->add_control( 'closeclient_vsl_video_url', array( 'label' => 'closeclient_vsl_video_url', 'section' => 'closeclient_vsl' ) );
+
+    // Helpers
+    $labels = array(
+        'closeclient_about_headline_tpl' => 'About Page Headline',
+        'closeclient_about_method_title' => 'Methodology Title',
+        'closeclient_accent_color' => 'Accent Color (Brand)',
+        'closeclient_bg_color' => 'Background Color',
+        'closeclient_body_font' => 'Body Font Family',
+        'closeclient_body_size' => 'Body Font Size (px)',
+        'closeclient_body_weight' => 'Body Font Weight',
+        'closeclient_booking_headline' => 'Booking Headline',
+        'closeclient_booking_link' => 'Booking Link (URL/#anchor)',
+        'closeclient_booking_note' => 'Booking Waitlist Note',
+        'closeclient_booking_scarcity' => 'Scarcity Messaging',
+        'closeclient_booking_subheadline' => 'Booking Subheadline',
+        'closeclient_booking_text' => 'Booking Button Text',
+        'closeclient_button_color' => 'Primary Button Color',
+        'closeclient_button_hover' => 'Button Hover Color',
+        'closeclient_color_preset' => 'Global Color Preset',
+        'closeclient_contact_form_action' => 'Custom Form Action URL (GHL/HubSpot)',
+        'closeclient_contact_form_shortcode' => 'Contact Form Shortcode (CF7)',
+        'closeclient_contact_headline_tpl' => 'Contact Page Headline',
+        'closeclient_contact_subheadline_tpl' => 'Contact Page Subheadline',
+        'closeclient_container_width' => 'Site Container Width (px)',
+        'closeclient_content_width' => 'Reading Content Width (px)',
+        'closeclient_faq_a1' => 'FAQ 1: Answer',
+        'closeclient_faq_a2' => 'FAQ 2: Answer',
+        'closeclient_faq_a3' => 'FAQ 3: Answer',
+        'closeclient_faq_headline' => 'FAQ Headline',
+        'closeclient_faq_q1' => 'FAQ 1: Question',
+        'closeclient_faq_q2' => 'FAQ 2: Question',
+        'closeclient_faq_q3' => 'FAQ 3: Question',
+        'closeclient_faq_tag' => 'FAQ Tag',
+        'closeclient_floating_cta_threshold' => 'Floating CTA Scroll Threshold (px)',
+        'closeclient_footer_about' => 'Footer "About" Text',
+        'closeclient_footer_copyright' => 'Copyright Text',
+        'closeclient_footer_disclaimer' => 'Legal Disclaimer',
+        'closeclient_h1_size' => 'H1 Font Size (rem)',
+        'closeclient_h1_weight' => 'H1 Font Weight',
+        'closeclient_header_cta_link' => 'Header Button Link',
+        'closeclient_header_cta_text' => 'Header Button Text',
+        'closeclient_header_glass' => 'Header Opacity (0.1 - 1.0)',
+        'closeclient_header_sticky' => 'Enable Sticky Header',
+        'closeclient_heading_font' => 'Heading Font Family',
+        'closeclient_hero_cta' => 'Hero Button Text',
+        'closeclient_hero_cta_link' => 'Hero Button Link',
+        'closeclient_hero_headline' => 'Hero Headline (Authority Statement)',
+        'closeclient_hero_subheadline' => 'Hero Subheadline',
+        'closeclient_hero_typewriter' => 'Enable Typewriter Effect',
+        'closeclient_label_404_btn' => '404 Button Text',
+        'closeclient_label_404_tag' => '404 Tag',
+        'closeclient_label_404_text' => '404 Message',
+        'closeclient_label_404_title' => '404 Title',
+        'closeclient_label_challenge' => 'Case Study: Challenge Label',
+        'closeclient_label_outcome' => 'Case Study: Outcome Label',
+        'closeclient_label_read_more' => 'Read More Label',
+        'closeclient_label_related' => 'Related Posts Label',
+        'closeclient_label_search' => 'Search Results Label',
+        'closeclient_label_share' => 'Social Share Label',
+        'closeclient_label_solution' => 'Case Study: Solution Label',
+        'closeclient_leadmagnet_headline_tpl' => 'Lead Magnet Headline',
+        'closeclient_leadmagnet_text_tpl' => 'Lead Magnet Text',
+        'closeclient_letter_spacing' => 'Global Letter Spacing',
+        'closeclient_line_height' => 'Global Line Height',
+        'closeclient_lm_form_action' => 'Lead Magnet Form Action',
+        'closeclient_newsletter_form_action' => 'Newsletter Form Action',
+        'closeclient_plan1_features' => 'Plan 1: Features (Comma Separated)',
+        'closeclient_plan1_name' => 'Plan 1: Name',
+        'closeclient_plan1_price' => 'Plan 1: Price',
+        'closeclient_plan2_features' => 'Plan 2: Features (Comma Separated)',
+        'closeclient_plan2_name' => 'Plan 2: Name',
+        'closeclient_plan2_price' => 'Plan 2: Price',
+        'closeclient_plan3_features' => 'Plan 3: Features (Comma Separated)',
+        'closeclient_plan3_name' => 'Plan 3: Name',
+        'closeclient_plan3_price' => 'Plan 3: Price',
+        'closeclient_pricing_headline' => 'Pricing Headline',
+        'closeclient_pricing_tag' => 'Pricing Tag',
+        'closeclient_primary_color' => 'Primary Brand Color',
+        'closeclient_process_headline' => 'Process Headline',
+        'closeclient_process_step_1_text' => 'Step 1: Description',
+        'closeclient_process_step_1_title' => 'Step 1: Title',
+        'closeclient_process_step_2_text' => 'Step 2: Description',
+        'closeclient_process_step_2_title' => 'Step 2: Title',
+        'closeclient_process_step_3_text' => 'Step 3: Description',
+        'closeclient_process_step_3_title' => 'Step 3: Title',
+        'closeclient_process_tag' => 'Process Tag',
+        'closeclient_secondary_color' => 'Secondary Brand Color',
+        'closeclient_service_1_text' => 'Service 1: Description',
+        'closeclient_service_1_title' => 'Service 1: Title',
+        'closeclient_service_2_text' => 'Service 2: Description',
+        'closeclient_service_2_title' => 'Service 2: Title',
+        'closeclient_service_3_text' => 'Service 3: Description',
+        'closeclient_service_3_title' => 'Service 3: Title',
+        'closeclient_services_headline' => 'Services Headline',
+        'closeclient_services_tag' => 'Services Tag',
+        'closeclient_stat_1_label' => 'Stat 1: Label',
+        'closeclient_stat_1_value' => 'Stat 1: Value',
+        'closeclient_stat_2_label' => 'Stat 2: Label',
+        'closeclient_stat_2_value' => 'Stat 2: Value',
+        'closeclient_stat_3_label' => 'Stat 3: Label',
+        'closeclient_stat_3_value' => 'Stat 3: Value',
+        'closeclient_stats_tag' => 'Stats Tag',
+        'closeclient_team_1_name' => 'Team 1: Name',
+        'closeclient_team_1_role' => 'Team 1: Role',
+        'closeclient_team_2_name' => 'Team 2: Name',
+        'closeclient_team_2_role' => 'Team 2: Role',
+        'closeclient_team_3_name' => 'Team 3: Name',
+        'closeclient_team_3_role' => 'Team 3: Role',
+        'closeclient_team_headline' => 'Team Headline',
+        'closeclient_team_tag' => 'Team Tag',
+        'closeclient_testimonial_1_name' => 'Testimonial 1: Name',
+        'closeclient_testimonial_1_role' => 'Testimonial 1: Role',
+        'closeclient_testimonial_1_text' => 'Testimonial 1: Copy',
+        'closeclient_testimonial_2_name' => 'Testimonial 2: Name',
+        'closeclient_testimonial_2_role' => 'Testimonial 2: Role',
+        'closeclient_testimonial_2_text' => 'Testimonial 2: Copy',
+        'closeclient_testimonial_3_name' => 'Testimonial 3: Name',
+        'closeclient_testimonial_3_role' => 'Testimonial 3: Role',
+        'closeclient_testimonial_3_text' => 'Testimonial 3: Copy',
+        'closeclient_testimonials_headline' => 'Testimonials Headline',
+        'closeclient_testimonials_tag' => 'Testimonials Tag',
+        'closeclient_text_color' => 'Global Text Color',
+        'closeclient_thankyou_headline_tpl' => 'Thank You Headline',
+        'closeclient_thankyou_text_tpl' => 'Thank You Message',
+        'closeclient_vsl_headline' => 'VSL Headline',
+        'closeclient_vsl_tag' => 'VSL Tag',
+        'closeclient_vsl_video_url' => 'VSL Video URL (YouTube/Vimeo)',
+        'closeclient_show_authority' => 'Show Authority Section',
+        'closeclient_show_booking' => 'Show Booking CTA',
+        'closeclient_show_faq' => 'Show FAQ Section',
+        'closeclient_show_floating_cta' => 'Show Floating CTA',
+        'closeclient_show_hero' => 'Show Hero Section',
+        'closeclient_show_lead_magnet' => 'Show Lead Magnet Section',
+        'closeclient_show_logo_ticker' => 'Show Logo Ticker',
+        'closeclient_show_newsletter' => 'Show Newsletter Section',
+        'closeclient_show_portfolio' => 'Show Portfolio Section',
+        'closeclient_show_preloader' => 'Enable Preloader Interaction',
+        'closeclient_show_pricing' => 'Show Pricing Section',
+        'closeclient_show_process' => 'Show Process Section',
+        'closeclient_show_products' => 'Show Products Section',
+        'closeclient_show_services' => 'Show Services Section',
+        'closeclient_show_stats' => 'Show Stats Section',
+        'closeclient_show_team' => 'Show Team Section',
+        'closeclient_show_testimonials' => 'Show Testimonials Section',
+        'closeclient_show_vsl' => 'Show VSL Section',
+        'closeclient_social_facebook' => 'Facebook URL',
+        'closeclient_social_instagram' => 'Instagram URL',
+        'closeclient_social_linkedin' => 'LinkedIn URL',
+        'closeclient_social_twitter' => 'Twitter URL',
+        'closeclient_social_youtube' => 'YouTube URL',
+    );
+
+    // Dynamic Register
+    $defaults = closeclient_get_defaults();
+    foreach ($defaults as $key => $val) {
+        $wp_customize->add_setting( $key, array( 'default' => $val, 'sanitize_callback' => 'sanitize_text_field' ) );
+
+        $section = 'closeclient_labels';
+        if (strpos($key, 'color') !== false) $section = 'closeclient_colors';
+        elseif (strpos($key, 'font') !== false || strpos($key, 'size') !== false || strpos($key, 'weight') !== false || strpos($key, 'spacing') !== false || strpos($key, 'line_height') !== false) $section = 'closeclient_typography';
+        elseif (strpos($key, 'hero') !== false) $section = 'closeclient_hero';
+        elseif (strpos($key, 'vsl') !== false) $section = 'closeclient_vsl';
+        elseif (strpos($key, 'service') !== false) $section = 'closeclient_services';
+        elseif (strpos($key, 'portfolio') !== false) $section = 'closeclient_labels'; // Portfolio labels
+        elseif (strpos($key, 'stat') !== false) $section = 'closeclient_stats';
+        elseif (strpos($key, 'team') !== false) $section = 'closeclient_team';
+        elseif (strpos($key, 'faq') !== false) $section = 'closeclient_faq';
+        elseif (strpos($key, 'pricing') !== false || strpos($key, 'plan') !== false) $section = 'closeclient_pricing';
+        elseif (strpos($key, 'process') !== false) $section = 'closeclient_process';
+        elseif (strpos($key, 'booking') !== false) $section = 'closeclient_booking';
+        elseif (strpos($key, 'social') !== false) $section = 'closeclient_social';
+        elseif (strpos($key, 'show_') !== false) $section = 'closeclient_visibility';
+        elseif (strpos($key, 'width') !== false || strpos($key, 'header') !== false || strpos($key, 'footer') !== false) $section = 'closeclient_layout_section';
+        elseif (strpos($key, 'form_action') !== false || strpos($key, 'shortcode') !== false) $section = 'closeclient_forms';
+
+        $label = isset($labels[$key]) ? $labels[$key] : $key;
+
+        if (strpos($key, 'color') !== false) {
+            $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, $key, array( 'label' => $label, 'section' => $section ) ) );
+        } elseif (strpos($key, 'show_') !== false || $key === 'closeclient_header_sticky' || $key === 'closeclient_hero_typewriter') {
+            $wp_customize->add_control( $key, array( 'label' => $label, 'section' => $section, 'type' => 'checkbox' ) );
+        } elseif (strpos($key, 'headline') !== false || strpos($key, 'text') !== false || strpos($key, 'desc') !== false || strpos($key, 'subheadline') !== false || strpos($key, 'note') !== false || strpos($key, 'scarcity') !== false || strpos($key, 'disclaimer') !== false || strpos($key, 'about') !== false) {
+            $wp_customize->add_control( $key, array( 'label' => $label, 'section' => $section, 'type' => 'textarea' ) );
+        } else {
+            $wp_customize->add_control( $key, array( 'label' => $label, 'section' => $section ) );
+        }
+    }
+
+    $wp_customize->add_setting( 'closeclient_gen_trigger', array( 'sanitize_callback' => 'sanitize_text_field' ) );
+    $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'closeclient_gen_trigger', array(
+        'label' => 'Recreate Starter Pages',
+        'description' => '<a href="' . admin_url('?closeclient_action=generate&_wpnonce=' . wp_create_nonce('closeclient_utility_action')) . '" class="button button-primary">Generate Now</a>',
+        'section' => 'closeclient_utilities',
+        'type' => 'hidden'
+    ) ) );
 }
 add_action( 'customize_register', 'closeclient_customize_register' );
+
+/**
+ * Output Customizer CSS variables to wp_head
+ */
+function closeclient_customize_css() {
+    ?>
+    <style type="text/css">
+        :root {
+            --c-accent: <?php echo get_theme_mod( 'closeclient_accent_color', '#6366F1' ); ?>;
+            --c-accent-hover: <?php echo get_theme_mod( 'closeclient_button_hover', '#4F46E5' ); ?>;
+            --c-primary: <?php echo get_theme_mod( 'closeclient_primary_color', '#020203' ); ?>;
+            --c-secondary: <?php echo get_theme_mod( 'closeclient_secondary_color', '#0A0A0B' ); ?>;
+            --c-bg: <?php echo get_theme_mod( 'closeclient_bg_color', '#020203' ); ?>;
+            --c-text: <?php echo get_theme_mod( 'closeclient_text_color', '#F9FAFB' ); ?>;
+            --container-width: <?php echo get_theme_mod( 'closeclient_container_width', '1200' ); ?>px;
+            --content-width: <?php echo get_theme_mod( 'closeclient_content_width', '800' ); ?>px;
+            --heading-font: '<?php echo get_theme_mod( 'closeclient_heading_font', 'Inter' ); ?>', sans-serif;
+            --body-font: '<?php echo get_theme_mod( 'closeclient_body_font', 'Inter' ); ?>', sans-serif;
+            --h1-size: <?php echo get_theme_mod( 'closeclient_h1_size', '4.5' ); ?>rem;
+            --body-size: <?php echo get_theme_mod( 'closeclient_body_size', '18' ); ?>px;
+            --letter-spacing: <?php echo get_theme_mod( 'closeclient_letter_spacing', '-0.022' ); ?>em;
+            --line-height: <?php echo get_theme_mod( 'closeclient_line_height', '1.6' ); ?>;
+        }
+    </style>
+    <?php
+}
+add_action( 'wp_head', 'closeclient_customize_css' );
