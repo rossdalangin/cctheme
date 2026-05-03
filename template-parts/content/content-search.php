@@ -22,6 +22,6 @@
 	</div>
 
 	<footer class="entry-footer mt-4">
-		<a href="<?php echo esc_url( get_permalink() ); ?>" class="cc-button cc-button-secondary small"><?php echo esc_html( get_theme_mod( 'closeclient_label_search_btn', 'View Result →' ) ); ?></a>
+		<a href="<?php echo esc_url( get_permalink() ); ?>" class="cc-button cc-button-secondary small"><?php echo esc_html( get_theme_mod( 'closeclient_label_search_btn', 'Strategic Search' ) ); ?></a>
 	</footer>
 </article>

@@ -59,6 +59,14 @@ get_header();
                         </div>
                     <?php endif; ?>
 
+                    <?php $metric = get_post_meta( get_the_ID(), '_portfolio_metric', true ); ?>
+                    <?php if ( $metric ) : ?>
+                        <div class="case-study-metric glass p-5 border-accent mb-4 text-center">
+                            <span class="section-tag small"><?php echo esc_html__( 'KEY PERFORMANCE METRIC', 'closeclient' ); ?></span>
+                            <div class="h1 gradient-text mb-0 mt-2"><?php echo esc_html( $metric ); ?></div>
+                        </div>
+                    <?php endif; ?>
+
                     <div class="main-body mt-5">
                         <?php the_content(); ?>
                     </div>

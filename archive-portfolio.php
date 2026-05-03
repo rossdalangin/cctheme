@@ -38,6 +38,10 @@ get_header();
                             </div>
                         <?php endif; ?>
                         <div class="portfolio-content">
+                            <?php $metric = get_post_meta( get_the_ID(), '_portfolio_metric', true ); ?>
+                            <?php if ( $metric ) : ?>
+                                <div class="portfolio-metric badge bg-accent text-white mb-3 p-2 px-3 small fw-bold reveal"><?php echo esc_html( $metric ); ?></div>
+                            <?php endif; ?>
                             <h3 class="h4 mb-3"><a href="<?php the_permalink(); ?>" class="text-white text-decoration-none"><?php the_title(); ?></a></h3>
                             <div class="text-muted small mb-4"><?php echo wp_trim_words( get_the_excerpt(), 20 ); ?></div>
                             <a href="<?php the_permalink(); ?>" class="cc-button cc-button-secondary read-more-btn"><?php echo esc_html( get_theme_mod( 'closeclient_label_portfolio_btn', 'View Case Study' ) ); ?></a>

@@ -16,7 +16,7 @@ $tag      = get_theme_mod( 'closeclient_faq_tag', 'FAQ' );
             <h2 class="section-headline gradient-text"><?php echo esc_html( $headline ); ?></h2>
         </div>
 
-        <div class="faq-accordion mt-5">
+        <div class="faq-accordion mt-5 mb-5">
             <?php
             $faq_query = new WP_Query( array(
                 'post_type'      => 'faq',
@@ -58,6 +58,11 @@ $tag      = get_theme_mod( 'closeclient_faq_tag', 'FAQ' );
                     <?php endif;
                 endfor;
             endif; ?>
+        </div>
+
+        <div class="faq-footer text-center mt-5 reveal">
+            <p class="text-muted small mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_faq_footer_text', 'Still have technical or strategic questions about our process?' ) ); ?></p>
+            <a href="#audit" class="cc-button cc-button-secondary"><?php echo esc_html( get_theme_mod( 'closeclient_faq_footer_btn', 'Talk to an Architect →' ) ); ?></a>
         </div>
     </div>
 </section>

@@ -25,7 +25,25 @@ get_header();
 
             <div class="container section py-xl">
                 <div class="entry-content container-narrow reveal py-md">
-                    <div class="glass border-accent service-detail-glass p-5">
+                    <?php
+                    $blueprint = get_post_meta( get_the_ID(), '_service_blueprint', true );
+                    if ( $blueprint ) : ?>
+                        <div class="service-blueprint-checklist glass p-5 border-accent mb-5">
+                            <h3 class="h5 mb-4 text-white"><?php echo esc_html__( 'System Architecture Blueprint', 'closeclient' ); ?></h3>
+                            <div class="cc-grid-2">
+                                <?php
+                                $items = explode( ',', $blueprint );
+                                foreach ( $items as $item ) : ?>
+                                    <div class="blueprint-item d-flex align-items-center gap-3 mb-2">
+                                        <span class="text-accent"><?php echo closeclient_get_svg('check'); ?></span>
+                                        <span class="small text-muted"><?php echo esc_html( trim($item) ); ?></span>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+
+                    <div class="glass service-detail-glass p-5">
                         <?php the_content(); ?>
                     </div>
                 </div>

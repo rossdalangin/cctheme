@@ -30,6 +30,9 @@
 
         <div class="hero-cta">
             <a href="<?php echo esc_url( get_theme_mod( 'closeclient_hero_cta_link', '#audit' ) ); ?>" class="cc-button"><?php echo esc_html( get_theme_mod( 'closeclient_hero_cta', 'Request Your Authority Audit →' ) ); ?></a>
+            <p class="hero-social-proof mt-4 small text-muted reveal">
+                <span class="me-2">⚡</span> <?php echo esc_html( get_theme_mod( 'closeclient_hero_proof_text', 'Powering 500+ High-Ticket Authorities Worldwide.' ) ); ?>
+            </p>
         </div>
 
         <?php if ( get_theme_mod( 'closeclient_hero_image' ) ) : ?>

@@ -92,9 +92,16 @@ get_header();
                 </div>
 
                 <?php if ( $show_sidebar ) : ?>
-                    <aside class="post-sidebar px-lg">
+                    <aside class="post-sidebar px-lg reveal">
+                        <div class="sidebar-search glass p-4 mb-4">
+                            <h4 class="h6 mb-3 text-white"><?php echo esc_html( get_theme_mod( 'closeclient_label_search_btn', 'Strategic Search' ) ); ?></h4>
+                            <?php get_search_form(); ?>
+                        </div>
+
                         <?php get_template_part( 'template-parts/content/blog-sticky-cta' ); ?>
+
                         <div class="sidebar-widgets glass p-4 mt-4">
+                            <h4 class="h6 mb-3 text-white"><?php echo esc_html__( 'Recent Insights', 'closeclient' ); ?></h4>
                             <?php get_sidebar(); ?>
                         </div>
                     </aside>

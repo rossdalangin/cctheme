@@ -11,6 +11,8 @@
 <body <?php body_class( get_theme_mod( 'closeclient_site_layout_type', 'full-width' ) ); ?> itemscope itemtype="https://schema.org/WebPage">
 <?php wp_body_open(); ?>
 
+<div class="reading-progress-bar"></div>
+
 <?php if ( get_theme_mod( 'closeclient_show_preloader', true ) ) : ?>
     <div class="cc-preloader">
         <div class="preloader-dot"></div>
