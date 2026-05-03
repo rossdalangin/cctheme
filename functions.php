@@ -121,6 +121,10 @@ function closeclient_scripts() {
 
 	wp_enqueue_script( 'closeclient-navigation', get_template_directory_uri() . '/assets/js/main.js', array(), CLOSECLIENT_VERSION, true );
 
+    if ( is_customize_preview() ) {
+		wp_enqueue_script( 'closeclient-customizer', get_template_directory_uri() . '/assets/js/customizer.js', array( 'customize-preview' ), CLOSECLIENT_VERSION, true );
+	}
+
     wp_localize_script( 'closeclient-navigation', 'closeclientData', array(
         'ctaThreshold' => get_theme_mod( 'closeclient_floating_cta_threshold', 500 ),
     ) );

@@ -17,7 +17,7 @@ $author_url = get_author_posts_url( $author_id );
             <?php echo get_avatar( $author_id, 120, '', '', array( 'class' => 'rounded-circle border-accent p-1' ) ); ?>
         </div>
         <div class="author-info">
-            <span class="section-tag small"><?php esc_html_e( 'THE ARCHITECT', 'closeclient' ); ?></span>
+            <span class="section-tag small"><?php echo esc_html( get_theme_mod( 'closeclient_author_tag', 'THE ARCHITECT' ) ); ?></span>
             <h3 class="author-title h4 mt-2 mb-3">
                 <a href="<?php echo esc_url( $author_url ); ?>" class="text-white text-decoration-none"><?php echo esc_html( $display_name ); ?></a>
             </h3>

@@ -34,7 +34,7 @@
                 if ( $form_code && $form_code !== '[contact-form-7 id="..."]' ) {
                     echo do_shortcode( $form_code );
                 } else {
-                    echo '<p class="text-center small text-muted">' . esc_html__( 'Contact form not configured in Customizer.', 'closeclient' ) . '</p>';
+                    echo '<p class="text-center small text-muted">' . esc_html( get_theme_mod( 'closeclient_form_not_configured_text', 'Contact form not configured in Customizer.' ) ) . '</p>';
                 }
             endif; ?>
         </div>

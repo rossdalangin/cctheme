@@ -55,7 +55,7 @@ if ( post_password_required() ) {
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if ( ! comments_open() ) :
 			?>
-			<p class="no-comments small text-muted"><?php esc_html_e( 'The discussion is concluded.', 'closeclient' ); ?></p>
+			<p class="no-comments small text-muted"><?php echo esc_html( get_theme_mod( 'closeclient_comments_closed_text', 'The discussion is concluded.' ) ); ?></p>
 			<?php
 		endif;
 

@@ -262,12 +262,51 @@ function closeclient_customize_register( $wp_customize ) {
         'closeclient_sidebar_insight_tag' => 'Blog Sidebar: Insight Tag',
         'closeclient_sidebar_insight_title' => 'Blog Sidebar: Insight Title',
         'closeclient_sidebar_insight_text' => 'Blog Sidebar: Insight Text',
+        'closeclient_sales_hero_tag_tpl' => 'Sales Hero Tag',
+        'closeclient_sales_hero_cta_tpl' => 'Sales Hero CTA Text',
+        'closeclient_sales_value_stack_title' => 'Sales Value Stack Title',
+        'closeclient_sales_value_stack_desc' => 'Sales Value Stack Description',
+        'closeclient_contact_tag_tpl' => 'Contact Tag',
+        'closeclient_contact_direct_title' => 'Contact Direct Title',
+        'closeclient_contact_direct_desc' => 'Contact Direct Description',
+        'closeclient_contact_name_label' => 'Contact Form: Name Label',
+        'closeclient_contact_email_label' => 'Contact Form: Email Label',
+        'closeclient_contact_message_label' => 'Contact Form: Message Label',
+        'closeclient_contact_btn_text' => 'Contact Form: Button Text',
+        'closeclient_products_tag' => 'Products Tag',
+        'closeclient_label_search_btn' => 'Search: Button Text',
+        'closeclient_author_tag' => 'Author Box: Tag',
+        'closeclient_comments_closed_text' => 'Comments: Closed Text',
+        'closeclient_menu_label_services' => 'Menu: Solutions Label',
+        'closeclient_menu_label_cases' => 'Menu: Success Stories Label',
+        'closeclient_menu_label_about' => 'Menu: The Method Label',
+        'closeclient_menu_label_blog' => 'Menu: Insights Label',
+        'closeclient_menu_label_audit' => 'Menu: Book Audit Label',
+        'closeclient_menu_label_training' => 'Menu: Free Training Label',
+        'closeclient_label_prev_post' => 'Pagination: Previous Post Label',
+        'closeclient_label_next_post' => 'Pagination: Next Post Label',
+        'closeclient_label_continue_reading' => 'Blog: Continue Reading Text',
+        'closeclient_form_not_configured_text' => 'Forms: Missing Global Config Text',
+        'closeclient_contact_form_not_configured_text' => 'Forms: Missing Contact Config Text',
     );
 
     // Dynamic Register
     $defaults = closeclient_get_defaults();
+    $post_message_keys = array(
+        'closeclient_primary_color', 'closeclient_secondary_color', 'closeclient_accent_color',
+        'closeclient_bg_color', 'closeclient_text_color', 'closeclient_button_hover',
+        'closeclient_container_width', 'closeclient_content_width', 'closeclient_body_size',
+        'closeclient_h1_size', 'closeclient_letter_spacing', 'closeclient_line_height'
+    );
+
     foreach ($defaults as $key => $val) {
-        $wp_customize->add_setting( $key, array( 'default' => $val, 'sanitize_callback' => 'sanitize_text_field' ) );
+        $transport = in_array($key, $post_message_keys) ? 'postMessage' : 'refresh';
+
+        $wp_customize->add_setting( $key, array(
+            'default' => $val,
+            'sanitize_callback' => 'sanitize_text_field',
+            'transport' => $transport
+        ) );
 
         $section = 'closeclient_labels';
         if (strpos($key, 'color') !== false) $section = 'closeclient_colors';
@@ -322,6 +361,49 @@ function closeclient_customize_register( $wp_customize ) {
         'section' => 'closeclient_utilities',
         'type' => 'hidden'
     ) ) );
+
+    // Selective Refresh Partials
+    if ( isset( $wp_customize->selective_refresh ) ) {
+        $wp_customize->selective_refresh->add_partial( 'blogname', array(
+            'selector'        => '.site-title a',
+            'render_callback' => function() { return get_bloginfo( 'name' ); },
+        ) );
+        $wp_customize->selective_refresh->add_partial( 'closeclient_hero_headline', array(
+            'selector'        => '.hero-headline',
+            'settings'        => array( 'closeclient_hero_headline' ),
+            'render_callback' => function() { return get_theme_mod( 'closeclient_hero_headline' ); },
+        ) );
+        $wp_customize->selective_refresh->add_partial( 'closeclient_services_headline', array(
+            'selector'        => '.section-services .section-headline',
+            'settings'        => array( 'closeclient_services_headline' ),
+            'render_callback' => function() { return get_theme_mod( 'closeclient_services_headline' ); },
+        ) );
+        $wp_customize->selective_refresh->add_partial( 'closeclient_testimonials_headline', array(
+            'selector'        => '.section-testimonials .section-headline',
+            'settings'        => array( 'closeclient_testimonials_headline' ),
+            'render_callback' => function() { return get_theme_mod( 'closeclient_testimonials_headline' ); },
+        ) );
+        $wp_customize->selective_refresh->add_partial( 'closeclient_pricing_headline', array(
+            'selector'        => '.section-pricing .section-headline',
+            'settings'        => array( 'closeclient_pricing_headline' ),
+            'render_callback' => function() { return get_theme_mod( 'closeclient_pricing_headline' ); },
+        ) );
+        $wp_customize->selective_refresh->add_partial( 'closeclient_process_headline', array(
+            'selector'        => '.section-process .section-headline',
+            'settings'        => array( 'closeclient_process_headline' ),
+            'render_callback' => function() { return get_theme_mod( 'closeclient_process_headline' ); },
+        ) );
+        $wp_customize->selective_refresh->add_partial( 'closeclient_vsl_headline', array(
+            'selector'        => '.section-vsl .section-headline',
+            'settings'        => array( 'closeclient_vsl_headline' ),
+            'render_callback' => function() { return get_theme_mod( 'closeclient_vsl_headline' ); },
+        ) );
+        $wp_customize->selective_refresh->add_partial( 'closeclient_booking_headline', array(
+            'selector'        => '.section-booking-cta .section-headline',
+            'settings'        => array( 'closeclient_booking_headline' ),
+            'render_callback' => function() { return get_theme_mod( 'closeclient_booking_headline' ); },
+        ) );
+    }
 }
 add_action( 'customize_register', 'closeclient_customize_register' );
 

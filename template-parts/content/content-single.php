@@ -33,8 +33,7 @@ $grid_class = $show_sidebar ? 'single-post-grid' : '';
 		the_content(
 			sprintf(
 				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'closeclient' ),
+					get_theme_mod( 'closeclient_label_continue_reading', 'Continue reading<span class="screen-reader-text"> "%s"</span>' ),
 					array(
 						'span' => array(
 							'class' => array(),

@@ -12,7 +12,7 @@ $desc     = get_theme_mod( 'closeclient_products_desc', 'Themes and plugins trus
 <section id="products" class="section section-lg section-products bg-dark">
     <div class="container">
         <div class="section-header text-center reveal">
-            <span class="section-tag"><?php esc_html_e( 'ECOSYSTEM TOOLS', 'closeclient' ); ?></span>
+            <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_products_tag', 'ECOSYSTEM TOOLS' ) ); ?></span>
             <h2 class="section-headline gradient-text"><?php echo esc_html( $headline ); ?></h2>
             <p class="lead text-muted mt-4"><?php echo esc_html( $desc ); ?></p>
         </div>

@@ -11,12 +11,12 @@ get_header();
 <main id="primary" class="site-main sales-page">
     <section class="section section-lg sales-hero">
         <div class="container text-center reveal">
-            <span class="section-tag"><?php esc_html_e( 'EXCLUSIVE OFFER', 'closeclient' ); ?></span>
+            <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_sales_hero_tag_tpl', 'EXCLUSIVE OFFER' ) ); ?></span>
             <h1 class="hero-headline gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_sales_hero_headline_tpl', 'Scale to $100k/mo Without Spending 8 Hours a Day in the DMs.' ) ); ?></h1>
             <p class="lead text-muted mb-5"><?php echo esc_html( get_theme_mod( 'closeclient_sales_hero_subheadline_tpl', 'For the elite consultant who is ready to graduate from "hustling" to "owning a machine."' ) ); ?></p>
 
             <div class="hero-cta">
-                <a href="#booking" class="cc-button"><?php esc_html_e( 'Yes! Build My Machine →', 'closeclient' ); ?></a>
+                <a href="#booking" class="cc-button"><?php echo esc_html( get_theme_mod( 'closeclient_sales_hero_cta_tpl', 'Yes! Build My Machine →' ) ); ?></a>
             </div>
         </div>
     </section>
@@ -26,8 +26,8 @@ get_header();
     <section class="section section-lg section-value-stack bg-dark">
         <div class="container container-narrow reveal">
             <div class="section-header text-center mb-5 py-lg">
-                <h2 class="h2 gradient-text"><?php esc_html_e( 'The Authority Ecosystem', 'closeclient' ); ?></h2>
-                <p class="text-muted"><?php esc_html_e( 'Everything you need to command the market.', 'closeclient' ); ?></p>
+                <h2 class="h2 gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_sales_value_stack_title', 'The Authority Ecosystem' ) ); ?></h2>
+                <p class="text-muted"><?php echo esc_html( get_theme_mod( 'closeclient_sales_value_stack_desc', 'Everything you need to command the market.' ) ); ?></p>
             </div>
 
             <div class="value-stack-list py-md">
