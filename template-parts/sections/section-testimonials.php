@@ -5,7 +5,7 @@
  * @package CloseClient
  */
 
-$headline = get_theme_mod( 'closeclient_testimonials_headline', 'Elite Success Stories' );
+$headline = get_theme_mod( 'closeclient_testimonials_headline', 'Elite Results for Elite Experts' );
 $tag      = get_theme_mod( 'closeclient_testimonials_tag', 'SOCIAL PROOF' );
 ?>
 

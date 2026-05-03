@@ -1584,3 +1584,37 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 .cc-side-over.active .cc-modal-content {
     right: 0;
 }
+
+/* --- Author Box Refinements --- */
+.author-box {
+    border-left: 4px solid var(--c-accent);
+    position: relative;
+    overflow: hidden;
+}
+
+.author-box::after {
+    content: "";
+    position: absolute;
+    top: 0; right: 0;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(var(--c-accent-rgb), 0.05) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.author-avatar img {
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.author-box:hover .author-avatar img {
+    transform: scale(1.05) rotate(5deg);
+}
+
+.author-info {
+    position: relative;
+    z-index: 1;
+}
+
+.author-title a:hover {
+    color: var(--c-accent) !important;
+}

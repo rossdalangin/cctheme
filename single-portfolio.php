@@ -64,9 +64,10 @@ get_header();
                     </div>
 
                 </div>
-            </article>
+            </div>
+        </article>
 
-            <?php get_template_part( 'template-parts/sections/section-booking-cta' ); ?>
+        <?php get_template_part( 'template-parts/sections/section-booking-cta' ); ?>
 
         <?php
     endwhile;

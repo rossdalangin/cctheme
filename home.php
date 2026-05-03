@@ -77,18 +77,18 @@ get_header();
                     ?>
                 </div>
 
-                <div class="pagination-wrapper mt-5 text-center">
+                    <div class="pagination-wrapper mt-5 text-center">
+                        <?php
+                        echo paginate_links( array(
+                            'total'   => ceil( ( $grid_query->found_posts - $offset ) / $posts_per_page ),
+                            'current' => $paged,
+                        ) );
+                        ?>
+                    </div>
                     <?php
-                    echo paginate_links( array(
-                        'total'   => ceil( ( $grid_query->found_posts - $offset ) / $posts_per_page ),
-                        'current' => $paged,
-                    ) );
-                    ?>
-                </div>
-                <?php
-                    wp_reset_postdata();
+                        wp_reset_postdata();
                     endif;
-                ?>
+                    ?>
                 </div>
 
                 <?php if ( $show_sidebar ) : ?>

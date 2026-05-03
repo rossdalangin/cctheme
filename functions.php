@@ -318,15 +318,15 @@ function closeclient_breadcrumbs() {
  * Enqueue Google Fonts based on Customizer settings.
  */
 function closeclient_google_fonts() {
-    $heading_font = get_theme_mod( 'closeclient_heading_font', 'SF Pro Display' );
-    $body_font = get_theme_mod( 'closeclient_body_font', 'SF Pro Display' );
+    $heading_font = get_theme_mod( 'closeclient_heading_font', 'Inter' );
+    $body_font = get_theme_mod( 'closeclient_body_font', 'Inter' );
 
     $fonts = array();
 
-    if ( $heading_font !== 'SF Pro Display' ) {
+    if ( $heading_font !== 'Inter' ) {
         $fonts[] = 'family=' . str_replace( ' ', '+', $heading_font ) . ':wght@400;600;700;800';
     }
-    if ( $body_font !== 'SF Pro Display' && $body_font !== $heading_font ) {
+    if ( $body_font !== 'Inter' && $body_font !== $heading_font ) {
         $fonts[] = 'family=' . str_replace( ' ', '+', $body_font ) . ':wght@400;600;700';
     }
 
@@ -363,9 +363,9 @@ require get_template_directory() . '/inc/admin-guide.php';
 function closeclient_menu_fallback() {
     echo '<ul class="primary-menu-list">';
     echo '<li><a href="' . esc_url( home_url( '/services' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_services', 'Solutions' ) ) . '</a></li>';
-    echo '<li><a href="' . esc_url( home_url( '/case-studies' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_cases', 'Success Stories' ) ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/case-studies' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_cases', 'Case Studies' ) ) . '</a></li>';
     echo '<li><a href="' . esc_url( home_url( '/about' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_about', 'The Method' ) ) . '</a></li>';
-    echo '<li><a href="' . esc_url( home_url( '/blog' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_blog', 'Insights' ) ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/blog' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_blog', 'Blog' ) ) . '</a></li>';
     echo '<li><a href="#audit" class="cc-button-nav">' . esc_html( get_theme_mod( 'closeclient_menu_label_audit', 'Book Audit' ) ) . '</a></li>';
     echo '</ul>';
 }
