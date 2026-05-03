@@ -83,6 +83,7 @@ function closeclient_add_custom_meta_boxes() {
     add_meta_box( 'team_details', 'Member Details', 'closeclient_team_meta_callback', 'team', 'side' );
     add_meta_box( 'process_details', 'Step Details', 'closeclient_process_meta_callback', 'process', 'side' );
     add_meta_box( 'pricing_details', 'Plan Details', 'closeclient_pricing_meta_callback', 'pricing', 'side' );
+    add_meta_box( 'service_details', 'Service Architecture', 'closeclient_service_meta_callback', 'service', 'normal', 'high' );
 }
 add_action( 'add_meta_boxes', 'closeclient_add_custom_meta_boxes' );
 
@@ -182,11 +183,24 @@ function closeclient_portfolio_meta_callback( $post ) {
     $challenge = get_post_meta( $post->ID, '_portfolio_challenge', true );
     $solution  = get_post_meta( $post->ID, '_portfolio_solution', true );
     $outcome   = get_post_meta( $post->ID, '_portfolio_outcome', true );
+    $metric    = get_post_meta( $post->ID, '_portfolio_metric', true );
     ?>
-    <div >
-        <p><strong>The Challenge:</strong><br><textarea name="portfolio_challenge"  rows="4"><?php echo esc_textarea( $challenge ); ?></textarea></p>
-        <p><strong>The Solution:</strong><br><textarea name="portfolio_solution"  rows="4"><?php echo esc_textarea( $solution ); ?></textarea></p>
-        <p><strong>The Outcome:</strong><br><textarea name="portfolio_outcome"  rows="4"><?php echo esc_textarea( $outcome ); ?></textarea></p>
+    <div>
+        <p><strong>Key Performance Metric (e.g. 3.4x ROI):</strong><br><input type="text" name="portfolio_metric" value="<?php echo esc_attr( $metric ); ?>" class="widefat"></p>
+        <p><strong>The Challenge:</strong><br><textarea name="portfolio_challenge" class="widefat" rows="4"><?php echo esc_textarea( $challenge ); ?></textarea></p>
+        <p><strong>The Solution:</strong><br><textarea name="portfolio_solution" class="widefat" rows="4"><?php echo esc_textarea( $solution ); ?></textarea></p>
+        <p><strong>The Outcome:</strong><br><textarea name="portfolio_outcome" class="widefat" rows="4"><?php echo esc_textarea( $outcome ); ?></textarea></p>
+    </div>
+    <?php
+}
+
+function closeclient_service_meta_callback( $post ) {
+    $blueprint = get_post_meta( $post->ID, '_service_blueprint', true );
+    ?>
+    <div>
+        <p><strong>System Architecture Blueprint (Comma Separated):</strong><br>
+        <textarea name="service_blueprint" class="widefat" rows="3" placeholder="e.g. Infrastructure Setup, Lead Filtering, Performance Dashboards"><?php echo esc_textarea( $blueprint ); ?></textarea></p>
+        <p class="howto">These items will appear as a strategic checklist on the service detail page.</p>
     </div>
     <?php
 }
@@ -200,6 +214,12 @@ function closeclient_save_portfolio_meta( $post_id ) {
     }
     if ( isset( $_POST['portfolio_outcome'] ) ) {
         update_post_meta( $post_id, '_portfolio_outcome', wp_kses_post( $_POST['portfolio_outcome'] ) );
+    }
+    if ( isset( $_POST['portfolio_metric'] ) ) {
+        update_post_meta( $post_id, '_portfolio_metric', sanitize_text_field( $_POST['portfolio_metric'] ) );
+    }
+    if ( isset( $_POST['service_blueprint'] ) ) {
+        update_post_meta( $post_id, '_service_blueprint', sanitize_text_field( $_POST['service_blueprint'] ) );
     }
 }
 add_action( 'save_post', 'closeclient_save_portfolio_meta' );

@@ -71,6 +71,20 @@ get_header();
                         <?php the_content(); ?>
                     </div>
 
+                    <?php
+                    $next_post = get_next_post();
+                    if ( $next_post ) : ?>
+                        <div class="next-case-study mt-5 pt-5 border-top border-secondary">
+                            <div class="glass p-5 reveal d-flex justify-content-between align-items-center flex-wrap gap-4">
+                                <div>
+                                    <span class="section-tag small mb-2"><?php echo esc_html__( 'NEXT SUCCESS STORY', 'closeclient' ); ?></span>
+                                    <h4 class="h3 mb-0 text-white"><?php echo esc_html( $next_post->post_title ); ?></h4>
+                                </div>
+                                <a href="<?php echo esc_url( get_permalink( $next_post->ID ) ); ?>" class="cc-button cc-button-secondary"><?php echo esc_html__( 'View Case Study →', 'closeclient' ); ?></a>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+
                 </div>
             </div>
         </article>

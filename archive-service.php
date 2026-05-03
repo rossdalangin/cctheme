@@ -39,10 +39,26 @@ get_header();
 					?>
                         <?php $reveal_class = ( $i <= 3 ) ? 'no-reveal' : 'reveal'; ?>
                         <article id="post-<?php the_ID(); ?>" <?php post_class( "service-item cc-card $reveal_class $span" ); ?>>
-                            <div class="service-icon"><?php echo $icon; ?></div>
+                            <div class="service-icon mb-4"><?php echo $icon; ?></div>
                             <h3 class="h4 mb-3"><a href="<?php the_permalink(); ?>" class="text-white text-decoration-none"><?php the_title(); ?></a></h3>
-                            <div class="text-muted small mb-4"><?php the_excerpt(); ?></div>
-                            <a href="<?php the_permalink(); ?>" class="cc-button cc-button-secondary read-more-btn"><?php echo esc_html( get_theme_mod( 'closeclient_label_service_btn', 'System Details →' ) ); ?></a>
+                            <div class="text-muted small mb-4 lead"><?php the_excerpt(); ?></div>
+
+                            <?php
+                            $blueprint = get_post_meta( get_the_ID(), '_service_blueprint', true );
+                            if ( $blueprint ) : ?>
+                                <div class="service-mini-features mb-4 d-flex flex-wrap gap-2">
+                                    <?php
+                                    $items = array_slice(explode( ',', $blueprint ), 0, 2);
+                                    foreach ( $items as $item ) : ?>
+                                        <span class="badge bg-secondary text-white-50 border-0 p-2 px-3 small fw-bold" style="font-size: 0.65rem;"><?php echo esc_html( trim($item) ); ?></span>
+                                    <?php endforeach; ?>
+                                    <span class="badge bg-accent text-white border-0 p-2 px-3 small fw-bold" style="font-size: 0.65rem;"><?php echo esc_html__( 'ELITE SYSTEM', 'closeclient' ); ?></span>
+                                </div>
+                            <?php endif; ?>
+
+                            <div class="mt-auto">
+                                <a href="<?php echo esc_url( get_permalink() ); ?>" class="cc-button cc-button-secondary read-more-btn"><?php echo esc_html( get_theme_mod( 'closeclient_label_service_btn', 'System Details →' ) ); ?></a>
+                            </div>
                         </article>
                         <?php
 				endwhile;

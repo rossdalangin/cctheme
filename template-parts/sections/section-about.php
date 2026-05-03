@@ -30,6 +30,21 @@ $img = get_theme_mod( 'closeclient_about_image' );
                     <p class="lead text-muted mb-4"><?php echo esc_html( $p1 ); ?></p>
                     <p class="text-muted"><?php echo esc_html( $p2 ); ?></p>
                 </div>
+
+                <?php
+                $methodology = get_theme_mod( 'closeclient_about_methodology', 'Direct-Response System Architecture, Vortex Lead Intake & Pre-qualification, Bento-style Social Proof Engineering' );
+                if ( $methodology ) : ?>
+                    <div class="about-pillars mb-5 d-flex flex-column gap-3">
+                        <?php
+                        $pillars = explode( ',', $methodology );
+                        foreach ( array_slice($pillars, 0, 3) as $pillar ) : ?>
+                            <div class="pillar-item d-flex align-items-center gap-3">
+                                <span class="text-accent"><?php echo closeclient_get_svg('check'); ?></span>
+                                <span class="small text-white-50 fw-bold"><?php echo esc_html( trim($pillar) ); ?></span>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
                 <a href="<?php echo esc_url( home_url( '/about' ) ); ?>" class="cc-button cc-button-secondary">
                     <?php echo esc_html( $btn ); ?>
                 </a>

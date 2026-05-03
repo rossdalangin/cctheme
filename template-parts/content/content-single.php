@@ -55,6 +55,11 @@ $grid_class = $show_sidebar ? 'single-post-grid' : '';
 
         <?php if ( $show_sidebar ) : ?>
             <aside class="post-sidebar px-lg">
+                <div class="sidebar-search glass p-4 mb-4">
+                    <h4 class="h6 mb-3 text-white"><?php echo esc_html( get_theme_mod( 'closeclient_label_search_btn', 'Strategic Search' ) ); ?></h4>
+                    <?php get_search_form(); ?>
+                </div>
+
                 <?php get_template_part( 'template-parts/content/blog-sticky-cta' ); ?>
 
                 <div class="featured-insight-box glass p-4 mt-4">

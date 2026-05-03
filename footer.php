@@ -9,6 +9,17 @@
 
     <?php if ( ! is_page_template( 'template-canvas.php' ) ) : ?>
 	<footer id="colophon" class="site-footer" itemscope itemtype="https://schema.org/WPFooter">
+        <div class="authority-ribbon border-bottom border-secondary mb-5 pb-5 reveal">
+            <div class="container d-flex justify-content-between align-items-center flex-wrap gap-5 opacity-50">
+                <span class="small fw-bold letter-spacing-lg text-white-50"><?php echo esc_html__( 'AS SEEN IN / FEATURED ON:', 'closeclient' ); ?></span>
+                <div class="d-flex gap-5 flex-wrap">
+                    <span class="small fw-black text-white h6 mb-0">FORBES</span>
+                    <span class="small fw-black text-white h6 mb-0">INC.</span>
+                    <span class="small fw-black text-white h6 mb-0">WIRED</span>
+                    <span class="small fw-black text-white h6 mb-0">FAST COMPANY</span>
+                </div>
+            </div>
+        </div>
 		<div class="container">
             <div class="footer-grid">
                 <!-- Column 1: Branding & About -->

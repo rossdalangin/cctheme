@@ -292,6 +292,7 @@ function closeclient_get_defaults() {
         'closeclient_thankyou_wait_title' => 'While You Wait...',
         'closeclient_vsl_headline' => 'The Big Domino: Why Your Expert Business is Stalled (And The Precise Mechanism to Fix It)',
         'closeclient_vsl_placeholder' => 'Enter a video URL in Customizer > Homepage > VSL Section',
+        'closeclient_vsl_takeaways' => 'The hidden bottlenecks of $10k months, The precise architecture of omnipresence, Engineering a frictionless sales engine',
         'closeclient_vsl_tag' => 'EXCLUSIVE STRATEGY TRAINING',
         'closeclient_vsl_video_url' => '',
     );
