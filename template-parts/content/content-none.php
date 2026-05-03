@@ -19,8 +19,7 @@
 
                 printf(
                     '<p class="lead text-muted">' . wp_kses(
-                        /* translators: 1: link to WP admin new post page. */
-                        __( 'Ready to publish your first post? <a href="%1$s" class="text-accent">Get started here</a>.', 'closeclient' ),
+                        get_theme_mod( 'closeclient_label_none_publish_cta', 'Ready to publish your first post? <a href="%1$s" class="text-accent">Get started here</a>.' ),
                         array(
                             'a' => array(
                                 'href' => array(),

@@ -20,14 +20,12 @@ if ( post_password_required() ) {
 			$closeclient_comment_count = get_comments_number();
 			if ( '1' === $closeclient_comment_count ) {
 				printf(
-					/* translators: 1: title. */
-					esc_html__( 'One Authority Insight on &ldquo;%1$s&rdquo;', 'closeclient' ),
+					esc_html( get_theme_mod( 'closeclient_comments_singular_title', 'One Authority Insight on &ldquo;%1$s&rdquo;' ) ),
 					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
 				);
 			} else {
 				printf(
-					/* translators: 1: comment count, 2: title. */
-					esc_html( _nx( '%1$s Insight on &ldquo;%2$s&rdquo;', '%1$s Insights on &ldquo;%2$s&rdquo;', $closeclient_comment_count, 'comments title', 'closeclient' ) ),
+					esc_html( get_theme_mod( 'closeclient_comments_plural_title', '%1$s Insights on &ldquo;%2$s&rdquo;' ) ),
 					number_format_i18n( $closeclient_comment_count ),
 					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
 				);
@@ -65,7 +63,7 @@ if ( post_password_required() ) {
         'class_form' => 'comment-form reveal py-lg',
         'title_reply_before' => '<h3 id="reply-title" class="comment-reply-title h5 mb-4">',
         'title_reply_after'  => '</h3>',
-        'label_submit' => __( 'Submit Insight →', 'closeclient' ),
+        'label_submit' => esc_html( get_theme_mod( 'closeclient_comments_submit_label', 'Submit Insight →' ) ),
         'submit_button' => '<button name="%1$s" type="submit" id="%2$s" class="%3$s cc-button">%4$s</button>',
     ) );
 	?>

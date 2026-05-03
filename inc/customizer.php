@@ -288,6 +288,12 @@ function closeclient_customize_register( $wp_customize ) {
         'closeclient_label_continue_reading' => 'Blog: Continue Reading Text',
         'closeclient_form_not_configured_text' => 'Forms: Missing Global Config Text',
         'closeclient_contact_form_not_configured_text' => 'Forms: Missing Contact Config Text',
+        'closeclient_comments_singular_title' => 'Comments: Singular Title',
+        'closeclient_comments_plural_title' => 'Comments: Plural Title',
+        'closeclient_comments_submit_label' => 'Comments: Submit Button Label',
+        'closeclient_label_none_publish_cta' => 'Empty State: Publish CTA',
+        'closeclient_label_page_links' => 'Pagination: Page Links Label',
+        'closeclient_label_edit_post' => 'Admin: Edit Post Label',
     );
 
     // Dynamic Register
@@ -402,6 +408,18 @@ function closeclient_customize_register( $wp_customize ) {
             'selector'        => '.section-booking-cta .section-headline',
             'settings'        => array( 'closeclient_booking_headline' ),
             'render_callback' => function() { return get_theme_mod( 'closeclient_booking_headline' ); },
+        ) );
+
+        $wp_customize->selective_refresh->add_partial( 'closeclient_footer_copyright', array(
+            'selector'        => '.copyright',
+            'settings'        => array( 'closeclient_footer_copyright' ),
+            'render_callback' => function() { return get_theme_mod( 'closeclient_footer_copyright' ); },
+        ) );
+
+        $wp_customize->selective_refresh->add_partial( 'closeclient_about_headline_tpl', array(
+            'selector'        => '.template-about-story h1',
+            'settings'        => array( 'closeclient_about_headline_tpl' ),
+            'render_callback' => function() { return get_theme_mod( 'closeclient_about_headline_tpl' ); },
         ) );
     }
 }

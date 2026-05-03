@@ -46,7 +46,7 @@ $grid_class = $show_sidebar ? 'single-post-grid' : '';
 
 		wp_link_pages(
 			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'closeclient' ),
+				'before' => '<div class="page-links">' . esc_html( get_theme_mod( 'closeclient_label_page_links', 'Pages:' ) ),
 				'after'  => '</div>',
 			)
 		);

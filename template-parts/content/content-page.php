@@ -19,7 +19,7 @@
 
 		wp_link_pages(
 			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'closeclient' ),
+				'before' => '<div class="page-links">' . esc_html( get_theme_mod( 'closeclient_label_page_links', 'Pages:' ) ),
 				'after'  => '</div>',
 			)
 		);
@@ -32,8 +32,7 @@
 			edit_post_link(
 				sprintf(
 					wp_kses(
-						/* translators: %s: post title */
-						__( 'Edit <span class="screen-reader-text">%s</span>', 'closeclient' ),
+						get_theme_mod( 'closeclient_label_edit_post', 'Edit <span class="screen-reader-text">%s</span>' ),
 						array(
 							'span' => array(
 								'class' => array(),
