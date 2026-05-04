@@ -12,7 +12,8 @@ get_header();
 
 	<main id="primary" class="site-main">
 
-        <header class="page-header section text-center reveal">
+        <header class="page-header section text-center reveal bg-dark overflow-hidden">
+            <div class="mesh-gradient"></div>
             <div class="container">
                 <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_blog_title', 'Insights & Authority' ) ); ?></span>
                 <h1 class="hero-headline gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_blog_description', 'Expert strategies to scale your coaching business.' ) ); ?></h1>

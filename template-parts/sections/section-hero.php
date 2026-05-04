@@ -6,7 +6,7 @@
  */
 ?>
 
-<section class="section section-lg section-hero overflow-hidden">
+<section class="section section-lg section-hero overflow-hidden no-reveal">
     <div class="mesh-gradient"></div>
     <div class="hero-bg-glow"></div>
     <div class="hero-creative-shapes">

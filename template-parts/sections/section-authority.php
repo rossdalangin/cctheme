@@ -7,8 +7,9 @@
 ?>
 
 <section class="section section-authority text-center py-xl">
-    <div class="container">
+    <div class="container container-narrow">
         <p class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_authority_tag', 'POWERING WORLD-CLASS AUTHORITIES' ) ); ?></p>
+        <p class="small text-muted mb-5"><?php echo esc_html( get_theme_mod( 'closeclient_authority_desc', 'Our methodologies have been analyzed and featured by the industry\'s most demanding curators of expertise.' ) ); ?></p>
 
         <div class="logo-bar">
             <?php

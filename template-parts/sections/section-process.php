@@ -38,7 +38,22 @@ $tag      = get_theme_mod( 'closeclient_process_tag', 'OUR PROCESS' );
                         <div class="process-step-content glass p-4 p-md-5">
                             <div class="step-num-modern gradient-text h2 mb-3">0<?php echo esc_html($order); ?></div>
                             <h3 class="h3 mb-3"><?php the_title(); ?></h3>
-                            <div class="text-muted lead small"><?php the_content(); ?></div>
+                            <div class="text-muted lead small mb-4"><?php the_content(); ?></div>
+
+                            <?php
+                            $deliverables = get_post_meta( get_the_ID(), '_step_deliverables', true );
+                            if ( $deliverables ) : ?>
+                                <div class="step-deliverables pt-4 border-top border-secondary">
+                                    <span class="small text-accent fw-bold uppercase letter-spacing-1 d-block mb-3"><?php echo esc_html__( 'CORE DELIVERABLES:', 'closeclient' ); ?></span>
+                                    <ul class="list-unstyled mb-0 d-flex flex-wrap gap-x-4 gap-y-2">
+                                        <?php
+                                        $items = explode( ',', $deliverables );
+                                        foreach ( $items as $item ) : ?>
+                                            <li class="small text-white-50"><span class="text-accent me-2">✓</span><?php echo esc_html( trim($item) ); ?></li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                </div>
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php endwhile;

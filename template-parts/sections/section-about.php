@@ -5,9 +5,9 @@
  * @package CloseClient
  */
 
-$headline = get_theme_mod( 'closeclient_about_headline_home', 'Stop Chasing. Start Leading.' );
-$p1 = get_theme_mod( 'closeclient_about_text_p1', "You didn't start your coaching business to spend 8 hours a day in the DMs. You started it to make an impact and build freedom." );
-$p2 = get_theme_mod( 'closeclient_about_text_p2', "I help established experts build the infrastructure they need to scale without sacrificing their personal life." );
+$headline = get_theme_mod( 'closeclient_about_headline_home', 'Architecting the Future of High-Ticket Authority.' );
+$p1 = get_theme_mod( 'closeclient_about_text_p1', "Most coaches are trapped in a cycle of manual outreach and inconsistent lead flow. We build the systems that break that cycle forever." );
+$p2 = get_theme_mod( 'closeclient_about_text_p2', "By engineering your authority architecture, we transform you from a 'service provider' into the pre-eminent leader in your niche." );
 $btn = get_theme_mod( 'closeclient_about_button_text', 'Learn More About My Story' );
 $img = get_theme_mod( 'closeclient_about_image' );
 ?>

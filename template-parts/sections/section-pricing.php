@@ -15,7 +15,7 @@ $headline = get_theme_mod( 'closeclient_pricing_headline', 'Investment Opportuni
             <h2 class="section-headline gradient-text"><?php echo esc_html( $headline ); ?></h2>
         </div>
 
-        <div class="cc-grid-3">
+        <div class="cc-grid-3 mb-5">
             <?php
             $pricing_query = new WP_Query( array(
                 'post_type'      => 'pricing',
@@ -87,6 +87,23 @@ $headline = get_theme_mod( 'closeclient_pricing_headline', 'Investment Opportuni
                     </div>
                 <?php endforeach;
             endif; ?>
+        </div>
+
+        <div class="pricing-trust-bar text-center mt-5 reveal opacity-50">
+            <div class="d-flex justify-content-center align-items-center gap-5 flex-wrap">
+                <div class="trust-item d-flex align-items-center gap-2">
+                    <span class="text-accent"><?php echo closeclient_get_svg('check'); ?></span>
+                    <span class="small fw-bold uppercase letter-spacing-1"><?php echo esc_html( get_theme_mod( 'closeclient_pricing_trust_1', 'NO LONG-TERM CONTRACTS' ) ); ?></span>
+                </div>
+                <div class="trust-item d-flex align-items-center gap-2">
+                    <span class="text-accent"><?php echo closeclient_get_svg('check'); ?></span>
+                    <span class="small fw-bold uppercase letter-spacing-1"><?php echo esc_html( get_theme_mod( 'closeclient_pricing_trust_2', 'ROI-FOCUSED ENGINEERING' ) ); ?></span>
+                </div>
+                <div class="trust-item d-flex align-items-center gap-2">
+                    <span class="text-accent"><?php echo closeclient_get_svg('check'); ?></span>
+                    <span class="small fw-bold uppercase letter-spacing-1"><?php echo esc_html( get_theme_mod( 'closeclient_pricing_trust_3', 'WHITE-GLOVE ONBOARDING' ) ); ?></span>
+                </div>
+            </div>
         </div>
     </div>
 </section>

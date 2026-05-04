@@ -46,9 +46,12 @@ $tag      = get_theme_mod( 'closeclient_team_tag', 'MEET THE TEAM' );
                         </div>
                         <h3 class="h4 mb-2 text-white"><?php the_title(); ?></h3>
                         <div class="member-role text-accent small fw-bold uppercase tracking-wider mb-3"><?php echo esc_html( $role ); ?></div>
-                        <div class="member-bio small text-muted">
+                        <div class="member-bio small text-muted mb-4">
                             <?php the_excerpt(); ?>
                         </div>
+                        <?php if ( $linkedin ) : ?>
+                            <a href="<?php echo esc_url($linkedin); ?>" class="cc-button cc-button-secondary small" style="padding: 10px 20px; font-size: 0.65rem;">View Profile →</a>
+                        <?php endif; ?>
                     </div>
                 <?php endwhile;
                 wp_reset_postdata();

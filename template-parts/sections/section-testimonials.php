@@ -27,8 +27,12 @@ $tag      = get_theme_mod( 'closeclient_testimonials_tag', 'SOCIAL PROOF' );
                 while ( $testimonials_query->have_posts() ) : $testimonials_query->the_post();
                     $rating = get_post_meta( get_the_ID(), '_testimonial_rating', true );
                     $company = get_post_meta( get_the_ID(), '_testimonial_company', true );
+                    $result  = get_post_meta( get_the_ID(), '_testimonial_result', true );
                     ?>
                     <div class="testimonial-item cc-card glass reveal h-100 d-flex flex-column p-4 p-md-5">
+                        <?php if ( $result ) : ?>
+                            <div class="testimonial-result badge bg-accent text-white mb-4 p-2 px-3 small fw-bold" style="font-size: 0.65rem;"><?php echo esc_html( $result ); ?></div>
+                        <?php endif; ?>
                         <div class="testimonial-rating mb-4 d-flex gap-1">
                             <?php
                             $stars = intval($rating) ?: 5;
