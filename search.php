@@ -27,11 +27,11 @@ get_header();
 			</header>
 
             <div class="container section">
-			<div class="blog-posts-grid">
+			<div class="search-results-wrapper container-narrow">
 				<?php
 				while ( have_posts() ) :
 					the_post();
-					get_template_part( 'template-parts/content/content', 'archive' );
+					get_template_part( 'template-parts/content/content', 'search' );
 				endwhile;
 				?>
 			</div>

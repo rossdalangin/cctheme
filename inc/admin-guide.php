@@ -33,6 +33,9 @@ function closeclient_admin_guide_page() {
             text-transform: uppercase;
             margin-bottom: 20px;
             display: inline-block;
+            background: rgba(99, 102, 241, 0.1);
+            padding: 8px 20px;
+            border-radius: 100px;
         }
         .cc-admin-title {
             font-size: 4rem;
@@ -168,10 +171,10 @@ function closeclient_admin_guide_page() {
     <div class="wrap">
         <div class="cc-admin-dashboard">
             <header class="cc-admin-header">
-                <span class="cc-admin-tag">DEFINITIVE EDITION V12.0</span>
+                <span class="cc-admin-tag">DEFINITIVE EDITION V12.2</span>
                 <h1 class="cc-admin-title"><?php _e( 'Elite Command Center', 'closeclient' ); ?></h1>
                 <p class="cc-admin-desc">
-                    <?php _e( 'Your high-performance authority engine is active. Follow the scaling workflow below to transform your expertise into a world-class digital machine.', 'closeclient' ); ?>
+                    <?php _e( 'Your high-performance authority engine is active. V12.2 features enhanced social proof metrics, service blueprints, and a optimized conversion funnel.', 'closeclient' ); ?>
                 </p>
             </header>
 
@@ -237,7 +240,7 @@ function closeclient_admin_guide_page() {
                         <div class="step-num">3</div>
                         <div class="step-content">
                             <h3>Proof Engineering</h3>
-                            <p>Add 3 Case Studies to the **Portfolio** CPT and 3 Testimonials. Use high-fidelity "Bento" layouts to display results.</p>
+                            <p>Add 3 Case Studies to the **Portfolio** CPT with ROI metrics, and 3 Testimonials. Categorize them using the new **Project Categories** for granular filtering.</p>
                         </div>
                     </div>
 

@@ -6,6 +6,7 @@
  */
 
 $headline = get_theme_mod( 'closeclient_pricing_headline', 'Investment Opportunities' );
+$tag      = get_theme_mod( 'closeclient_pricing_tag', 'INVESTMENT' );
 ?>
 
 <section id="pricing" class="section section-lg section-pricing bg-dark">

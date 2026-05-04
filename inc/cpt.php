@@ -14,6 +14,15 @@ function closeclient_register_cpts() {
         'has_archive' => true,
         'menu_icon'   => 'dashicons-rest-api',
         'supports'    => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
+        'taxonomies'  => array( 'service_cat' ),
+    ) );
+
+    register_taxonomy( 'service_cat', 'service', array(
+        'labels'            => array( 'name' => 'Service Categories', 'singular_name' => 'Category' ),
+        'hierarchical'      => true,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
     ) );
 
     // Testimonials CPT
@@ -39,6 +48,15 @@ function closeclient_register_cpts() {
         'has_archive' => true,
         'menu_icon'   => 'dashicons-portfolio',
         'supports'    => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
+        'taxonomies'  => array( 'portfolio_cat' ),
+    ) );
+
+    register_taxonomy( 'portfolio_cat', 'portfolio', array(
+        'labels'            => array( 'name' => 'Project Categories', 'singular_name' => 'Category' ),
+        'hierarchical'      => true,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
     ) );
 
     // Team CPT

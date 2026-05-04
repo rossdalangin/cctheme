@@ -19,6 +19,8 @@ The homepage is modular. You can toggle sections on/off or change their content 
 *   **Hero**: Use high-fidelity, pain-driven copy.
 *   **VSL**: Insert your YouTube/Vimeo training link to pre-sell your prospects.
 *   **Bento Grid**: Your Portfolio and Services are rendered as premium "Bento" grids.
+*   **ROI Metrics**: Add Key Performance Metrics (e.g., 3.4x ROI) to each Case Study to build immediate trust.
+*   **Service Blueprints**: Use the 'Blueprint' meta field on Services to list your core deliverables as a strategic checklist.
 
 ### Strategic CRM Integration
 You can bypass standard forms and send leads directly to HubSpot or GoHighLevel:

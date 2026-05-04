@@ -17,7 +17,7 @@ $desc     = get_theme_mod( 'closeclient_products_desc', 'Themes and plugins trus
             <p class="lead text-muted mt-4"><?php echo esc_html( $desc ); ?></p>
         </div>
 
-        <div class="cc-grid-2">
+        <div class="bento-grid">
             <?php
             $products_query = new WP_Query( array(
                 'post_type'      => 'product',
@@ -25,27 +25,30 @@ $desc     = get_theme_mod( 'closeclient_products_desc', 'Themes and plugins trus
             ) );
 
             if ( $products_query->have_posts() ) :
+                $i = 0;
                 while ( $products_query->have_posts() ) : $products_query->the_post();
+                    $i++;
                     $price = get_post_meta( get_the_ID(), '_product_price', true );
                     $link  = get_post_meta( get_the_ID(), '_product_link', true );
                     $link  = $link ? $link : get_permalink();
+                    $span = ( $i == 1 ) ? 'bento-span-7' : ( ( $i == 2 ) ? 'bento-span-5' : ( ( $i == 3 ) ? 'bento-span-5' : 'bento-span-7' ) );
                     ?>
-                    <div class="product-item cc-card reveal d-flex flex-column">
-                        <div class="product-meta d-flex gap-5 align-items-center">
+                    <div class="product-item cc-card reveal d-flex flex-column <?php echo esc_attr($span); ?>">
+                        <div class="product-meta d-flex flex-column h-100">
                             <?php if ( has_post_thumbnail() ) : ?>
-                                <div class="product-thumb">
-                                    <?php the_post_thumbnail( 'medium' ); ?>
+                                <div class="product-thumb mb-4">
+                                    <?php the_post_thumbnail( 'large', array( 'style' => 'width: 100%; height: 200px; object-fit: cover;' ) ); ?>
                                 </div>
                             <?php endif; ?>
-                            <div class="product-info">
+                            <div class="product-info mt-auto">
                                 <?php if ( $price ) : ?>
-                                    <span class="text-accent small fw-bold mb-2 d-block"><?php echo esc_html( $price ); ?></span>
+                                    <span class="text-accent small fw-bold mb-2 d-block letter-spacing-1"><?php echo esc_html( $price ); ?></span>
                                 <?php endif; ?>
-                                <h3 class="h4 mb-3"><?php the_title(); ?></h3>
-                                <div class="text-muted small mb-4">
+                                <h3 class="h4 mb-3 text-white"><?php the_title(); ?></h3>
+                                <div class="text-muted small mb-5 lead">
                                     <?php the_excerpt(); ?>
                                 </div>
-                                <a href="<?php echo esc_url( $link ); ?>" class="cc-button cc-button-secondary product-btn">
+                                <a href="<?php echo esc_url( $link ); ?>" class="cc-button cc-button-secondary product-btn w-100">
                                     <?php echo esc_html( get_theme_mod( 'closeclient_product_btn_text', 'Get This Tool →' ) ); ?>
                                 </a>
                             </div>

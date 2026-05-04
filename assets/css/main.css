@@ -1668,3 +1668,19 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
     border-radius: 100px;
     padding-left: 20px;
 }
+
+/* --- Archive Filter Bar --- */
+.archive-filters .filter-link {
+    text-decoration: none;
+    color: var(--c-text-muted);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid var(--c-border);
+}
+
+.archive-filters .filter-link:hover,
+.archive-filters .filter-link.active {
+    color: var(--c-white);
+    border-color: var(--c-accent);
+    background: rgba(var(--c-accent-rgb), 0.1);
+    transform: translateY(-2px);
+}

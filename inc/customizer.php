@@ -422,6 +422,16 @@ function closeclient_customize_register( $wp_customize ) {
             'settings'        => array( 'closeclient_booking_headline' ),
             'render_callback' => function() { return get_theme_mod( 'closeclient_booking_headline' ); },
         ) );
+        $wp_customize->selective_refresh->add_partial( 'closeclient_hero_proof_text', array(
+            'selector'        => '.hero-social-proof',
+            'settings'        => array( 'closeclient_hero_proof_text' ),
+            'render_callback' => function() { return '<span>⚡</span> ' . get_theme_mod( 'closeclient_hero_proof_text' ); },
+        ) );
+        $wp_customize->selective_refresh->add_partial( 'closeclient_vsl_takeaways', array(
+            'selector'        => '.vsl-takeaways',
+            'settings'        => array( 'closeclient_vsl_takeaways' ),
+            'render_callback' => function() { get_template_part('template-parts/sections/section-vsl'); },
+        ) );
 
         $wp_customize->selective_refresh->add_partial( 'closeclient_footer_copyright', array(
             'selector'        => '.copyright',

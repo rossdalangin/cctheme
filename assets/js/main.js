@@ -87,18 +87,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Reading Progress Bar ---
-    const progressBar = document.createElement('div');
-    progressBar.className = 'reading-progress-bar';
-    document.body.appendChild(progressBar);
-
-    window.addEventListener('scroll', () => {
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        if (height > 0) {
-            const scrolled = (winScroll / height) * 100;
-            progressBar.style.width = scrolled + "%";
-        }
-    });
+    const progressBar = document.querySelector('.reading-progress-bar');
+    if (progressBar) {
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            if (height > 0) {
+                const scrolled = (winScroll / height) * 100;
+                progressBar.style.width = scrolled + "%";
+            }
+        });
+    }
 
     // --- Card Glow Mouse Tracking ---
     const cards = document.querySelectorAll('.cc-card');

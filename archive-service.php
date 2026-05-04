@@ -27,6 +27,17 @@ get_header();
 			</header>
 
             <div class="container section">
+                <?php
+                $terms = get_terms( array( 'taxonomy' => 'service_cat', 'hide_empty' => true ) );
+                if ( ! empty( $terms ) ) : ?>
+                    <div class="archive-filters mb-5 pb-5 d-flex justify-content-center gap-3 reveal">
+                        <a href="<?php echo esc_url( get_post_type_archive_link( 'service' ) ); ?>" class="filter-link glass p-2 px-4 small fw-bold active"><?php echo esc_html__( 'All Systems', 'closeclient' ); ?></a>
+                        <?php foreach ( $terms as $term ) : ?>
+                            <a href="<?php echo esc_url( get_term_link( $term ) ); ?>" class="filter-link glass p-2 px-4 small fw-bold"><?php echo esc_html( $term->name ); ?></a>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+
 			<div class="archive-service-grid">
 				<?php
                     $i = 0;
