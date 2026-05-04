@@ -28,14 +28,14 @@ $tag      = get_theme_mod( 'closeclient_pricing_tag', 'INVESTMENT' );
                     $price = get_post_meta( get_the_ID(), '_plan_price', true );
                     $featured = get_post_meta( get_the_ID(), '_plan_featured', true );
                     ?>
-                    <div class="pricing-item glass reveal p-4 p-md-5 d-flex flex-column h-100 <?php echo $featured ? 'featured-plan' : ''; ?>">
+                    <div class="pricing-item cc-card glass reveal p-5 d-flex flex-column h-100 <?php echo $featured ? 'featured-plan' : ''; ?>">
                         <?php if ( $featured ) : ?>
                             <div class="featured-badge"><?php echo esc_html( get_theme_mod( 'closeclient_label_popular', 'MOST POPULAR' ) ); ?></div>
                         <?php endif; ?>
 
                         <div class="pricing-header mb-5">
-                            <h3 class="h4 mb-4 text-white"><?php the_title(); ?></h3>
-                            <div class="price h1 mb-0"><?php echo esc_html( $price ); ?><span class="small text-muted fw-normal">/mo</span></div>
+                            <h3 class="h3 mb-4 text-white"><?php the_title(); ?></h3>
+                            <div class="price h1 mb-0 gradient-text"><?php echo esc_html( $price ); ?><span class="small text-muted fw-normal">/mo</span></div>
                         </div>
 
                         <div class="pricing-features flex-grow-1 mb-5">

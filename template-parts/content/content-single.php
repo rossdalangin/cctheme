@@ -28,7 +28,7 @@ $grid_class = $show_sidebar ? 'single-post-grid' : '';
 	</div>
 
 	<div class="entry-content container reveal-stagger <?php echo esc_attr( $grid_class ); ?>">
-        <div class="post-body glass p-5">
+        <div class="post-body glass p-4 p-md-5">
 		<?php
 		the_content(
 			sprintf(
@@ -62,13 +62,14 @@ $grid_class = $show_sidebar ? 'single-post-grid' : '';
 
                 <?php get_template_part( 'template-parts/content/blog-sticky-cta' ); ?>
 
-                <div class="featured-insight-box glass p-4 mt-4">
-                    <span class="section-tag small"><?php echo esc_html( get_theme_mod( 'closeclient_sidebar_insight_tag', 'FEATURED INSIGHT' ) ); ?></span>
-                    <h4 class="h6 mt-2 text-white"><?php echo esc_html( get_theme_mod( 'closeclient_sidebar_insight_title', 'The Authority Flywheel' ) ); ?></h4>
+                <div class="featured-insight-box cc-card glass p-4 mt-4">
+                    <span class="section-tag small mb-3"><?php echo esc_html( get_theme_mod( 'closeclient_sidebar_insight_tag', 'FEATURED INSIGHT' ) ); ?></span>
+                    <h4 class="h5 mt-2 text-white"><?php echo esc_html( get_theme_mod( 'closeclient_sidebar_insight_title', 'The Authority Flywheel' ) ); ?></h4>
                     <p class="small text-muted mb-0"><?php echo esc_html( get_theme_mod( 'closeclient_sidebar_insight_text', 'Learn how to transform your expertise into an omnipresent brand that closes deals while you sleep.' ) ); ?></p>
                 </div>
 
-                <div class="sidebar-widgets glass p-4 mt-4">
+                <div class="sidebar-widgets cc-card glass p-4 mt-4">
+                    <h4 class="h6 mb-4 text-white uppercase tracking-wider">Recent Thinking</h4>
                     <?php get_sidebar(); ?>
                 </div>
             </aside>

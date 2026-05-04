@@ -40,15 +40,15 @@ get_header();
                     $span = ( $i % 3 == 1 ) ? 'bento-span-8' : 'bento-span-4';
                     $reveal_class = ( $i <= 3 ) ? '' : 'reveal';
                     ?>
-                    <article id="post-<?php the_ID(); ?>" <?php post_class( "portfolio-item cc-card $reveal_class $span" ); ?>>
+                    <article id="post-<?php the_ID(); ?>" <?php post_class( "portfolio-item cc-card $reveal_class $span d-flex flex-column h-100 p-0" ); ?>>
                         <?php if ( has_post_thumbnail() ) : ?>
-                            <div class="portfolio-image">
+                            <div class="portfolio-image" style="height: 300px; overflow: hidden;">
                                 <a href="<?php the_permalink(); ?>">
-                                    <?php the_post_thumbnail( 'large' ); ?>
+                                    <?php the_post_thumbnail( 'large', array( 'style' => 'width: 100%; height: 100%; object-fit: cover;' ) ); ?>
                                 </a>
                             </div>
                         <?php endif; ?>
-                        <div class="portfolio-content">
+                        <div class="portfolio-content p-5 flex-grow-1 d-flex flex-column">
                             <?php $metric = get_post_meta( get_the_ID(), '_portfolio_metric', true ); ?>
                             <?php if ( $metric ) : ?>
                                 <div class="portfolio-metric badge bg-accent text-white mb-3 p-2 px-3 small fw-bold reveal"><?php echo esc_html( $metric ); ?></div>

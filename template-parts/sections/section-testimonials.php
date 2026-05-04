@@ -16,7 +16,7 @@ $tag      = get_theme_mod( 'closeclient_testimonials_tag', 'SOCIAL PROOF' );
             <h2 class="section-headline gradient-text"><?php echo esc_html( $headline ); ?></h2>
         </div>
 
-        <div class="cc-grid-3">
+        <div class="bento-grid">
             <?php
             $testimonials_query = new WP_Query( array(
                 'post_type'      => 'testimonial',
@@ -24,16 +24,19 @@ $tag      = get_theme_mod( 'closeclient_testimonials_tag', 'SOCIAL PROOF' );
             ) );
 
             if ( $testimonials_query->have_posts() ) :
+                $i = 0;
                 while ( $testimonials_query->have_posts() ) : $testimonials_query->the_post();
+                    $i++;
                     $rating = get_post_meta( get_the_ID(), '_testimonial_rating', true );
                     $company = get_post_meta( get_the_ID(), '_testimonial_company', true );
                     $result  = get_post_meta( get_the_ID(), '_testimonial_result', true );
+                    $span = ( $i == 1 ) ? 'bento-span-7' : ( ( $i == 2 ) ? 'bento-span-5' : 'bento-span-12' );
                     ?>
-                    <div class="testimonial-item cc-card glass reveal h-100 d-flex flex-column p-4 p-md-5">
+                    <div class="testimonial-item cc-card glass reveal h-100 d-flex flex-column p-5 <?php echo esc_attr($span); ?>">
                         <?php if ( $result ) : ?>
-                            <div class="testimonial-result badge bg-accent text-white mb-4 p-2 px-3 small fw-bold" style="font-size: 0.65rem;"><?php echo esc_html( $result ); ?></div>
+                            <div class="testimonial-result badge bg-accent text-white mb-5 p-2 px-3 small fw-bold" style="font-size: 0.65rem;"><?php echo esc_html( $result ); ?></div>
                         <?php endif; ?>
-                        <div class="testimonial-rating mb-4 d-flex gap-1">
+                        <div class="testimonial-rating mb-5 d-flex gap-1">
                             <?php
                             $stars = intval($rating) ?: 5;
                             for ( $i = 1; $i <= 5; $i++ ) {
