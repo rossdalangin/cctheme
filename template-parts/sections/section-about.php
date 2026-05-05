@@ -14,16 +14,16 @@ $img = get_theme_mod( 'closeclient_about_image' );
 
 <section id="about" class="section section-lg section-about">
     <div class="container">
-        <div class="cc-grid-2">
-            <div class="about-image reveal">
+        <div class="bento-grid">
+            <div class="about-image bento-span-5 reveal">
                 <?php if ( $img ) : ?>
                     <img src="<?php echo esc_url( $img ); ?>" alt="About Me" class="aspect-square">
                 <?php else : ?>
-                    <div class="about-placeholder"></div>
+                    <div class="about-placeholder h-100 min-h-400"></div>
                 <?php endif; ?>
             </div>
 
-            <div class="about-content reveal py-lg">
+            <div class="about-content bento-span-7 glass p-5 p-md-5 reveal">
                 <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_about_tag_home', 'OUR PHILOSOPHY' ) ); ?></span>
                 <h2 class="section-headline gradient-text mb-5"><?php echo esc_html( $headline ); ?></h2>
                 <div class="about-text mb-5">

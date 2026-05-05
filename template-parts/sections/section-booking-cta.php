@@ -23,7 +23,7 @@
 
         <p class="booking-note mb-5"><?php echo esc_html( get_theme_mod( 'closeclient_booking_note', 'Current Strategy Queue: 14 Days' ) ); ?></p>
 
-        <div class="booking-trust-badges d-flex justify-content-center gap-5 flex-wrap reveal opacity-50 mt-5 pt-5 border-top border-secondary">
+        <div class="booking-trust-badges d-flex justify-content-center gap-5 flex-wrap reveal opacity-80 mt-5 pt-5 border-top border-secondary">
             <div class="badge-item d-flex align-items-center gap-2">
                 <span class="text-accent"><?php echo closeclient_get_svg('check'); ?></span>
                 <span class="small fw-bold uppercase letter-spacing-1">100% SECURE & PRIVATE</span>

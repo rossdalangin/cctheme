@@ -16,7 +16,7 @@ $tag      = get_theme_mod( 'closeclient_process_tag', 'OUR PROCESS' );
             <h2 class="section-headline gradient-text"><?php echo esc_html( $headline ); ?></h2>
         </div>
 
-        <div class="process-list">
+        <div class="process-list pt-lg">
             <?php
             $process_query = new WP_Query( array(
                 'post_type'      => 'process',

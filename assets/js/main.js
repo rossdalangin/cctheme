@@ -139,12 +139,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Premium Magnetic Effect with Hardware Acceleration ---
-    const magneticButtons = document.querySelectorAll('.cc-button:not(.cc-button-secondary), .social-icon');
+    const magneticButtons = document.querySelectorAll('.cc-button, .social-icon, .cc-card');
     magneticButtons.forEach(btn => {
         btn.addEventListener('mousemove', (e) => {
             const position = btn.getBoundingClientRect();
-            const x = (e.clientX - position.left - position.width / 2) * 0.25;
-            const y = (e.clientY - position.top - position.height / 2) * 0.25;
+            const strength = btn.classList.contains('cc-card') ? 0.05 : 0.25;
+            const x = (e.clientX - position.left - position.width / 2) * strength;
+            const y = (e.clientY - position.top - position.height / 2) * strength;
 
             btn.style.transform = `translate3d(${x}px, ${y}px, 0)`;
             btn.style.transition = 'none';
@@ -152,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         btn.addEventListener('mouseleave', () => {
-            btn.style.transition = 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+            btn.style.transition = 'transform 1s cubic-bezier(0.19, 1, 0.22, 1)';
             btn.style.transform = 'translate3d(0, 0, 0)';
             btn.style.zIndex = '';
         });
