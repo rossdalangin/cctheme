@@ -5,7 +5,7 @@
  * @package CloseClient
  */
 
-$headline = get_theme_mod( 'closeclient_services_headline', 'The Architecture of Dominance' );
+$headline = get_theme_mod( 'closeclient_services_headline', 'High-Fidelity Engineering Services' );
 $tag      = get_theme_mod( 'closeclient_services_tag', 'SERVICES' );
 ?>
 

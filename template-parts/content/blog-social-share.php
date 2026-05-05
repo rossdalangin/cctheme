@@ -28,20 +28,3 @@ $post_title = urlencode( get_the_title() );
     </a>
 </div>
 
-<style>
-.social-share-icon {
-    width: 40px;
-    height: 40px;
-    background: var(--c-secondary);
-    border: 1px solid var(--c-border);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.3s;
-}
-.social-share-icon:hover {
-    background: var(--c-accent);
-    transform: translateY(-3px);
-}
-</style>

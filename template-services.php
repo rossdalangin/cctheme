@@ -7,8 +7,8 @@
 
 get_header();
 
-$headline    = get_theme_mod( 'closeclient_services_hero_headline_tpl', 'Strategic Systems for the 1% Expert.' );
-$subheadline = get_theme_mod( 'closeclient_services_subheadline_tpl', 'Premium solutions tailored for your stage of growth.' );
+$headline    = get_theme_mod( 'closeclient_services_hero_headline_tpl', 'Engineered for Performance. Designed for Conversion.' );
+$subheadline = get_theme_mod( 'closeclient_services_subheadline_tpl', 'Bespoke digital solutions for brands that demand excellence and results.' );
 ?>
 
 <main id="primary" class="site-main">

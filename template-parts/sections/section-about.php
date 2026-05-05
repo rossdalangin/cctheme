@@ -5,10 +5,10 @@
  * @package CloseClient
  */
 
-$headline = get_theme_mod( 'closeclient_about_headline_home', 'Architecting the Future of High-Ticket Authority.' );
-$p1 = get_theme_mod( 'closeclient_about_text_p1', "Most coaches are trapped in a cycle of manual outreach and inconsistent lead flow. We build the systems that break that cycle forever." );
-$p2 = get_theme_mod( 'closeclient_about_text_p2', "By engineering your authority architecture, we transform you from a 'service provider' into the pre-eminent leader in your niche." );
-$btn = get_theme_mod( 'closeclient_about_button_text', 'Learn More About My Story' );
+$headline = get_theme_mod( 'closeclient_about_headline_home', 'We Build High-Performance Digital Infrastructure for the 1%.' );
+$p1 = get_theme_mod( 'closeclient_about_text_p1', "Most digital agencies focus on \"pretty\" designs. We focus on engineering high-fidelity digital machines that act as your top-performing sales associates." );
+$p2 = get_theme_mod( 'closeclient_about_text_p2', "By combining technical excellence with conversion psychology, we build the infrastructure that allows elite brands to scale without friction." );
+$btn = get_theme_mod( 'closeclient_about_button_text', 'Explore Our Methodology' );
 $img = get_theme_mod( 'closeclient_about_image' );
 ?>
 
@@ -24,7 +24,7 @@ $img = get_theme_mod( 'closeclient_about_image' );
             </div>
 
             <div class="about-content reveal py-lg">
-                <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_about_tag_home', 'THE VISION' ) ); ?></span>
+                <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_about_tag_home', 'OUR PHILOSOPHY' ) ); ?></span>
                 <h2 class="section-headline gradient-text mb-5"><?php echo esc_html( $headline ); ?></h2>
                 <div class="about-text mb-5">
                     <p class="lead text-muted mb-4"><?php echo esc_html( $p1 ); ?></p>

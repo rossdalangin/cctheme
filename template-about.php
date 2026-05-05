@@ -7,8 +7,8 @@
 
 get_header();
 
-$headline = get_theme_mod( 'closeclient_about_headline_tpl', 'The Origin Story' );
-$text     = get_theme_mod( 'closeclient_about_text_tpl', 'Engineering the future of high-ticket authority.' );
+$headline = get_theme_mod( 'closeclient_about_headline_tpl', 'Digital Architects for Elite Brands' );
+$text     = get_theme_mod( 'closeclient_about_text_tpl', 'Engineering digital experiences that command attention and drive exponential growth.' );
 ?>
 
 <main id="primary" class="site-main about-page">

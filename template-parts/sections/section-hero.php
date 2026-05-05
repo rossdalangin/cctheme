@@ -15,23 +15,23 @@
     </div>
     <div class="container hero-content-wrapper text-center">
         <h1 class="hero-headline">
-            <span class="gradient-text <?php echo get_theme_mod( 'closeclient_hero_typewriter', false ) ? 'typewriter-text' : ''; ?>" data-text="<?php echo esc_attr( get_theme_mod( 'closeclient_hero_headline', 'Stop Losing High-Value Clients Before You Even Speak to Them' ) ); ?>">
+            <span class="gradient-text <?php echo get_theme_mod( 'closeclient_hero_typewriter', false ) ? 'typewriter-text' : ''; ?>" data-text="<?php echo esc_attr( get_theme_mod( 'closeclient_hero_headline', 'We Engineer the Digital Infrastructure for World-Class Experts.' ) ); ?>">
                 <?php
                 if ( ! get_theme_mod( 'closeclient_hero_typewriter', false ) ) {
-                    echo esc_html( get_theme_mod( 'closeclient_hero_headline', 'Stop Losing High-Value Clients Before You Even Speak to Them' ) );
+                    echo esc_html( get_theme_mod( 'closeclient_hero_headline', 'We Engineer the Digital Infrastructure for World-Class Experts.' ) );
                 }
                 ?>
             </span>
         </h1>
 
         <div class="container-narrow">
-            <p class="hero-subheadline"><?php echo esc_html( get_theme_mod( 'closeclient_hero_subheadline', 'Your website should act as your top-performing associate: pre-qualifying, positioning, and closing premium clients — automatically.' ) ); ?></p>
+            <p class="hero-subheadline"><?php echo esc_html( get_theme_mod( 'closeclient_hero_subheadline', 'Transform your digital presence into a high-fidelity conversion engine that positions you as the only logical choice in your market.' ) ); ?></p>
         </div>
 
         <div class="hero-cta">
             <a href="<?php echo esc_url( get_theme_mod( 'closeclient_hero_cta_link', '#audit' ) ); ?>" class="cc-button"><?php echo esc_html( get_theme_mod( 'closeclient_hero_cta', 'Request Your Authority Audit →' ) ); ?></a>
             <p class="hero-social-proof mt-4 small text-muted reveal">
-                <span class="me-2">⚡</span> <?php echo esc_html( get_theme_mod( 'closeclient_hero_proof_text', 'Powering 500+ High-Ticket Authorities Worldwide.' ) ); ?>
+                <span class="me-2">⚡</span> <?php echo esc_html( get_theme_mod( 'closeclient_hero_proof_text', 'Trusted by 500+ Seven-Figure Agencies and Elite Consultants.' ) ); ?>
             </p>
         </div>
 

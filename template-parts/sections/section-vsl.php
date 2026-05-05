@@ -10,7 +10,7 @@
     <div class="section-divider-top"></div>
     <div class="container container-narrow text-center">
         <p class="section-tag reveal"><?php echo esc_html( get_theme_mod( 'closeclient_vsl_tag', 'EXCLUSIVE STRATEGY TRAINING' ) ); ?></p>
-        <h2 class="section-headline gradient-text reveal"><?php echo esc_html( get_theme_mod( 'closeclient_vsl_headline', 'The Big Domino: Why Your Expert Business is Stalled (And The Precise Mechanism to Fix It)' ) ); ?></h2>
+        <h2 class="section-headline gradient-text reveal"><?php echo esc_html( get_theme_mod( 'closeclient_vsl_headline', 'The Precise Mechanism: Why Most Digital Brands Stagnate (And How to Force Growth)' ) ); ?></h2>
         <div class="vsl-video-container reveal glass p-3 p-md-4 mb-5">
             <?php
             $video_url = get_theme_mod( 'closeclient_vsl_video_url' );

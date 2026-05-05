@@ -169,7 +169,8 @@ if ( ! function_exists( 'closeclient_posted_on' ) ) :
 
         // Add Estimated Reading Time
         if ( is_singular( 'post' ) || is_home() || is_archive() || is_search() ) {
-            $content = get_post_field( 'post_content', get_the_ID() );
+            $post_id = get_the_ID();
+            $content = get_post_field( 'post_content', $post_id );
             $word_count = str_word_count( strip_tags( $content ) );
             $reading_time = ceil( $word_count / 200 ); // Average 200 wpm
             echo '<span class="reading-time ms-3 text-muted small"><span class="me-1">⏱</span>' . esc_html( $reading_time ) . ' min read</span>';
