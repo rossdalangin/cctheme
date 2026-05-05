@@ -37,7 +37,7 @@ get_header();
                 while ( have_posts() ) :
                     the_post();
                     $i++;
-                    $span = ( $i % 3 == 1 ) ? 'bento-span-8' : 'bento-span-4';
+                    $span = ( $i % 5 == 1 || $i % 5 == 0 ) ? 'bento-span-8' : 'bento-span-4';
                     $reveal_class = ( $i <= 3 ) ? '' : 'reveal';
                     ?>
                     <article id="post-<?php the_ID(); ?>" <?php post_class( "portfolio-item cc-card $reveal_class $span d-flex flex-column h-100 p-0" ); ?>>

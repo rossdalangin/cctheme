@@ -26,7 +26,7 @@ get_header();
                 $show_sidebar = get_theme_mod( 'closeclient_blog_sidebar', true );
                 $layout_class = $show_sidebar ? 'blog-layout-wrapper' : '';
                 ?>
-                <div class="featured-post-wrapper mb-5">
+                <div class="featured-post-wrapper mb-5 pb-5">
                     <?php
                     // Display the latest post as featured
                     $featured_query = new WP_Query( array( 'posts_per_page' => 1 ) );

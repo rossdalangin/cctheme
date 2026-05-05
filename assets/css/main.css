@@ -97,17 +97,17 @@ body::after {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: -0.06em;
     color: var(--c-white);
-    line-height: 1.1;
-    margin-bottom: var(--s-sm);
+    line-height: 1.05;
+    margin-bottom: var(--s-md);
 }
 
-h1 { font-size: clamp(3.5rem, 12vw, 6.5rem); letter-spacing: -0.06em; line-height: 0.85; }
-h2 { font-size: clamp(2.5rem, 8vw, 4.5rem); letter-spacing: -0.05em; line-height: 0.95; }
-h3 { font-size: clamp(1.75rem, 5vw, 3rem); letter-spacing: -0.04em; line-height: 1.05; }
-h4 { font-size: clamp(1.25rem, 3vw, 1.75rem); letter-spacing: -0.03em; line-height: 1.1; }
+h1 { font-size: clamp(4rem, 15vw, 8rem); letter-spacing: -0.07em; line-height: 0.8; }
+h2 { font-size: clamp(3rem, 10vw, 5.5rem); letter-spacing: -0.06em; line-height: 0.9; }
+h3 { font-size: clamp(2rem, 6vw, 3.5rem); letter-spacing: -0.05em; line-height: 1.0; }
+h4 { font-size: clamp(1.5rem, 4vw, 2.25rem); letter-spacing: -0.04em; line-height: 1.1; }
 
 .container { max-width: var(--container-width); margin: 0 auto; padding: 0 40px; }
 .container-narrow { max-width: var(--content-width); margin: 0 auto; }
@@ -279,8 +279,8 @@ input:focus, textarea:focus, select:focus {
     z-index: 5;
     pointer-events: none;
 }
-.section-lg { padding: var(--s-2xl) 0; }
-.section-hero { padding-top: var(--s-xs) !important; margin-top: -20px; }
+.section-lg { padding: var(--s-3xl) 0; }
+.section-hero { padding-top: var(--s-md) !important; margin-top: -20px; }
 .section-xl { padding: var(--s-3xl) 0; }
 .section-sm { padding: var(--s-lg) 0; }
 .section-xs { padding: var(--s-md) 0; }
@@ -288,12 +288,13 @@ input:focus, textarea:focus, select:focus {
 .section-tag {
     font-size: 0.75rem;
     font-weight: 900;
-    letter-spacing: 0.4em;
+    letter-spacing: 0.5em;
     color: var(--c-accent);
     text-transform: uppercase;
-    margin-bottom: var(--s-sm);
+    margin-bottom: var(--s-md);
     display: inline-block;
     position: relative;
+    padding-left: 10px;
 }
 
 .section-tag::before {
@@ -674,10 +675,11 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 
 /* Stats Section */
 .stat-value {
-    font-size: 4.5rem;
+    font-size: clamp(4rem, 10vw, 7rem);
     font-weight: 900;
-    line-height: 1;
-    letter-spacing: -0.05em;
+    line-height: 0.9;
+    letter-spacing: -0.07em;
+    margin-bottom: var(--s-xs);
 }
 
 /* Booking CTA */
@@ -820,10 +822,11 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 
 /* Hero Section Refinements */
 .hero-subheadline {
-    font-size: 1.5rem;
+    font-size: clamp(1.25rem, 3vw, 1.75rem);
     color: var(--c-text-muted);
-    margin-bottom: var(--s-md);
-    line-height: 1.5;
+    margin-bottom: var(--s-lg);
+    line-height: 1.4;
+    font-weight: 500;
 }
 .hero-image-box {
     margin-top: var(--s-lg);
@@ -1583,10 +1586,23 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 }
 .cc-modal-content {
     position: relative;
-    max-width: 600px;
+    max-width: 700px;
     width: 90%;
     z-index: 10000;
     animation: modalIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: clamp(40px, 8vw, 80px) !important;
+}
+
+.modal-form-wrapper {
+    margin-top: 40px;
+}
+
+.modal-form-wrapper form > div {
+    margin-bottom: 25px !important;
+}
+
+.modal-form-wrapper .cc-button {
+    margin-top: 20px;
 }
 .cc-modal-close {
     position: absolute;

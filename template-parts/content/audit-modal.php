@@ -8,7 +8,7 @@
 
 <div id="audit-modal" class="cc-modal">
     <div class="cc-modal-overlay"></div>
-    <div class="cc-modal-content glass p-5 border-accent shadow-premium">
+    <div class="cc-modal-content glass border-accent shadow-premium">
         <button class="cc-modal-close">×</button>
         <div class="text-center mb-5">
             <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_audit_modal_tag', 'STRATEGY FIRST' ) ); ?></span>

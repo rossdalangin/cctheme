@@ -44,7 +44,7 @@ get_header();
 				while ( have_posts() ) :
 					the_post();
                         $i++;
-                        $span = ( $i % 3 == 1 ) ? 'bento-span-8' : 'bento-span-4';
+                        $span = ( $i % 5 == 1 || $i % 5 == 0 ) ? 'bento-span-8' : 'bento-span-4';
                         $icons = array('⚡', '💎', '🚀', '🎯', '🔥', '🛡️');
                         $icon = isset($icons[$i-1]) ? $icons[$i-1] : '⚡';
 					?>
