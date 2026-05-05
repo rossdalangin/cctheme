@@ -5,7 +5,7 @@
  * @package CloseClient
  */
 
-$headline = get_theme_mod( 'closeclient_team_headline', 'The Authority Architects' );
+$headline = get_theme_mod( 'closeclient_team_headline', 'The Digital Architects' );
 $tag      = get_theme_mod( 'closeclient_team_tag', 'MEET THE TEAM' );
 ?>
 

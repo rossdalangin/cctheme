@@ -12,9 +12,9 @@ get_header();
     <section class="section section-lg">
         <div class="container lead-magnet-grid reveal">
             <div class="lead-magnet-content py-lg">
-                <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_leadmagnet_tag_tpl', 'FREE TRAINING' ) ); ?></span>
-                <h1 class="hero-headline gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_leadmagnet_headline_tpl', 'Get the Authority Blueprint' ) ); ?></h1>
-                <p class="lead text-muted mb-5"><?php echo esc_html( get_theme_mod( 'closeclient_leadmagnet_text_tpl', 'Download our proven framework for attracting high-ticket clients on autopilot.' ) ); ?></p>
+                <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_leadmagnet_tag_tpl', 'FREE STRATEGY ASSET' ) ); ?></span>
+                <h1 class="hero-headline gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_leadmagnet_headline_tpl', 'The $100M Authority Blueprint' ) ); ?></h1>
+                <p class="lead text-muted mb-5"><?php echo esc_html( get_theme_mod( 'closeclient_leadmagnet_text_tpl', 'Download our proven framework for engineering high-ticket authority on autopilot.' ) ); ?></p>
 
                 <div class="lead-magnet-form glass p-5">
                     <?php
@@ -42,7 +42,7 @@ get_header();
                     <img src="<?php echo esc_url( get_theme_mod( 'closeclient_lm_image' ) ); ?>" alt="Lead Magnet" class="glass">
                 <?php else : ?>
                     <div class="glass">
-                        <span class="text-muted"><?php echo esc_html( get_theme_mod( 'closeclient_leadmagnet_mockup_text', 'Lead Magnet Mockup' ) ); ?></span>
+                        <span class="text-muted"><?php echo esc_html( get_theme_mod( 'closeclient_leadmagnet_mockup_text', 'Blueprint Mockup' ) ); ?></span>
                     </div>
                 <?php endif; ?>
 

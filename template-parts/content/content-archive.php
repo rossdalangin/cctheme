@@ -27,7 +27,7 @@
         </div>
 
         <div class="mt-auto">
-            <a href="<?php echo esc_url( get_permalink() ); ?>" class="cc-button cc-button-secondary read-more-btn"><?php echo esc_html( get_theme_mod( 'closeclient_label_read_more', 'READ ARTICLE →' ) ); ?></a>
+            <a href="<?php echo esc_url( get_permalink() ); ?>" class="cc-button cc-button-secondary read-more-btn"><?php echo esc_html( get_theme_mod( 'closeclient_label_read_more', 'READ FULL ARTICLE →' ) ); ?></a>
         </div>
     </div>
 </article>

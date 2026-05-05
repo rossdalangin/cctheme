@@ -5,7 +5,7 @@
  * @package CloseClient
  */
 
-$headline = get_theme_mod( 'closeclient_pricing_headline', 'Investment Opportunities' );
+$headline = get_theme_mod( 'closeclient_pricing_headline', 'Investment Tiers' );
 $tag      = get_theme_mod( 'closeclient_pricing_tag', 'INVESTMENT' );
 ?>
 
@@ -39,13 +39,13 @@ $tag      = get_theme_mod( 'closeclient_pricing_tag', 'INVESTMENT' );
                         </div>
 
                         <div class="pricing-features flex-grow-1 mb-5">
-                            <div class="small text-muted mb-4 text-uppercase tracking-widest fw-bold"><?php echo esc_html( get_theme_mod( 'closeclient_label_included', 'What\'s Included' ) ); ?></div>
+                            <div class="small text-muted mb-4 text-uppercase tracking-widest fw-bold"><?php echo esc_html( get_theme_mod( 'closeclient_label_included', 'System Components' ) ); ?></div>
                             <?php the_content(); ?>
                         </div>
 
                         <div class="pricing-footer mt-auto pt-4">
                             <a href="<?php echo esc_url( get_theme_mod( 'closeclient_booking_link', '#audit' ) ); ?>" class="cc-button w-100 <?php echo ! $featured ? 'cc-button-secondary' : ''; ?>">
-                                <?php echo esc_html( get_theme_mod( 'closeclient_label_secure', 'Secure Your Spot →' ) ); ?>
+                                <?php echo esc_html( get_theme_mod( 'closeclient_label_secure', 'Secure Your Audit →' ) ); ?>
                             </a>
                         </div>
                     </div>
@@ -70,7 +70,7 @@ $tag      = get_theme_mod( 'closeclient_pricing_tag', 'INVESTMENT' );
                         </div>
 
                         <div class="pricing-features flex-grow-1 mb-5">
-                            <div class="small text-muted mb-4 text-uppercase tracking-widest fw-bold"><?php echo esc_html( get_theme_mod( 'closeclient_label_included', 'What\'s Included' ) ); ?></div>
+                            <div class="small text-muted mb-4 text-uppercase tracking-widest fw-bold"><?php echo esc_html( get_theme_mod( 'closeclient_label_included', 'System Components' ) ); ?></div>
                             <ul class="list-unstyled mb-0">
                                 <?php foreach ( $plan['features'] as $feature ) : ?>
                                     <li class="mb-3 d-flex align-items-center gap-2 small text-muted">
@@ -82,7 +82,7 @@ $tag      = get_theme_mod( 'closeclient_pricing_tag', 'INVESTMENT' );
 
                         <div class="pricing-footer mt-auto pt-4">
                             <a href="<?php echo esc_url( get_theme_mod( 'closeclient_booking_link', '#audit' ) ); ?>" class="cc-button w-100 <?php echo ! $plan['featured'] ? 'cc-button-secondary' : ''; ?>">
-                                <?php echo esc_html( get_theme_mod( 'closeclient_label_secure', 'Secure Your Spot →' ) ); ?>
+                                <?php echo esc_html( get_theme_mod( 'closeclient_label_secure', 'Secure Your Audit →' ) ); ?>
                             </a>
                         </div>
                     </div>

@@ -17,7 +17,7 @@ get_header();
 			<header class="page-header section section-lg text-center reveal bg-dark overflow-hidden">
                 <div class="mesh-gradient"></div>
                 <div class="container">
-                    <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_label_archive', 'ARCHIVE' ) ); ?></span>
+                    <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_label_archive', 'INSIGHTS ARCHIVE' ) ); ?></span>
 				<?php
 				the_archive_title( '<h1 class="hero-headline gradient-text">', '</h1>' );
 				the_archive_description( '<div class="archive-description text-muted py-md">', '</div>' );

@@ -34,7 +34,7 @@
                         ?>
                     </div>
                     <p class="footer-about text-muted small mb-4">
-                        <?php echo esc_html( get_theme_mod( 'closeclient_footer_about', 'Engineering the future of digital authority for elite coaches and consultants.' ) ); ?>
+                        <?php echo esc_html( get_theme_mod( 'closeclient_footer_about', 'Engineering the future of digital authority for the world\'s most ambitious brands.' ) ); ?>
                     </p>
                     <div class="footer-social-links d-flex gap-3">
                         <?php
@@ -95,11 +95,11 @@
 
             <div class="footer-bottom mt-5 pt-5 border-top border-secondary">
                 <div class="footer-disclaimer mb-4">
-                    <p class="small text-muted mb-0"><?php echo esc_html( get_theme_mod( 'closeclient_footer_disclaimer', 'Consulting services are subject to terms and conditions. Results may vary.' ) ); ?></p>
+                    <p class="small text-muted mb-0"><?php echo esc_html( get_theme_mod( 'closeclient_footer_disclaimer', 'Consulting and engineering services are subject to terms. Results may vary by market.' ) ); ?></p>
                 </div>
 
                 <div class="site-info d-flex justify-content-between align-items-center flex-wrap gap-3">
-                    <p class="copyright small text-muted mb-0"><?php echo esc_html( get_theme_mod( 'closeclient_footer_copyright', '© ' . date('Y') . ' CloseClient. All rights reserved.' ) ); ?></p>
+                    <p class="copyright small text-muted mb-0"><?php echo esc_html( get_theme_mod( 'closeclient_footer_copyright', '© CloseClient. All rights reserved.' ) ); ?></p>
                     <div class="footer-meta-links small text-muted">
                          <a href="<?php echo esc_url( home_url( '/privacy-policy' ) ); ?>" class="text-muted text-decoration-none me-3"><?php echo esc_html( get_theme_mod( 'closeclient_footer_privacy_label', 'Privacy Policy' ) ); ?></a>
                          <a href="<?php echo esc_url( home_url( '/terms-of-service' ) ); ?>" class="text-muted text-decoration-none"><?php echo esc_html( get_theme_mod( 'closeclient_footer_terms_label', 'Terms of Service' ) ); ?></a>

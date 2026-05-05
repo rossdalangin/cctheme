@@ -13,8 +13,8 @@ get_header();
         <div class="container">
             <div class="section-header text-center reveal mb-5">
                 <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_contact_tag_tpl', 'GET IN TOUCH' ) ); ?></span>
-                <h1 class="hero-headline gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_contact_headline_tpl', "Let's talk about your growth." ) ); ?></h1>
-                <p class="lead text-muted mt-4"><?php echo esc_html( get_theme_mod( 'closeclient_contact_subheadline_tpl', 'Ready to scale your coaching business? Fill out the form or book a call directly.' ) ); ?></p>
+                <h1 class="hero-headline gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_contact_headline_tpl', 'Let\'s Talk About Your Growth.' ) ); ?></h1>
+                <p class="lead text-muted mt-4"><?php echo esc_html( get_theme_mod( 'closeclient_contact_subheadline_tpl', 'Ready to engineer your scale? Fill out the form or apply for your Authority Audit directly.' ) ); ?></p>
             </div>
 
             <div class="contact-grid reveal py-lg">

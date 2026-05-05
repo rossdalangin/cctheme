@@ -20,7 +20,7 @@ get_header();
             <header class="entry-header text-center section section-lg bg-dark overflow-hidden">
                 <div class="mesh-gradient"></div>
                 <div class="container">
-                    <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_label_portfolio_single', 'CASE STUDY' ) ); ?></span>
+                    <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_label_portfolio_single', 'SUCCESS STORY' ) ); ?></span>
                     <?php the_title( '<h1 class="entry-title hero-headline gradient-text reveal">', '</h1>' ); ?>
                     <div class="portfolio-meta text-muted mt-4 reveal py-md">
                         <?php echo get_the_excerpt(); ?>
@@ -47,7 +47,7 @@ get_header();
 
                     <?php if ( $solution ) : ?>
                         <div class="case-study-block glass p-5">
-                            <h2 class="h4 mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_label_solution', '02. The Authority Architecture' ) ); ?></h2>
+                            <h2 class="h4 mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_label_solution', '02. The Architecture' ) ); ?></h2>
                             <div class="text-muted"><?php echo wp_kses_post( $solution ); ?></div>
                         </div>
                     <?php endif; ?>

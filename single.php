@@ -20,8 +20,8 @@ get_header();
 
 			the_post_navigation(
 				array(
-						'prev_text' => '<span class="nav-subtitle">' . esc_html( get_theme_mod( 'closeclient_label_prev_post', 'Previous Article' ) ) . '</span> <span class="nav-title">%title</span>',
-						'next_text' => '<span class="nav-subtitle">' . esc_html( get_theme_mod( 'closeclient_label_next_post', 'Next Article' ) ) . '</span> <span class="nav-title">%title</span>',
+						'prev_text' => '<span class="nav-subtitle">' . esc_html( get_theme_mod( 'closeclient_label_prev_post', 'Previous Insight' ) ) . '</span> <span class="nav-title">%title</span>',
+						'next_text' => '<span class="nav-subtitle">' . esc_html( get_theme_mod( 'closeclient_label_next_post', 'Next Insight' ) ) . '</span> <span class="nav-title">%title</span>',
 				)
 			);
 

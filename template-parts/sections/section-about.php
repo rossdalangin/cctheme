@@ -6,8 +6,8 @@
  */
 
 $headline = get_theme_mod( 'closeclient_about_headline_home', 'We Build High-Performance Digital Infrastructure for the 1%.' );
-$p1 = get_theme_mod( 'closeclient_about_text_p1', "Most digital agencies focus on \"pretty\" designs. We focus on engineering high-fidelity digital machines that act as your top-performing sales associates." );
-$p2 = get_theme_mod( 'closeclient_about_text_p2', "By combining technical excellence with conversion psychology, we build the infrastructure that allows elite brands to scale without friction." );
+$p1 = get_theme_mod( 'closeclient_about_text_p1', 'Most digital agencies focus on "pretty" designs. We focus on engineering high-fidelity digital machines that act as your top-performing sales associates.' );
+$p2 = get_theme_mod( 'closeclient_about_text_p2', 'By combining technical excellence with conversion psychology, we build the infrastructure that allows elite brands to scale without friction.' );
 $btn = get_theme_mod( 'closeclient_about_button_text', 'Explore Our Methodology' );
 $img = get_theme_mod( 'closeclient_about_image' );
 ?>
@@ -32,7 +32,7 @@ $img = get_theme_mod( 'closeclient_about_image' );
                 </div>
 
                 <?php
-                $methodology = get_theme_mod( 'closeclient_about_methodology', 'Direct-Response System Architecture, Vortex Lead Intake & Pre-qualification, Bento-style Social Proof Engineering' );
+                $methodology = get_theme_mod( 'closeclient_about_methodology', 'Performance-First Engineering, Psych-Driven UI/UX Design, Conversion-Focused Architecture' );
                 if ( $methodology ) : ?>
                     <div class="about-pillars mb-5 d-flex flex-column gap-3">
                         <?php

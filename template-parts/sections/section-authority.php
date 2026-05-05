@@ -6,12 +6,14 @@
  */
 ?>
 
-<section class="section section-authority text-center py-xl">
-    <div class="container container-narrow">
-        <p class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_authority_tag', 'POWERING WORLD-CLASS AUTHORITIES' ) ); ?></p>
-        <p class="small text-muted mb-5"><?php echo esc_html( get_theme_mod( 'closeclient_authority_desc', 'Our methodologies have been analyzed and featured by the industry\'s most demanding curators of expertise.' ) ); ?></p>
+<section class="section section-authority text-center reveal">
+    <div class="container py-xl glass rounded-xl border-accent-soft">
+        <p class="section-tag small mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_authority_tag', 'POWERING WORLD-CLASS AUTHORITIES' ) ); ?></p>
+        <div class="container-narrow">
+            <p class="lead text-muted mb-5"><?php echo esc_html( get_theme_mod( 'closeclient_authority_desc', 'Our methodologies have been analyzed and featured by the industry\' ) ); ?></p>
+        </div>
 
-        <div class="logo-bar">
+        <div class="logo-bar d-flex justify-content-center align-items-center flex-wrap gap-5">
             <?php
             $has_custom = false;
             for ( $i = 1; $i <= 5; $i++ ) {

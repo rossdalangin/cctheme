@@ -5,7 +5,7 @@
  * @package CloseClient
  */
 
-$headline = get_theme_mod( 'closeclient_faq_headline', 'Frequently Asked Questions' );
+$headline = get_theme_mod( 'closeclient_faq_headline', 'Strategic Questions' );
 $tag      = get_theme_mod( 'closeclient_faq_tag', 'FAQ' );
 ?>
 

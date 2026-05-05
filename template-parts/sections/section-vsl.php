@@ -24,7 +24,7 @@
         </div>
 
         <?php
-        $takeaways = get_theme_mod( 'closeclient_vsl_takeaways', 'The hidden bottlenecks of $10k months, The precise architecture of omnipresence, Engineering a frictionless sales engine' );
+        $takeaways = get_theme_mod( 'closeclient_vsl_takeaways', 'The hidden technical bottlenecks, The precise architecture of scale, Engineering a frictionless lead engine' );
         if ( $takeaways ) : ?>
             <div class="vsl-takeaways reveal mt-5">
                 <h3 class="h6 mb-4 text-white-50 letter-spacing-lg"><?php echo esc_html__( 'CORE STRATEGIC TAKEAWAYS:', 'closeclient' ); ?></h3>

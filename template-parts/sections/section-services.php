@@ -5,7 +5,7 @@
  * @package CloseClient
  */
 
-$headline = get_theme_mod( 'closeclient_services_headline', 'High-Fidelity Engineering Services' );
+$headline = get_theme_mod( 'closeclient_services_headline', 'The Architecture of Dominance' );
 $tag      = get_theme_mod( 'closeclient_services_tag', 'SERVICES' );
 ?>
 
@@ -33,10 +33,13 @@ $tag      = get_theme_mod( 'closeclient_services_tag', 'SERVICES' );
                     $icon = isset($icons[$i-1]) ? $icons[$i-1] : '⚡';
                     ?>
                     <?php $reveal_class = ( $i <= 3 ) ? '' : 'reveal'; ?>
-                    <div class="service-item cc-card <?php echo esc_attr($reveal_class); ?> <?php echo esc_attr($span); ?>">
-                        <div class="service-icon"><?php echo $icon; ?></div>
-                        <h3 class="h4 mb-3"><?php the_title(); ?></h3>
-                        <div class="text-muted small"><?php the_excerpt(); ?></div>
+                    <div class="service-item cc-card <?php echo esc_attr($reveal_class); ?> <?php echo esc_attr($span); ?> d-flex flex-column">
+                        <div class="service-icon mb-4"><?php echo $icon; ?></div>
+                        <h3 class="h3 mb-3 text-white"><?php the_title(); ?></h3>
+                        <div class="text-muted small mb-5 lead"><?php the_excerpt(); ?></div>
+                        <div class="mt-auto">
+                            <a href="<?php the_permalink(); ?>" class="cc-button cc-button-secondary small" style="padding: 12px 24px; font-size: 0.65rem;">System Details →</a>
+                        </div>
                     </div>
                 <?php endwhile;
                 wp_reset_postdata();
@@ -60,10 +63,13 @@ $tag      = get_theme_mod( 'closeclient_services_tag', 'SERVICES' );
                     if ( empty($text) ) { $text = "Engineered solutions designed to crush the complexity ceiling and scale your impact."; }
                     ?>
                     <?php $reveal_class = ( $s['id'] <= 3 ) ? '' : 'reveal'; ?>
-                    <div class="service-item cc-card <?php echo esc_attr($reveal_class); ?> <?php echo esc_attr($s['span']); ?>">
-                        <div class="service-icon"><?php echo $s['icon']; ?></div>
-                        <h3 class="h4 mb-3"><?php echo esc_html( $title ); ?></h3>
-                        <p class="text-muted small"><?php echo esc_html( $text ); ?></p>
+                    <div class="service-item cc-card <?php echo esc_attr($reveal_class); ?> <?php echo esc_attr($s['span']); ?> d-flex flex-column">
+                        <div class="service-icon mb-4"><?php echo $s['icon']; ?></div>
+                        <h3 class="h3 mb-3 text-white"><?php echo esc_html( $title ); ?></h3>
+                        <p class="text-muted small mb-5 lead"><?php echo esc_html( $text ); ?></p>
+                        <div class="mt-auto">
+                            <a href="<?php echo esc_url( home_url( '/services' ) ); ?>" class="cc-button cc-button-secondary small" style="padding: 12px 24px; font-size: 0.65rem;">System Details →</a>
+                        </div>
                     </div>
                 <?php endforeach;
             endif; ?>

@@ -5,14 +5,14 @@
  * @package CloseClient
  */
 
-$headline = get_theme_mod( 'closeclient_products_headline', 'Essential Tools That Work as Hard as You Do' );
-$desc     = get_theme_mod( 'closeclient_products_desc', 'Themes and plugins trusted by elite coaches to streamline operations and elevate branding.' );
+$headline = get_theme_mod( 'closeclient_products_headline', 'Essential Engineering Tools' );
+$desc     = get_theme_mod( 'closeclient_products_desc', 'Technical assets and templates trusted by elite brands to streamline operations.' );
 ?>
 
 <section id="products" class="section section-lg section-products bg-dark">
     <div class="container">
         <div class="section-header text-center reveal">
-            <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_products_tag', 'ECOSYSTEM TOOLS' ) ); ?></span>
+            <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_products_tag', 'THE ECOSYSTEM' ) ); ?></span>
             <h2 class="section-headline gradient-text"><?php echo esc_html( $headline ); ?></h2>
             <p class="lead text-muted mt-4"><?php echo esc_html( $desc ); ?></p>
         </div>
@@ -49,7 +49,7 @@ $desc     = get_theme_mod( 'closeclient_products_desc', 'Themes and plugins trus
                                     <?php the_excerpt(); ?>
                                 </div>
                                 <a href="<?php echo esc_url( $link ); ?>" class="cc-button cc-button-secondary product-btn w-100">
-                                    <?php echo esc_html( get_theme_mod( 'closeclient_product_btn_text', 'Get This Tool →' ) ); ?>
+                                    <?php echo esc_html( get_theme_mod( 'closeclient_product_btn_text', 'Access Tool →' ) ); ?>
                                 </a>
                             </div>
                         </div>

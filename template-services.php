@@ -7,8 +7,8 @@
 
 get_header();
 
-$headline    = get_theme_mod( 'closeclient_services_hero_headline_tpl', 'Engineered for Performance. Designed for Conversion.' );
-$subheadline = get_theme_mod( 'closeclient_services_subheadline_tpl', 'Bespoke digital solutions for brands that demand excellence and results.' );
+$headline    = get_theme_mod( 'closeclient_services_hero_headline_tpl', 'Bespoke Systems for High-Ticket Experts.' );
+$subheadline = get_theme_mod( 'closeclient_services_subheadline_tpl', 'We don\'t just build websites. We architect the infrastructure of omnipresent authority.' );
 ?>
 
 <main id="primary" class="site-main">

@@ -35,11 +35,11 @@ $text     = get_theme_mod( 'closeclient_about_text_tpl', 'Engineering digital ex
         <div class="container reveal">
             <div class="section-header text-center mb-5">
                 <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_about_values_tag', 'THE CORE VALUES' ) ); ?></span>
-                <h2 class="h1"><?php echo esc_html( get_theme_mod( 'closeclient_about_values_title', 'Engineering Elite Authority' ) ); ?></h2>
+                <h2 class="h1"><?php echo esc_html( get_theme_mod( 'closeclient_about_values_title', 'Engineering Elite Excellence' ) ); ?></h2>
             </div>
             <div class="cc-grid-3 py-lg">
                 <?php
-                $values = get_theme_mod( 'closeclient_about_values', 'Precision: Data-driven systems, Authority: Strategic positioning, Profit: ROI focused engineering' );
+                $values = get_theme_mod( 'closeclient_about_values', 'Precision: Data-driven systems, Authority: Strategic positioning, Performance: ROI focused engineering' );
                 $items = explode( ',', $values );
                 foreach ( $items as $item ) :
                     $parts = explode( ':', $item );
@@ -65,11 +65,11 @@ $text     = get_theme_mod( 'closeclient_about_text_tpl', 'Engineering digital ex
             </div>
             <div class="cc-grid-2 py-lg">
                 <div class="expertise-content">
-                    <h3 class="h2 mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_about_method_title', 'The $100M Methodology' ) ); ?></h3>
-                    <p class="lead text-muted mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_about_method_text', 'We don\'t just build websites; we engineer authority. Our methodology is rooted in the psychological triggers of the high-ticket prospect.' ) ); ?></p>
+                    <h3 class="h2 mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_about_method_title', 'The High-Fidelity Methodology' ) ); ?></h3>
+                    <p class="lead text-muted mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_about_method_text', 'We don\'t just build websites; we engineer authority. Our methodology is rooted in the psychological triggers of high-intent buyers and the technical requirements of modern scale.' ) ); ?></p>
                     <ul class="list-unstyled">
                         <?php
-                        $methodology = get_theme_mod( 'closeclient_about_methodology', 'Direct-Response System Architecture, Vortex Lead Intake & Pre-qualification, Bento-style Social Proof Engineering' );
+                        $methodology = get_theme_mod( 'closeclient_about_methodology', 'Performance-First Engineering, Psych-Driven UI/UX Design, Conversion-Focused Architecture' );
                         $m_items = explode( ',', $methodology );
                         foreach ( $m_items as $m_item ) : ?>
                             <li class="mb-3 d-flex align-items-center"><span class="text-accent me-3">✓</span> <?php echo esc_html( trim( $m_item ) ); ?></li>
@@ -80,7 +80,7 @@ $text     = get_theme_mod( 'closeclient_about_text_tpl', 'Engineering digital ex
                     <div class="h1 gradient-text mb-2"><?php echo esc_html( get_theme_mod( 'closeclient_about_stat_1_val', '94%' ) ); ?></div>
                     <p class="small text-muted uppercase letter-spacing-1"><?php echo esc_html( get_theme_mod( 'closeclient_about_stat_1_label', 'Client Retention Rate' ) ); ?></p>
                     <div class="h1 gradient-text mb-2 mt-5"><?php echo esc_html( get_theme_mod( 'closeclient_about_stat_2_val', '$250M+' ) ); ?></div>
-                    <p class="small text-muted uppercase letter-spacing-1"><?php echo esc_html( get_theme_mod( 'closeclient_about_stat_2_label', 'Revenue Generated for Clients' ) ); ?></p>
+                    <p class="small text-muted uppercase letter-spacing-1"><?php echo esc_html( get_theme_mod( 'closeclient_about_stat_2_label', 'Revenue Engineered for Clients' ) ); ?></p>
                 </div>
             </div>
         </div>

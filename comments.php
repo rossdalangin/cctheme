@@ -20,7 +20,7 @@ if ( post_password_required() ) {
 			$closeclient_comment_count = get_comments_number();
 			if ( '1' === $closeclient_comment_count ) {
 				printf(
-					esc_html( get_theme_mod( 'closeclient_comments_singular_title', 'One Authority Insight on &ldquo;%1$s&rdquo;' ) ),
+					esc_html( get_theme_mod( 'closeclient_comments_singular_title', 'One Insight on &ldquo;%1$s&rdquo;' ) ),
 					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
 				);
 			} else {

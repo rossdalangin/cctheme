@@ -317,16 +317,16 @@ function closeclient_reset_defaults() {
 function closeclient_generate_cpt_data() {
     $cpts = array(
         'service' => array(
-            'Authority Architecture' => 'Transform your digital presence from a passive brochure into an active associate.',
-            'Revenue Engineering' => 'Strategic psychological triggers designed to accelerate deal velocity.',
-            'Omnipresent Branding' => 'Position your expertise as the only logical solution in your niche.'
+            'Authority Architecture' => 'We engineer the technical infrastructure required to position you as the pre-eminent leader in your niche. High-fidelity, performance-optimized, and built for conversion.',
+            'Revenue Engineering' => 'Strategic implementation of psychological triggers and frictionless checkout systems designed to accelerate your cash-collected metrics.',
+            'Vortex Funnels' => 'Dynamic lead-intake systems that pre-qualify and filter prospects before they ever reach your calendar.'
         ),
         'portfolio' => array(
-            'Global Scale Success' => 'Taking a consultancy from regional to international through high-fidelity positioning.',
-            'The $1M Pivot' => 'How we re-architected a coach’s funnel to hit seven figures in 12 months.'
+            'Global Consultancy Scale' => 'Re-architecting the digital presence of an international strategy firm to handle $500k/mo in new inquiry volume.',
+            'The $10M System Build' => 'How we engineered the core infrastructure for a leading education brand to hit eight figures in attribution.'
         ),
         'testimonial' => array(
-            'John Doe' => 'CloseClient didn\'t just build a website; they built a revenue engine that works while I sleep.'
+            'Elite Partner' => 'CloseClient didn\'t just build a website; they built a revenue engine. Our lead quality has tripled since deployment.'
         ),
         'faq' => array(
             'Who is this for?' => 'Our systems are engineered exclusively for established experts, coaches, and consultants doing $10k+ monthly.',
@@ -360,9 +360,24 @@ function closeclient_generate_cpt_data() {
                 ) );
 
                 // Meta fallbacks
-                if ($type === 'pricing') update_post_meta($pid, '_plan_price', '$2,997');
-                if ($type === 'testimonial') update_post_meta($pid, '_testimonial_rating', '5');
-                if ($type === 'product') update_post_meta($pid, '_product_price', '$97');
+                if ($type === 'pricing') {
+                    update_post_meta($pid, '_plan_price', '$5,997');
+                    update_post_meta($pid, '_plan_featured', '1');
+                }
+                if ($type === 'testimonial') {
+                    update_post_meta($pid, '_testimonial_rating', '5');
+                    update_post_meta($pid, '_testimonial_result', '3.4x ROI');
+                }
+                if ($type === 'portfolio') {
+                    update_post_meta($pid, '_portfolio_metric', '340% Growth');
+                    update_post_meta($pid, '_portfolio_challenge', 'Inconsistent lead flow and low-authority positioning.');
+                    update_post_meta($pid, '_portfolio_solution', 'Full authority architecture build and Vortex funnel implementation.');
+                    update_post_meta($pid, '_portfolio_outcome', '$1.2M in new attributable revenue.');
+                }
+                if ($type === 'service') {
+                    update_post_meta($pid, '_service_blueprint', 'Technical Audit, UI/UX Strategy, High-Fidelity Development, CRM Integration');
+                }
+                if ($type === 'product') update_post_meta($pid, '_product_price', '$197');
             }
         }
     }

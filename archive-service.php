@@ -20,7 +20,7 @@ get_header();
                     <div class="section-subheadline section-subheadline-centered lead text-muted mt-4">
                         <?php
                         $desc = get_the_archive_description();
-                        echo $desc ? $desc : esc_html( get_theme_mod( 'closeclient_label_service_archive_desc', 'Premium infrastructure components engineered to scale high-ticket expert businesses.' ) );
+                        echo $desc ? $desc : esc_html( get_theme_mod( 'closeclient_label_service_archive_desc', 'High-fidelity infrastructure components engineered to scale elite digital brands.' ) );
                         ?>
                     </div>
                 </div>

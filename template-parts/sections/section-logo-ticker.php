@@ -8,7 +8,7 @@
 
 <section class="section section-logo-ticker py-md">
     <div class="container mb-4 text-center">
-        <span class="section-tag small"><?php echo esc_html( get_theme_mod( 'closeclient_logo_ticker_tag', 'TRUSTED BY WORLD-CLASS EXPERTS' ) ); ?></span>
+        <span class="section-tag small"><?php echo esc_html( get_theme_mod( 'closeclient_logo_ticker_tag', 'TRUSTED BY WORLD-CLASS BRANDS' ) ); ?></span>
     </div>
     <div class="container-fluid ticker-container">
         <div class="ticker-wrapper">

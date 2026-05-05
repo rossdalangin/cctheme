@@ -27,7 +27,7 @@ get_header();
         <div class="container container-narrow reveal">
             <div class="section-header text-center mb-5 py-lg">
                 <h2 class="h2 gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_sales_value_stack_title', 'The Authority Ecosystem' ) ); ?></h2>
-                <p class="text-muted"><?php echo esc_html( get_theme_mod( 'closeclient_sales_value_stack_desc', 'Everything you need to command the market.' ) ); ?></p>
+                <p class="text-muted"><?php echo esc_html( get_theme_mod( 'closeclient_sales_value_stack_desc', 'Everything you need to command your market.' ) ); ?></p>
             </div>
 
             <div class="value-stack-list py-md">

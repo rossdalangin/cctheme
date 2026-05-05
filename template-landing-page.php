@@ -22,8 +22,8 @@
         <div class="mesh-gradient"></div>
         <div class="container-narrow">
             <?php
-            $headline = get_theme_mod( 'closeclient_landing_headline_tpl', 'Transform Your Expertise Into a High-Performance Machine.' );
-            $text     = get_theme_mod( 'closeclient_landing_text_tpl', 'Join the elite ranks of coaches who have automated their authority and scaled their impact.' );
+            $headline = get_theme_mod( 'closeclient_landing_headline_tpl', 'Transform Your Brand Into a High-Performance Machine.' );
+            $text     = get_theme_mod( 'closeclient_landing_text_tpl', 'Join the elite brands that have automated their authority and scaled their impact.' );
             ?>
             <h1 class="hero-headline gradient-text"><?php echo esc_html( $headline ); ?></h1>
             <p class="lead text-muted mb-5"><?php echo esc_html( $text ); ?></p>
