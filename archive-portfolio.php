@@ -51,7 +51,7 @@ get_header();
                         <div class="portfolio-content p-5 flex-grow-1 d-flex flex-column">
                             <?php $metric = get_post_meta( get_the_ID(), '_portfolio_metric', true ); ?>
                             <?php if ( $metric ) : ?>
-                                <div class="portfolio-metric badge bg-accent text-white mb-3 p-2 px-3 small fw-bold reveal"><?php echo esc_html( $metric ); ?></div>
+                                <div class="portfolio-metric badge bg-accent text-white mb-4 p-2 px-3 small fw-bold reveal-stagger"><?php echo esc_html__( 'RESULT:', 'closeclient' ); ?> <?php echo esc_html( $metric ); ?></div>
                             <?php endif; ?>
                             <h3 class="h4 mb-3"><a href="<?php the_permalink(); ?>" class="text-white text-decoration-none"><?php the_title(); ?></a></h3>
                             <div class="text-muted small mb-4"><?php echo wp_trim_words( get_the_excerpt(), 20 ); ?></div>

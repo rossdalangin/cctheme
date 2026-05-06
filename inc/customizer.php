@@ -323,7 +323,7 @@ function closeclient_customize_register( $wp_customize ) {
 
         $wp_customize->add_setting( $key, array(
             'default' => $val,
-            'sanitize_callback' => 'sanitize_text_field',
+            'sanitize_callback' => (strpos($key, 'headline') !== false || strpos($key, 'text') !== false || strpos($key, 'desc') !== false || strpos($key, 'subheadline') !== false) ? 'wp_kses_post' : 'sanitize_text_field',
             'transport' => $transport
         ) );
 

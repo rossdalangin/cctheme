@@ -62,7 +62,7 @@
 @media (max-width: 1024px) { .cc-cursor { display: none; } }
 body {
     margin: 0;
-    font-family: "Inter", -apple-system, sans-serif;
+    font-family: var(--body-font, "Inter", -apple-system, sans-serif);
     font-size: 18px;
     line-height: 1.6;
     color: var(--c-text);
@@ -97,6 +97,7 @@ body::after {
 }
 
 h1, h2, h3, h4, h5, h6 {
+    font-family: var(--heading-font, "Inter", -apple-system, sans-serif);
     font-weight: 900;
     letter-spacing: -0.06em;
     color: var(--c-white);
@@ -331,6 +332,7 @@ input:focus, textarea:focus, select:focus {
 
 /* --- Header & Navigation --- */
 .site-header {
+    position: relative;
     height: var(--header-height);
     display: flex;
     align-items: center;
@@ -339,6 +341,11 @@ input:focus, textarea:focus, select:focus {
     padding: 0 var(--s-sm);
     backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--c-border);
+}
+
+.header-sticky .site-header {
+    position: sticky;
+    top: 0;
 }
 
 .site-header.is-scrolled {
@@ -959,9 +966,14 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 
 .pricing-item.featured-plan {
     border-color: var(--c-accent);
-    box-shadow: 0 0 40px rgba(var(--c-accent-rgb), 0.15);
+    box-shadow: 0 0 60px rgba(var(--c-accent-rgb), 0.2);
     transform: scale(1.05);
     z-index: 2;
+}
+
+.pricing-item.featured-plan:hover {
+    box-shadow: 0 0 100px rgba(var(--c-accent-rgb), 0.4);
+    border-color: var(--c-white);
 }
 
 .featured-badge {
@@ -1201,7 +1213,15 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
     transition: 0.5s cubic-bezier(0.2, 1, 0.2, 1);
 }
 .portfolio-item:hover .portfolio-image img {
-    transform: scale(1.05);
+    transform: scale(1.1) rotate(1deg);
+}
+
+.portfolio-item {
+    perspective: 1000px;
+}
+
+.portfolio-item.cc-card {
+    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1), box-shadow 0.8s ease;
 }
 .portfolio-item .portfolio-content {
     padding: var(--s-md);
@@ -1468,6 +1488,24 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
     background: var(--c-accent);
 }
 
+.section-hero::before {
+    content: "";
+    position: absolute;
+    top: 20%; left: 10%;
+    width: 2px; height: 100px;
+    background: linear-gradient(to bottom, var(--c-accent), transparent);
+    opacity: 0.2;
+}
+
+.section-hero::after {
+    content: "";
+    position: absolute;
+    bottom: 20%; right: 10%;
+    width: 100px; height: 2px;
+    background: linear-gradient(to right, transparent, var(--c-cyan));
+    opacity: 0.2;
+}
+
 .hero-creative-shapes .shape-2 {
     bottom: -100px; left: -100px;
     width: 500px; height: 500px;
@@ -1495,11 +1533,12 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
     width: 2px; height: 100%;
     background: linear-gradient(to bottom,
         transparent 0%,
-        var(--c-border) 15%,
-        var(--c-border) 85%,
+        var(--c-accent) 15%,
+        var(--c-cyan) 85%,
         transparent 100%
     );
     z-index: 0;
+    opacity: 0.3;
 }
 
 .process-step-modern {
@@ -1594,16 +1633,29 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 }
 .cc-modal-content {
     position: relative;
-    max-width: 750px;
-    width: 90%;
+    max-width: 1100px;
+    width: 95%;
     z-index: 10000;
-    animation: modalIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    padding: clamp(50px, 10vw, 100px) !important;
+    animation: modalIn 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    padding: clamp(40px, 6vw, 80px) !important;
     box-shadow: 0 0 100px rgba(var(--c-accent-rgb), 0.15), 0 40px 100px rgba(0,0,0,0.8);
 }
 
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
+    gap: 0;
+}
+
+@media (max-width: 991px) {
+    .modal-grid { grid-template-columns: 1fr; }
+    .modal-value-prop { border-end: none !important; border-bottom: 1px solid var(--c-border); padding-bottom: 40px; margin-bottom: 40px; padding-right: 0 !important; }
+    .modal-form-wrapper { padding-left: 0 !important; }
+}
+
 .modal-form-wrapper {
-    margin-top: 50px;
+    margin-top: 0;
 }
 
 .modal-form-wrapper form > div {
