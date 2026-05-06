@@ -27,8 +27,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const updateHeader = () => {
             if (window.scrollY > 50) {
                 header.classList.add('is-scrolled');
+                header.style.transform = 'scale(0.98) translateY(10px)';
+                header.style.borderRadius = '20px';
+                header.style.margin = '0 20px';
+                header.style.width = 'calc(100% - 40px)';
             } else {
                 header.classList.remove('is-scrolled');
+                header.style.transform = '';
+                header.style.borderRadius = '';
+                header.style.margin = '';
+                header.style.width = '';
             }
         };
         window.addEventListener('scroll', updateHeader);
@@ -99,15 +107,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Card Glow Mouse Tracking ---
-    const cards = document.querySelectorAll('.cc-card');
+    // --- Card Glow & 3D Tilt Mouse Tracking ---
+    const cards = document.querySelectorAll('.cc-card, .glass');
     cards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
+
+            // Glow effect
             card.style.setProperty('--mouse-x', `${x}px`);
             card.style.setProperty('--mouse-y', `${y}px`);
+
+            // Subtle 3D Tilt
+            if (card.classList.contains('cc-card')) {
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+            }
+        });
+
+        card.addEventListener('mouseleave', () => {
+            if (card.classList.contains('cc-card')) {
+                card.style.transform = '';
+            }
         });
     });
 
@@ -283,12 +308,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-/* Preloader Execution */
+/* Preloader Execution with System Status */
 window.addEventListener('load', () => {
     const preloader = document.querySelector('.cc-preloader');
+    const dot = document.querySelector('.preloader-dot');
+
     if (preloader) {
+        if (dot) {
+            dot.style.width = '100px';
+            dot.style.borderRadius = '2px';
+            dot.style.height = '2px';
+        }
+
         setTimeout(() => {
             preloader.classList.add('fade-out');
-        }, 500);
+            document.body.classList.add('systems-ready');
+        }, 800);
     }
 });

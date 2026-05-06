@@ -13,26 +13,33 @@
 
         <div class="modal-grid">
             <!-- Left Column: Value Prop -->
-            <div class="modal-value-prop pe-md-5 border-end border-secondary">
+            <div class="modal-value-prop pe-md-5">
                 <span class="section-tag mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_audit_modal_tag', 'STRATEGY FIRST' ) ); ?></span>
                 <h2 class="h2 mb-4 gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_audit_modal_title', 'Request Your Authority Audit' ) ); ?></h2>
                 <p class="text-muted lead small mb-5"><?php echo esc_html( get_theme_mod( 'closeclient_audit_modal_desc', 'Submit your details and we’ll tailor a comprehensive digital audit and growth proposal based on your exact objectives.' ) ); ?></p>
 
                 <div class="modal-benefits mt-5">
                     <ul class="list-unstyled">
-                        <li class="mb-3 d-flex align-items-center gap-3">
+                        <li class="mb-4 d-flex align-items-center gap-4">
                             <span class="text-accent"><?php echo closeclient_get_svg('check'); ?></span>
-                            <span class="small text-white-50 fw-bold">Deep Performance Diagnostic</span>
+                            <span class="small text-white uppercase tracking-widest fw-black">Deep Performance Diagnostic</span>
                         </li>
-                        <li class="mb-3 d-flex align-items-center gap-3">
+                        <li class="mb-4 d-flex align-items-center gap-4">
                             <span class="text-accent"><?php echo closeclient_get_svg('check'); ?></span>
-                            <span class="small text-white-50 fw-bold">Custom Growth Roadmap</span>
+                            <span class="small text-white uppercase tracking-widest fw-black">Custom Growth Roadmap</span>
                         </li>
-                        <li class="mb-3 d-flex align-items-center gap-3">
+                        <li class="mb-4 d-flex align-items-center gap-4">
                             <span class="text-accent"><?php echo closeclient_get_svg('check'); ?></span>
-                            <span class="small text-white-50 fw-bold">Infrastructure Blueprint</span>
+                            <span class="small text-white uppercase tracking-widest fw-black">Infrastructure Blueprint</span>
                         </li>
                     </ul>
+                </div>
+
+                <div class="modal-trust-seal mt-5 pt-5 border-top border-secondary reveal">
+                    <div class="d-flex align-items-center gap-3 opacity-50">
+                         <div class="h3 mb-0 fw-black text-white">Elite.</div>
+                         <div class="small text-muted uppercase tracking-tighter line-height-1">Verification<br>Secured</div>
+                    </div>
                 </div>
             </div>
 

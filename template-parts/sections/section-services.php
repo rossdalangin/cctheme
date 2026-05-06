@@ -28,17 +28,33 @@ $tag      = get_theme_mod( 'closeclient_services_tag', 'SERVICES' );
                 $i = 0;
                 while ( $services_query->have_posts() ) : $services_query->the_post();
                     $i++;
-                    $span = ( $i == 1 ) ? 'bento-span-7' : ( ( $i == 2 ) ? 'bento-span-5' : ( ( $i == 3 ) ? 'bento-span-4' : 'bento-span-8' ) );
+                    $span = ( $i == 1 ) ? 'bento-span-5' : ( ( $i == 2 ) ? 'bento-span-7' : ( ( $i == 3 ) ? 'bento-span-8' : 'bento-span-4' ) );
                     $icons = array('⚡', '💎', '🚀', '🎯');
                     $icon = isset($icons[$i-1]) ? $icons[$i-1] : '⚡';
                     ?>
                     <?php $reveal_class = ( $i <= 3 ) ? '' : 'reveal'; ?>
-                    <div class="service-item cc-card <?php echo esc_attr($reveal_class); ?> <?php echo esc_attr($span); ?> d-flex flex-column">
-                        <div class="service-icon mb-4"><?php echo $icon; ?></div>
+                    <div class="service-item cc-card <?php echo esc_attr($reveal_class); ?> <?php echo esc_attr($span); ?> d-flex flex-column p-5 border-accent-soft">
+                        <div class="service-icon h1 mb-4"><?php echo $icon; ?></div>
                         <h3 class="h3 mb-3 text-white"><?php the_title(); ?></h3>
                         <div class="text-muted small mb-5 lead"><?php the_excerpt(); ?></div>
-                        <div class="mt-auto">
-                            <a href="<?php the_permalink(); ?>" class="cc-button cc-button-secondary small" style="padding: 12px 24px; font-size: 0.65rem;">System Details →</a>
+
+                        <?php
+                        $blueprint = get_post_meta( get_the_ID(), '_service_blueprint', true );
+                        if ( $blueprint ) : ?>
+                            <div class="service-preview-meta mb-5 pt-4 border-top border-secondary">
+                                <span class="small uppercase tracking-widest text-muted d-block mb-3">Capabilities:</span>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <?php
+                                    $items = array_slice(explode( ',', $blueprint ), 0, 2);
+                                    foreach ( $items as $item ) : ?>
+                                        <span class="badge bg-secondary p-2 px-3 small border-0 text-white-50"><?php echo esc_html( trim($item) ); ?></span>
+                                    <?php endforeach; ?>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+
+                        <div class="mt-auto pt-4">
+                            <a href="<?php the_permalink(); ?>" class="cc-button cc-button-secondary small w-100" style="padding: 16px 24px; font-size: 0.75rem;">Explore Architecture →</a>
                         </div>
                     </div>
                 <?php endwhile;

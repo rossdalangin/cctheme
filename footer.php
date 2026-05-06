@@ -34,7 +34,7 @@
                         ?>
                     </div>
                     <p class="footer-about text-muted small mb-4">
-                        <?php echo esc_html( get_theme_mod( 'closeclient_footer_about', 'Engineering the future of digital authority for the world\'s most ambitious brands.' ) ); ?>
+                        <?php echo esc_html( get_theme_mod( 'closeclient_footer_about', 'High-fidelity digital engineering for high-ticket coaches and strategic consultants.' ) ); ?>
                     </p>
                     <div class="footer-social-links d-flex gap-3">
                         <?php

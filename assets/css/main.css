@@ -46,6 +46,30 @@
 /* --- Reset & Base --- */
 *, *::before, *::after { box-sizing: border-box; }
 
+.glass {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-xl);
+    padding: var(--s-md);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+    position: relative;
+    overflow: hidden;
+}
+
+.glass::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.015;
+    pointer-events: none;
+    z-index: 0;
+    border-radius: inherit;
+}
+
+.glass > * { position: relative; z-index: 1; }
+
 .cc-cursor {
     width: 20px; height: 20px;
     background: var(--c-accent);
@@ -82,18 +106,16 @@ body::after {
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
-/* Noise Texture Overlay */
-body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.03;
-    pointer-events: none;
-    z-index: 9999;
+.bg-dot-pattern {
+    background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+.bg-grid-pattern {
+    background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 100px 100px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -216,7 +238,7 @@ input[type="submit"],
     position: relative;
     overflow: hidden;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(15px);
 }
 
 .cc-card:hover {
@@ -605,7 +627,7 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 
 /* block Editor */
 .wp-block-columns { gap: var(--s-sm); }
-.wp-block-group.glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid var(--c-border); border-radius: var(--radius-xl); padding: var(--s-md); }
+.wp-block-group.glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid var(--c-border); border-radius: var(--radius-xl); padding: var(--s-md); box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05); }
 
 /* Social */
 .social-share-links svg { width: 18px; height: 18px; }
@@ -1643,9 +1665,9 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 
 .modal-grid {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
-    gap: 0;
+    gap: 80px;
 }
 
 @media (max-width: 991px) {
@@ -1659,7 +1681,7 @@ select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmln
 }
 
 .modal-form-wrapper form > div {
-    margin-bottom: 35px !important;
+    margin-bottom: 40px !important;
 }
 
 .modal-form-wrapper .cc-button {
