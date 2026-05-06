@@ -70,7 +70,7 @@ $text     = get_theme_mod( 'closeclient_about_text_tpl', 'Engineering digital ex
                 <div class="expertise-content bento-span-6 glass p-5">
                     <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_about_expertise_tag', 'THE EXPERTISE' ) ); ?></span>
                     <h2 class="h2 mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_about_method_title', 'The High-Fidelity Methodology' ) ); ?></h2>
-                    <p class="lead text-muted mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_about_method_text', 'We don\'t do "design." We do Revenue Engineering. Our systems are built to eliminate price sensitivity and attract only your dream clients through technical excellence and conversion psychology.' ) ); ?></p>
+                    <p class="lead text-muted mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_about_method_text', 'We don\'t just build websites; we engineer authority. Our methodology is rooted in the psychological triggers of high-intent buyers and the technical requirements of modern scale.' ) ); ?></p>
                     <ul class="list-unstyled mb-0">
                         <?php
                         $methodology = get_theme_mod( 'closeclient_about_methodology', 'Performance-First Engineering, Psych-Driven UI/UX Design, Conversion-Focused Architecture' );

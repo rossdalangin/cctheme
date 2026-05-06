@@ -9,7 +9,7 @@
 
     <?php if ( ! is_page_template( 'template-canvas.php' ) ) : ?>
 	<footer id="colophon" class="site-footer" itemscope itemtype="https://schema.org/WPFooter">
-        <div class="authority-ribbon border-bottom border-secondary mb-5 pb-5 reveal">
+        <div class="authority-ribbon border-bottom border-secondary py-5 mb-5 reveal">
             <div class="container d-flex justify-content-between align-items-center flex-wrap gap-5">
                 <span class="small fw-bold letter-spacing-lg text-white-50 uppercase tracking-widest opacity-50"><?php echo esc_html__( 'TRUSTED BY INNOVATORS AT:', 'closeclient' ); ?></span>
                 <div class="d-flex gap-5 flex-wrap opacity-50 grayscale invert">
@@ -34,7 +34,7 @@
                         ?>
                     </div>
                     <p class="footer-about text-muted small mb-4">
-                        <?php echo esc_html( get_theme_mod( 'closeclient_footer_about', 'High-fidelity digital engineering for high-ticket coaches and strategic consultants.' ) ); ?>
+                        <?php echo esc_html( get_theme_mod( 'closeclient_footer_about', 'Engineering the future of digital authority for the world\'s most ambitious brands.' ) ); ?>
                     </p>
                     <div class="footer-social-links d-flex gap-3">
                         <?php
@@ -98,7 +98,7 @@
                     <p class="small text-muted mb-0"><?php echo esc_html( get_theme_mod( 'closeclient_footer_disclaimer', 'Consulting and engineering services are subject to terms. Results may vary by market.' ) ); ?></p>
                 </div>
 
-                <div class="site-info d-flex justify-content-between align-items-center flex-wrap gap-3">
+                <div class="site-info d-flex justify-content-between align-items-center flex-wrap gap-5">
                     <p class="copyright small text-muted mb-0"><?php echo esc_html( get_theme_mod( 'closeclient_footer_copyright', '© CloseClient. All rights reserved.' ) ); ?></p>
                     <div class="footer-meta-links small text-muted">
                          <a href="<?php echo esc_url( home_url( '/privacy-policy' ) ); ?>" class="text-muted text-decoration-none me-3"><?php echo esc_html( get_theme_mod( 'closeclient_footer_privacy_label', 'Privacy Policy' ) ); ?></a>

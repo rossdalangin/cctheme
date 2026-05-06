@@ -27,28 +27,19 @@ $tag      = get_theme_mod( 'closeclient_portfolio_tag', 'FEATURED WORK' );
                 $i = 0;
                 while ( $portfolio_query->have_posts() ) : $portfolio_query->the_post();
                     $i++;
-                    $span = ( $i == 1 ) ? 'bento-span-5' : ( ( $i == 2 ) ? 'bento-span-7' : 'bento-span-12' );
-                    $metric = get_post_meta( get_the_ID(), '_portfolio_metric', true );
+                    $span = ( $i == 1 ) ? 'bento-span-8' : ( ( $i == 2 ) ? 'bento-span-4' : 'bento-span-12' );
                     $reveal_class = ( $i <= 3 ) ? '' : 'reveal';
                     ?>
-                    <div class="portfolio-item-card cc-card <?php echo esc_attr($reveal_class); ?> <?php echo esc_attr($span); ?> p-0 overflow-hidden d-flex flex-column h-100">
-                        <div class="portfolio-image position-relative" style="height: 350px;">
+                    <div class="portfolio-item-card cc-card <?php echo esc_attr($reveal_class); ?> <?php echo esc_attr($span); ?>">
+                        <div class="portfolio-image">
                             <?php if ( has_post_thumbnail() ) : ?>
-                                <?php the_post_thumbnail( 'large', array('class' => 'w-100 h-100 object-fit-cover') ); ?>
-                            <?php endif; ?>
-                            <?php if ( $metric ) : ?>
-                                <div class="portfolio-result-overlay glass-strong position-absolute top-0 right-0 m-4 p-3 rounded-lg border-accent">
-                                    <span class="small fw-black text-accent uppercase tracking-tighter d-block mb-1">Result:</span>
-                                    <div class="h5 mb-0 text-white"><?php echo esc_html( $metric ); ?></div>
-                                </div>
+                                <?php the_post_thumbnail( 'large' ); ?>
                             <?php endif; ?>
                         </div>
-                        <div class="portfolio-content p-5 flex-grow-1 d-flex flex-column">
+                        <div class="portfolio-content">
                             <h3 class="h4 mb-3"><?php the_title(); ?></h3>
-                            <div class="text-muted small mb-5 lead"><?php the_excerpt(); ?></div>
-                            <div class="mt-auto">
-                                <a href="<?php the_permalink(); ?>" class="cc-button cc-button-secondary read-more-btn w-100"><?php echo esc_html( get_theme_mod( 'closeclient_label_portfolio_btn', 'View Case Study' ) ); ?></a>
-                            </div>
+                            <div class="text-muted small mb-4"><?php the_excerpt(); ?></div>
+                            <a href="<?php the_permalink(); ?>" class="cc-button cc-button-secondary read-more-btn"><?php echo esc_html( get_theme_mod( 'closeclient_label_portfolio_btn', 'View Case Study' ) ); ?></a>
                         </div>
                     </div>
                 <?php endwhile;
