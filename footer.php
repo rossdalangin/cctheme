@@ -9,6 +9,17 @@
 
     <?php if ( ! is_page_template( 'template-canvas.php' ) ) : ?>
 	<footer id="colophon" class="site-footer" itemscope itemtype="https://schema.org/WPFooter">
+        <div class="authority-ribbon border-bottom border-secondary py-5 mb-5 reveal">
+            <div class="container d-flex justify-content-between align-items-center flex-wrap gap-5">
+                <span class="small fw-bold letter-spacing-lg text-white-50 uppercase tracking-widest opacity-50"><?php echo esc_html__( 'TRUSTED BY INNOVATORS AT:', 'closeclient' ); ?></span>
+                <div class="d-flex gap-5 flex-wrap opacity-50 grayscale invert">
+                    <span class="h5 mb-0 fw-black">STRATEGY.CO</span>
+                    <span class="h5 mb-0 fw-black">ELITE.IO</span>
+                    <span class="h5 mb-0 fw-black">CORE.ENGINE</span>
+                    <span class="h5 mb-0 fw-black">VORTEX.MEDIA</span>
+                </div>
+            </div>
+        </div>
 		<div class="container">
             <div class="footer-grid">
                 <!-- Column 1: Branding & About -->
@@ -23,7 +34,7 @@
                         ?>
                     </div>
                     <p class="footer-about text-muted small mb-4">
-                        <?php echo esc_html( get_theme_mod( 'closeclient_footer_about', 'Engineering the future of digital authority for elite coaches and consultants.' ) ); ?>
+                        <?php echo esc_html( get_theme_mod( 'closeclient_footer_about', 'Engineering the future of digital authority for the world\'s most ambitious brands.' ) ); ?>
                     </p>
                     <div class="footer-social-links d-flex gap-3">
                         <?php
@@ -75,27 +86,27 @@
                 <!-- Column 4: Connect/CTA -->
                 <div class="footer-column">
                     <h3 class="footer-title h6 mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_footer_col4_title', 'Connect' ) ); ?></h3>
-                    <p class="small text-muted mb-4"><?php esc_html_e( 'Ready to engineer your authority?', 'closeclient' ); ?></p>
-                    <a href="<?php echo esc_url( get_theme_mod( 'closeclient_header_cta_link', '#' ) ); ?>" class="cc-button" style="padding: 12px 24px; font-size: 0.7rem;">
-                        <?php echo esc_html( get_theme_mod( 'closeclient_header_cta_text', 'Book a Call' ) ); ?>
+                    <p class="small text-muted mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_footer_cta_text_label', 'Ready to engineer your authority?' ) ); ?></p>
+                    <a href="<?php echo esc_url( get_theme_mod( 'closeclient_header_cta_link', '#audit' ) ); ?>" class="cc-button footer-cta-btn">
+                        <?php echo esc_html( get_theme_mod( 'closeclient_header_cta_text', 'Apply for Your Authority Audit →' ) ); ?>
                     </a>
                 </div>
             </div>
 
             <div class="footer-bottom mt-5 pt-5 border-top border-secondary">
                 <div class="footer-disclaimer mb-4">
-                    <p class="small text-muted mb-0"><?php echo esc_html( get_theme_mod( 'closeclient_footer_disclaimer', 'Consulting services are subject to terms and conditions. Results may vary.' ) ); ?></p>
+                    <p class="small text-muted mb-0"><?php echo esc_html( get_theme_mod( 'closeclient_footer_disclaimer', 'Consulting and engineering services are subject to terms. Results may vary by market.' ) ); ?></p>
                 </div>
 
-                <div class="site-info d-flex justify-content-between align-items-center flex-wrap gap-3">
-                    <p class="copyright small text-muted mb-0"><?php echo esc_html( get_theme_mod( 'closeclient_footer_copyright', '© ' . date('Y') . ' CloseClient. All rights reserved.' ) ); ?></p>
+                <div class="site-info d-flex justify-content-between align-items-center flex-wrap gap-5">
+                    <p class="copyright small text-muted mb-0"><?php echo esc_html( get_theme_mod( 'closeclient_footer_copyright', '© CloseClient. All rights reserved.' ) ); ?></p>
                     <div class="footer-meta-links small text-muted">
-                         <a href="<?php echo esc_url( home_url( '/privacy-policy' ) ); ?>" class="text-muted text-decoration-none me-3"><?php esc_html_e( 'Privacy Policy', 'closeclient' ); ?></a>
-                         <a href="<?php echo esc_url( home_url( '/terms-of-service' ) ); ?>" class="text-muted text-decoration-none"><?php esc_html_e( 'Terms of Service', 'closeclient' ); ?></a>
+                         <a href="<?php echo esc_url( home_url( '/privacy-policy' ) ); ?>" class="text-muted text-decoration-none me-3"><?php echo esc_html( get_theme_mod( 'closeclient_footer_privacy_label', 'Privacy Policy' ) ); ?></a>
+                         <a href="<?php echo esc_url( home_url( '/terms-of-service' ) ); ?>" class="text-muted text-decoration-none"><?php echo esc_html( get_theme_mod( 'closeclient_footer_terms_label', 'Terms of Service' ) ); ?></a>
                     </div>
 
-                    <a href="#page" class="back-to-top small text-accent text-decoration-none fw-bold" style="cursor:pointer;">
-                        <?php esc_html_e( 'BACK TO TOP ↑', 'closeclient' ); ?>
+                    <a href="#page" class="back-to-top small text-accent text-decoration-none">
+                        <?php echo esc_html( get_theme_mod( 'closeclient_footer_back_top', 'BACK TO TOP ↑' ) ); ?>
                     </a>
                 </div>
             </div>
@@ -105,7 +116,7 @@
 
     <?php if ( get_theme_mod( 'closeclient_show_floating_cta', false ) ) : ?>
         <a href="#audit" class="floating-cta cc-button">
-            <?php echo esc_html( get_theme_mod( 'closeclient_header_cta_text', 'Book a Call' ) ); ?>
+            <?php echo esc_html( get_theme_mod( 'closeclient_header_cta_text', 'Apply for Your Authority Audit →' ) ); ?>
         </a>
     <?php endif; ?>
 </div><!-- #page -->

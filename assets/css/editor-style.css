@@ -1,19 +1,56 @@
 /**
- * Editor Styles for CloseClient
- * Ensures the Gutenberg editor looks like the frontend.
+ * Editor Styles for CloseClient Elite (V11.0)
+ * Ensures the Gutenberg editor looks like the high-fidelity frontend.
  */
 
+:root {
+    --c-primary: #020203;
+    --c-bg: #020203;
+    --c-text: #F9FAFB;
+    --c-accent: #6366F1;
+}
+
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
-    color: #1d1d1f;
+    font-family: "Inter", -apple-system, sans-serif;
+    background-color: var(--c-bg);
+    color: var(--c-text);
+    font-size: 18px;
     line-height: 1.6;
 }
 
-.wp-block-post-title {
+/* Match the Elite H1 style */
+.wp-block-post-title,
+.editor-post-title__block .editor-post-title__input {
     font-weight: 800;
-    letter-spacing: -0.022em;
+    letter-spacing: -0.06em;
+    line-height: 0.95;
+    color: #ffffff;
+    font-family: "Inter", sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-weight: 700;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: #ffffff;
+}
+
+/* Link Styles */
+a {
+    color: var(--c-accent);
+    text-decoration: none;
+}
+
+/* Button Parity */
+.wp-block-button__link {
+    background-color: var(--c-accent) !important;
+    border-radius: 100px !important;
+    padding: 18px 42px !important;
+    font-weight: 800 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.1em !important;
+}
+
+/* Noise Texture (Simulation) */
+.editor-styles-wrapper {
+    background-color: #020203 !important;
 }

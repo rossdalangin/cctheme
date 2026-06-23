@@ -121,6 +121,14 @@ function closeclient_scripts() {
 
 	wp_enqueue_script( 'closeclient-navigation', get_template_directory_uri() . '/assets/js/main.js', array(), CLOSECLIENT_VERSION, true );
 
+    if ( is_customize_preview() ) {
+		wp_enqueue_script( 'closeclient-customizer', get_template_directory_uri() . '/assets/js/customizer.js', array( 'customize-preview' ), CLOSECLIENT_VERSION, true );
+	}
+
+    wp_localize_script( 'closeclient-navigation', 'closeclientData', array(
+        'ctaThreshold' => get_theme_mod( 'closeclient_floating_cta_threshold', 500 ),
+    ) );
+
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -158,6 +166,15 @@ if ( ! function_exists( 'closeclient_posted_on' ) ) :
 		);
 
 		echo '<span class="posted-on">' . $posted_on . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+
+        // Add Estimated Reading Time
+        if ( is_singular( 'post' ) || is_home() || is_archive() || is_search() ) {
+            $post_id = get_the_ID();
+            $content = get_post_field( 'post_content', $post_id );
+            $word_count = str_word_count( strip_tags( $content ) );
+            $reading_time = ceil( $word_count / 200 ); // Average 200 wpm
+            echo '<span class="reading-time ms-3 text-muted small"><span class="me-1">⏱</span>' . esc_html( $reading_time ) . ' min read</span>';
+        }
 	}
 endif;
 
@@ -310,15 +327,15 @@ function closeclient_breadcrumbs() {
  * Enqueue Google Fonts based on Customizer settings.
  */
 function closeclient_google_fonts() {
-    $heading_font = get_theme_mod( 'closeclient_heading_font', 'SF Pro Display' );
-    $body_font = get_theme_mod( 'closeclient_body_font', 'SF Pro Display' );
+    $heading_font = get_theme_mod( 'closeclient_heading_font', 'Inter' );
+    $body_font = get_theme_mod( 'closeclient_body_font', 'Inter' );
 
     $fonts = array();
 
-    if ( $heading_font !== 'SF Pro Display' ) {
+    if ( $heading_font !== 'Inter' ) {
         $fonts[] = 'family=' . str_replace( ' ', '+', $heading_font ) . ':wght@400;600;700;800';
     }
-    if ( $body_font !== 'SF Pro Display' && $body_font !== $heading_font ) {
+    if ( $body_font !== 'Inter' && $body_font !== $heading_font ) {
         $fonts[] = 'family=' . str_replace( ' ', '+', $body_font ) . ':wght@400;600;700';
     }
 
@@ -354,9 +371,11 @@ require get_template_directory() . '/inc/admin-guide.php';
  */
 function closeclient_menu_fallback() {
     echo '<ul class="primary-menu-list">';
-    echo '<li><a href="' . esc_url( home_url( '/services' ) ) . '">Services</a></li>';
-    echo '<li><a href="' . esc_url( home_url( '/case-studies' ) ) . '">Case Studies</a></li>';
-    echo '<li><a href="' . esc_url( home_url( '/about' ) ) . '">About</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/services' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_services', 'Solutions' ) ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/case-studies' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_cases', 'Case Studies' ) ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/about' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_about', 'The Method' ) ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/blog' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_blog', 'Blog' ) ) . '</a></li>';
+    echo '<li><a href="#audit" class="cc-button-nav">' . esc_html( get_theme_mod( 'closeclient_menu_label_audit', 'Book Audit' ) ) . '</a></li>';
     echo '</ul>';
 }
 
@@ -365,9 +384,9 @@ function closeclient_menu_fallback() {
  */
 function closeclient_footer_1_fallback() {
     echo '<ul class="list-unstyled small text-muted">';
-    echo '<li><a href="#">Authority Infrastructure</a></li>';
-    echo '<li><a href="#">Revenue Engineering</a></li>';
-    echo '<li><a href="#">Vortex Funnels</a></li>';
+    echo '<li><a href="#">' . esc_html__( 'Authority Infrastructure', 'closeclient' ) . '</a></li>';
+    echo '<li><a href="#">' . esc_html__( 'Revenue Engineering', 'closeclient' ) . '</a></li>';
+    echo '<li><a href="#">' . esc_html__( 'Vortex Funnels', 'closeclient' ) . '</a></li>';
     echo '</ul>';
 }
 
@@ -376,9 +395,9 @@ function closeclient_footer_1_fallback() {
  */
 function closeclient_footer_2_fallback() {
     echo '<ul class="list-unstyled small text-muted">';
-    echo '<li><a href="' . esc_url( home_url( '/case-studies' ) ) . '">Case Studies</a></li>';
-    echo '<li><a href="' . esc_url( home_url( '/free-training' ) ) . '">Free Training</a></li>';
-    echo '<li><a href="' . esc_url( home_url( '/blog' ) ) . '">Blog</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/case-studies' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_cases', 'Case Studies' ) ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/free-training' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_training', 'Free Training' ) ) . '</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/blog' ) ) . '">' . esc_html( get_theme_mod( 'closeclient_menu_label_blog', 'Blog' ) ) . '</a></li>';
     echo '</ul>';
 }
 
@@ -386,14 +405,36 @@ function closeclient_footer_2_fallback() {
  * Global Schema JSON-LD
  */
 function closeclient_schema_json_ld() {
+    $schema = array(
+        '@context' => 'https://schema.org',
+    );
+
     if ( is_front_page() ) {
-        $schema = array(
-            '@context' => 'https://schema.org',
-            '@type'    => 'ProfessionalService',
-            'name'     => get_bloginfo( 'name' ),
-            'url'      => home_url(),
-            'description' => get_bloginfo( 'description' ),
+        $schema['@type'] = 'ProfessionalService';
+        $schema['name'] = get_bloginfo( 'name' );
+        $schema['url'] = home_url();
+        $schema['description'] = get_bloginfo( 'description' );
+    } elseif ( is_singular( 'service' ) ) {
+        global $post;
+        $schema['@type'] = 'Service';
+        $schema['serviceType'] = get_the_title();
+        $schema['provider'] = array(
+            '@type' => 'LocalBusiness',
+            'name' => get_bloginfo( 'name' )
         );
+        $schema['description'] = get_the_excerpt();
+    } elseif ( is_singular( 'portfolio' ) ) {
+        global $post;
+        $schema['@type'] = 'CreativeWork';
+        $schema['name'] = get_the_title();
+        $schema['description'] = get_the_excerpt();
+        $schema['author'] = array(
+            '@type' => 'Organization',
+            'name' => get_bloginfo( 'name' )
+        );
+    }
+
+    if ( count($schema) > 1 ) {
         echo '<script type="application/ld+json">' . json_encode( $schema ) . '</script>';
     }
 }
@@ -442,16 +483,62 @@ function closeclient_register_block_patterns() {
         array( 'label' => __( 'CloseClient Authority', 'closeclient' ) )
     );
 
-    register_block_pattern(
-        'closeclient/hero-section',
-        array(
-            'title'       => __( 'Elite Hero Section', 'closeclient' ),
-            'categories'  => array( 'closeclient' ),
-            'content'     => '<!-- wp:group {"className":"section-hero text-center","layout":{"type":"constrained"}} --><div class="wp-block-group section-hero text-center"><!-- wp:heading {"level":1,"className":"hero-headline"} --><h1 class="hero-headline">Stop Begging for Leads and Start Commanding Authority.</h1><!-- /wp:heading --><!-- wp:paragraph --><p>We build the elite digital infrastructure that pre-qualifies your leads.</p><!-- /wp:paragraph --><!-- wp:buttons --><div class="wp-block-buttons"><!-- wp:button {"className":"cc-button"} --><div class="wp-block-button cc-button"><a class="wp-block-button__link">Apply for Strategy Audit →</a></div><!-- /wp:button --></div><!-- /wp:buttons --></div><!-- /wp:group -->',
+    $patterns = array(
+        'hero' => array(
+            'title' => 'Elite Hero Section',
+            'content' => '<!-- wp:shortcode -->[closeclient_hero]<!-- /wp:shortcode -->'
+        ),
+        'vsl' => array(
+            'title' => 'Big Domino VSL Section',
+            'content' => '<!-- wp:shortcode -->[closeclient_vsl]<!-- /wp:shortcode -->'
+        ),
+        'services' => array(
+            'title' => 'Authority Services Grid',
+            'content' => '<!-- wp:shortcode -->[closeclient_services]<!-- /wp:shortcode -->'
+        ),
+        'testimonials' => array(
+            'title' => 'Social Proof Section',
+            'content' => '<!-- wp:shortcode -->[closeclient_testimonials]<!-- /wp:shortcode -->'
+        ),
+        'process' => array(
+            'title' => 'Authority Roadmap',
+            'content' => '<!-- wp:shortcode -->[closeclient_process]<!-- /wp:shortcode -->'
+        ),
+        'pricing' => array(
+            'title' => 'Investment Tiers',
+            'content' => '<!-- wp:shortcode -->[closeclient_pricing]<!-- /wp:shortcode -->'
+        ),
+        'booking' => array(
+            'title' => 'Terminal CTA Section',
+            'content' => '<!-- wp:shortcode -->[closeclient_booking_cta]<!-- /wp:shortcode -->'
         )
     );
+
+    foreach ( $patterns as $slug => $data ) {
+        register_block_pattern(
+            'closeclient/' . $slug,
+            array(
+                'title'      => $data['title'],
+                'categories' => array( 'closeclient' ),
+                'content'    => $data['content'],
+            )
+        );
+    }
 }
 add_action( 'init', 'closeclient_register_block_patterns' );
+
+/**
+ * Excerpt refinements.
+ */
+function closeclient_excerpt_length( $length ) {
+    return 25;
+}
+add_filter( 'excerpt_length', 'closeclient_excerpt_length', 999 );
+
+function closeclient_excerpt_more( $more ) {
+    return '...';
+}
+add_filter( 'excerpt_more', 'closeclient_excerpt_more' );
 
 /**
  * SVG Icons.

@@ -11,6 +11,8 @@
 <body <?php body_class( get_theme_mod( 'closeclient_site_layout_type', 'full-width' ) ); ?> itemscope itemtype="https://schema.org/WebPage">
 <?php wp_body_open(); ?>
 
+<div class="reading-progress-bar"></div>
+
 <?php if ( get_theme_mod( 'closeclient_show_preloader', true ) ) : ?>
     <div class="cc-preloader">
         <div class="preloader-dot"></div>
@@ -18,7 +20,7 @@
 <?php endif; ?>
 
 <div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'closeclient' ); ?></a>
+	<a class="skip-link screen-reader-text" href="#primary"><?php echo esc_html( get_theme_mod( 'closeclient_label_skip_link', 'Skip to content' ) ); ?></a>
 
 	<?php
     if ( ! is_page_template( 'template-canvas.php' ) ) {

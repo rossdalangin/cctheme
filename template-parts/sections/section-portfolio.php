@@ -9,14 +9,14 @@ $headline = get_theme_mod( 'closeclient_portfolio_headline', 'Our Engineered Suc
 $tag      = get_theme_mod( 'closeclient_portfolio_tag', 'FEATURED WORK' );
 ?>
 
-<section id="portfolio" class="section section-portfolio bg-dark">
+<section id="portfolio" class="section section-lg section-portfolio bg-dark">
     <div class="container">
-        <div class="section-header text-center reveal" style="margin-bottom: 80px;">
+        <div class="section-header text-center reveal">
             <span class="section-tag"><?php echo esc_html( $tag ); ?></span>
-            <h2 class="section-headline"><?php echo esc_html( $headline ); ?></h2>
+            <h2 class="section-headline gradient-text"><?php echo esc_html( $headline ); ?></h2>
         </div>
 
-        <div class="bento-grid" style="display: grid; grid-template-columns: repeat(12, 1fr); gap: 24px;">
+        <div class="portfolio-grid">
             <?php
             $portfolio_query = new WP_Query( array(
                 'post_type'      => 'portfolio',
@@ -27,27 +27,26 @@ $tag      = get_theme_mod( 'closeclient_portfolio_tag', 'FEATURED WORK' );
                 $i = 0;
                 while ( $portfolio_query->have_posts() ) : $portfolio_query->the_post();
                     $i++;
-                    $span = ( $i == 1 ) ? 'span 12' : 'span 6';
+                    $span = ( $i == 1 ) ? 'bento-span-8' : ( ( $i == 2 ) ? 'bento-span-4' : 'bento-span-12' );
+                    $reveal_class = ( $i <= 3 ) ? '' : 'reveal';
                     ?>
-                    <div class="portfolio-item cc-card reveal" style="grid-column: <?php echo esc_attr($span); ?>; padding: 0; overflow: hidden;">
-                        <?php if ( has_post_thumbnail() ) : ?>
-                            <div class="portfolio-image" style="aspect-ratio: 16/9; overflow: hidden;">
-                                <?php the_post_thumbnail( 'large', array( 'style' => 'width: 100%; height: 100%; object-fit: cover;' ) ); ?>
-                            </div>
-                        <?php endif; ?>
-                        <div class="portfolio-content p-5">
+                    <div class="portfolio-item-card cc-card <?php echo esc_attr($reveal_class); ?> <?php echo esc_attr($span); ?>">
+                        <div class="portfolio-image">
+                            <?php if ( has_post_thumbnail() ) : ?>
+                                <?php the_post_thumbnail( 'large' ); ?>
+                            <?php endif; ?>
+                        </div>
+                        <div class="portfolio-content">
                             <h3 class="h4 mb-3"><?php the_title(); ?></h3>
                             <div class="text-muted small mb-4"><?php the_excerpt(); ?></div>
-                            <a href="<?php the_permalink(); ?>" class="cc-button cc-button-secondary" style="padding: 12px 32px; font-size: 0.8rem;"><?php esc_html_e( 'View Case Study', 'closeclient' ); ?></a>
+                            <a href="<?php the_permalink(); ?>" class="cc-button cc-button-secondary read-more-btn"><?php echo esc_html( get_theme_mod( 'closeclient_label_portfolio_btn', 'View Case Study' ) ); ?></a>
                         </div>
                     </div>
                 <?php endwhile;
                 wp_reset_postdata();
-            else :
-                // Fallback Placeholder
-                ?>
-                <div class="portfolio-item cc-card reveal" style="grid-column: span 12; text-align: center; padding: 100px;">
-                    <p class="text-muted"><?php esc_html_e( 'No portfolio items found. Add some in the dashboard or click "Generate Now" in Theme Setup.', 'closeclient' ); ?></p>
+            else : ?>
+                <div class="portfolio-empty-card cc-card reveal">
+                    <p class="text-muted"><?php echo esc_html( get_theme_mod( 'closeclient_portfolio_empty_text', 'Success stories are being engineered. Check back soon.' ) ); ?></p>
                 </div>
             <?php endif; ?>
         </div>

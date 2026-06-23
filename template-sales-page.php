@@ -1,70 +1,56 @@
 <?php
 /**
- * Template Name: Sales Template
+ * Template Name: Sales Page
  *
  * @package CloseClient
  */
 
 get_header();
-
-$headline    = get_theme_mod( 'closeclient_sales_hero_headline_tpl', 'The Exact Blueprint to Scale Your Coaching Business' );
-$subheadline = get_theme_mod( 'closeclient_sales_hero_subheadline_tpl', 'Stop trading time for money. Build a scalable authority system that works for you.' );
-$value_stack = get_theme_mod( 'closeclient_sales_value_stack', "Authority Audit ($1,497 Value), Bento Ecosystem ($8,000 Value), Vortex Funnel ($3,500 Value)" );
 ?>
 
-<main id="primary" class="site-main">
-    <section class="section sales-hero bg-dark text-white text-center">
-        <div class="container">
-            <span class="section-tag"><?php esc_html_e( 'OFFER EXCLUSIVE', 'closeclient' ); ?></span>
-            <h1 class="hero-headline text-white"><?php echo esc_html( $headline ); ?></h1>
-            <p class="hero-subheadline"><?php echo esc_html( $subheadline ); ?></p>
-            <div class="hero-ctas mt-5">
-                <a href="#vsl" class="btn btn-primary btn-lg"><?php esc_html_e( 'Watch the Training', 'closeclient' ); ?></a>
+<main id="primary" class="site-main sales-page">
+    <section class="section section-lg sales-hero">
+        <div class="container text-center reveal">
+            <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_sales_hero_tag_tpl', 'EXCLUSIVE OFFER' ) ); ?></span>
+            <h1 class="hero-headline gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_sales_hero_headline_tpl', 'Scale to $100k/mo Without Spending 8 Hours a Day in the DMs.' ) ); ?></h1>
+            <p class="lead text-muted mb-5"><?php echo esc_html( get_theme_mod( 'closeclient_sales_hero_subheadline_tpl', 'For the elite consultant who is ready to graduate from "hustling" to "owning a machine."' ) ); ?></p>
+
+            <div class="hero-cta">
+                <a href="#booking" class="cc-button"><?php echo esc_html( get_theme_mod( 'closeclient_sales_hero_cta_tpl', 'Yes! Build My Machine →' ) ); ?></a>
             </div>
         </div>
     </section>
 
-    <?php
-    $content = get_the_content();
-    if ( empty( $content ) ) {
-        // VSL Section
-        get_template_part( 'template-parts/sections/section-vsl' );
+    <?php get_template_part( 'template-parts/sections/section-vsl' ); ?>
 
-        // Value Stack Section (Direct implementation for Sales Template)
-        if ( ! empty( $value_stack ) ) :
-            $items = explode( ',', $value_stack );
-            ?>
-            <section class="section bg-secondary reveal">
-                <div class="container-narrow">
-                    <div class="glass p-5 border-accent text-center">
-                        <h2 class="h3 mb-5"><?php esc_html_e( 'Everything You Get Today:', 'closeclient' ); ?></h2>
-                        <ul class="list-unstyled text-start mb-5">
-                            <?php foreach ( $items as $item ) : ?>
-                                <li class="mb-3 d-flex align-items-center">
-                                    <span class="text-accent me-3" style="font-size: 1.5rem;">✓</span>
-                                    <span style="font-size: 1.1rem; font-weight: 500;"><?php echo esc_html( trim( $item ) ); ?></span>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
-                        <div class="total-value h4 text-muted mb-5">
-                            <?php esc_html_e( 'Total Real World Value: $12,997+', 'closeclient' ); ?>
-                        </div>
-                        <a href="<?php echo esc_url( get_theme_mod( 'closeclient_booking_link', '#' ) ); ?>" class="btn btn-primary btn-lg w-100">
-                            <?php echo esc_html( get_theme_mod( 'closeclient_booking_text', 'Secure Your Spot' ) ); ?>
-                        </a>
+    <section class="section section-lg section-value-stack bg-dark">
+        <div class="container container-narrow reveal">
+            <div class="section-header text-center mb-5 py-lg">
+                <h2 class="h2 gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_sales_value_stack_title', 'The Authority Ecosystem' ) ); ?></h2>
+                <p class="text-muted"><?php echo esc_html( get_theme_mod( 'closeclient_sales_value_stack_desc', 'Everything you need to command your market.' ) ); ?></p>
+            </div>
+
+            <div class="value-stack-list py-md">
+                <?php
+                $stack = get_theme_mod( 'closeclient_sales_value_stack', 'Authority Audit, Bento Ecosystem, Vortex Funnel' );
+                $items = explode( ',', $stack );
+                foreach ( $items as $item ) : ?>
+                    <div class="value-stack-item p-4 mb-3 d-flex align-items-center">
+                        <span class="text-accent me-3 value-stack-icon">✓</span>
+                        <span class="value-stack-text"><?php echo esc_html( trim( $item ) ); ?></span>
                     </div>
-                </div>
-            </section>
-            <?php
-        endif;
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
 
-        get_template_part( 'template-parts/sections/section-testimonials' );
-        get_template_part( 'template-parts/sections/section-faq' );
-        get_template_part( 'template-parts/sections/section-booking-cta' );
-    } else {
-        echo '<div class="container section">' . apply_filters( 'the_content', $content ) . '</div>';
-    }
-    ?>
+    <?php get_template_part( 'template-parts/sections/section-testimonials' ); ?>
+    <?php get_template_part( 'template-parts/sections/section-pricing' ); ?>
+    <?php get_template_part( 'template-parts/sections/section-faq' ); ?>
+
+    <div id="booking">
+        <?php get_template_part( 'template-parts/sections/section-booking-cta' ); ?>
+    </div>
 </main>
 
 <?php

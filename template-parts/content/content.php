@@ -10,12 +10,12 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> itemscope itemtype="https://schema.org/Article">
-	<header class="entry-header">
+	<header class="entry-header mb-4">
 		<?php
 		if ( is_singular() ) :
-			the_title( '<h1 class="entry-title" itemprop="headline">', '</h1>' );
+			the_title( '<h1 class="entry-title hero-headline gradient-text" itemprop="headline">', '</h1>' );
 		else :
-			the_title( '<h2 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h2>' );
+			the_title( '<h2 class="entry-title h3"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark" class="text-white text-decoration-none">', '</a></h2>' );
 		endif;
 
 		if ( 'post' === get_post_type() ) :
@@ -31,13 +31,12 @@
 
 	<?php closeclient_post_thumbnail(); ?>
 
-	<div class="entry-content" itemprop="articleBody">
+	<div class="entry-content py-md" itemprop="articleBody">
 		<?php
 		the_content(
 			sprintf(
 				wp_kses(
-					/* translators: %s: Name of current post. Only visible to screen readers */
-					__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'closeclient' ),
+					get_theme_mod( 'closeclient_label_continue_reading', 'Continue reading<span class="screen-reader-text"> "%s"</span>' ),
 					array(
 						'span' => array(
 							'class' => array(),
@@ -50,7 +49,7 @@
 
 		wp_link_pages(
 			array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'closeclient' ),
+				'before' => '<div class="page-links">' . esc_html( get_theme_mod( 'closeclient_label_page_links', 'Pages:' ) ),
 				'after'  => '</div>',
 			)
 		);

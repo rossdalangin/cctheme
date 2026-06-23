@@ -13,19 +13,19 @@ $layout = 'full-width';
 ?>
 
 <main id="primary" class="site-main">
-    <div class="container section">
+    <div class="container section section-lg">
         <article id="post-<?php the_ID(); ?>" <?php post_class( 'reveal' ); ?>>
             <header class="entry-header text-center mb-5">
-                <?php the_title( '<h1 class="entry-title hero-headline">', '</h1>' ); ?>
+                <?php the_title( '<h1 class="entry-title hero-headline gradient-text">', '</h1>' ); ?>
             </header>
 
-            <div class="entry-content">
+            <div class="entry-content py-lg">
                 <?php
                 the_content();
 
                 wp_link_pages(
                     array(
-                        'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'closeclient' ),
+                                'before' => '<div class="page-links">' . esc_html( get_theme_mod( 'closeclient_label_page_links', 'Pages:' ) ),
                         'after'  => '</div>',
                     )
                 );

@@ -14,6 +14,15 @@ function closeclient_register_cpts() {
         'has_archive' => true,
         'menu_icon'   => 'dashicons-rest-api',
         'supports'    => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
+        'taxonomies'  => array( 'service_cat' ),
+    ) );
+
+    register_taxonomy( 'service_cat', 'service', array(
+        'labels'            => array( 'name' => 'Service Categories', 'singular_name' => 'Category' ),
+        'hierarchical'      => true,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
     ) );
 
     // Testimonials CPT
@@ -39,6 +48,15 @@ function closeclient_register_cpts() {
         'has_archive' => true,
         'menu_icon'   => 'dashicons-portfolio',
         'supports'    => array( 'title', 'editor', 'thumbnail', 'excerpt' ),
+        'taxonomies'  => array( 'portfolio_cat' ),
+    ) );
+
+    register_taxonomy( 'portfolio_cat', 'portfolio', array(
+        'labels'            => array( 'name' => 'Project Categories', 'singular_name' => 'Category' ),
+        'hierarchical'      => true,
+        'show_ui'           => true,
+        'show_admin_column' => true,
+        'query_var'         => true,
     ) );
 
     // Team CPT
@@ -83,6 +101,7 @@ function closeclient_add_custom_meta_boxes() {
     add_meta_box( 'team_details', 'Member Details', 'closeclient_team_meta_callback', 'team', 'side' );
     add_meta_box( 'process_details', 'Step Details', 'closeclient_process_meta_callback', 'process', 'side' );
     add_meta_box( 'pricing_details', 'Plan Details', 'closeclient_pricing_meta_callback', 'pricing', 'side' );
+    add_meta_box( 'service_details', 'Service Architecture', 'closeclient_service_meta_callback', 'service', 'normal', 'high' );
 }
 add_action( 'add_meta_boxes', 'closeclient_add_custom_meta_boxes' );
 
@@ -91,7 +110,7 @@ function closeclient_testimonial_meta_callback( $post ) {
     $rating = get_post_meta( $post->ID, '_testimonial_rating', true );
     ?>
     <p><label for="testimonial_rating">Star Rating (1-5):</label></p>
-    <input type="number" id="testimonial_rating" name="testimonial_rating" value="<?php echo esc_attr( $rating ); ?>" min="1" max="5" style="width:100%;">
+    <input type="number" id="testimonial_rating" name="testimonial_rating" value="<?php echo esc_attr( $rating ); ?>" min="1" max="5" >
     <?php
 }
 
@@ -100,7 +119,7 @@ function closeclient_team_meta_callback( $post ) {
     $role = get_post_meta( $post->ID, '_member_role', true );
     ?>
     <p><label for="member_role">Member Role/Title:</label></p>
-    <input type="text" id="member_role" name="member_role" value="<?php echo esc_attr( $role ); ?>" style="width:100%;">
+    <input type="text" id="member_role" name="member_role" value="<?php echo esc_attr( $role ); ?>" >
     <?php
 }
 
@@ -109,7 +128,7 @@ function closeclient_process_meta_callback( $post ) {
     $order = get_post_meta( $post->ID, '_step_order', true );
     ?>
     <p><label for="step_order">Step Number (e.g. 1, 2, 3):</label></p>
-    <input type="number" id="step_order" name="step_order" value="<?php echo esc_attr( $order ); ?>" style="width:100%;">
+    <input type="number" id="step_order" name="step_order" value="<?php echo esc_attr( $order ); ?>" >
     <?php
 }
 
@@ -119,7 +138,7 @@ function closeclient_pricing_meta_callback( $post ) {
     $featured = get_post_meta( $post->ID, '_plan_featured', true );
     ?>
     <p><label for="plan_price">Price (e.g. $2,997):</label></p>
-    <input type="text" id="plan_price" name="plan_price" value="<?php echo esc_attr( $price ); ?>" style="width:100%;">
+    <input type="text" id="plan_price" name="plan_price" value="<?php echo esc_attr( $price ); ?>" >
     <p><label><input type="checkbox" name="plan_featured" value="1" <?php checked( $featured, '1' ); ?>> Featured Plan?</label></p>
     <?php
 }
@@ -154,9 +173,9 @@ function closeclient_product_meta_callback( $post ) {
     $link  = get_post_meta( $post->ID, '_product_link', true );
     ?>
     <p><label for="product_price">Price (e.g. $49):</label></p>
-    <input type="text" id="product_price" name="product_price" value="<?php echo esc_attr( $price ); ?>" style="width:100%;">
+    <input type="text" id="product_price" name="product_price" value="<?php echo esc_attr( $price ); ?>" >
     <p><label for="product_link">External Link:</label></p>
-    <input type="url" id="product_link" name="product_link" value="<?php echo esc_attr( $link ); ?>" style="width:100%;">
+    <input type="url" id="product_link" name="product_link" value="<?php echo esc_attr( $link ); ?>" >
     <?php
 }
 
@@ -182,11 +201,24 @@ function closeclient_portfolio_meta_callback( $post ) {
     $challenge = get_post_meta( $post->ID, '_portfolio_challenge', true );
     $solution  = get_post_meta( $post->ID, '_portfolio_solution', true );
     $outcome   = get_post_meta( $post->ID, '_portfolio_outcome', true );
+    $metric    = get_post_meta( $post->ID, '_portfolio_metric', true );
     ?>
-    <div style="padding: 20px;">
-        <p><strong>The Challenge:</strong><br><textarea name="portfolio_challenge" style="width:100%;" rows="4"><?php echo esc_textarea( $challenge ); ?></textarea></p>
-        <p><strong>The Solution:</strong><br><textarea name="portfolio_solution" style="width:100%;" rows="4"><?php echo esc_textarea( $solution ); ?></textarea></p>
-        <p><strong>The Outcome:</strong><br><textarea name="portfolio_outcome" style="width:100%;" rows="4"><?php echo esc_textarea( $outcome ); ?></textarea></p>
+    <div>
+        <p><strong>Key Performance Metric (e.g. 3.4x ROI):</strong><br><input type="text" name="portfolio_metric" value="<?php echo esc_attr( $metric ); ?>" class="widefat"></p>
+        <p><strong>The Challenge:</strong><br><textarea name="portfolio_challenge" class="widefat" rows="4"><?php echo esc_textarea( $challenge ); ?></textarea></p>
+        <p><strong>The Solution:</strong><br><textarea name="portfolio_solution" class="widefat" rows="4"><?php echo esc_textarea( $solution ); ?></textarea></p>
+        <p><strong>The Outcome:</strong><br><textarea name="portfolio_outcome" class="widefat" rows="4"><?php echo esc_textarea( $outcome ); ?></textarea></p>
+    </div>
+    <?php
+}
+
+function closeclient_service_meta_callback( $post ) {
+    $blueprint = get_post_meta( $post->ID, '_service_blueprint', true );
+    ?>
+    <div>
+        <p><strong>System Architecture Blueprint (Comma Separated):</strong><br>
+        <textarea name="service_blueprint" class="widefat" rows="3" placeholder="e.g. Infrastructure Setup, Lead Filtering, Performance Dashboards"><?php echo esc_textarea( $blueprint ); ?></textarea></p>
+        <p class="howto">These items will appear as a strategic checklist on the service detail page.</p>
     </div>
     <?php
 }
@@ -200,6 +232,12 @@ function closeclient_save_portfolio_meta( $post_id ) {
     }
     if ( isset( $_POST['portfolio_outcome'] ) ) {
         update_post_meta( $post_id, '_portfolio_outcome', wp_kses_post( $_POST['portfolio_outcome'] ) );
+    }
+    if ( isset( $_POST['portfolio_metric'] ) ) {
+        update_post_meta( $post_id, '_portfolio_metric', sanitize_text_field( $_POST['portfolio_metric'] ) );
+    }
+    if ( isset( $_POST['service_blueprint'] ) ) {
+        update_post_meta( $post_id, '_service_blueprint', sanitize_text_field( $_POST['service_blueprint'] ) );
     }
 }
 add_action( 'save_post', 'closeclient_save_portfolio_meta' );

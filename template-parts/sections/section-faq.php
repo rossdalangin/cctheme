@@ -5,49 +5,64 @@
  * @package CloseClient
  */
 
-$headline = get_theme_mod( 'closeclient_faq_headline', 'Frequently Asked Questions' );
+$headline = get_theme_mod( 'closeclient_faq_headline', 'Strategic Questions' );
 $tag      = get_theme_mod( 'closeclient_faq_tag', 'FAQ' );
 ?>
 
-<section id="faq" class="section section-faq bg-dark">
+<section id="faq" class="section section-lg section-faq">
     <div class="container container-narrow">
-        <div class="section-header text-center reveal" style="margin-bottom: 60px;">
+        <div class="section-header text-center reveal">
             <span class="section-tag"><?php echo esc_html( $tag ); ?></span>
-            <h2 class="section-headline"><?php echo esc_html( $headline ); ?></h2>
+            <h2 class="section-headline gradient-text"><?php echo esc_html( $headline ); ?></h2>
         </div>
 
-        <div class="faq-list">
+        <div class="faq-accordion mt-5 mb-5">
             <?php
-            // Try to fetch from CPT first
-            $faqs = new WP_Query( array(
+            $faq_query = new WP_Query( array(
                 'post_type'      => 'faq',
                 'posts_per_page' => 10,
             ) );
 
-            if ( $faqs->have_posts() ) :
-                while ( $faqs->have_posts() ) : $faqs->the_post(); ?>
-                    <div class="faq-item cc-card reveal mb-4" style="padding: 30px;">
-                        <h3 class="h5 mb-3" style="color: var(--c-white);"><?php the_title(); ?></h3>
-                        <div class="faq-answer text-muted small">
-                            <?php the_content(); ?>
+            if ( $faq_query->have_posts() ) :
+                while ( $faq_query->have_posts() ) : $faq_query->the_post(); ?>
+                    <div class="faq-item glass reveal mb-3" role="region">
+                        <button class="faq-header d-flex justify-content-between align-items-center w-100 text-start p-4" aria-expanded="false">
+                            <h3 class="h6 mb-0 text-white"><?php the_title(); ?></h3>
+                            <span class="faq-icon"><?php echo closeclient_get_svg('arrow-right', 'chevron-svg'); ?></span>
+                        </button>
+                        <div class="faq-body">
+                            <div class="p-4 pt-0 text-muted small lead">
+                                <?php the_content(); ?>
+                            </div>
                         </div>
                     </div>
                 <?php endwhile;
                 wp_reset_postdata();
             else :
-                // Fallback to Customizer defaults
+                // Fallback to Customizer
                 for ( $i = 1; $i <= 3; $i++ ) :
-                    $question = get_theme_mod( "closeclient_faq_q{$i}", "Question $i?" );
-                    $answer   = get_theme_mod( "closeclient_faq_a{$i}", "Answer $i to build trust and reduce friction." );
-                    ?>
-                    <div class="faq-item cc-card reveal mb-4" style="padding: 30px;">
-                        <h3 class="h5 mb-3" style="color: var(--c-white);"><?php echo esc_html( $question ); ?></h3>
-                        <div class="faq-answer text-muted small">
-                            <?php echo esc_html( $answer ); ?>
+                    $question = get_theme_mod( "closeclient_faq_q{$i}" );
+                    $answer   = get_theme_mod( "closeclient_faq_a{$i}" );
+                    if ( ! empty( $question ) ) : ?>
+                        <div class="faq-item glass reveal mb-3" role="region">
+                            <button class="faq-header d-flex justify-content-between align-items-center w-100 text-start p-4" aria-expanded="false">
+                                <h3 class="h6 mb-0 text-white"><?php echo esc_html( $question ); ?></h3>
+                                <span class="faq-icon"><?php echo closeclient_get_svg('arrow-right', 'chevron-svg'); ?></span>
+                            </button>
+                            <div class="faq-body">
+                                <div class="p-4 pt-0 text-muted small lead">
+                                    <?php echo wp_kses_post( $answer ); ?>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                <?php endfor;
+                    <?php endif;
+                endfor;
             endif; ?>
+        </div>
+
+        <div class="faq-footer text-center mt-5 reveal">
+            <p class="text-muted small mb-4"><?php echo esc_html( get_theme_mod( 'closeclient_faq_footer_text', 'Still have technical or strategic questions about our process?' ) ); ?></p>
+            <a href="#audit" class="cc-button cc-button-secondary"><?php echo esc_html( get_theme_mod( 'closeclient_faq_footer_btn', 'Talk to an Architect →' ) ); ?></a>
         </div>
     </div>
 </section>

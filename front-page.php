@@ -30,17 +30,16 @@ get_header();
 
         // Fallback to modular layout if no static page content is found
         if ( ! $has_content ) {
+            // Optimized Authority Funnel Sequence: Only one terminal CTA (Booking)
             $sections = array(
                 'hero', 'logo_ticker', 'authority', 'vsl', 'stats', 'portfolio', 'about', 'services',
-                'products', 'process', 'pricing', 'testimonials', 'team',
-                'lead_magnet', 'newsletter', 'faq', 'booking'
+                'products', 'process', 'pricing', 'testimonials', 'team', 'faq', 'booking_cta'
             );
 
             foreach ( $sections as $section ) {
-                $show_key = 'closeclient_show_' . $section;
+                $show_key = 'closeclient_show_' . ( 'booking_cta' === $section ? 'booking' : $section );
                 if ( get_theme_mod( $show_key, true ) ) {
-                    $template = ( 'booking' === $section ) ? 'booking-cta' : str_replace('_', '-', $section);
-                    get_template_part( 'template-parts/sections/section-' . $template );
+                    get_template_part( 'template-parts/sections/section-' . str_replace('_', '-', $section) );
                 }
             }
         }

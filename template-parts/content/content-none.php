@@ -6,43 +6,50 @@
  */
 ?>
 
-<section class="no-results not-found">
-	<header class="page-header">
-		<h1 class="page-title"><?php esc_html_e( 'Nothing Found', 'closeclient' ); ?></h1>
-	</header><!-- .page-header -->
+<section class="no-results not-found section section-lg text-center reveal">
+    <div class="container container-narrow py-xl">
+        <header class="page-header mb-5">
+            <span class="section-tag"><?php echo esc_html( get_theme_mod( 'closeclient_label_none_tag', 'NO RESULTS' ) ); ?></span>
+            <h1 class="hero-headline gradient-text"><?php echo esc_html( get_theme_mod( 'closeclient_label_none_title', 'Nothing Found' ) ); ?></h1>
+        </header>
 
-	<div class="page-content">
-		<?php
-		if ( is_home() && current_user_can( 'publish_posts' ) ) :
+        <div class="page-content glass p-5">
+            <?php
+            if ( is_home() && current_user_can( 'publish_posts' ) ) :
 
-			printf(
-				'<p>' . wp_kses(
-					/* translators: 1: link to WP admin new post page. */
-					__( 'Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'closeclient' ),
-					array(
-						'a' => array(
-							'href' => array(),
-						),
-					)
-				) . '</p>',
-				esc_url( admin_url( 'post-new.php' ) )
-			);
+                printf(
+                    '<p class="lead text-muted">' . wp_kses(
+                        get_theme_mod( 'closeclient_label_none_publish_cta', 'Ready to publish your first post? <a href="%1$s" class="text-accent">Get started here</a>.' ),
+                        array(
+                            'a' => array(
+                                'href' => array(),
+                                'class' => array(),
+                            ),
+                        )
+                    ) . '</p>',
+                    esc_url( admin_url( 'post-new.php' ) )
+                );
 
-		elseif ( is_search() ) :
-			?>
+            elseif ( is_search() ) :
+                ?>
 
-			<p><?php esc_html_e( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'closeclient' ); ?></p>
-			<?php
-			get_search_form();
+                <p class="lead text-muted mb-5"><?php echo esc_html( get_theme_mod( 'closeclient_label_none_search', 'Sorry, but nothing matched your search terms. Please try again with some different keywords.' ) ); ?></p>
+                <div class="search-form-wrapper max-w-500 mx-auto">
+                    <?php get_search_form(); ?>
+                </div>
 
-		else :
-			?>
+            <?php
+            else :
+                ?>
 
-			<p><?php esc_html_e( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'closeclient' ); ?></p>
-			<?php
-			get_search_form();
+                <p class="lead text-muted mb-5"><?php echo esc_html( get_theme_mod( 'closeclient_label_none_general', 'It seems we can’t find what you’re looking for. Perhaps searching can help.' ) ); ?></p>
+                <div class="search-form-wrapper max-w-500 mx-auto">
+                    <?php get_search_form(); ?>
+                </div>
 
-		endif;
-		?>
-	</div><!-- .page-content -->
-</section><!-- .no-results -->
+            <?php
+            endif;
+            ?>
+        </div>
+    </div>
+</section>
